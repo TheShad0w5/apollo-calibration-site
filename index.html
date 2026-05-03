@@ -321,22 +321,32 @@
       font-size: 17px;
     }
 
-    .check-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
+    .partner-card {
+      text-align: center;
     }
 
-    .check {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.025);
-      border-radius: 14px;
-      padding: 14px 16px;
-      color: var(--muted);
-    }
-
-    .check strong {
+    .partner-logo {
+      min-height: 96px;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      background: rgba(212, 175, 55, 0.06);
+      border-radius: 18px;
+      margin-bottom: 20px;
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--gold);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+    }
+
+    .partner-logo img {
+      max-width: 190px;
+      max-height: 70px;
+      object-fit: contain;
+      filter: brightness(1.05);
     }
 
     .cta {
@@ -436,6 +446,7 @@
         <a href="#services">Services</a>
         <a href="#platforms">Platforms</a>
         <a href="#experience">Experience</a>
+        <a href="#partners">Partners</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -620,6 +631,53 @@
             <p>
               Best suited for serious builds, advanced troubleshooting, partner-shop support,
               specialty programs, and high-value technical consulting.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="partners">
+      <div class="container">
+        <div class="section-head">
+          <h2>Trusted Partners & Industry Relationships.</h2>
+          <p class="section-intro">
+            Apollo Calibration Solutions works alongside established performance,
+            engine, and calibration-focused businesses to support serious vehicle programs.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card partner-card">
+            <div class="partner-logo">
+              Ed Pink<br />Racing Engines
+            </div>
+            <h3>Ed Pink Racing Engines</h3>
+            <p>
+              Engine development and high-performance racing engine expertise for advanced
+              motorsport and specialty applications.
+            </p>
+          </article>
+
+          <article class="card partner-card">
+            <div class="partner-logo">
+              AWDTuning
+            </div>
+            <h3>AWDTuning</h3>
+            <p>
+              Performance shop, dyno testing, ECU calibration, and specialty vehicle support
+              based on real-world tuning experience.
+            </p>
+          </article>
+
+          <article class="card partner-card">
+            <div class="partner-logo">
+              Tier 1<br />Performance
+            </div>
+            <h3>Tier 1 Performance</h3>
+            <p>
+              Performance-focused project support, specialty vehicle services, and technical
+              collaboration for high-output builds.
             </p>
           </article>
         </div>
