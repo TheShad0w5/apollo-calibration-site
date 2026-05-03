@@ -1,85 +1,214 @@
-<section id="services">
-  <div class="container">
-    <div class="section-head">
-      <h2>Technical Support for Calibration Problems That Need More Than a Canned Answer.</h2>
-      <p class="section-intro">
-        Structured calibration support for shops, race teams, and builders operating at a high level.
-      </p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="grid grid-3">
+<title>Apollo Calibration Solutions</title>
 
-      <!-- CORE -->
-      <article class="card">
-        <h3>ECU Calibration Support</h3>
-        <p>
-          B2B calibration support for standalone and reflash platforms with a focus
-          on drivability, consistency, safety logic, and usable power delivery.
-        </p>
-      </article>
+<style>
+:root {
+  --gold:#d4af37;
+  --bg:#050505;
+  --panel:#111;
+  --border:#2a2a2a;
+  --text:#fff;
+  --muted:#aaa;
+}
 
-      <article class="card">
-        <h3>Dyno Tuning</h3>
-        <p>
-          Controlled calibration development and validation using repeatable dyno
-          process, data review, and system-level troubleshooting.
-        </p>
-      </article>
+body {
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#111,#000);
+  color:var(--text);
+}
 
-      <article class="card">
-        <h3>Consultations</h3>
-        <p>
-          Technical direction for shops and builders needing help selecting platforms,
-          diagnosing issues, planning builds, or refining calibration strategy.
-        </p>
-      </article>
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
 
-      <article class="card">
-        <h3>Remote Support</h3>
-        <p>
-          Log review, configuration audits, and guided calibration adjustments for
-          partner shops and remote teams.
-        </p>
-      </article>
+h2 {
+  text-transform:uppercase;
+  letter-spacing:-0.03em;
+}
 
-      <!-- ADVANCED -->
-      <article class="card">
-        <h3>Controls Strategy</h3>
-        <p>
-          Boost control, DBW modeling, torque strategy, fuel system characterization,
-          sensor scaling, and safety logic development.
-        </p>
-      </article>
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
 
-      <article class="card">
-        <h3>Diagnostics</h3>
-        <p>
-          Structured troubleshooting for sync loss, startup faults, idle instability,
-          fueling errors, CAN issues, and system conflicts.
-        </p>
-      </article>
+.card {
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:22px;
+  border-radius:16px;
+  transition:.2s;
+}
 
-      <!-- PREMIUM -->
-      <article class="card" style="border-color: rgba(212,175,55,0.6); box-shadow: 0 0 30px rgba(212,175,55,0.12);">
-        <div style="font-size:11px; letter-spacing:0.2em; color:#d4af37; margin-bottom:10px;">
-          PREMIUM SERVICE
-        </div>
-        <h3>Trackside Support</h3>
-        <p>
-          On-site calibration and technical support for race events, private testing,
-          and track programs. Real-time data analysis, rapid calibration changes,
-          and problem-solving under live conditions.
-        </p>
-      </article>
+.card:hover {
+  transform:translateY(-4px);
+  border-color:var(--gold);
+}
 
-      <article class="card">
-        <h3>Data Analysis & Post-Session Review</h3>
-        <p>
-          Deep dive into logs and session data to identify inefficiencies,
-          validate changes, and define the next calibration strategy.
-        </p>
-      </article>
+.card h3 {
+  color:var(--gold);
+  margin-bottom:10px;
+}
 
-    </div>
-  </div>
+.card p {
+  color:var(--muted);
+}
+
+.premium {
+  border-color:var(--gold);
+  box-shadow:0 0 25px rgba(212,175,55,.15);
+}
+
+.premium-label {
+  font-size:11px;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:8px;
+  text-transform:uppercase;
+  font-weight:bold;
+}
+
+.platforms {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:10px;
+  margin-top:20px;
+}
+
+.platform {
+  text-align:center;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.partner {
+  text-align:center;
+}
+
+.partner-box {
+  border:1px solid var(--border);
+  padding:20px;
+  margin-bottom:10px;
+  border-radius:12px;
+  color:var(--gold);
+}
+
+section {
+  padding:60px 0;
+  border-top:1px solid #111;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SERVICES -->
+<section>
+<h2>Technical Support for Calibration Problems That Need More Than a Canned Answer.</h2>
+<p style="color:#aaa;">Structured calibration support for shops, race teams, and builders operating at a high level.</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>ECU Calibration Support</h3>
+<p>B2B calibration support for standalone and reflash platforms focused on drivability and safety.</p>
+</div>
+
+<div class="card">
+<h3>Dyno Tuning</h3>
+<p>Controlled calibration development using repeatable dyno processes and data validation.</p>
+</div>
+
+<div class="card">
+<h3>Consultations</h3>
+<p>Technical direction for builds, platform selection, and troubleshooting strategy.</p>
+</div>
+
+<div class="card">
+<h3>Remote Support</h3>
+<p>Log review, configuration audits, and guided calibration support.</p>
+</div>
+
+<div class="card">
+<h3>Controls Strategy</h3>
+<p>Boost, DBW, torque modeling, fuel system and safety logic development.</p>
+</div>
+
+<div class="card">
+<h3>Diagnostics</h3>
+<p>Advanced troubleshooting for sync loss, idle issues, fueling errors, and CAN faults.</p>
+</div>
+
+<div class="card premium">
+<div class="premium-label">Premium Service</div>
+<h3>Trackside Support</h3>
+<p>On-site calibration and live data analysis for race events and private track programs.</p>
+</div>
+
+<div class="card">
+<h3>Data Analysis & Post-Session Review</h3>
+<p>Deep dive into logs to refine calibration strategy and identify inefficiencies.</p>
+</div>
+
+</div>
 </section>
+
+<!-- PLATFORMS -->
+<section>
+<h2>Supported Engine Management</h2>
+
+<div class="platforms">
+<div class="platform">Emtron</div>
+<div class="platform">MoTeC</div>
+<div class="platform">Haltech</div>
+<div class="platform">Link ECU</div>
+<div class="platform">MaxxECU</div>
+<div class="platform">COBB</div>
+<div class="platform">EcuTek</div>
+</div>
+</section>
+
+<!-- PARTNERS -->
+<section>
+<h2>Trusted Partners</h2>
+
+<div class="grid">
+
+<div class="card partner">
+<div class="partner-box">Ed Pink Racing Engines</div>
+<p>Racing engine development</p>
+</div>
+
+<div class="card partner">
+<div class="partner-box">AWDTuning</div>
+<p>Dyno + calibration specialists</p>
+</div>
+
+<div class="card partner">
+<div class="partner-box">Tier 1 Performance</div>
+<p>High-performance builds</p>
+</div>
+
+<div class="card partner">
+<div class="partner-box">The Shop Houston</div>
+<p>Advanced fabrication + builds</p>
+</div>
+
+</div>
+</section>
+
+</div>
+
+</body>
+</html>
