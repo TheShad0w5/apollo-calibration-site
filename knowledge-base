@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Knowledge Base | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Technical ECU calibration articles, troubleshooting information, startup diagnostics, controls strategy, CAN integration, and motorsport calibration insights."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">Apollo Calibration Solutions</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#articles">Articles</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Knowledge Base
+    </div>
+
+    <h1>
+      Calibration &
+      <span class="gold">Controls Strategy Knowledge Base</span>
+    </h1>
+
+    <p class="hero-copy">
+      Technical articles and troubleshooting resources covering standalone ECU systems,
+      OEM reflash platforms, startup diagnostics, CAN integration,
+      drivability refinement, and motorsport calibration strategy.
+    </p>
+
+  </div>
+
+  <section id="articles">
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          Technical Articles & Troubleshooting Topics.
+        </h2>
+
+        <p class="section-intro">
+          These pages help explain common calibration problems,
+          control-system behavior, and diagnostic strategy.
+        </p>
+
+      </div>
+
+      <div class="grid grid-3">
+
+        <article class="card">
+          <h3>Common Emtron Startup Issues</h3>
+          <p>
+            Trigger setup, timing validation,
+            startup fueling, and sensor behavior troubleshooting.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>MoTeC Trigger Troubleshooting</h3>
+          <p>
+            Ref/sync behavior, trigger offsets,
+            scope review, and RPM stability diagnostics.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>DBW Strategy Explained</h3>
+          <p>
+            Drive-by-wire behavior, throttle mapping,
+            torque interaction, and stability control concepts.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>CAN Bus Integration Basics</h3>
+          <p>
+            Termination resistance, baud rate,
+            communication diagnostics, and integration concepts.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Flex Fuel Calibration Strategy</h3>
+          <p>
+            Ethanol blending, compensation behavior,
+            startup strategy, and fueling correction.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Boost Control Fundamentals</h3>
+          <p>
+            Wastegate behavior, dome pressure,
+            closed-loop strategy, and safety-system considerations.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta" id="contact">
+
+        <h2>
+          Need Technical Calibration Support?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides B2B calibration support,
+          troubleshooting, controls strategy, and motorsport consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Email Apollo
+          </a>
+
+          <a class="btn btn-secondary" href="index.html">
+            Back to Home
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Apollo Calibration Solutions. All rights reserved.</div>
+    <div>Technical Knowledge Base • ECU Calibration Support</div>
+  </div>
+</footer>
+
+</body>
+</html>
