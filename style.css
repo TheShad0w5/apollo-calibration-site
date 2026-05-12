@@ -57,13 +57,14 @@ header {
 
 .nav-links {
   display:flex;
-  gap:24px;
+  gap:18px;
   align-items:center;
   color:var(--muted);
-  font-size:13px;
+  font-size:12px;
   font-weight:700;
   text-transform:uppercase;
-  letter-spacing:0.08em;
+  letter-spacing:0.06em;
+  flex-wrap:wrap;
 }
 
 .nav-links a:hover { color:var(--gold); }
@@ -157,6 +158,35 @@ h3 {
 
 .btn:hover { transform:translateY(-1px); }
 
+.stat-grid {
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  margin-top:58px;
+}
+
+.stat {
+  border:1px solid var(--border);
+  background:rgba(16,16,16,0.72);
+  border-radius:18px;
+  padding:20px;
+}
+
+.stat strong {
+  display:block;
+  color:var(--gold);
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.stat span {
+  color:var(--muted);
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  font-weight:700;
+}
+
 section {
   padding:78px 0;
   border-top:1px solid rgba(255,255,255,0.07);
@@ -186,6 +216,7 @@ section {
 .grid-2 { grid-template-columns:repeat(2, 1fr); }
 
 .card {
+  display:block;
   border:1px solid var(--border);
   background:
     linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
@@ -193,6 +224,13 @@ section {
   border-radius:22px;
   padding:26px;
   min-height:210px;
+  transition:0.18s ease;
+}
+
+.card:hover {
+  border-color:rgba(212,175,55,0.55);
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.35);
 }
 
 .card p {
@@ -214,6 +252,52 @@ section {
   color:#d6d6d6;
   line-height:1.75;
   font-size:17px;
+}
+
+.platforms {
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  gap:12px;
+}
+
+.platform {
+  border:1px solid rgba(212,175,55,0.22);
+  background:rgba(212,175,55,0.07);
+  border-radius:16px;
+  padding:18px 12px;
+  text-align:center;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:#f1df9a;
+  transition:0.18s ease;
+}
+
+.platform:hover {
+  border-color:var(--gold);
+  background:rgba(212,175,55,0.14);
+  transform:translateY(-2px);
+}
+
+.partner-card {
+  text-align:center;
+}
+
+.partner-logo {
+  min-height:96px;
+  border:1px solid rgba(212,175,55,0.25);
+  background:rgba(212,175,55,0.06);
+  border-radius:18px;
+  margin-bottom:20px;
+  padding:22px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  line-height:1.35;
 }
 
 .list {
@@ -278,12 +362,13 @@ footer {
   }
 
   .nav-links {
-    flex-wrap:wrap;
     gap:14px;
   }
 
+  .stat-grid,
   .grid-3,
-  .grid-2 {
+  .grid-2,
+  .platforms {
     grid-template-columns:1fr;
   }
 
