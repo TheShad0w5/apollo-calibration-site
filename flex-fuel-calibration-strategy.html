@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Flex Fuel Calibration Strategy | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Flex fuel calibration strategy explained, including ethanol content sensors, fuel mass, stoichiometric ratio, timing compensation, startup behavior, and ECU safety logic."
+  />
+
+  <meta
+    name="keywords"
+    content="flex fuel calibration, ethanol tuning, E85 tuning strategy, ethanol content sensor, flex fuel startup, ECU calibration, motorsport fuel strategy"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Flex Fuel Calibration Strategy",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Flex fuel calibration strategy explained, including ethanol content sensors, fuel mass, stoichiometric ratio, timing compensation, startup behavior, and ECU safety logic."
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">Apollo Calibration Solutions</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="cobb-custom-tuning.html">COBB Support</a>
+      <a href="ecutek-calibration-support.html">EcuTek Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+    <div class="eyebrow">
+      Technical Article • Flex Fuel Strategy
+    </div>
+
+    <h1>
+      Flex Fuel
+      <span class="gold">Calibration Strategy</span>
+    </h1>
+
+    <p class="hero-copy">
+      Flex fuel calibration is more than adding timing on ethanol. A proper strategy
+      accounts for fuel mass, stoichiometric ratio, injector behavior, startup enrichment,
+      compensations, sensor accuracy, and protection logic.
+    </p>
+
+    <p class="cred">
+      When flex fuel strategy is built correctly, the ECU can transition cleanly between
+      gasoline, ethanol blends, and high-ethanol fuel without drivability problems or unsafe
+      operating conditions.
+    </p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Why Flex Fuel Requires Strategy
+        </div>
+
+        <h2 class="gold">
+          Ethanol Content Changes the Entire Fueling Model.
+        </h2>
+
+        <p>
+          Ethanol changes the required fuel mass, effective stoichiometric ratio,
+          combustion behavior, octane tolerance, cold-start requirements, and knock response.
+        </p>
+
+        <p>
+          A correct flex fuel calibration uses ethanol content as an input to adjust
+          the operating strategy across the entire calibration, not just one timing table.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          1. Ethanol Content Sensor Accuracy
+        </h2>
+
+        <p class="section-intro">
+          The ECU can only make good decisions if the ethanol content input is accurate.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Ethanol content sensors typically report both ethanol percentage and fuel temperature.
+          If the sensor wiring, calibration, frequency input, or filtering is incorrect, the ECU
+          may apply the wrong fueling and timing corrections.
+        </p>
+
+        <p>
+          Common issues include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Incorrect sensor frequency scaling</div>
+          <div class="list-item">Unstable ethanol content reading</div>
+          <div class="list-item">Poor sensor grounding or wiring</div>
+          <div class="list-item">Delayed blend response after refueling</div>
+          <div class="list-item">No fallback strategy for sensor failure</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          2. Stoichiometric Ratio & Fuel Mass
+        </h2>
+
+        <p class="section-intro">
+          Ethanol blends require more fuel mass than gasoline for the same lambda target.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          A flex fuel calibration should correctly adjust stoichiometric ratio or fuel model
+          behavior as ethanol content changes.
+        </p>
+
+        <p>
+          Problems appear when the ECU is targeting the right lambda but the underlying fuel
+          model is not correctly accounting for blend content.
+        </p>
+
+        <div class="list">
+          <div class="list-item">Fuel trims drift as ethanol content changes</div>
+          <div class="list-item">Open-loop fueling misses target at higher ethanol content</div>
+          <div class="list-item">Injector duty cycle increases unexpectedly</div>
+          <div class="list-item">Startup enrichment becomes inconsistent</div>
+          <div class="list-item">Transient fueling becomes unstable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          3. Ignition Timing Compensation
+        </h2>
+
+        <p class="section-intro">
+          Ethanol often allows more ignition timing, but timing should not be added blindly.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Higher ethanol content can improve knock resistance and charge cooling, but the correct
+          ignition strategy still depends on boost pressure, cylinder pressure, combustion chamber
+          behavior, turbocharger efficiency, air temperature, and engine safety margin.
+        </p>
+
+        <p>
+          A proper ethanol timing strategy should consider:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Blend-based timing compensation</div>
+          <div class="list-item">Knock sensitivity at partial ethanol blends</div>
+          <div class="list-item">IAT and coolant compensation interaction</div>
+          <div class="list-item">Boost and torque limit behavior</div>
+          <div class="list-item">Power gain versus safety margin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          4. Cold Start & Cranking Fuel
+        </h2>
+
+        <p class="section-intro">
+          High ethanol blends usually require significantly different startup strategy.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Ethanol vaporizes differently than gasoline, especially at lower temperatures.
+          Cold-start calibration must account for ethanol content, coolant temperature,
+          cranking pulse width, after-start enrichment, ignition behavior, and idle airflow.
+        </p>
+
+        <p>
+          Common flex fuel startup problems include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Long crank time on high ethanol</div>
+          <div class="list-item">Starts then stalls</div>
+          <div class="list-item">Over-rich startup on low ethanol</div>
+          <div class="list-item">Idle flare or idle dip after start</div>
+          <div class="list-item">Poor blend transition after refueling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          5. Fuel System Capacity & Safety Logic
+        </h2>
+
+        <p class="section-intro">
+          Flex fuel can expose fuel-system limitations quickly.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Because ethanol requires more fuel volume, fuel pumps, injectors, pressure regulators,
+          and wiring must be evaluated against the expected ethanol content and power level.
+        </p>
+
+        <p>
+          Safety strategy should include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Fuel pressure monitoring</div>
+          <div class="list-item">Injector duty-cycle limits</div>
+          <div class="list-item">Lambda error protection</div>
+          <div class="list-item">Ethanol sensor fault fallback</div>
+          <div class="list-item">Boost or torque reduction on fuel-system limits</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Flex Fuel Works Best When the Entire Calibration Is Blend-Aware.
+        </h2>
+
+        <p>
+          A proper flex fuel setup adjusts fueling, ignition, startup behavior, compensations,
+          torque strategy, boost behavior, and safety systems around the actual ethanol content.
+        </p>
+
+        <p>
+          The goal is not just more power on ethanol — it is consistent behavior across the full
+          range of fuel blends the vehicle may encounter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>
+          Need Help With Flex Fuel Calibration Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides calibration review, dyno tuning, remote support,
+          and troubleshooting for flex fuel standalone ECU and OEM reflash applications.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Apollo Calibration Solutions. All rights reserved.</div>
+    <div>Technical Knowledge Base • Flex Fuel Strategy • Calibration Support</div>
+  </div>
+</footer>
+
+</body>
+</html>
