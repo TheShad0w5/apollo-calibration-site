@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MoTeC Ref/Sync Troubleshooting | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="MoTeC ref/sync troubleshooting guide covering crank triggers, cam sync, trigger offsets, sync loss, timing validation, electrical noise, and startup diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="MoTeC ref sync, MoTeC trigger setup, MoTeC sync loss, MoTeC startup diagnostics, crank trigger troubleshooting, motorsport ECU diagnostics"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"MoTeC Ref/Sync Troubleshooting",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"MoTeC ref/sync troubleshooting guide covering crank triggers, cam sync, trigger offsets, sync loss, timing validation, electrical noise, and startup diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="motec-calibration-support.html">MoTeC Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • MoTeC Diagnostics
+    </div>
+
+    <h1>
+      MoTeC
+      <span class="gold">
+        Ref/Sync Troubleshooting
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Ref/sync problems are among the most common causes of startup instability,
+      timing drift, intermittent RPM behavior, sync loss, and unpredictable
+      ignition performance on MoTeC-controlled engines.
+    </p>
+
+    <p class="cred">
+      Before fuel, ignition, boost, or drivability strategy can operate correctly,
+      the ECU must maintain stable crank and cam synchronization.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding Ref/Sync
+        </div>
+
+        <h2 class="gold">
+          The ECU Must Always Know Exact Engine Position.
+        </h2>
+
+        <p>
+          MoTeC systems rely on crank and cam trigger information
+          to determine engine position, RPM, ignition timing,
+          injector timing, synchronization state, and operating strategy.
+        </p>
+
+        <p>
+          If synchronization becomes unstable,
+          the ECU may disable ignition,
+          lose timing accuracy,
+          or generate erratic engine behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Incorrect Trigger Pattern Configuration
+        </h2>
+
+        <p class="section-intro">
+          Incorrect trigger configuration is one of the most common causes
+          of ref/sync problems.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common setup mistakes include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect missing-tooth count
+          </div>
+
+          <div class="list-item">
+            Wrong ref/sync mode selection
+          </div>
+
+          <div class="list-item">
+            Incorrect cam pattern assignment
+          </div>
+
+          <div class="list-item">
+            Incorrect trigger edge selection
+          </div>
+
+          <div class="list-item">
+            Improper synchronization configuration
+          </div>
+
+        </div>
+
+        <p>
+          Aftermarket trigger kits often differ substantially
+          from OEM trigger configurations and should always be verified independently.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Trigger Edge Selection Problems
+        </h2>
+
+        <p class="section-intro">
+          Incorrect edge selection can create unstable synchronization
+          and inaccurate timing behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Using the wrong trigger edge may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Timing drift
+          </div>
+
+          <div class="list-item">
+            Sync instability
+          </div>
+
+          <div class="list-item">
+            RPM fluctuation
+          </div>
+
+          <div class="list-item">
+            Intermittent startup behavior
+          </div>
+
+          <div class="list-item">
+            Ignition timing inconsistency
+          </div>
+
+        </div>
+
+        <p>
+          Proper edge selection should always be validated
+          with stable timing-light verification
+          and clean waveform analysis.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Electrical Noise & Signal Corruption
+        </h2>
+
+        <p class="section-intro">
+          Trigger systems are highly sensitive to electrical interference.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Poor grounding, inadequate shielding,
+          improper sensor routing, or noisy ignition systems
+          can corrupt trigger signals.
+        </p>
+
+        <p>
+          Common symptoms include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Random sync loss
+          </div>
+
+          <div class="list-item">
+            RPM spikes
+          </div>
+
+          <div class="list-item">
+            False trigger events
+          </div>
+
+          <div class="list-item">
+            Ignition breakup
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Trigger Offset & Timing Validation
+        </h2>
+
+        <p class="section-intro">
+          Stable synchronization does not guarantee correct ignition timing.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Trigger offset must always be physically validated
+          with a timing light.
+        </p>
+
+        <p>
+          Incorrect trigger offset can create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect ignition timing
+          </div>
+
+          <div class="list-item">
+            Hard startup
+          </div>
+
+          <div class="list-item">
+            False knock activity
+          </div>
+
+          <div class="list-item">
+            Excessive EGT
+          </div>
+
+          <div class="list-item">
+            Combustion instability
+          </div>
+
+        </div>
+
+        <p>
+          Timing validation should always occur before
+          meaningful calibration refinement begins.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Mechanical Trigger Problems
+        </h2>
+
+        <p class="section-intro">
+          Mechanical trigger issues are often overlooked during troubleshooting.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Trigger-wheel movement, excessive runout,
+          damaged teeth, or inconsistent sensor gap
+          can destabilize synchronization.
+        </p>
+
+        <p>
+          Mechanical inspection should always include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Trigger-wheel concentricity
+          </div>
+
+          <div class="list-item">
+            Sensor mounting stability
+          </div>
+
+          <div class="list-item">
+            Crankshaft endplay inspection
+          </div>
+
+          <div class="list-item">
+            Trigger-wheel tooth integrity
+          </div>
+
+          <div class="list-item">
+            Sensor air-gap consistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Synchronization Is the Foundation of Accurate Calibration.
+        </h2>
+
+        <p>
+          Many apparent fueling, ignition, or drivability issues
+          are actually synchronization problems first.
+        </p>
+
+        <p>
+          Stable trigger data, validated timing,
+          proper edge selection, and clean signal integrity
+          should always be confirmed before deeper calibration work begins.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing a MoTeC Ref/Sync Problem?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          startup diagnostics, datalog review, and technical consulting
+          for professional motorsport and performance applications.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="motec-calibration-support.html">
+            MoTeC Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • MoTeC Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
