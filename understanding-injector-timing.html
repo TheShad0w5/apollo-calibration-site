@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Injector Timing | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding injector timing, fuel targeting, injection end angle, wall wetting, combustion stability, startup behavior, and ECU fuel strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="injector timing, injection end angle, injector phasing, fuel timing strategy, startup injector timing, motorsport fuel strategy"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Injector Timing",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding injector timing, fuel targeting, injection end angle, wall wetting, combustion stability, startup behavior, and ECU fuel strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Fuel Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Injector Timing
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Injector timing is one of the most misunderstood areas of ECU calibration.
+      While air/fuel ratio may remain unchanged, injector timing can significantly
+      affect combustion stability, startup quality, transient response,
+      idle behavior, knock sensitivity, and overall drivability.
+    </p>
+
+    <p class="cred">
+      Proper injector timing strategy becomes increasingly important
+      as injector size, airflow, ethanol content,
+      engine speed, and engine complexity increase.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What Injector Timing Actually Controls
+        </div>
+
+        <h2 class="gold">
+          Injector Timing Determines When Fuel Enters the Cylinder.
+        </h2>
+
+        <p>
+          Injector timing controls the crank-angle relationship
+          between injector operation and engine cycle position.
+        </p>
+
+        <p>
+          The goal is not simply delivering fuel —
+          it is delivering fuel at the correct time
+          to support stable combustion behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Fuel Vaporization & Wall Wetting
+        </h2>
+
+        <p class="section-intro">
+          Fuel behavior changes depending on when injection occurs.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Injecting fuel too early or too late
+          can change how much fuel vaporizes,
+          how much contacts the intake port wall,
+          and how consistently combustion develops.
+        </p>
+
+        <p>
+          Poor injector timing may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Unstable idle behavior
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+          <div class="list-item">
+            Rich/lean transient behavior
+          </div>
+
+          <div class="list-item">
+            Increased fuel-film effects
+          </div>
+
+          <div class="list-item">
+            Reduced combustion stability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Injector Timing During Startup
+        </h2>
+
+        <p class="section-intro">
+          Startup behavior is highly sensitive to injector timing strategy.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During startup, airflow speed is low,
+          fuel vaporization is reduced,
+          and combustion stability is weaker.
+        </p>
+
+        <p>
+          Injector timing strongly affects:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Crank-to-fire transition
+          </div>
+
+          <div class="list-item">
+            Startup AFR stability
+          </div>
+
+          <div class="list-item">
+            Idle flare behavior
+          </div>
+
+          <div class="list-item">
+            Startup misfire tendency
+          </div>
+
+          <div class="list-item">
+            Flex fuel startup consistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Injector Timing at High Load
+        </h2>
+
+        <p class="section-intro">
+          Injector timing affects combustion behavior differently under load.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          At higher airflow and cylinder pressure,
+          injector timing can influence:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Knock sensitivity
+          </div>
+
+          <div class="list-item">
+            Exhaust gas temperature
+          </div>
+
+          <div class="list-item">
+            Torque consistency
+          </div>
+
+          <div class="list-item">
+            Fuel distribution quality
+          </div>
+
+          <div class="list-item">
+            Combustion efficiency
+          </div>
+
+        </div>
+
+        <p>
+          Engines with large injectors or very high duty cycle
+          become increasingly sensitive to injector phasing strategy.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Ethanol & Injector Timing
+        </h2>
+
+        <p class="section-intro">
+          Ethanol changes fuel behavior substantially.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Flex fuel and high-ethanol applications often respond differently
+          to injector timing changes because ethanol affects:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Fuel vaporization behavior
+          </div>
+
+          <div class="list-item">
+            Combustion preparation
+          </div>
+
+          <div class="list-item">
+            Fuel-film dynamics
+          </div>
+
+          <div class="list-item">
+            Startup fuel requirements
+          </div>
+
+          <div class="list-item">
+            Charge cooling behavior
+          </div>
+
+        </div>
+
+        <p>
+          Injector timing that works well on gasoline
+          may not behave ideally on E60-E85 blends.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Injection End Angle vs. Start Angle
+        </h2>
+
+        <p class="section-intro">
+          Different ECUs reference injector timing differently.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Some ECU systems define injector timing
+          using injection start angle,
+          while others define it using injection end angle.
+        </p>
+
+        <p>
+          Understanding the ECU’s actual reference method is critical,
+          especially when converting calibrations
+          between platforms.
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            End-angle systems reference when injection stops
+          </div>
+
+          <div class="list-item">
+            Start-angle systems reference when injection begins
+          </div>
+
+          <div class="list-item">
+            Large injectors increase timing sensitivity
+          </div>
+
+          <div class="list-item">
+            Long pulse widths change effective phasing
+          </div>
+
+          <div class="list-item">
+            Sequential vs. staged injection changes behavior further
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Injector Timing Is About Combustion Quality — Not Just AFR.
+        </h2>
+
+        <p>
+          Injector timing strategy affects how consistently
+          fuel reaches the chamber,
+          vaporizes,
+          mixes with airflow,
+          and supports stable combustion.
+        </p>
+
+        <p>
+          Proper injector timing refinement can improve startup quality,
+          idle behavior, transient response,
+          drivability, knock resistance,
+          and combustion stability across the operating range.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Injector Timing Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          startup diagnostics, flex fuel refinement,
+          and advanced fuel-strategy consulting for professional vehicle programs.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Fuel Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
