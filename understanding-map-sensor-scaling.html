@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding MAP Sensor Scaling | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding MAP sensor scaling including pressure conversion, sensor linearization, boost calculation, speed density modeling, and ECU calibration strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="MAP sensor scaling, manifold pressure sensor tuning, speed density calibration, boost sensor setup, ECU pressure scaling, standalone ECU tuning"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding MAP Sensor Scaling",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding MAP sensor scaling including pressure conversion, sensor linearization, boost calculation, speed density modeling, and ECU calibration strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-volumetric-efficiency-modeling.html">VE Modeling</a>
+      <a href="understanding-air-temp-sensor-placement.html">IAT Strategy</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Sensor Calibration
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        MAP Sensor Scaling
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      MAP sensor scaling is one of the core foundations
+      of accurate Speed Density and boost-based ECU calibration.
+    </p>
+
+    <p class="cred">
+      Incorrect pressure scaling affects airflow estimation,
+      boost control,
+      fuel delivery,
+      ignition strategy,
+      torque modeling,
+      and overall drivability consistency.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What the MAP Sensor Actually Measures
+        </div>
+
+        <h2 class="gold">
+          MAP Sensors Convert Pressure Into Electrical Signal.
+        </h2>
+
+        <p>
+          The manifold absolute pressure sensor measures intake manifold pressure
+          and converts it into a voltage signal the ECU can interpret.
+        </p>
+
+        <p>
+          The ECU then uses this pressure data
+          for airflow estimation,
+          boost calculation,
+          and fuel-mass modeling.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Scaling Errors Affect the Entire Calibration
+        </h2>
+
+        <p class="section-intro">
+          Incorrect pressure conversion distorts ECU calculations everywhere.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          MAP scaling errors commonly affect:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Fuel delivery
+          </div>
+
+          <div class="list-item">
+            Ignition timing
+          </div>
+
+          <div class="list-item">
+            Boost control
+          </div>
+
+          <div class="list-item">
+            Torque estimation
+          </div>
+
+          <div class="list-item">
+            Load calculation
+          </div>
+
+        </div>
+
+        <p>
+          Even small scaling inaccuracies
+          may create major calibration instability under boost.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Absolute Pressure vs Boost Pressure
+        </h2>
+
+        <p class="section-intro">
+          Most ECUs calculate boost from absolute pressure values.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          MAP sensors measure absolute pressure —
+          not boost pressure directly.
+        </p>
+
+        <p>
+          The ECU subtracts atmospheric pressure
+          from manifold absolute pressure
+          to determine boost pressure.
+        </p>
+
+        <p>
+          Incorrect atmospheric compensation may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost-target error
+          </div>
+
+          <div class="list-item">
+            Altitude compensation problems
+          </div>
+
+          <div class="list-item">
+            Torque-model mismatch
+          </div>
+
+          <div class="list-item">
+            Load-estimation instability
+          </div>
+
+          <div class="list-item">
+            Wastegate-control inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Sensor Resolution Matters
+        </h2>
+
+        <p class="section-intro">
+          Larger-range sensors often sacrifice low-pressure resolution.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          High-range sensors such as 5-bar sensors
+          provide greater boost capability
+          but may reduce low-pressure measurement precision.
+        </p>
+
+        <p>
+          Poor low-load resolution may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle instability
+          </div>
+
+          <div class="list-item">
+            Cruise fueling inconsistency
+          </div>
+
+          <div class="list-item">
+            Weak transient prediction
+          </div>
+
+          <div class="list-item">
+            Fuel-trim fluctuation
+          </div>
+
+          <div class="list-item">
+            Reduced drivability refinement
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Sensor Filtering Changes Response Behavior
+        </h2>
+
+        <p class="section-intro">
+          Pressure smoothing affects ECU reaction speed.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          MAP filtering helps reduce signal noise,
+          but excessive filtering delays ECU response.
+        </p>
+
+        <p>
+          Over-filtering may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Delayed boost control
+          </div>
+
+          <div class="list-item">
+            Weak transient fueling
+          </div>
+
+          <div class="list-item">
+            Torque-model lag
+          </div>
+
+          <div class="list-item">
+            DBW instability
+          </div>
+
+          <div class="list-item">
+            Slow load calculation
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Mechanical Plumbing Matters Too
+        </h2>
+
+        <p class="section-intro">
+          Sensor line routing affects signal stability.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Long vacuum lines,
+          small restrictors,
+          oil contamination,
+          and poor routing
+          may distort pressure response behavior.
+        </p>
+
+        <p>
+          Mechanical signal problems may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Pressure lag
+          </div>
+
+          <div class="list-item">
+            Oscillating boost control
+          </div>
+
+          <div class="list-item">
+            False pressure spikes
+          </div>
+
+          <div class="list-item">
+            Load instability
+          </div>
+
+          <div class="list-item">
+            Transient fueling errors
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Pressure Data Creates Good ECU Decisions.
+        </h2>
+
+        <p>
+          Stable MAP scaling improves:
+          airflow estimation,
+          boost control,
+          drivability,
+          fuel modeling,
+          and torque consistency.
+        </p>
+
+        <p>
+          The best calibrations combine
+          accurate sensor scaling,
+          clean signal behavior,
+          intelligent filtering,
+          and stable mechanical plumbing.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing MAP Scaling Problems?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          sensor calibration refinement,
+          boost-model diagnostics,
+          and advanced ECU consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Sensor Calibration • Calibration Support
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
