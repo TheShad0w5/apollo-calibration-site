@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Read a Datalog Properly | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="how to read datalogs, ECU datalog analysis, boost log review, knock log analysis, calibration diagnostics, standalone ECU tuning"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How To Read a Datalog Properly",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="torque-management-calibration-strategy.html">Torque Strategy</a>
+      <a href="understanding-knock-control-strategy.html">Knock Strategy</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Calibration Diagnostics
+    </div>
+
+    <h1>
+      How To Read a
+      <span class="gold">
+        Datalog Properly
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Datalog analysis is one of the most important skills in ECU calibration.
+      A good datalog tells the story of what the engine,
+      turbocharger,
+      fuel system,
+      and ECU strategy were doing during operation.
+    </p>
+
+    <p class="cred">
+      Proper datalog review requires understanding relationships between airflow,
+      boost,
+      ignition timing,
+      torque intervention,
+      fuel delivery,
+      and combustion stability — not just looking at individual numbers in isolation.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Datalogs Show System Interaction
+        </div>
+
+        <h2 class="gold">
+          Never Analyze a Single Channel by Itself.
+        </h2>
+
+        <p>
+          Most calibration problems are not caused by one isolated parameter.
+        </p>
+
+        <p>
+          Boost behavior,
+          airflow,
+          ignition timing,
+          DBW control,
+          fuel delivery,
+          and knock response all interact dynamically.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Start With RPM and Load
+        </h2>
+
+        <p class="section-intro">
+          RPM and load establish operating context for the entire log.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Before analyzing any calibration behavior,
+          identify:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Engine RPM
+          </div>
+
+          <div class="list-item">
+            Throttle position
+          </div>
+
+          <div class="list-item">
+            Engine load or airflow
+          </div>
+
+          <div class="list-item">
+            Gear position
+          </div>
+
+          <div class="list-item">
+            Vehicle speed
+          </div>
+
+        </div>
+
+        <p>
+          Without operating context,
+          individual values can easily be misinterpreted.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Analyze Boost Behavior as a Curve
+        </h2>
+
+        <p class="section-intro">
+          Boost response matters more than peak boost alone.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Evaluate:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost rise rate
+          </div>
+
+          <div class="list-item">
+            Overshoot behavior
+          </div>
+
+          <div class="list-item">
+            Boost taper
+          </div>
+
+          <div class="list-item">
+            Wastegate duty behavior
+          </div>
+
+          <div class="list-item">
+            Throttle interaction during spool
+          </div>
+
+        </div>
+
+        <p>
+          Boost oscillation,
+          throttle closure,
+          or unstable duty-cycle behavior often indicates deeper control-system problems.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Review Ignition Timing in Context
+        </h2>
+
+        <p class="section-intro">
+          Ignition timing alone does not indicate calibration quality.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Timing values should always be interpreted relative to:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Ethanol content
+          </div>
+
+          <div class="list-item">
+            Intake air temperature
+          </div>
+
+          <div class="list-item">
+            Engine load
+          </div>
+
+          <div class="list-item">
+            Turbo efficiency range
+          </div>
+
+          <div class="list-item">
+            Knock activity
+          </div>
+
+        </div>
+
+        <p>
+          A lower timing value on one setup may still represent a safer
+          and more efficient combustion strategy than a higher value elsewhere.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Understand Fuel Trim Behavior
+        </h2>
+
+        <p class="section-intro">
+          Fuel trims help reveal airflow-model accuracy and fueling consistency.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Fuel trims should be evaluated across:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle
+          </div>
+
+          <div class="list-item">
+            Cruise
+          </div>
+
+          <div class="list-item">
+            Transitional throttle
+          </div>
+
+          <div class="list-item">
+            Boost onset
+          </div>
+
+          <div class="list-item">
+            Heat soak conditions
+          </div>
+
+        </div>
+
+        <p>
+          Fuel-trim instability may indicate:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            MAF scaling problems
+          </div>
+
+          <div class="list-item">
+            Speed Density model errors
+          </div>
+
+          <div class="list-item">
+            Fuel pressure instability
+          </div>
+
+          <div class="list-item">
+            Injector characterization problems
+          </div>
+
+          <div class="list-item">
+            Vacuum leaks
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Knock Activity Requires Careful Interpretation
+        </h2>
+
+        <p class="section-intro">
+          Not all knock activity represents dangerous combustion.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Always evaluate:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Knock correction consistency
+          </div>
+
+          <div class="list-item">
+            Cylinder-specific behavior
+          </div>
+
+          <div class="list-item">
+            Load and RPM relationship
+          </div>
+
+          <div class="list-item">
+            Noise-source possibility
+          </div>
+
+          <div class="list-item">
+            Fuel-quality influence
+          </div>
+
+        </div>
+
+        <p>
+          Stable repeated correction patterns
+          generally matter more than isolated events.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          6. Watch for Torque Intervention
+        </h2>
+
+        <p class="section-intro">
+          Modern ECUs often reduce torque intentionally.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Torque intervention may appear as:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Throttle closure
+          </div>
+
+          <div class="list-item">
+            Sudden load reduction
+          </div>
+
+          <div class="list-item">
+            Ignition torque reduction
+          </div>
+
+          <div class="list-item">
+            Boost target reduction
+          </div>
+
+          <div class="list-item">
+            Wastegate duty reduction
+          </div>
+
+        </div>
+
+        <p>
+          Understanding why the ECU intervened
+          is often more important than the intervention itself.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Datalog Analysis Is About Relationships, Not Individual Numbers.
+        </h2>
+
+        <p>
+          The best calibrators analyze how systems interact:
+          airflow,
+          torque,
+          ignition,
+          boost,
+          fuel delivery,
+          thermal behavior,
+          and ECU strategy.
+        </p>
+
+        <p>
+          Datalog interpretation becomes dramatically more powerful
+          when viewed as a complete operating system
+          rather than disconnected channels.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Reviewing Datalogs?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote datalog review,
+          calibration troubleshooting,
+          drivability refinement,
+          and advanced ECU consulting for professional vehicle programs.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Calibration Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
