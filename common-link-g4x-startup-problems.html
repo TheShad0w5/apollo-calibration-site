@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Common Link G4X Startup Problems | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Common Link G4X startup problems explained, including trigger sync, injector timing, crank enrichment, ignition offset, idle control, and ECU startup diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="Link G4X startup issues, Link ECU startup diagnostics, Link trigger sync, Link crank enrichment, standalone ECU startup tuning"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Common Link G4X Startup Problems",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Common Link G4X startup problems explained, including trigger sync, injector timing, crank enrichment, ignition offset, idle control, and ECU startup diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="link-ecu-support.html">Link ECU Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Link ECU Diagnostics
+    </div>
+
+    <h1>
+      Common
+      <span class="gold">
+        Link G4X Startup Problems
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Startup instability on Link G4X systems is often caused by a combination
+      of trigger setup, cranking enrichment, ignition timing validation,
+      airflow strategy, and transient fuel behavior.
+    </p>
+
+    <p class="cred">
+      Many engines that “almost start” or behave inconsistently during cranking
+      actually have synchronization or startup-model problems rather than major fueling failures.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding Startup Strategy
+        </div>
+
+        <h2 class="gold">
+          Startup Is a Separate Operating Mode.
+        </h2>
+
+        <p>
+          During cranking and early combustion,
+          the ECU operates differently than it does during steady-state running.
+        </p>
+
+        <p>
+          Crank enrichment, ignition timing, injector timing,
+          airflow strategy, synchronization quality,
+          and battery-voltage compensation all become extremely important.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Trigger Sync Problems
+        </h2>
+
+        <p class="section-intro">
+          Trigger-system instability is one of the most common startup problems.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The ECU must maintain stable synchronization during cranking
+          before ignition and injector timing can operate correctly.
+        </p>
+
+        <p>
+          Common sync-related issues include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect trigger mode selection
+          </div>
+
+          <div class="list-item">
+            Wrong trigger edge configuration
+          </div>
+
+          <div class="list-item">
+            Excessive trigger air gap
+          </div>
+
+          <div class="list-item">
+            Electrical noise contamination
+          </div>
+
+          <div class="list-item">
+            Incorrect home signal setup
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Incorrect Ignition Timing Offset
+        </h2>
+
+        <p class="section-intro">
+          Startup timing should always be validated physically.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          A stable RPM signal does not guarantee correct ignition timing.
+        </p>
+
+        <p>
+          Incorrect trigger offset or synchronization setup may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Hard startup
+          </div>
+
+          <div class="list-item">
+            Backfiring during cranking
+          </div>
+
+          <div class="list-item">
+            Slow crank-to-fire transition
+          </div>
+
+          <div class="list-item">
+            Unstable combustion immediately after start
+          </div>
+
+          <div class="list-item">
+            Excessive cranking duration
+          </div>
+
+        </div>
+
+        <p>
+          Timing should always be verified with a timing light
+          before deeper startup tuning begins.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Cranking Fuel & Startup Enrichment
+        </h2>
+
+        <p class="section-intro">
+          Startup fueling requirements differ significantly from steady-state fueling.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Engines frequently require substantially different fuel mass
+          during cranking and immediately after startup.
+        </p>
+
+        <p>
+          Common enrichment-related problems include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Lean crank behavior
+          </div>
+
+          <div class="list-item">
+            Flooding during startup
+          </div>
+
+          <div class="list-item">
+            Starts then stalls
+          </div>
+
+          <div class="list-item">
+            Startup AFR instability
+          </div>
+
+          <div class="list-item">
+            Hot-start inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Injector Timing & Fuel Film Behavior
+        </h2>
+
+        <p class="section-intro">
+          Injector timing strongly affects startup combustion quality.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Injector timing influences fuel vaporization,
+          wall wetting, combustion stability,
+          and startup consistency.
+        </p>
+
+        <p>
+          Poor injector timing strategy may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Startup stumble
+          </div>
+
+          <div class="list-item">
+            Rich/lean oscillation
+          </div>
+
+          <div class="list-item">
+            Startup misfire behavior
+          </div>
+
+          <div class="list-item">
+            Idle instability immediately after start
+          </div>
+
+          <div class="list-item">
+            Slow transition into stable idle
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Idle Airflow Strategy
+        </h2>
+
+        <p class="section-intro">
+          Startup airflow behavior must match the fueling strategy.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Incorrect idle control strategy can destabilize startup behavior,
+          especially on larger injectors, large cams,
+          flex fuel applications, or high-airflow engines.
+        </p>
+
+        <p>
+          Common idle-related startup problems include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Startup flare
+          </div>
+
+          <div class="list-item">
+            RPM dip after startup
+          </div>
+
+          <div class="list-item">
+            Idle hunting
+          </div>
+
+          <div class="list-item">
+            Stalling during warmup
+          </div>
+
+          <div class="list-item">
+            Hot-start idle instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Startup Behavior Requires Multiple Systems Working Together.
+        </h2>
+
+        <p>
+          Good startup behavior is usually the result of stable synchronization,
+          validated ignition timing, proper enrichment strategy,
+          correct airflow behavior, and refined transient fueling.
+        </p>
+
+        <p>
+          Startup tuning becomes increasingly important
+          as engine airflow, injector size,
+          ethanol content, and engine complexity increase.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing a Link G4X Startup Problem?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides startup diagnostics,
+          remote troubleshooting, datalog review,
+          and calibration consulting for advanced standalone ECU applications.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Link ECU Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
