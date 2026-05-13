@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Drive-By-Wire Throttle Control | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding drive-by-wire throttle control including torque intervention, pedal mapping, airflow estimation, DBW safety logic, throttle closure, and ECU calibration strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="drive by wire tuning, DBW throttle control, throttle closure tuning, pedal mapping, torque intervention, ECU DBW calibration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Drive-By-Wire Throttle Control",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding drive-by-wire throttle control including torque intervention, pedal mapping, airflow estimation, DBW safety logic, throttle closure, and ECU calibration strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="torque-management-calibration-strategy.html">Torque Strategy</a>
+      <a href="how-to-read-a-datalog-properly.html">Datalog Analysis</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • DBW Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Drive-By-Wire Throttle Control
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Modern drive-by-wire systems are far more complex
+      than simple electronic throttle bodies.
+    </p>
+
+    <p class="cred">
+      DBW systems manage torque delivery,
+      airflow control,
+      idle behavior,
+      traction intervention,
+      startup stability,
+      and safety logic simultaneously.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What DBW Actually Controls
+        </div>
+
+        <h2 class="gold">
+          The Pedal Does Not Directly Command Throttle Angle.
+        </h2>
+
+        <p>
+          In most modern ECU systems,
+          accelerator pedal position requests torque —
+          not throttle position directly.
+        </p>
+
+        <p>
+          The ECU then decides how much throttle angle,
+          boost,
+          ignition timing,
+          and airflow are required
+          to achieve that torque request safely.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Pedal Mapping Shapes Vehicle Feel
+        </h2>
+
+        <p class="section-intro">
+          Pedal mapping strongly affects drivability perception.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Aggressive pedal mapping may make the vehicle feel responsive,
+          but can reduce drivability precision and traction consistency.
+        </p>
+
+        <p>
+          Poor pedal strategy may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Jerky throttle response
+          </div>
+
+          <div class="list-item">
+            Abrupt torque delivery
+          </div>
+
+          <div class="list-item">
+            Poor low-speed drivability
+          </div>
+
+          <div class="list-item">
+            Inconsistent boost onset
+          </div>
+
+          <div class="list-item">
+            Reduced traction stability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Throttle Closure Is Often Intentional
+        </h2>
+
+        <p class="section-intro">
+          Many throttle closures are commanded by torque-management logic.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The ECU may intentionally reduce throttle angle
+          to protect the drivetrain,
+          stabilize torque delivery,
+          manage traction,
+          or maintain airflow-model consistency.
+        </p>
+
+        <p>
+          Common throttle-closure triggers include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Torque limit exceedance
+          </div>
+
+          <div class="list-item">
+            Boost overshoot
+          </div>
+
+          <div class="list-item">
+            Transmission torque protection
+          </div>
+
+          <div class="list-item">
+            Traction control intervention
+          </div>
+
+          <div class="list-item">
+            Airflow-model mismatch
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. DBW Systems Depend on Accurate Airflow Modeling
+        </h2>
+
+        <p class="section-intro">
+          Throttle behavior depends heavily on airflow prediction accuracy.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The ECU constantly predicts how much airflow
+          a certain throttle angle should produce.
+        </p>
+
+        <p>
+          If the predicted airflow does not match reality,
+          the ECU may intervene aggressively.
+        </p>
+
+        <p>
+          This often creates:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Oscillating throttle angle
+          </div>
+
+          <div class="list-item">
+            Torque inconsistency
+          </div>
+
+          <div class="list-item">
+            Partial-throttle instability
+          </div>
+
+          <div class="list-item">
+            Unstable boost control
+          </div>
+
+          <div class="list-item">
+            Inconsistent spool behavior
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Idle Control Is Often Managed Through DBW
+        </h2>
+
+        <p class="section-intro">
+          Modern ECUs frequently use the throttle body for idle airflow control.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          DBW idle systems can provide extremely refined airflow control,
+          but require stable torque modeling and airflow estimation.
+        </p>
+
+        <p>
+          Poor DBW idle strategy may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle hunting
+          </div>
+
+          <div class="list-item">
+            RPM flare
+          </div>
+
+          <div class="list-item">
+            Startup instability
+          </div>
+
+          <div class="list-item">
+            AC-load RPM dip
+          </div>
+
+          <div class="list-item">
+            Dashpot instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. DBW Safety Logic Is Extremely Important
+        </h2>
+
+        <p class="section-intro">
+          DBW systems contain extensive built-in safety monitoring.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The ECU continuously monitors:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Pedal-position sensors
+          </div>
+
+          <div class="list-item">
+            Throttle-position sensors
+          </div>
+
+          <div class="list-item">
+            Motor-current behavior
+          </div>
+
+          <div class="list-item">
+            Throttle tracking accuracy
+          </div>
+
+          <div class="list-item">
+            Mechanical throttle response
+          </div>
+
+        </div>
+
+        <p>
+          Sensor disagreement or unstable throttle behavior
+          may trigger limp mode or fail-safe intervention.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good DBW Calibration Makes the Vehicle Feel Predictable.
+        </h2>
+
+        <p>
+          Stable drive-by-wire behavior depends on airflow modeling,
+          torque strategy,
+          pedal mapping,
+          transient fueling,
+          and boost control all working together.
+        </p>
+
+        <p>
+          The best DBW systems feel natural,
+          linear,
+          and predictable —
+          without excessive intervention,
+          oscillation,
+          or drivability instability.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing DBW Behavior?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          torque-model refinement,
+          drivability optimization,
+          and advanced DBW calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="torque-management-calibration-strategy.html">
+            Torque Strategy Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • DBW Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
