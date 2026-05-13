@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Transient Fueling | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding transient fueling including throttle tip-in, fuel film behavior, acceleration enrichment, boost transitions, airflow modeling, and ECU drivability calibration."
+  />
+
+  <meta
+    name="keywords"
+    content="transient fueling tuning, acceleration enrichment, throttle tip in tuning, boost transition fueling, ECU drivability tuning, standalone ECU calibration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Transient Fueling",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding transient fueling including throttle tip-in, fuel film behavior, acceleration enrichment, boost transitions, airflow modeling, and ECU drivability calibration."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-volumetric-efficiency-modeling.html">VE Modeling</a>
+      <a href="understanding-closed-loop-fuel-control.html">Closed Loop Fuel</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Drivability Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Transient Fueling
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Transient fueling controls how the engine responds
+      during rapid airflow and throttle changes.
+    </p>
+
+    <p class="cred">
+      Good transient calibration dramatically improves drivability,
+      throttle response,
+      boost transition behavior,
+      startup recovery,
+      and torque consistency.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Why Transient Fueling Exists
+        </div>
+
+        <h2 class="gold">
+          Airflow Changes Faster Than Fuel Behavior.
+        </h2>
+
+        <p>
+          During rapid throttle movement,
+          airflow entering the engine can change almost instantly.
+        </p>
+
+        <p>
+          Fuel delivery and fuel-film behavior
+          respond more slowly,
+          requiring transient compensation to stabilize combustion.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Throttle Tip-In Requires Additional Fuel
+        </h2>
+
+        <p class="section-intro">
+          Sudden airflow increases often create temporary lean conditions.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Acceleration enrichment adds temporary fuel
+          during rapid throttle movement
+          to maintain combustion stability.
+        </p>
+
+        <p>
+          Weak tip-in compensation may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Hesitation
+          </div>
+
+          <div class="list-item">
+            Lean spikes
+          </div>
+
+          <div class="list-item">
+            Weak throttle response
+          </div>
+
+          <div class="list-item">
+            Tip-in knock sensitivity
+          </div>
+
+          <div class="list-item">
+            Torque delay
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Excessive Enrichment Hurts Drivability
+        </h2>
+
+        <p class="section-intro">
+          Too much transient fuel can be just as problematic.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Over-aggressive transient compensation may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Rich stumble behavior
+          </div>
+
+          <div class="list-item">
+            Lazy throttle response
+          </div>
+
+          <div class="list-item">
+            Excess exhaust smoke
+          </div>
+
+          <div class="list-item">
+            Combustion instability
+          </div>
+
+          <div class="list-item">
+            Torque oscillation
+          </div>
+
+        </div>
+
+        <p>
+          Good transient strategy balances response speed
+          with combustion stability.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Turbocharged Engines Are More Complex
+        </h2>
+
+        <p class="section-intro">
+          Boost transitions create rapidly changing airflow behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Turbocharger spool introduces dynamic airflow changes
+          that may outpace fuel-model prediction.
+        </p>
+
+        <p>
+          Poor transient strategy during spool may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Hesitation before boost
+          </div>
+
+          <div class="list-item">
+            Lean boost onset
+          </div>
+
+          <div class="list-item">
+            Torque spikes
+          </div>
+
+          <div class="list-item">
+            AFR oscillation
+          </div>
+
+          <div class="list-item">
+            Inconsistent spool response
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Fuel Film Behavior Matters
+        </h2>
+
+        <p class="section-intro">
+          Some injected fuel temporarily sticks to intake surfaces.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Fuel-film behavior changes with:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Temperature
+          </div>
+
+          <div class="list-item">
+            Ethanol content
+          </div>
+
+          <div class="list-item">
+            Intake manifold design
+          </div>
+
+          <div class="list-item">
+            Injector targeting
+          </div>
+
+          <div class="list-item">
+            Airflow velocity
+          </div>
+
+        </div>
+
+        <p>
+          Modern ECUs often model fuel-film behavior dynamically
+          to stabilize transient fueling response.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Closed Loop Cannot Instantly Fix Transient Errors
+        </h2>
+
+        <p class="section-intro">
+          O2 feedback systems react too slowly for rapid transitions.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During fast throttle movement,
+          the ECU must predict fuel requirements
+          before oxygen sensor correction can react.
+        </p>
+
+        <p>
+          This is why good base airflow modeling
+          and transient prediction are so important.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Transient Fueling Makes the Vehicle Feel Natural.
+        </h2>
+
+        <p>
+          Stable transient strategy improves:
+          drivability,
+          boost response,
+          startup recovery,
+          throttle precision,
+          and torque consistency.
+        </p>
+
+        <p>
+          The best transient calibrations feel smooth,
+          predictable,
+          and nearly invisible to the driver.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Drivability?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          transient fueling refinement,
+          drivability optimization,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Drivability Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
