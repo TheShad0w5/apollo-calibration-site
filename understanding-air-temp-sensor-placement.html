@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Air Temperature Sensor Placement | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding intake air temperature sensor placement including heat soak, airflow response, turbocharger behavior, compensation accuracy, and ECU calibration strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="IAT sensor placement, intake air temperature tuning, turbo air temp sensor, ECU thermal compensation, standalone ECU setup, intake temp calibration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Air Temperature Sensor Placement",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding intake air temperature sensor placement including heat soak, airflow response, turbocharger behavior, compensation accuracy, and ECU calibration strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-iat-compensation-strategy.html">IAT Compensation</a>
+      <a href="understanding-volumetric-efficiency-modeling.html">VE Modeling</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Sensor Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Air Temperature Sensor Placement
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Intake air temperature sensor placement
+      strongly affects ECU compensation accuracy,
+      thermal response,
+      and drivability consistency.
+    </p>
+
+    <p class="cred">
+      Sensor location changes how the ECU interprets airflow temperature,
+      heat soak behavior,
+      turbocharger efficiency,
+      and combustion sensitivity during real operating conditions.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          The ECU Only Knows What the Sensor Reports
+        </div>
+
+        <h2 class="gold">
+          Sensor Location Directly Changes Compensation Behavior.
+        </h2>
+
+        <p>
+          The ECU bases thermal compensation decisions
+          on measured intake air temperature —
+          not actual combustion chamber temperature.
+        </p>
+
+        <p>
+          Because of this,
+          sensor placement dramatically affects ignition correction,
+          boost strategy,
+          and fuel compensation behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Pre-Turbo Sensors Measure Ambient Inlet Conditions
+        </h2>
+
+        <p class="section-intro">
+          Compressor heating is not reflected before the turbocharger.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Sensors located ahead of the compressor
+          primarily measure incoming ambient airflow temperature.
+        </p>
+
+        <p>
+          These locations generally:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            React quickly to ambient changes
+          </div>
+
+          <div class="list-item">
+            Avoid intercooler heat soak influence
+          </div>
+
+          <div class="list-item">
+            Miss compressor outlet heating
+          </div>
+
+          <div class="list-item">
+            Underestimate charge temperature under boost
+          </div>
+
+          <div class="list-item">
+            Reduce post-compressor thermal visibility
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Post-Intercooler Sensors Reflect Actual Charge Temperature Better
+        </h2>
+
+        <p class="section-intro">
+          Most performance calibrations prefer post-intercooler measurement.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Sensors located after the intercooler
+          better reflect the temperature
+          entering the intake manifold.
+        </p>
+
+        <p>
+          These locations improve:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Ignition compensation accuracy
+          </div>
+
+          <div class="list-item">
+            Thermal protection behavior
+          </div>
+
+          <div class="list-item">
+            Boost-compensation consistency
+          </div>
+
+          <div class="list-item">
+            Combustion prediction quality
+          </div>
+
+          <div class="list-item">
+            Real-world thermal visibility
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Manifold Placement Increases Heat Soak Exposure
+        </h2>
+
+        <p class="section-intro">
+          Intake manifolds often absorb substantial engine heat.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Sensors mounted directly in the intake manifold
+          may experience:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Heat soak after shutdown
+          </div>
+
+          <div class="list-item">
+            Elevated idle temperature readings
+          </div>
+
+          <div class="list-item">
+            Slow recovery after heat soak
+          </div>
+
+          <div class="list-item">
+            Artificial thermal spikes
+          </div>
+
+          <div class="list-item">
+            Aggressive compensation during low airflow
+          </div>
+
+        </div>
+
+        <p>
+          Good compensation filtering helps stabilize behavior
+          during these conditions.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Sensor Response Speed Matters
+        </h2>
+
+        <p class="section-intro">
+          Different sensors react at different rates.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Fast-response sensors improve transient compensation accuracy
+          during rapid airflow and boost changes.
+        </p>
+
+        <p>
+          Slow-response sensors may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Delayed thermal correction
+          </div>
+
+          <div class="list-item">
+            Transient ignition instability
+          </div>
+
+          <div class="list-item">
+            Delayed boost compensation
+          </div>
+
+          <div class="list-item">
+            Inconsistent thermal protection
+          </div>
+
+          <div class="list-item">
+            Reduced drivability refinement
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Calibration Strategy Must Match Sensor Placement
+        </h2>
+
+        <p class="section-intro">
+          Compensation tables should reflect actual sensor behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Aggressive compensation designed for manifold-mounted sensors
+          may behave poorly with pre-turbo sensor placement.
+        </p>
+
+        <p>
+          Effective thermal strategy depends on:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Sensor location
+          </div>
+
+          <div class="list-item">
+            Sensor response speed
+          </div>
+
+          <div class="list-item">
+            Turbocharger efficiency
+          </div>
+
+          <div class="list-item">
+            Heat soak behavior
+          </div>
+
+          <div class="list-item">
+            ECU filtering strategy
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Sensor Placement Improves Overall Calibration Accuracy.
+        </h2>
+
+        <p>
+          Intake air temperature strategy affects:
+          ignition correction,
+          boost behavior,
+          drivability,
+          combustion stability,
+          and thermal protection.
+        </p>
+
+        <p>
+          The best sensor placement depends on
+          the engine layout,
+          turbo system,
+          airflow behavior,
+          and overall ECU calibration strategy.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Thermal Compensation Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          sensor strategy analysis,
+          thermal compensation refinement,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="understanding-iat-compensation-strategy.html">
+            IAT Compensation Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Sensor Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
