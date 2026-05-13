@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Wastegate Control | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding wastegate control, boost regulation, dome pressure strategy, boost creep, wastegate priority, turbocharger response, and ECU boost-control calibration."
+  />
+
+  <meta
+    name="keywords"
+    content="wastegate control, boost control tuning, dome pressure tuning, external wastegate setup, turbo boost strategy, boost creep diagnostics"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Wastegate Control",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding wastegate control, boost regulation, dome pressure strategy, boost creep, wastegate priority, turbocharger response, and ECU boost-control calibration."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="boost-control-oscillation-explained.html">Boost Control</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Boost Control Hardware
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Wastegate Control
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Wastegate control is the foundation of stable turbocharger boost management.
+      Many boost-control problems blamed on tuning are actually caused by poor wastegate behavior,
+      incorrect plumbing,
+      unstable dome pressure,
+      or mechanical control limitations.
+    </p>
+
+    <p class="cred">
+      Understanding how the wastegate system physically controls turbine energy
+      is critical for building stable,
+      repeatable,
+      and safe boost-control behavior.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What the Wastegate Actually Does
+        </div>
+
+        <h2 class="gold">
+          The Wastegate Controls Turbine Energy.
+        </h2>
+
+        <p>
+          The wastegate regulates boost pressure
+          by bypassing exhaust flow around the turbine wheel.
+        </p>
+
+        <p>
+          More bypass flow generally reduces turbine speed and boost,
+          while less bypass flow allows the turbocharger to accelerate harder.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Wastegate Spring Pressure
+        </h2>
+
+        <p class="section-intro">
+          Spring pressure establishes the system’s mechanical baseline.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The wastegate spring determines the minimum boost pressure
+          the system will naturally operate at without additional control input.
+        </p>
+
+        <p>
+          Incorrect spring selection may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Unstable boost behavior
+          </div>
+
+          <div class="list-item">
+            Poor spool control
+          </div>
+
+          <div class="list-item">
+            Excessive boost overshoot
+          </div>
+
+          <div class="list-item">
+            Weak dome-pressure authority
+          </div>
+
+          <div class="list-item">
+            Reduced boost-control range
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Wastegate Priority Matters
+        </h2>
+
+        <p class="section-intro">
+          Exhaust-flow routing strongly affects boost-control stability.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Wastegate priority describes how effectively exhaust flow
+          can reach the wastegate valve instead of the turbine wheel.
+        </p>
+
+        <p>
+          Poor wastegate priority commonly causes:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost creep
+          </div>
+
+          <div class="list-item">
+            Uncontrollable boost rise
+          </div>
+
+          <div class="list-item">
+            Delayed boost response
+          </div>
+
+          <div class="list-item">
+            Boost instability at high RPM
+          </div>
+
+          <div class="list-item">
+            Excessive turbine drive pressure
+          </div>
+
+        </div>
+
+        <p>
+          Exhaust manifold design often matters more
+          than wastegate size alone.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Dome Pressure & Control Authority
+        </h2>
+
+        <p class="section-intro">
+          Dome-pressure systems increase wastegate control range.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Dome pressure applies additional force
+          to the wastegate diaphragm or piston,
+          increasing boost-control authority beyond spring pressure alone.
+        </p>
+
+        <p>
+          Dome-pressure instability may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost oscillation
+          </div>
+
+          <div class="list-item">
+            Inconsistent boost targets
+          </div>
+
+          <div class="list-item">
+            Unstable spool behavior
+          </div>
+
+          <div class="list-item">
+            Poor closed-loop correction
+          </div>
+
+          <div class="list-item">
+            Delayed wastegate response
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Solenoid Control Strategy
+        </h2>
+
+        <p class="section-intro">
+          The boost-control solenoid regulates pressure reaching the wastegate.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Solenoid frequency,
+          plumbing layout,
+          duty-cycle strategy,
+          and pressure-source location
+          all affect wastegate response behavior.
+        </p>
+
+        <p>
+          Incorrect solenoid setup may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost hunting
+          </div>
+
+          <div class="list-item">
+            Overshoot during spool
+          </div>
+
+          <div class="list-item">
+            Weak boost authority
+          </div>
+
+          <div class="list-item">
+            Inconsistent dome pressure
+          </div>
+
+          <div class="list-item">
+            Slow boost response
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Mechanical Wastegate Problems
+        </h2>
+
+        <p class="section-intro">
+          Mechanical instability frequently creates boost-control instability.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common mechanical problems include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Sticking wastegate valve
+          </div>
+
+          <div class="list-item">
+            Damaged diaphragm
+          </div>
+
+          <div class="list-item">
+            Valve-seat leakage
+          </div>
+
+          <div class="list-item">
+            Excessive heat distortion
+          </div>
+
+          <div class="list-item">
+            Weak spring stability at temperature
+          </div>
+
+        </div>
+
+        <p>
+          Mechanical instability should always be ruled out
+          before aggressively changing ECU boost-control strategy.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Boost Control Starts With Stable Wastegate Behavior.
+        </h2>
+
+        <p>
+          The ECU can only control boost
+          as effectively as the wastegate system allows.
+        </p>
+
+        <p>
+          Good wastegate design combines:
+          correct spring selection,
+          strong exhaust priority,
+          stable dome pressure,
+          proper plumbing,
+          and predictable mechanical behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing Wastegate or Boost-Control Problems?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          boost-control refinement,
+          dome-pressure strategy review,
+          and advanced turbo system consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="boost-control-oscillation-explained.html">
+            Boost Oscillation Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Boost Control Hardware • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
