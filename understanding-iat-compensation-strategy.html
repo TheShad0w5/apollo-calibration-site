@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding IAT Compensation Strategy | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding intake air temperature compensation strategy including ignition correction, airflow density, heat soak behavior, boost response, and ECU thermal protection."
+  />
+
+  <meta
+    name="keywords"
+    content="IAT compensation tuning, intake air temperature correction, ignition compensation, heat soak tuning, ECU thermal strategy, turbo heat management"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding IAT Compensation Strategy",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding intake air temperature compensation strategy including ignition correction, airflow density, heat soak behavior, boost response, and ECU thermal protection."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-knock-control-strategy.html">Knock Strategy</a>
+      <a href="flex-fuel-calibration-strategy.html">Flex Fuel</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Thermal Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        IAT Compensation Strategy
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Intake air temperature compensation is one of the most important
+      thermal protection and combustion-stability strategies in modern ECU calibration.
+    </p>
+
+    <p class="cred">
+      Proper IAT strategy affects ignition timing,
+      boost behavior,
+      torque consistency,
+      knock sensitivity,
+      and overall reliability during changing thermal conditions.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Why Intake Air Temperature Matters
+        </div>
+
+        <h2 class="gold">
+          Air Temperature Directly Affects Combustion Behavior.
+        </h2>
+
+        <p>
+          As intake air temperature rises,
+          air density decreases
+          while combustion sensitivity and knock tendency generally increase.
+        </p>
+
+        <p>
+          Turbocharged engines are especially sensitive
+          because compressor outlet temperatures can rise rapidly under load.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Ignition Compensation Protects Combustion Stability
+        </h2>
+
+        <p class="section-intro">
+          Many ECUs reduce ignition timing as IAT increases.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Increased air temperature generally increases knock sensitivity,
+          especially under high load and boost.
+        </p>
+
+        <p>
+          Ignition compensation helps reduce:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Knock activity
+          </div>
+
+          <div class="list-item">
+            Pre-ignition risk
+          </div>
+
+          <div class="list-item">
+            Combustion instability
+          </div>
+
+          <div class="list-item">
+            Thermal stress
+          </div>
+
+          <div class="list-item">
+            Torque inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Heat Soak Behavior Changes Engine Response
+        </h2>
+
+        <p class="section-intro">
+          Heat soak dramatically alters transient drivability and airflow behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During heat soak,
+          intake temperatures may remain elevated
+          even after airflow begins moving again.
+        </p>
+
+        <p>
+          Poor heat-soak strategy may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Weak throttle response
+          </div>
+
+          <div class="list-item">
+            Startup instability
+          </div>
+
+          <div class="list-item">
+            Tip-in hesitation
+          </div>
+
+          <div class="list-item">
+            Knock during recovery
+          </div>
+
+          <div class="list-item">
+            Inconsistent torque delivery
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Boost Strategy Often Changes With Temperature
+        </h2>
+
+        <p class="section-intro">
+          Many ECUs reduce boost targets as IAT increases.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Reducing boost during high IAT conditions
+          lowers compressor outlet temperature
+          and reduces combustion stress.
+        </p>
+
+        <p>
+          High-IAT boost reduction may help prevent:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Excessive knock activity
+          </div>
+
+          <div class="list-item">
+            Turbocharger overspeed
+          </div>
+
+          <div class="list-item">
+            Excessive turbine heat
+          </div>
+
+          <div class="list-item">
+            Torque-model instability
+          </div>
+
+          <div class="list-item">
+            Thermal overload conditions
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Sensor Placement Changes Compensation Behavior
+        </h2>
+
+        <p class="section-intro">
+          IAT location strongly affects measured temperature response.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Sensors located:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Before the turbocharger
+          </div>
+
+          <div class="list-item">
+            After the intercooler
+          </div>
+
+          <div class="list-item">
+            In the intake manifold
+          </div>
+
+          <div class="list-item">
+            Near cylinder entry
+          </div>
+
+          <div class="list-item">
+            Inside heat-soaked manifolds
+          </div>
+
+        </div>
+
+        <p>
+          ...may all produce dramatically different compensation behavior
+          even on the same engine.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Overly Aggressive Compensation Can Hurt Drivability
+        </h2>
+
+        <p class="section-intro">
+          Excessive correction may destabilize the vehicle unnecessarily.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Large timing or boost reductions
+          may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Inconsistent torque delivery
+          </div>
+
+          <div class="list-item">
+            Noticeable power fluctuation
+          </div>
+
+          <div class="list-item">
+            Poor throttle response
+          </div>
+
+          <div class="list-item">
+            DBW torque instability
+          </div>
+
+          <div class="list-item">
+            Reduced drivability consistency
+          </div>
+
+        </div>
+
+        <p>
+          Effective compensation strategy balances protection
+          with stable and predictable operation.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Thermal Strategy Keeps the Engine Predictable Under Stress.
+        </h2>
+
+        <p>
+          Intake air temperature compensation should stabilize combustion behavior,
+          reduce knock sensitivity,
+          and maintain reliable operation during changing thermal conditions.
+        </p>
+
+        <p>
+          The best calibrations manage heat intelligently
+          without creating unstable torque behavior,
+          excessive intervention,
+          or inconsistent drivability.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Thermal Compensation Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          thermal strategy refinement,
+          boost-control optimization,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Thermal Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
