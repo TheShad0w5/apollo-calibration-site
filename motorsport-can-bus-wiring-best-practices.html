@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Motorsport CAN Bus Wiring Best Practices | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Motorsport CAN bus wiring best practices including grounding strategy, termination, twisted pair routing, shielding, PDM integration, ECU communication stability, and diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="motorsport CAN bus wiring, CAN bus best practices, ECU CAN wiring, standalone ECU CAN, PDM CAN network, MoTeC CAN, Emtron CAN"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Motorsport CAN Bus Wiring Best Practices",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Motorsport CAN bus wiring best practices including grounding strategy, termination, twisted pair routing, shielding, PDM integration, ECU communication stability, and diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+      <a href="motec-calibration-support.html">MoTeC Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Motorsport Electronics
+    </div>
+
+    <h1>
+      Motorsport CAN Bus
+      <span class="gold">
+        Wiring Best Practices
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      CAN bus stability is critical in modern motorsport electrical systems.
+      As ECUs, PDMs, dashes, keypads, lambda controllers,
+      and telemetry systems become more integrated,
+      wiring quality becomes increasingly important.
+    </p>
+
+    <p class="cred">
+      Many intermittent ECU problems blamed on software or calibration
+      are actually caused by poor CAN network design,
+      grounding mistakes,
+      shielding problems,
+      or unstable communication topology.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          CAN Bus Basics
+        </div>
+
+        <h2 class="gold">
+          CAN Networks Depend on Clean Signal Integrity.
+        </h2>
+
+        <p>
+          CAN communication uses differential signaling across CAN High and CAN Low wires.
+          Signal integrity depends heavily on proper wiring layout,
+          correct termination,
+          grounding quality,
+          and minimizing electrical interference.
+        </p>
+
+        <p>
+          High-speed motorsport systems become increasingly sensitive
+          as device count,
+          communication rate,
+          and wiring complexity increase.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Use Proper Twisted Pair Wiring
+        </h2>
+
+        <p class="section-intro">
+          CAN High and CAN Low should always remain twisted together.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Twisting the CAN pair helps reject electromagnetic interference
+          and preserves signal quality.
+        </p>
+
+        <p>
+          Poor twist consistency may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Communication instability
+          </div>
+
+          <div class="list-item">
+            Random CAN dropouts
+          </div>
+
+          <div class="list-item">
+            Corrupted data packets
+          </div>
+
+          <div class="list-item">
+            Device resets
+          </div>
+
+          <div class="list-item">
+            Intermittent communication faults
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Minimize Stub Length
+        </h2>
+
+        <p class="section-intro">
+          Long CAN stubs create signal reflections and instability.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The main CAN trunk should remain continuous,
+          while branch connections to devices should remain as short as possible.
+        </p>
+
+        <p>
+          Excessive stub length can cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Signal reflection
+          </div>
+
+          <div class="list-item">
+            Communication corruption
+          </div>
+
+          <div class="list-item">
+            RPM or sensor dropout
+          </div>
+
+          <div class="list-item">
+            Random module disconnects
+          </div>
+
+          <div class="list-item">
+            Intermittent synchronization issues
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Grounding Strategy Matters
+        </h2>
+
+        <p class="section-intro">
+          Ground instability frequently destabilizes CAN communication.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Ground offsets between devices can introduce communication instability,
+          especially in high-current motorsport electrical systems.
+        </p>
+
+        <p>
+          Common grounding mistakes include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Multiple chassis grounding locations
+          </div>
+
+          <div class="list-item">
+            Shared high-current grounds
+          </div>
+
+          <div class="list-item">
+            Poor engine-to-chassis grounding
+          </div>
+
+          <div class="list-item">
+            Ground loops
+          </div>
+
+          <div class="list-item">
+            Unstable alternator grounding
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Correct CAN Termination Is Critical
+        </h2>
+
+        <p class="section-intro">
+          Most CAN networks require exactly two 120-ohm termination resistors.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          One termination resistor should exist at each physical end of the CAN network.
+        </p>
+
+        <p>
+          Incorrect termination may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intermittent communication
+          </div>
+
+          <div class="list-item">
+            Random dash resets
+          </div>
+
+          <div class="list-item">
+            Device dropout
+          </div>
+
+          <div class="list-item">
+            Corrupted CAN messages
+          </div>
+
+          <div class="list-item">
+            Complete communication failure
+          </div>
+
+        </div>
+
+        <p>
+          A properly terminated powered-down network
+          typically measures approximately 60 ohms across CAN High and CAN Low.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Separate CAN Wiring From High-Noise Sources
+        </h2>
+
+        <p class="section-intro">
+          Electrical interference is common in motorsport environments.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          CAN wiring should be routed away from:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Ignition coils
+          </div>
+
+          <div class="list-item">
+            Injector wiring
+          </div>
+
+          <div class="list-item">
+            Alternator output wiring
+          </div>
+
+          <div class="list-item">
+            Starter cables
+          </div>
+
+          <div class="list-item">
+            High-current PDM outputs
+          </div>
+
+        </div>
+
+        <p>
+          Shielding may also help in especially noisy electrical environments.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          6. Device Configuration Must Match
+        </h2>
+
+        <p class="section-intro">
+          Stable wiring alone cannot fix configuration mismatch.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          All devices on the network must agree on:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Baud rate
+          </div>
+
+          <div class="list-item">
+            CAN protocol version
+          </div>
+
+          <div class="list-item">
+            Message structure
+          </div>
+
+          <div class="list-item">
+            Device IDs
+          </div>
+
+          <div class="list-item">
+            Broadcast expectations
+          </div>
+
+        </div>
+
+        <p>
+          Incorrect configuration often appears identical to physical wiring problems.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable CAN Networks Start With Clean Electrical Design.
+        </h2>
+
+        <p>
+          Reliable motorsport CAN communication depends on proper topology,
+          grounding strategy,
+          signal integrity,
+          shielding,
+          termination,
+          and careful routing.
+        </p>
+
+        <p>
+          Good wiring practices dramatically reduce intermittent electrical problems,
+          communication instability,
+          and difficult-to-diagnose calibration behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing Motorsport CAN Problems?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          standalone ECU diagnostics,
+          CAN network analysis,
+          and advanced motorsport electrical consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="understanding-can-bus-termination.html">
+            CAN Termination Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Motorsport Electronics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
