@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Closed Loop Fuel Control | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding closed loop fuel control including fuel trims, lambda correction, O2 feedback strategy, transient fueling, sensor behavior, and ECU calibration refinement."
+  />
+
+  <meta
+    name="keywords"
+    content="closed loop fuel control, fuel trims, lambda correction, wideband tuning, O2 feedback strategy, ECU fuel control"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Closed Loop Fuel Control",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding closed loop fuel control including fuel trims, lambda correction, O2 feedback strategy, transient fueling, sensor behavior, and ECU calibration refinement."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="how-to-read-a-datalog-properly.html">Datalog Analysis</a>
+      <a href="speed-density-vs-maf.html">Speed Density vs MAF</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Fuel Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Closed Loop Fuel Control
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Closed loop fuel control allows the ECU to dynamically correct fueling
+      using feedback from oxygen sensors or lambda sensors.
+    </p>
+
+    <p class="cred">
+      Proper closed loop strategy improves drivability,
+      startup behavior,
+      fuel-trim stability,
+      emissions behavior,
+      and long-term airflow-model accuracy.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What Closed Loop Actually Does
+        </div>
+
+        <h2 class="gold">
+          The ECU Continuously Adjusts Fueling Using Sensor Feedback.
+        </h2>
+
+        <p>
+          Instead of blindly delivering a fixed fuel value,
+          the ECU monitors measured lambda behavior
+          and applies correction to achieve the desired target.
+        </p>
+
+        <p>
+          This correction process helps compensate for changing environmental conditions,
+          airflow variation,
+          fuel-quality differences,
+          and transient operating changes.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Fuel Trims Reflect Model Accuracy
+        </h2>
+
+        <p class="section-intro">
+          Fuel trims show how much correction the ECU is applying.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Stable fuel trims generally indicate
+          that airflow estimation and injector characterization
+          are reasonably accurate.
+        </p>
+
+        <p>
+          Large or unstable trims may indicate:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            MAF scaling errors
+          </div>
+
+          <div class="list-item">
+            VE-model inaccuracies
+          </div>
+
+          <div class="list-item">
+            Vacuum leaks
+          </div>
+
+          <div class="list-item">
+            Fuel-pressure instability
+          </div>
+
+          <div class="list-item">
+            Injector characterization problems
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Closed Loop Cannot Fix Major Calibration Errors
+        </h2>
+
+        <p class="section-intro">
+          Excessive correction often hides deeper problems.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Closed loop systems are intended to refine fueling —
+          not completely replace proper airflow and fuel modeling.
+        </p>
+
+        <p>
+          Excessive correction authority may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            AFR oscillation
+          </div>
+
+          <div class="list-item">
+            Delayed fueling response
+          </div>
+
+          <div class="list-item">
+            Poor transient drivability
+          </div>
+
+          <div class="list-item">
+            Startup instability
+          </div>
+
+          <div class="list-item">
+            Inconsistent torque delivery
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Sensor Placement Affects Feedback Quality
+        </h2>
+
+        <p class="section-intro">
+          O2 and lambda sensor location changes response behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Sensor distance from the combustion chamber affects:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Feedback delay
+          </div>
+
+          <div class="list-item">
+            Sensor temperature stability
+          </div>
+
+          <div class="list-item">
+            Transient correction behavior
+          </div>
+
+          <div class="list-item">
+            Fuel-trim responsiveness
+          </div>
+
+          <div class="list-item">
+            Lambda accuracy during spool
+          </div>
+
+        </div>
+
+        <p>
+          Exhaust leaks ahead of the sensor
+          can also destabilize closed loop correction behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Transient Fueling Is Still Critical
+        </h2>
+
+        <p class="section-intro">
+          Closed loop systems cannot react instantly to rapid airflow changes.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During throttle transitions,
+          boost onset,
+          and rapid load changes,
+          transient fuel strategy becomes extremely important.
+        </p>
+
+        <p>
+          Weak transient calibration may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Lean tip-in behavior
+          </div>
+
+          <div class="list-item">
+            Rich recovery events
+          </div>
+
+          <div class="list-item">
+            Hesitation during spool
+          </div>
+
+          <div class="list-item">
+            Torque inconsistency
+          </div>
+
+          <div class="list-item">
+            Delayed lambda correction
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Ethanol and Closed Loop Strategy
+        </h2>
+
+        <p class="section-intro">
+          Flex fuel systems often require additional correction refinement.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Ethanol content changes fuel vaporization behavior,
+          combustion characteristics,
+          and fuel mass requirements.
+        </p>
+
+        <p>
+          Closed loop blending instability may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            AFR oscillation during blending
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+          <div class="list-item">
+            Poor transient behavior
+          </div>
+
+          <div class="list-item">
+            Idle instability
+          </div>
+
+          <div class="list-item">
+            Fuel-trim oscillation
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Closed Loop Strategy Works Best When the Base Calibration Is Already Strong.
+        </h2>
+
+        <p>
+          Proper airflow modeling,
+          injector characterization,
+          transient compensation,
+          and startup strategy
+          should minimize the amount of correction required.
+        </p>
+
+        <p>
+          The best closed loop systems quietly refine the calibration
+          without creating noticeable drivability instability or excessive correction behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Fuel Control Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          fuel-model refinement,
+          transient fueling optimization,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Fuel Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
