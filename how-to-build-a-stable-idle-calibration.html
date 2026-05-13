@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Build a Stable Idle Calibration | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="How to build a stable idle calibration including airflow strategy, ignition control, injector timing, idle feedback, DBW control, and standalone ECU drivability refinement."
+  />
+
+  <meta
+    name="keywords"
+    content="idle tuning, stable idle calibration, standalone ECU idle tuning, DBW idle control, ignition idle strategy, injector timing idle"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How To Build a Stable Idle Calibration",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"How to build a stable idle calibration including airflow strategy, ignition control, injector timing, idle feedback, DBW control, and standalone ECU drivability refinement."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="link-ecu-support.html">Link ECU Support</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Drivability Strategy
+    </div>
+
+    <h1>
+      How To Build a
+      <span class="gold">
+        Stable Idle Calibration
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Stable idle behavior is one of the clearest indicators
+      of overall calibration quality.
+    </p>
+
+    <p class="cred">
+      A good idle calibration requires proper airflow strategy,
+      ignition stability,
+      fuel control,
+      transient compensation,
+      and correct mechanical setup working together.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Idle Quality Starts With Mechanical Stability
+        </div>
+
+        <h2 class="gold">
+          The Calibration Cannot Fix Major Mechanical Problems.
+        </h2>
+
+        <p>
+          Before refining idle behavior,
+          the engine itself must be mechanically stable.
+        </p>
+
+        <p>
+          Common mechanical issues that destabilize idle include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Vacuum leaks
+          </div>
+
+          <div class="list-item">
+            Incorrect base timing
+          </div>
+
+          <div class="list-item">
+            Poor compression balance
+          </div>
+
+          <div class="list-item">
+            Camshaft overlap instability
+          </div>
+
+          <div class="list-item">
+            Fuel pressure inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Airflow Strategy Comes First
+        </h2>
+
+        <p class="section-intro">
+          Stable idle requires stable airflow control.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The engine must receive enough airflow
+          to idle consistently under all operating conditions.
+        </p>
+
+        <p>
+          Airflow instability often creates:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle hunting
+          </div>
+
+          <div class="list-item">
+            RPM flare
+          </div>
+
+          <div class="list-item">
+            RPM dip or stalling
+          </div>
+
+          <div class="list-item">
+            AC-load instability
+          </div>
+
+          <div class="list-item">
+            Warmup drivability problems
+          </div>
+
+        </div>
+
+        <p>
+          Proper base airflow should be established
+          before aggressive closed-loop correction is added.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Ignition Timing Stabilizes Idle Speed
+        </h2>
+
+        <p class="section-intro">
+          Ignition timing is one of the ECU’s fastest idle-control tools.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Small ignition timing changes can rapidly alter engine torque output,
+          allowing the ECU to stabilize idle speed.
+        </p>
+
+        <p>
+          Excessive ignition correction may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Audible timing oscillation
+          </div>
+
+          <div class="list-item">
+            Idle surge behavior
+          </div>
+
+          <div class="list-item">
+            Inconsistent engine note
+          </div>
+
+          <div class="list-item">
+            Overactive idle correction
+          </div>
+
+          <div class="list-item">
+            Combustion instability
+          </div>
+
+        </div>
+
+        <p>
+          Good idle strategy balances airflow stability
+          with moderate ignition correction.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Fueling Stability Matters More Than AFR Alone
+        </h2>
+
+        <p class="section-intro">
+          A stable idle often depends more on combustion consistency than target AFR.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Injector characterization,
+          transient compensation,
+          injector timing,
+          fuel pressure stability,
+          and fuel-film behavior
+          all affect idle quality.
+        </p>
+
+        <p>
+          Common fuel-related idle problems include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Rich/lean oscillation
+          </div>
+
+          <div class="list-item">
+            Startup stall tendency
+          </div>
+
+          <div class="list-item">
+            Misfire at idle
+          </div>
+
+          <div class="list-item">
+            Poor hot-restart behavior
+          </div>
+
+          <div class="list-item">
+            Flex fuel idle instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. DBW Idle Control Strategy
+        </h2>
+
+        <p class="section-intro">
+          DBW systems introduce additional idle-control flexibility and complexity.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Drive-by-wire systems can directly control idle airflow
+          using throttle angle,
+          often eliminating traditional idle valves entirely.
+        </p>
+
+        <p>
+          DBW idle instability may result from:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect throttle-base position
+          </div>
+
+          <div class="list-item">
+            Excessive proportional correction
+          </div>
+
+          <div class="list-item">
+            Torque-model mismatch
+          </div>
+
+          <div class="list-item">
+            Poor idle airflow estimation
+          </div>
+
+          <div class="list-item">
+            Incorrect dashpot or decay strategy
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Camshaft Size Changes Idle Behavior
+        </h2>
+
+        <p class="section-intro">
+          Large cams require different idle strategy than OEM engines.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Increased overlap reduces idle vacuum stability
+          and weakens combustion consistency.
+        </p>
+
+        <p>
+          Larger cam engines often require:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Higher idle airflow
+          </div>
+
+          <div class="list-item">
+            Different ignition strategy
+          </div>
+
+          <div class="list-item">
+            More idle timing advance
+          </div>
+
+          <div class="list-item">
+            Softer correction behavior
+          </div>
+
+          <div class="list-item">
+            Increased idle RPM targets
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Idle Behavior Is a System-Level Achievement.
+        </h2>
+
+        <p>
+          Good idle quality is the result of airflow stability,
+          combustion consistency,
+          proper fuel strategy,
+          correct ignition behavior,
+          and accurate engine modeling working together.
+        </p>
+
+        <p>
+          The best idle calibrations feel natural,
+          predictable,
+          and stable across startup,
+          warmup,
+          heat soak,
+          AC load,
+          and changing fuel conditions.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Idle Strategy?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          startup refinement,
+          drivability optimization,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Drivability Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
