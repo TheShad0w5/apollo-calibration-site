@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Knock Sensor Noise | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding knock sensor noise including false knock, mechanical noise sources, frequency filtering, combustion analysis, ignition correction, and ECU knock-control strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="false knock, knock sensor noise, knock control tuning, ECU knock filtering, ignition correction, combustion diagnostics"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Knock Sensor Noise",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding knock sensor noise including false knock, mechanical noise sources, frequency filtering, combustion analysis, ignition correction, and ECU knock-control strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-knock-control-strategy.html">Knock Strategy</a>
+      <a href="how-to-read-a-datalog-properly.html">Datalog Analysis</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Combustion Diagnostics
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Knock Sensor Noise
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Knock sensors detect engine vibration,
+      but not all detected vibration represents dangerous combustion knock.
+    </p>
+
+    <p class="cred">
+      Proper knock analysis requires understanding combustion behavior,
+      mechanical engine noise,
+      sensor filtering,
+      operating conditions,
+      and ECU correction strategy together.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Knock Sensors Detect Vibration — Not Intent
+        </div>
+
+        <h2 class="gold">
+          The ECU Must Decide What Noise Represents Real Knock.
+        </h2>
+
+        <p>
+          Knock sensors monitor engine vibration frequencies
+          associated with abnormal combustion behavior.
+        </p>
+
+        <p>
+          However,
+          many normal mechanical events can produce similar vibration signatures.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. False Knock Is Extremely Common
+        </h2>
+
+        <p class="section-intro">
+          Mechanical noise frequently triggers knock response unintentionally.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common false-knock sources include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Forged piston noise
+          </div>
+
+          <div class="list-item">
+            Clutch chatter
+          </div>
+
+          <div class="list-item">
+            Transmission noise
+          </div>
+
+          <div class="list-item">
+            Exhaust contact vibration
+          </div>
+
+          <div class="list-item">
+            Valvetrain noise
+          </div>
+
+        </div>
+
+        <p>
+          High-performance engines often generate substantially more mechanical noise
+          than OEM calibration environments were designed for.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Knock Frequency Filtering Matters
+        </h2>
+
+        <p class="section-intro">
+          Knock sensors rely heavily on frequency targeting.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Most ECUs apply filtering
+          to isolate vibration frequencies associated with knock events.
+        </p>
+
+        <p>
+          Incorrect filtering may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Excessive false correction
+          </div>
+
+          <div class="list-item">
+            Missed real knock events
+          </div>
+
+          <div class="list-item">
+            Unstable ignition timing
+          </div>
+
+          <div class="list-item">
+            Inconsistent torque delivery
+          </div>
+
+          <div class="list-item">
+            Excessive timing retard
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Combustion Conditions Affect Knock Sensitivity
+        </h2>
+
+        <p class="section-intro">
+          Knock behavior changes dramatically with operating conditions.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Knock sensitivity changes with:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intake air temperature
+          </div>
+
+          <div class="list-item">
+            Ethanol content
+          </div>
+
+          <div class="list-item">
+            Engine load
+          </div>
+
+          <div class="list-item">
+            Turbocharger efficiency
+          </div>
+
+          <div class="list-item">
+            Combustion chamber temperature
+          </div>
+
+        </div>
+
+        <p>
+          Real knock events typically appear
+          under repeatable operating conditions,
+          not random isolated occurrences.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Excessive Correction Can Hurt Performance
+        </h2>
+
+        <p class="section-intro">
+          Overactive knock control may destabilize the calibration unnecessarily.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Excessive ignition correction may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Inconsistent torque output
+          </div>
+
+          <div class="list-item">
+            Reduced spool response
+          </div>
+
+          <div class="list-item">
+            Throttle instability
+          </div>
+
+          <div class="list-item">
+            Boost-control inconsistency
+          </div>
+
+          <div class="list-item">
+            Poor drivability consistency
+          </div>
+
+        </div>
+
+        <p>
+          Knock-control strategy should balance protection
+          with stable combustion behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Datalog Interpretation Is Critical
+        </h2>
+
+        <p class="section-intro">
+          Knock analysis requires viewing the entire operating picture.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Always evaluate knock activity relative to:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            RPM
+          </div>
+
+          <div class="list-item">
+            Engine load
+          </div>
+
+          <div class="list-item">
+            Ignition timing
+          </div>
+
+          <div class="list-item">
+            Fuel quality
+          </div>
+
+          <div class="list-item">
+            Air temperature
+          </div>
+
+        </div>
+
+        <p>
+          Stable repeated patterns matter more
+          than isolated random events.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Knock Strategy Separates Dangerous Combustion From Normal Engine Noise.
+        </h2>
+
+        <p>
+          Effective knock-control calibration depends on:
+          proper filtering,
+          accurate sensor behavior,
+          stable combustion,
+          realistic correction strategy,
+          and intelligent datalog interpretation.
+        </p>
+
+        <p>
+          The goal is not maximum sensitivity —
+          it is stable and reliable combustion protection
+          without unnecessary intervention.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing Knock Activity?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          combustion analysis,
+          ignition refinement,
+          and advanced knock-control consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="understanding-knock-control-strategy.html">
+            Knock Strategy Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Combustion Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
