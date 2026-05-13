@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding CAN Bus Communication | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding CAN bus communication including termination resistance, network stability, sensor integration, standalone ECU communication, and motorsport electronics diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="CAN bus diagnostics, CAN communication tuning, standalone ECU CAN setup, motorsport CAN bus, termination resistance, ECU integration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding CAN Bus Communication",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding CAN bus communication including termination resistance, network stability, sensor integration, standalone ECU communication, and motorsport electronics diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="link-ecu-support.html">Link ECU Support</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Electronics Integration
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        CAN Bus Communication
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      CAN bus communication is the backbone
+      of modern motorsport electronics integration.
+    </p>
+
+    <p class="cred">
+      ECUs,
+      dashes,
+      power distribution modules,
+      widebands,
+      transmission controllers,
+      and sensor modules
+      all depend on stable CAN communication to operate reliably together.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What CAN Bus Actually Does
+        </div>
+
+        <h2 class="gold">
+          CAN Allows Multiple Devices to Share Data Across a Common Network.
+        </h2>
+
+        <p>
+          Instead of individual point-to-point wiring for every signal,
+          CAN bus allows devices to transmit structured data packets
+          over a shared communication network.
+        </p>
+
+        <p>
+          This dramatically simplifies wiring complexity
+          while increasing system integration capability.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Proper Termination Resistance Is Critical
+        </h2>
+
+        <p class="section-intro">
+          CAN networks require correct electrical termination to remain stable.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Most high-speed CAN networks require:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            120-ohm termination at each network end
+          </div>
+
+          <div class="list-item">
+            Proper twisted-pair wiring
+          </div>
+
+          <div class="list-item">
+            Stable ground reference
+          </div>
+
+          <div class="list-item">
+            Controlled network length
+          </div>
+
+          <div class="list-item">
+            Clean electrical routing
+          </div>
+
+        </div>
+
+        <p>
+          Incorrect termination commonly creates:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intermittent communication loss
+          </div>
+
+          <div class="list-item">
+            Device dropout
+          </div>
+
+          <div class="list-item">
+            ECU sync instability
+          </div>
+
+          <div class="list-item">
+            Dash communication errors
+          </div>
+
+          <div class="list-item">
+            Random sensor failures
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Baud Rate Must Match Across Devices
+        </h2>
+
+        <p class="section-intro">
+          Devices cannot communicate properly at mismatched CAN speeds.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common motorsport CAN speeds include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            125 kbps
+          </div>
+
+          <div class="list-item">
+            250 kbps
+          </div>
+
+          <div class="list-item">
+            500 kbps
+          </div>
+
+          <div class="list-item">
+            1 Mbps
+          </div>
+
+        </div>
+
+        <p>
+          Incorrect baud-rate configuration may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            No communication
+          </div>
+
+          <div class="list-item">
+            Corrupted data
+          </div>
+
+          <div class="list-item">
+            Device timeouts
+          </div>
+
+          <div class="list-item">
+            Intermittent packet loss
+          </div>
+
+          <div class="list-item">
+            Dash display instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. CAN Bus Noise Can Mimic Device Failure
+        </h2>
+
+        <p class="section-intro">
+          Electrical interference often destabilizes communication networks.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          CAN communication problems may result from:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Poor grounding
+          </div>
+
+          <div class="list-item">
+            Ignition noise
+          </div>
+
+          <div class="list-item">
+            Alternator interference
+          </div>
+
+          <div class="list-item">
+            Improper shielding
+          </div>
+
+          <div class="list-item">
+            Routing near high-current wiring
+          </div>
+
+        </div>
+
+        <p>
+          Many intermittent CAN problems are electrical-noise issues —
+          not failed hardware components.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Network Layout Affects Stability
+        </h2>
+
+        <p class="section-intro">
+          CAN topology strongly influences communication quality.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Long stubs,
+          star configurations,
+          and excessive branch wiring
+          may destabilize CAN communication.
+        </p>
+
+        <p>
+          Good CAN layout generally favors:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Linear backbone routing
+          </div>
+
+          <div class="list-item">
+            Short branch lengths
+          </div>
+
+          <div class="list-item">
+            Controlled network length
+          </div>
+
+          <div class="list-item">
+            Clean grounding strategy
+          </div>
+
+          <div class="list-item">
+            Stable shielding practices
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Datalogging Helps Diagnose Communication Problems
+        </h2>
+
+        <p class="section-intro">
+          CAN instability often leaves recognizable patterns in logs.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Communication issues may appear as:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Sensor dropout
+          </div>
+
+          <div class="list-item">
+            RPM signal interruption
+          </div>
+
+          <div class="list-item">
+            Dash freezing
+          </div>
+
+          <div class="list-item">
+            Missing data channels
+          </div>
+
+          <div class="list-item">
+            Intermittent sync loss
+          </div>
+
+        </div>
+
+        <p>
+          Consistent logging analysis often reveals
+          whether the problem is electrical,
+          configuration-related,
+          or device-specific.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable CAN Communication Creates Stable Vehicle Integration.
+        </h2>
+
+        <p>
+          Reliable CAN behavior depends on:
+          proper termination,
+          correct baud rate,
+          clean wiring,
+          stable grounding,
+          and intelligent network layout.
+        </p>
+
+        <p>
+          The best motorsport electrical systems are designed
+          with communication stability considered from the very beginning.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing CAN Communication Problems?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          standalone ECU integration support,
+          CAN diagnostics,
+          and advanced motorsport electronics consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Electronics Integration • Calibration Support
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
