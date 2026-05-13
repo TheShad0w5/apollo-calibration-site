@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Volumetric Efficiency Modeling | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding volumetric efficiency modeling including airflow estimation, VE tables, speed density strategy, transient fueling, turbocharger airflow behavior, and ECU calibration."
+  />
+
+  <meta
+    name="keywords"
+    content="volumetric efficiency tuning, VE modeling, speed density VE table, airflow estimation, standalone ECU calibration, VE tuning strategy"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Volumetric Efficiency Modeling",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding volumetric efficiency modeling including airflow estimation, VE tables, speed density strategy, transient fueling, turbocharger airflow behavior, and ECU calibration."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="speed-density-vs-maf.html">Speed Density vs MAF</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="link-ecu-support.html">Link ECU Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Airflow Modeling
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Volumetric Efficiency Modeling
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Volumetric efficiency modeling is one of the core foundations
+      of Speed Density ECU calibration.
+    </p>
+
+    <p class="cred">
+      Accurate VE modeling allows the ECU to estimate airflow correctly,
+      stabilize fueling,
+      improve drivability,
+      and maintain predictable engine behavior across changing operating conditions.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What VE Modeling Actually Represents
+        </div>
+
+        <h2 class="gold">
+          VE Modeling Estimates How Efficiently the Engine Fills the Cylinders.
+        </h2>
+
+        <p>
+          Volumetric efficiency represents how effectively the engine
+          moves air into the combustion chamber
+          relative to its theoretical displacement.
+        </p>
+
+        <p>
+          The ECU uses this estimated airflow
+          to calculate fuel mass requirements during Speed Density operation.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. VE Tables Are Airflow Models
+        </h2>
+
+        <p class="section-intro">
+          VE tables are not simply “fuel tables.”
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          In properly configured Speed Density systems,
+          VE tables model engine airflow behavior
+          across RPM and load.
+        </p>
+
+        <p>
+          Poor VE modeling commonly creates:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            AFR instability
+          </div>
+
+          <div class="list-item">
+            Poor transient response
+          </div>
+
+          <div class="list-item">
+            Inconsistent startup behavior
+          </div>
+
+          <div class="list-item">
+            Idle instability
+          </div>
+
+          <div class="list-item">
+            Weak fuel-trim consistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. VE Changes With Engine Configuration
+        </h2>
+
+        <p class="section-intro">
+          Airflow behavior changes substantially with hardware changes.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Volumetric efficiency is affected by:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Camshaft design
+          </div>
+
+          <div class="list-item">
+            Turbocharger sizing
+          </div>
+
+          <div class="list-item">
+            Intake manifold behavior
+          </div>
+
+          <div class="list-item">
+            Exhaust backpressure
+          </div>
+
+          <div class="list-item">
+            Cylinder head airflow
+          </div>
+
+        </div>
+
+        <p>
+          Even small hardware changes
+          can significantly alter airflow characteristics.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Turbocharged VE Behavior Is Dynamic
+        </h2>
+
+        <p class="section-intro">
+          Turbo airflow behavior changes rapidly during spool and transient operation.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Turbocharged engines rarely follow smooth linear airflow patterns.
+        </p>
+
+        <p>
+          VE behavior often changes during:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Boost onset
+          </div>
+
+          <div class="list-item">
+            Cam transition
+          </div>
+
+          <div class="list-item">
+            Wastegate opening
+          </div>
+
+          <div class="list-item">
+            DBW airflow correction
+          </div>
+
+          <div class="list-item">
+            Torque intervention
+          </div>
+
+        </div>
+
+        <p>
+          Smooth VE tables should still accurately reflect real airflow behavior.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Transient Fueling Depends on Stable VE Modeling
+        </h2>
+
+        <p class="section-intro">
+          Airflow estimation errors become most visible during transitions.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Transient fueling problems often appear during:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Throttle tip-in
+          </div>
+
+          <div class="list-item">
+            Rapid boost rise
+          </div>
+
+          <div class="list-item">
+            Gear changes
+          </div>
+
+          <div class="list-item">
+            DBW torque transitions
+          </div>
+
+          <div class="list-item">
+            Decel-to-accel recovery
+          </div>
+
+        </div>
+
+        <p>
+          Stable VE modeling improves transient prediction accuracy
+          throughout these operating changes.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Fuel Trims Help Validate VE Accuracy
+        </h2>
+
+        <p class="section-intro">
+          Fuel trims reveal how closely the model matches reality.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Consistent fuel trims across varying operating conditions
+          often indicate stable airflow estimation.
+        </p>
+
+        <p>
+          Fuel-trim instability may indicate:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            VE table distortion
+          </div>
+
+          <div class="list-item">
+            MAP sensor scaling errors
+          </div>
+
+          <div class="list-item">
+            Air temperature compensation problems
+          </div>
+
+          <div class="list-item">
+            Fuel-pressure instability
+          </div>
+
+          <div class="list-item">
+            Sensor noise or filtering issues
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good VE Modeling Creates Predictable Engine Behavior.
+        </h2>
+
+        <p>
+          Stable VE modeling improves drivability,
+          startup consistency,
+          transient fueling,
+          boost behavior,
+          and overall calibration predictability.
+        </p>
+
+        <p>
+          The goal is not simply making AFR targets match —
+          it is building an airflow model
+          that accurately reflects how the engine behaves in the real world.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining VE Modeling?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          Speed Density refinement,
+          airflow-model analysis,
+          and advanced standalone ECU consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="speed-density-vs-maf.html">
+            SD vs MAF Article
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Airflow Modeling • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
