@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Common Emtron Trigger Setup Mistakes | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Common Emtron trigger setup mistakes involving crank triggers, cam sync, edge selection, trigger filtering, air gap, sync loss, and startup diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="Emtron trigger setup, Emtron sync loss, Emtron startup issue, Emtron crank trigger, Emtron cam sync, trigger diagnostics, motorsport ECU setup"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Common Emtron Trigger Setup Mistakes",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Common Emtron trigger setup mistakes involving crank triggers, cam sync, edge selection, trigger filtering, air gap, sync loss, and startup diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Emtron Diagnostics
+    </div>
+
+    <h1>
+      Common
+      <span class="gold">
+        Emtron Trigger Setup Mistakes
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Trigger-system problems are one of the most common reasons an Emtron-equipped
+      engine struggles with startup, loses sync, experiences unstable RPM behavior,
+      or develops intermittent drivability issues.
+    </p>
+
+    <p class="cred">
+      Many calibration problems are actually trigger problems first.
+      Before fuel, ignition, boost, or drivability strategy can work correctly,
+      the ECU must receive stable and accurate crank/cam information.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Why Trigger Systems Matter
+        </div>
+
+        <h2 class="gold">
+          The Entire Calibration Depends on Stable Engine Position Data.
+        </h2>
+
+        <p>
+          The ECU calculates ignition timing, injector timing,
+          synchronization, RPM behavior, and engine-state logic
+          based on trigger-system information.
+        </p>
+
+        <p>
+          If the trigger pattern is unstable, incorrectly configured,
+          electrically noisy, or mechanically inconsistent,
+          the ECU may appear to have fueling or ignition problems
+          when the actual issue is synchronization quality.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Incorrect Edge Selection
+        </h2>
+
+        <p class="section-intro">
+          One of the most common startup and sync-loss problems
+          involves incorrect crank or cam edge selection.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Selecting rising edge instead of falling edge (or vice versa)
+          can create unstable timing, RPM fluctuation,
+          intermittent sync behavior, or timing drift.
+        </p>
+
+        <p>
+          The correct edge is usually identified by:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Stable timing light behavior
+          </div>
+
+          <div class="list-item">
+            Clean scope waveform transition
+          </div>
+
+          <div class="list-item">
+            Consistent RPM during cranking
+          </div>
+
+          <div class="list-item">
+            Stable sync acquisition
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Trigger Air Gap Problems
+        </h2>
+
+        <p class="section-intro">
+          Sensor air gap directly affects signal quality,
+          especially during cranking RPM.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Excessive air gap often produces weak trigger signals,
+          especially at low RPM during startup.
+        </p>
+
+        <p>
+          Air gap problems commonly show up as:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intermittent sync during cranking
+          </div>
+
+          <div class="list-item">
+            RPM dropouts
+          </div>
+
+          <div class="list-item">
+            Startup instability
+          </div>
+
+          <div class="list-item">
+            Sudden sync loss under vibration
+          </div>
+
+        </div>
+
+        <p>
+          Mechanical trigger-wheel runout can also create inconsistent
+          sensor gap during rotation.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Electrical Noise & Shielding Issues
+        </h2>
+
+        <p class="section-intro">
+          Trigger systems are highly sensitive to electrical interference.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Poor grounding strategy, improper shielding,
+          noisy ignition systems, or improper routing near coils,
+          injectors, or alternator wiring can corrupt trigger signals.
+        </p>
+
+        <p>
+          Common symptoms include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Random sync loss
+          </div>
+
+          <div class="list-item">
+            RPM spikes
+          </div>
+
+          <div class="list-item">
+            Ignition breakup
+          </div>
+
+          <div class="list-item">
+            False trigger events
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Incorrect Trigger Pattern Configuration
+        </h2>
+
+        <p class="section-intro">
+          Incorrect trigger-pattern selection can completely prevent synchronization.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common mistakes include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect missing-tooth count
+          </div>
+
+          <div class="list-item">
+            Wrong home-window configuration
+          </div>
+
+          <div class="list-item">
+            Incorrect trigger mode selection
+          </div>
+
+          <div class="list-item">
+            Incorrect cam/crank assignment
+          </div>
+
+          <div class="list-item">
+            Improper trigger filtering
+          </div>
+
+        </div>
+
+        <p>
+          Many aftermarket trigger kits differ substantially
+          from OEM trigger configurations and should never be assumed
+          to match factory patterns automatically.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Timing Validation Mistakes
+        </h2>
+
+        <p class="section-intro">
+          Stable sync does not guarantee correct ignition timing.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Base timing must always be verified physically with a timing light.
+        </p>
+
+        <p>
+          Incorrect trigger offset or incorrect synchronization strategy
+          can create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Incorrect ignition timing
+          </div>
+
+          <div class="list-item">
+            Hard startup
+          </div>
+
+          <div class="list-item">
+            False knock activity
+          </div>
+
+          <div class="list-item">
+            Excessive EGT
+          </div>
+
+          <div class="list-item">
+            Unstable combustion behavior
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Trigger Data Is the Foundation of a Stable Calibration.
+        </h2>
+
+        <p>
+          Many calibration issues that appear to involve fueling,
+          ignition timing, or drivability are actually synchronization
+          problems first.
+        </p>
+
+        <p>
+          Clean trigger signals, validated timing,
+          proper edge selection, and stable synchronization
+          should always be confirmed before deeper calibration work begins.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing an Emtron Trigger Problem?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          datalog review, startup diagnostics, and calibration consulting
+          for professional motorsport and performance applications.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="emtron-calibration-support.html">
+            Emtron Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Emtron Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
