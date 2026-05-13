@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How To Diagnose Sync Loss | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="How to diagnose ECU sync loss, including crank triggers, cam sync, electrical noise, trigger filtering, RPM dropout, timing validation, and startup diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="sync loss diagnostics, crank trigger problems, ECU sync issues, trigger troubleshooting, RPM dropout, motorsport ECU diagnostics"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How To Diagnose Sync Loss",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"How to diagnose ECU sync loss, including crank triggers, cam sync, electrical noise, trigger filtering, RPM dropout, timing validation, and startup diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+      <a href="motec-calibration-support.html">MoTeC Support</a>
+      <a href="link-ecu-support.html">Link ECU Support</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • ECU Diagnostics
+    </div>
+
+    <h1>
+      How To
+      <span class="gold">
+        Diagnose Sync Loss
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Sync loss is one of the most common and frustrating issues on standalone ECU systems.
+      It can create startup instability, RPM dropouts, ignition breakup, injector timing errors,
+      intermittent shutdowns, and unpredictable drivability behavior.
+    </p>
+
+    <p class="cred">
+      The key to diagnosing sync loss is separating mechanical trigger issues,
+      electrical signal quality problems, and ECU configuration errors systematically.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          What Sync Loss Actually Means
+        </div>
+
+        <h2 class="gold">
+          The ECU Lost Confidence in Engine Position Data.
+        </h2>
+
+        <p>
+          The ECU relies on crank and cam trigger signals
+          to determine engine speed and exact crankshaft position.
+        </p>
+
+        <p>
+          When the ECU can no longer trust this information,
+          synchronization is lost and ignition or injection behavior may become unstable or disabled entirely.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Start With the Trigger Pattern
+        </h2>
+
+        <p class="section-intro">
+          Incorrect trigger configuration is one of the most common causes of sync loss.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Always verify:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Trigger mode selection
+          </div>
+
+          <div class="list-item">
+            Missing tooth count
+          </div>
+
+          <div class="list-item">
+            Cam/crank assignment
+          </div>
+
+          <div class="list-item">
+            Trigger edge selection
+          </div>
+
+          <div class="list-item">
+            Home/sync signal configuration
+          </div>
+
+        </div>
+
+        <p>
+          Aftermarket trigger kits often differ substantially
+          from OEM trigger patterns and should never be assumed to match factory configuration automatically.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Verify Trigger Signal Quality
+        </h2>
+
+        <p class="section-intro">
+          Stable synchronization requires stable trigger waveforms.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Weak or distorted trigger signals commonly appear during:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Cranking RPM
+          </div>
+
+          <div class="list-item">
+            High vibration
+          </div>
+
+          <div class="list-item">
+            High RPM operation
+          </div>
+
+          <div class="list-item">
+            Ignition noise events
+          </div>
+
+          <div class="list-item">
+            Electrical load changes
+          </div>
+
+        </div>
+
+        <p>
+          Oscilloscope analysis is often the fastest way
+          to confirm waveform integrity.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Check Trigger Air Gap & Mechanical Stability
+        </h2>
+
+        <p class="section-intro">
+          Mechanical trigger problems frequently create intermittent sync loss.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Excessive trigger air gap,
+          wheel runout,
+          crankshaft movement,
+          or unstable sensor mounting
+          can destabilize trigger signals.
+        </p>
+
+        <p>
+          Mechanical inspection should include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Trigger wheel concentricity
+          </div>
+
+          <div class="list-item">
+            Sensor bracket rigidity
+          </div>
+
+          <div class="list-item">
+            Crankshaft endplay inspection
+          </div>
+
+          <div class="list-item">
+            Trigger tooth integrity
+          </div>
+
+          <div class="list-item">
+            Air gap consistency through full rotation
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Eliminate Electrical Noise
+        </h2>
+
+        <p class="section-intro">
+          Trigger systems are highly sensitive to electrical interference.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common electrical noise sources include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Ignition coils
+          </div>
+
+          <div class="list-item">
+            Injector wiring
+          </div>
+
+          <div class="list-item">
+            Alternators
+          </div>
+
+          <div class="list-item">
+            Poor grounding strategy
+          </div>
+
+          <div class="list-item">
+            Unshielded trigger wiring
+          </div>
+
+        </div>
+
+        <p>
+          Noise contamination often creates:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            False trigger events
+          </div>
+
+          <div class="list-item">
+            RPM spikes
+          </div>
+
+          <div class="list-item">
+            Intermittent sync dropouts
+          </div>
+
+          <div class="list-item">
+            Random ignition breakup
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Validate Timing Physically
+        </h2>
+
+        <p class="section-intro">
+          Stable sync does not guarantee correct timing alignment.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Incorrect trigger offset or edge selection
+          may still allow the ECU to synchronize
+          while ignition timing remains inaccurate.
+        </p>
+
+        <p>
+          Always verify:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Base timing with a timing light
+          </div>
+
+          <div class="list-item">
+            Timing stability during RPM sweep
+          </div>
+
+          <div class="list-item">
+            Cranking timing consistency
+          </div>
+
+          <div class="list-item">
+            Ignition stability during vibration/load
+          </div>
+
+          <div class="list-item">
+            Sync behavior under heat soak
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Stable Trigger Data Is the Foundation of Stable Calibration.
+        </h2>
+
+        <p>
+          Many fueling, ignition,
+          boost-control,
+          and drivability issues are actually synchronization problems first.
+        </p>
+
+        <p>
+          The fastest path to solving sync loss
+          is systematic diagnosis:
+          verify configuration,
+          validate waveform quality,
+          inspect mechanical stability,
+          eliminate noise,
+          and confirm timing physically.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing ECU Sync Loss?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          startup diagnostics,
+          datalog review,
+          and advanced standalone ECU consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • ECU Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
