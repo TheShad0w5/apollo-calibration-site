@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding CAN Bus Termination | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding CAN bus termination, 120 ohm resistors, network stability, signal reflection, ECU communication faults, dash integration, and motorsport CAN diagnostics."
+  />
+
+  <meta
+    name="keywords"
+    content="CAN bus termination, CAN diagnostics, 120 ohm resistor, motorsport CAN bus, ECU CAN communication, CAN wiring, Emtron CAN, MoTeC CAN"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding CAN Bus Termination",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding CAN bus termination, 120 ohm resistors, network stability, signal reflection, ECU communication faults, dash integration, and motorsport CAN diagnostics."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • CAN Diagnostics
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        CAN Bus Termination
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      CAN bus communication problems are extremely common in motorsport
+      and standalone ECU installations, especially when multiple devices,
+      aftermarket dashes, PDMs, keypads, or expansion modules are involved.
+    </p>
+
+    <p class="cred">
+      Improper CAN termination can create intermittent communication faults,
+      unstable device behavior, corrupted data, or complete network failure.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding CAN Networks
+        </div>
+
+        <h2 class="gold">
+          CAN Networks Depend on Controlled Signal Behavior.
+        </h2>
+
+        <p>
+          CAN communication uses differential signaling
+          across CAN High and CAN Low wires.
+        </p>
+
+        <p>
+          Because CAN operates at high communication speeds,
+          signal reflections and electrical distortion
+          must be controlled carefully for stable operation.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Why CAN Termination Exists
+        </h2>
+
+        <p class="section-intro">
+          Termination resistors absorb signal energy
+          and reduce waveform reflection.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Without proper termination,
+          CAN signals reflect back through the network,
+          distorting communication.
+        </p>
+
+        <p>
+          This may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intermittent communication loss
+          </div>
+
+          <div class="list-item">
+            Dash dropouts
+          </div>
+
+          <div class="list-item">
+            Corrupted CAN data
+          </div>
+
+          <div class="list-item">
+            Device resets
+          </div>
+
+          <div class="list-item">
+            ECU communication instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Standard CAN Termination Layout
+        </h2>
+
+        <p class="section-intro">
+          Most CAN networks use two 120-ohm termination resistors.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          One resistor should exist at each physical end
+          of the CAN network.
+        </p>
+
+        <p>
+          When measured across CAN High and CAN Low
+          with the system powered down,
+          the network typically measures:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            ~60 ohms = correct dual termination
+          </div>
+
+          <div class="list-item">
+            ~120 ohms = only one resistor present
+          </div>
+
+          <div class="list-item">
+            Very low resistance = excessive termination
+          </div>
+
+          <div class="list-item">
+            Open/infinite resistance = missing termination
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Common Motorsport CAN Problems
+        </h2>
+
+        <p class="section-intro">
+          Motorsport installations often introduce complex CAN layouts.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common issues include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Too many termination resistors
+          </div>
+
+          <div class="list-item">
+            Missing termination resistors
+          </div>
+
+          <div class="list-item">
+            Incorrect device ordering
+          </div>
+
+          <div class="list-item">
+            Excessive stub length
+          </div>
+
+          <div class="list-item">
+            Poor grounding strategy
+          </div>
+
+          <div class="list-item">
+            Incorrect baud-rate configuration
+          </div>
+
+        </div>
+
+        <p>
+          Problems become more common as additional devices are added,
+          especially aftermarket dashes, PDMs, and telemetry modules.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. CAN Wiring Best Practices
+        </h2>
+
+        <p class="section-intro">
+          Good CAN communication starts with clean physical layout.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="list">
+
+          <div class="list-item">
+            Keep CAN wiring twisted consistently
+          </div>
+
+          <div class="list-item">
+            Minimize stub lengths
+          </div>
+
+          <div class="list-item">
+            Avoid unnecessary splices
+          </div>
+
+          <div class="list-item">
+            Maintain clean grounding strategy
+          </div>
+
+          <div class="list-item">
+            Verify baud rates across all devices
+          </div>
+
+          <div class="list-item">
+            Confirm proper termination placement
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Diagnosing CAN Communication Faults
+        </h2>
+
+        <p class="section-intro">
+          Many CAN issues appear intermittently under vibration,
+          heat, or electrical load.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          CAN diagnostics typically involve:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Resistance measurement
+          </div>
+
+          <div class="list-item">
+            Oscilloscope waveform analysis
+          </div>
+
+          <div class="list-item">
+            Device isolation testing
+          </div>
+
+          <div class="list-item">
+            Baud-rate verification
+          </div>
+
+          <div class="list-item">
+            Power and ground inspection
+          </div>
+
+          <div class="list-item">
+            Network topology review
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          CAN Stability Depends on Correct Network Design.
+        </h2>
+
+        <p>
+          Many communication problems blamed on ECUs or dashes
+          are actually caused by improper network layout,
+          poor termination strategy, or wiring mistakes.
+        </p>
+
+        <p>
+          Clean CAN architecture becomes increasingly important
+          as motorsport systems become more complex.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing CAN Bus Problems?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote CAN diagnostics,
+          standalone ECU troubleshooting, startup diagnostics,
+          and motorsport technical consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • CAN Diagnostics • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
