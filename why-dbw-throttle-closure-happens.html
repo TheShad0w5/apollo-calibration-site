@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Why DBW Throttle Closure Happens | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding DBW throttle closure, torque intervention, boost control interaction, traction strategy, and ECU torque modeling on modern performance platforms."
+  />
+
+  <meta
+    name="keywords"
+    content="DBW throttle closure, torque intervention, drive by wire tuning, boost closure, ECU torque strategy, throttle intervention, drivability tuning"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Why DBW Throttle Closure Happens",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding DBW throttle closure, torque intervention, boost control interaction, traction strategy, and ECU torque modeling."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="cobb-custom-tuning.html">COBB Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • DBW Strategy
+    </div>
+
+    <h1>
+      Why
+      <span class="gold">
+        DBW Throttle Closure Happens
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      One of the most misunderstood behaviors on modern performance vehicles
+      is unexpected DBW throttle closure during acceleration, boost onset,
+      launch events, or high-load operation.
+    </p>
+
+    <p class="cred">
+      In many cases, the throttle is not malfunctioning.
+      The ECU is intentionally intervening because calculated torque,
+      airflow, boost behavior, or protection logic exceeds the expected model.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding DBW Systems
+        </div>
+
+        <h2 class="gold">
+          Modern ECUs Control Torque — Not Just Throttle Angle.
+        </h2>
+
+        <p>
+          Modern drive-by-wire systems are torque-management systems first.
+          The ECU uses throttle angle as one of several tools to control
+          calculated engine torque.
+        </p>
+
+        <p>
+          The throttle blade may close even when the accelerator pedal
+          remains fully pressed because the ECU is attempting to bring
+          delivered torque back inside an expected operating window.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Torque Model Exceeded
+        </h2>
+
+        <p class="section-intro">
+          The most common cause of throttle closure is calculated torque
+          exceeding modeled limits.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          The ECU constantly estimates engine torque using airflow,
+          load, boost pressure, throttle angle, RPM,
+          fuel delivery, and other modeled behavior.
+        </p>
+
+        <p>
+          If delivered torque exceeds expected limits,
+          the ECU may intervene using:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Throttle closure
+          </div>
+
+          <div class="list-item">
+            Wastegate intervention
+          </div>
+
+          <div class="list-item">
+            Ignition reduction
+          </div>
+
+          <div class="list-item">
+            Fuel intervention
+          </div>
+
+          <div class="list-item">
+            Load limiting
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Boost Control Overshoot
+        </h2>
+
+        <p class="section-intro">
+          Rapid boost overshoot commonly triggers throttle intervention.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          If boost rises faster than expected,
+          the ECU may temporarily close the throttle
+          to stabilize torque delivery and protect the engine.
+        </p>
+
+        <p>
+          Common causes include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Aggressive wastegate duty
+          </div>
+
+          <div class="list-item">
+            Poor boost-control tuning
+          </div>
+
+          <div class="list-item">
+            Incorrect turbo modeling
+          </div>
+
+          <div class="list-item">
+            Rapid spool characteristics
+          </div>
+
+          <div class="list-item">
+            Torque target mismatch
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Traction & Stability Intervention
+        </h2>
+
+        <p class="section-intro">
+          Modern stability systems often command throttle closure directly.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Wheel-slip detection, yaw calculations,
+          or traction-control logic may reduce torque output
+          using throttle intervention.
+        </p>
+
+        <p>
+          This often appears during:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Launch control
+          </div>
+
+          <div class="list-item">
+            Roll racing
+          </div>
+
+          <div class="list-item">
+            Gear transitions
+          </div>
+
+          <div class="list-item">
+            Wet conditions
+          </div>
+
+          <div class="list-item">
+            Aggressive torque onset
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Airflow Model Errors
+        </h2>
+
+        <p class="section-intro">
+          Incorrect airflow modeling frequently destabilizes DBW behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          MAF scaling errors, SD modeling issues,
+          incorrect VE behavior, or transient fueling problems
+          can distort calculated torque values.
+        </p>
+
+        <p>
+          This may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Unpredictable throttle behavior
+          </div>
+
+          <div class="list-item">
+            Torque intervention
+          </div>
+
+          <div class="list-item">
+            Oscillation during boost onset
+          </div>
+
+          <div class="list-item">
+            Partial throttle closure
+          </div>
+
+          <div class="list-item">
+            Drivability instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Safety & Protection Logic
+        </h2>
+
+        <p class="section-intro">
+          Some throttle closures are intentional engine-protection behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Modern ECUs may reduce throttle angle
+          to protect the engine during:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Overboost conditions
+          </div>
+
+          <div class="list-item">
+            Excessive airflow
+          </div>
+
+          <div class="list-item">
+            Thermal protection events
+          </div>
+
+          <div class="list-item">
+            Knock sensitivity
+          </div>
+
+          <div class="list-item">
+            Torque limit exceedance
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Throttle Closure Is Usually a Strategy Problem — Not a Throttle Problem.
+        </h2>
+
+        <p>
+          Unexpected DBW closure is often a symptom
+          of torque-model mismatch, airflow instability,
+          boost-control behavior, or protection strategy interaction.
+        </p>
+
+        <p>
+          Understanding why the ECU is intervening
+          is far more important than simply forcing the throttle open.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing DBW Throttle Closure?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          datalog review, controls strategy analysis,
+          and calibration consulting for advanced vehicle programs.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • DBW Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
