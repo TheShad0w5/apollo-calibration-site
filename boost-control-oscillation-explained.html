@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Boost Control Oscillation Explained | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Boost control oscillation explained, including wastegate behavior, PID control, dome pressure, boost targets, turbo response, sensor data, and ECU calibration strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="boost control oscillation, boost control tuning, wastegate duty cycle, closed loop boost control, dome pressure tuning, turbo boost instability, ECU calibration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Boost Control Oscillation Explained",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Boost control oscillation explained, including wastegate behavior, PID control, dome pressure, boost targets, turbo response, sensor data, and ECU calibration strategy."
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">Apollo Calibration Solutions</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="emtron-calibration-support.html">Emtron Support</a>
+      <a href="motec-calibration-support.html">MoTeC Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+    <div class="eyebrow">
+      Technical Article • Boost Control Strategy
+    </div>
+
+    <h1>
+      Boost Control
+      <span class="gold">Oscillation Explained</span>
+    </h1>
+
+    <p class="hero-copy">
+      Boost control oscillation is one of the most common problems on turbocharged
+      performance applications. It can show up as boost hunting, throttle closure,
+      unstable torque delivery, inconsistent power, or repeated overboost corrections.
+    </p>
+
+    <p class="cred">
+      Solving boost oscillation requires understanding the full system: turbocharger response,
+      wastegate hardware, solenoid plumbing, pressure references, ECU strategy, sensor data,
+      and the control loop itself.
+    </p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Why Boost Oscillation Happens
+        </div>
+
+        <h2 class="gold">
+          Boost Control Is a Mechanical System Controlled by Software.
+        </h2>
+
+        <p>
+          The ECU can only control boost by commanding hardware: solenoids, wastegates,
+          dome pressure, throttle angle, ignition torque reduction, or other torque-management tools.
+        </p>
+
+        <p>
+          If the mechanical system responds too slowly, too aggressively, inconsistently,
+          or differently than the calibration expects, the control loop can begin to chase itself.
+          That is when oscillation starts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          1. Wastegate Mechanical Behavior
+        </h2>
+
+        <p class="section-intro">
+          The wastegate is the foundation of the entire boost-control system.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Before tuning closed-loop boost control, the wastegate system must be mechanically stable.
+          A control strategy cannot fix a gate that is incorrectly sized, poorly referenced,
+          sticking, creeping, or operating outside its effective range.
+        </p>
+
+        <p>
+          Common mechanical causes include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Incorrect wastegate spring pressure</div>
+          <div class="list-item">Poor wastegate priority in the manifold</div>
+          <div class="list-item">Undersized wastegate for the turbo/exhaust combination</div>
+          <div class="list-item">Sticky wastegate valve or actuator behavior</div>
+          <div class="list-item">Boost creep caused by insufficient bypass flow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          2. Solenoid Plumbing and Pressure Reference Issues
+        </h2>
+
+        <p class="section-intro">
+          Incorrect plumbing can make the ECU’s boost-control commands behave unpredictably.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Solenoid plumbing, pressure source location, dome routing, venting, and line volume
+          all affect how quickly and consistently the wastegate reacts.
+        </p>
+
+        <p>
+          Common issues include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Incorrect 3-port or 4-port solenoid routing</div>
+          <div class="list-item">Pressure source taken from a poor location</div>
+          <div class="list-item">Excessive line length or volume</div>
+          <div class="list-item">Restricted vent ports</div>
+          <div class="list-item">Leaking fittings or inconsistent dome pressure</div>
+        </div>
+
+        <p>
+          In dome-pressure systems, instability in dome pressure usually creates instability
+          in manifold boost pressure shortly afterward.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          3. PID Control That Is Too Aggressive
+        </h2>
+
+        <p class="section-intro">
+          A control loop that reacts too hard can create the oscillation it is trying to fix.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Closed-loop boost control uses error correction. If boost is below target, the ECU
+          increases control effort. If boost is above target, the ECU reduces control effort.
+          When the correction is too aggressive, the system can overshoot repeatedly.
+        </p>
+
+        <p>
+          Symptoms of overly aggressive control include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Boost rises above target, then drops below target</div>
+          <div class="list-item">Wastegate duty cycle swings rapidly</div>
+          <div class="list-item">Dome pressure oscillates instead of stabilizing</div>
+          <div class="list-item">Throttle closure occurs after boost overshoot</div>
+          <div class="list-item">Power delivery feels unstable or surging</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          4. Poor Feedforward or Base Duty Strategy
+        </h2>
+
+        <p class="section-intro">
+          Closed-loop boost control works best when the base command is already close.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          If the base wastegate duty or feedforward table is far from the actual required
+          value, the closed-loop system has to make large corrections. Large corrections
+          increase the likelihood of overshoot and oscillation.
+        </p>
+
+        <p>
+          A better strategy is to build a stable open-loop or feedforward baseline first,
+          then use closed-loop correction to clean up smaller error.
+        </p>
+
+        <div class="list">
+          <div class="list-item">Validate spring pressure first</div>
+          <div class="list-item">Build a stable base duty or dome target curve</div>
+          <div class="list-item">Avoid relying on closed-loop correction to fix everything</div>
+          <div class="list-item">Separate spool behavior from steady-state boost control</div>
+          <div class="list-item">Review gear, RPM, throttle, and airflow dependencies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          5. Sensor Data and Filtering Problems
+        </h2>
+
+        <p class="section-intro">
+          Bad pressure data creates bad boost-control decisions.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          The ECU needs stable, accurate pressure information. Noisy MAP sensor data,
+          incorrect scaling, poor sensor location, excessive filtering, or delayed data
+          can all destabilize the control loop.
+        </p>
+
+        <p>
+          Common sensor-related problems include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Incorrect MAP sensor calibration</div>
+          <div class="list-item">Noisy manifold pressure signal</div>
+          <div class="list-item">Pressure source affected by turbulence or pulsing</div>
+          <div class="list-item">Over-filtered data causing delayed correction</div>
+          <div class="list-item">Under-filtered data causing noisy correction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          6. Torque Intervention and DBW Interaction
+        </h2>
+
+        <p class="section-intro">
+          On modern platforms, boost oscillation may not be purely boost-control related.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          DBW throttle closure, ignition torque reduction, traction intervention, or load limiting
+          can all affect manifold pressure. If the ECU is reducing torque while boost control is
+          trying to increase boost, the system can become unstable.
+        </p>
+
+        <p>
+          This is common when:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Torque limits are exceeded</div>
+          <div class="list-item">Boost target and torque target disagree</div>
+          <div class="list-item">Throttle closure occurs during spool</div>
+          <div class="list-item">Traction or stability systems intervene</div>
+          <div class="list-item">Load modeling is inaccurate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Boost Oscillation Is Usually a System Problem, Not One Table.
+        </h2>
+
+        <p>
+          Stable boost control requires the mechanical system, pressure references,
+          sensor data, base control strategy, closed-loop behavior, and torque model
+          to work together.
+        </p>
+
+        <p>
+          The best diagnostic path is to simplify the system, validate the hardware,
+          confirm sensor data, build a stable baseline, and then add closed-loop control
+          only after the base behavior is predictable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>
+          Need Help Diagnosing Boost Control Oscillation?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides calibration review, dyno tuning,
+          remote support, boost-control strategy, and troubleshooting for standalone ECU
+          and OEM reflash applications.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Apollo Calibration Solutions. All rights reserved.</div>
+    <div>Technical Knowledge Base • Boost Control Strategy • Calibration Support</div>
+  </div>
+</footer>
+
+</body>
+</html>
