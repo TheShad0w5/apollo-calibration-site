@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Knock Control Strategy | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding knock control strategy, ignition correction, false knock, knock sensor filtering, feedback logic, combustion stability, and ECU protection strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="knock control strategy, false knock, ignition correction, knock sensor tuning, ECU knock control, combustion stability, detonation strategy"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Knock Control Strategy",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding knock control strategy, ignition correction, false knock, knock sensor filtering, feedback logic, combustion stability, and ECU protection strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="cobb-custom-tuning.html">COBB Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Ignition Strategy
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Knock Control Strategy
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Modern knock control systems are designed to protect the engine
+      while allowing the ECU to operate near the optimal ignition timing window.
+    </p>
+
+    <p class="cred">
+      Effective knock strategy requires understanding combustion behavior,
+      sensor filtering, background noise,
+      ignition correction logic,
+      and the difference between real knock and false knock.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding Knock Control
+        </div>
+
+        <h2 class="gold">
+          The ECU Is Listening for Abnormal Combustion.
+        </h2>
+
+        <p>
+          Knock sensors detect vibration energy associated with combustion events.
+          The ECU then evaluates this information
+          to determine whether ignition timing should be reduced.
+        </p>
+
+        <p>
+          Modern knock systems are not simply “on/off” safety systems —
+          they are dynamic combustion-management strategies.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Real Knock vs False Knock
+        </h2>
+
+        <p class="section-intro">
+          Not all knock activity represents real detonation.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Many engines generate mechanical noise
+          that can resemble knock sensor activity.
+        </p>
+
+        <p>
+          Common false-knock sources include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Transmission noise
+          </div>
+
+          <div class="list-item">
+            Piston slap
+          </div>
+
+          <div class="list-item">
+            Valvetrain noise
+          </div>
+
+          <div class="list-item">
+            Clutch or drivetrain vibration
+          </div>
+
+          <div class="list-item">
+            Exhaust contact or resonance
+          </div>
+
+        </div>
+
+        <p>
+          Good knock strategy attempts to separate combustion knock
+          from normal mechanical noise.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Knock Sensor Filtering
+        </h2>
+
+        <p class="section-intro">
+          Frequency filtering is critical for stable knock detection.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          ECUs typically monitor specific frequency ranges
+          associated with combustion knock characteristics.
+        </p>
+
+        <p>
+          Incorrect filtering may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Excessive false knock
+          </div>
+
+          <div class="list-item">
+            Missed real knock events
+          </div>
+
+          <div class="list-item">
+            Unstable ignition correction
+          </div>
+
+          <div class="list-item">
+            Inconsistent power delivery
+          </div>
+
+          <div class="list-item">
+            Overly conservative timing behavior
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Feedback Knock Correction Strategy
+        </h2>
+
+        <p class="section-intro">
+          Knock correction logic varies substantially between ECU platforms.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Most systems dynamically reduce ignition timing
+          when knock activity exceeds defined thresholds.
+        </p>
+
+        <p>
+          Common strategy components include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Immediate timing retard
+          </div>
+
+          <div class="list-item">
+            Long-term learned correction
+          </div>
+
+          <div class="list-item">
+            Cylinder-specific correction
+          </div>
+
+          <div class="list-item">
+            Load-based sensitivity adjustment
+          </div>
+
+          <div class="list-item">
+            Knock decay or recovery strategy
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Combustion Stability & Knock Sensitivity
+        </h2>
+
+        <p class="section-intro">
+          Knock activity is heavily influenced by combustion quality.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Fuel quality, injector timing,
+          air/fuel ratio,
+          cylinder temperature,
+          airflow distribution,
+          and startup strategy
+          all affect knock sensitivity.
+        </p>
+
+        <p>
+          Knock behavior often changes with:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Ethanol content
+          </div>
+
+          <div class="list-item">
+            Intake air temperature
+          </div>
+
+          <div class="list-item">
+            Coolant temperature
+          </div>
+
+          <div class="list-item">
+            Turbocharger efficiency
+          </div>
+
+          <div class="list-item">
+            Combustion chamber design
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Conservative vs Aggressive Knock Strategy
+        </h2>
+
+        <p class="section-intro">
+          Overly aggressive timing often creates unstable knock behavior.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          A calibration constantly relying on heavy knock correction
+          is usually operating outside a stable combustion window.
+        </p>
+
+        <p>
+          Stable calibrations generally prioritize:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Consistent combustion behavior
+          </div>
+
+          <div class="list-item">
+            Repeatable ignition timing
+          </div>
+
+          <div class="list-item">
+            Reduced correction dependency
+          </div>
+
+          <div class="list-item">
+            Thermal stability
+          </div>
+
+          <div class="list-item">
+            Predictable torque delivery
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Knock Strategy Is About Combustion Management — Not Just Pulling Timing.
+        </h2>
+
+        <p>
+          Good knock control systems allow the ECU
+          to operate safely near optimal combustion efficiency
+          while protecting the engine from abnormal combustion events.
+        </p>
+
+        <p>
+          Stable knock behavior depends heavily on overall calibration quality,
+          airflow consistency,
+          fuel quality,
+          thermal control,
+          and combustion stability.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing Knock Control Behavior?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          ignition-strategy review,
+          datalog analysis,
+          and advanced calibration consulting for performance vehicle programs.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="remote-calibration-support.html">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Ignition Strategy • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
