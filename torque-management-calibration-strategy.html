@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Torque Management Calibration Strategy | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Torque management calibration strategy explained, including driver demand, torque modeling, throttle closure, boost control, load limits, and ECU intervention behavior."
+  />
+
+  <meta
+    name="keywords"
+    content="torque management calibration, driver demand tuning, throttle closure, torque intervention, ECU torque model, boost torque strategy, calibration consulting"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Torque Management Calibration Strategy",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Torque management calibration strategy explained, including driver demand, torque modeling, throttle closure, boost control, load limits, and ECU intervention behavior."
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">Apollo Calibration Solutions</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+      <a href="why-dbw-throttle-closure-happens.html">DBW Strategy</a>
+      <a href="cobb-custom-tuning.html">COBB Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+    <div class="eyebrow">
+      Technical Article • Torque Strategy
+    </div>
+
+    <h1>
+      Torque Management
+      <span class="gold">Calibration Strategy</span>
+    </h1>
+
+    <p class="hero-copy">
+      Torque management is one of the most important and misunderstood parts of modern ECU calibration.
+      Many throttle closures, boost reductions, load limits, and drivability issues are caused by torque
+      model mismatch rather than a mechanical throttle or boost-control failure.
+    </p>
+
+    <p class="cred">
+      A proper torque strategy aligns driver demand, airflow modeling, boost control, throttle behavior,
+      transmission limits, traction systems, and engine protection logic.
+    </p>
+  </div>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Why Torque Management Matters
+        </div>
+
+        <h2 class="gold">
+          Modern ECUs Manage Requested Torque, Not Just Air and Fuel.
+        </h2>
+
+        <p>
+          In many modern ECU strategies, the accelerator pedal does not directly request throttle angle.
+          It requests torque. The ECU then decides how to deliver that torque using throttle angle,
+          boost control, ignition timing, fuel delivery, cam timing, and other actuators.
+        </p>
+
+        <p>
+          When the calculated torque model does not match the real engine behavior, the ECU may intervene
+          aggressively even when the calibration appears correct in traditional fuel and ignition tables.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          1. Driver Demand Is the Starting Point
+        </h2>
+
+        <p class="section-intro">
+          Driver demand defines what the ECU believes the driver is requesting.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Driver demand tables typically translate accelerator pedal position and engine speed into a torque
+          request. If that torque request does not match the intended vehicle behavior, the car may feel lazy,
+          overly sensitive, inconsistent, or unstable under load.
+        </p>
+
+        <p>
+          Poor driver demand strategy can create:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Overly aggressive pedal response</div>
+          <div class="list-item">Flat or lazy throttle behavior</div>
+          <div class="list-item">Unstable torque delivery during spool</div>
+          <div class="list-item">Throttle closure after torque request exceeds modeled limits</div>
+          <div class="list-item">Difficult launch or partial-throttle control</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          2. Torque Model Accuracy
+        </h2>
+
+        <p class="section-intro">
+          The ECU’s calculated torque must match real engine output closely enough to avoid intervention.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Torque modeling uses airflow, load, RPM, boost, throttle angle, cam timing, fuel mass, and other
+          modeled values to estimate delivered engine torque.
+        </p>
+
+        <p>
+          If the model is wrong, the ECU may believe the engine is producing too much torque and respond by
+          reducing output through throttle closure, boost reduction, timing reduction, or load limiting.
+        </p>
+
+        <div class="list">
+          <div class="list-item">Throttle closes even though pedal remains steady</div>
+          <div class="list-item">Boost target drops unexpectedly</div>
+          <div class="list-item">Load caps appear under high airflow</div>
+          <div class="list-item">Ignition timing is reduced by torque intervention</div>
+          <div class="list-item">Power delivery becomes inconsistent between gears</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          3. Boost Control and Torque Strategy Must Agree
+        </h2>
+
+        <p class="section-intro">
+          Boost targets that exceed torque expectations often create intervention.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          On torque-based ECU strategies, boost is not an isolated system. Boost control, load targeting,
+          airflow modeling, driver demand, and torque limits all interact.
+        </p>
+
+        <p>
+          If boost control attempts to deliver more airflow than the torque model allows, the ECU may respond with:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Throttle closure during spool</div>
+          <div class="list-item">Wastegate duty reduction</div>
+          <div class="list-item">Torque limit intervention</div>
+          <div class="list-item">Ignition torque reduction</div>
+          <div class="list-item">Oscillating boost behavior</div>
+        </div>
+
+        <p>
+          Stable boost control often requires matching torque request, load target, wastegate behavior,
+          and airflow model behavior together.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          4. Gear-Based and Transmission Torque Limits
+        </h2>
+
+        <p class="section-intro">
+          Many platforms apply torque limits based on gear, speed, or transmission state.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          Modern ECUs may use different torque limits depending on gear, vehicle speed, clutch state,
+          transmission temperature, drive mode, traction state, or inferred drivetrain protection.
+        </p>
+
+        <p>
+          Symptoms of gear-based torque limitation include:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Car pulls well in one gear but closes throttle in another</div>
+          <div class="list-item">Different boost behavior between dyno gears</div>
+          <div class="list-item">Torque reduction after shifts</div>
+          <div class="list-item">Launch control torque intervention</div>
+          <div class="list-item">Power reduction tied to transmission status or missing TCM data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <h2>
+          5. Traction and Stability System Interaction
+        </h2>
+
+        <p class="section-intro">
+          Torque intervention is not always commanded by engine calibration tables alone.
+        </p>
+      </div>
+
+      <div class="feature">
+        <p>
+          ABS, traction control, stability control, yaw logic, wheel speed errors, and drivetrain modules can
+          request torque reduction from the ECU.
+        </p>
+
+        <p>
+          These requests may result in:
+        </p>
+
+        <div class="list">
+          <div class="list-item">Throttle closure during acceleration</div>
+          <div class="list-item">Ignition reduction during wheel slip</div>
+          <div class="list-item">Boost reduction during launch or corner exit</div>
+          <div class="list-item">Inconsistent dyno behavior if wheel speed logic is confused</div>
+          <div class="list-item">Torque intervention from missing or incorrect vehicle-speed data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="feature">
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Torque Strategy Makes the Car Feel Intentional.
+        </h2>
+
+        <p>
+          Torque management is not something to disable blindly. It is a major part of making modern
+          performance vehicles drive correctly, control boost predictably, protect the drivetrain, and
+          deliver repeatable power.
+        </p>
+
+        <p>
+          The goal is to align the torque model with the real engine package so the ECU can deliver the
+          requested output without unnecessary intervention.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>
+          Need Help Diagnosing Torque Intervention?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote datalog review, torque strategy analysis,
+          DBW troubleshooting, boost-control refinement, and advanced calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="why-dbw-throttle-closure-happens.html">
+            DBW Article
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 Apollo Calibration Solutions. All rights reserved.</div>
+    <div>Technical Knowledge Base • Torque Strategy • Calibration Support</div>
+  </div>
+</footer>
+
+</body>
+</html>
