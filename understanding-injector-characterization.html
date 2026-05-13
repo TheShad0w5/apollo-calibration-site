@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Understanding Injector Characterization | Apollo Calibration Solutions</title>
+
+  <meta
+    name="description"
+    content="Understanding injector characterization including dead time, short pulse behavior, fuel mass modeling, pressure compensation, transient fueling, and ECU calibration strategy."
+  />
+
+  <meta
+    name="keywords"
+    content="injector characterization, injector dead time, short pulse adder, injector tuning, fuel mass modeling, ECU fueling calibration"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Understanding Injector Characterization",
+    "author":{
+      "@type":"Person",
+      "name":"Keith Fields"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"Apollo Calibration Solutions"
+    },
+    "description":"Understanding injector characterization including dead time, short pulse behavior, fuel mass modeling, pressure compensation, transient fueling, and ECU calibration strategy."
+  }
+  </script>
+
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand">
+      Apollo Calibration Solutions
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="knowledge-base.html">Knowledge Base</a>
+      <a href="understanding-fuel-pressure-control.html">Fuel Pressure</a>
+      <a href="understanding-transient-fueling.html">Transient Fueling</a>
+      <a href="remote-calibration-support.html">Remote Support</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • Fuel Modeling
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        Injector Characterization
+      </span>
+    </h1>
+
+    <p class="hero-copy">
+      Injector characterization is one of the most important foundations
+      of accurate ECU fuel modeling.
+    </p>
+
+    <p class="cred">
+      Stable drivability,
+      startup behavior,
+      fuel trims,
+      transient fueling,
+      and combustion consistency
+      all depend heavily on accurate injector data.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Injectors Are Not Perfectly Linear
+        </div>
+
+        <h2 class="gold">
+          Fuel Flow Changes With Voltage, Pressure, and Pulse Width.
+        </h2>
+
+        <p>
+          Injectors behave differently across operating conditions.
+        </p>
+
+        <p>
+          Electrical response time,
+          fuel pressure,
+          injector design,
+          and pulse width all affect actual delivered fuel mass.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Dead Time Is Critical at Low Pulse Width
+        </h2>
+
+        <p class="section-intro">
+          Injector opening delay strongly affects idle and cruise fueling.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Injector dead time represents the delay
+          between the ECU commanding injector operation
+          and actual fuel flow beginning.
+        </p>
+
+        <p>
+          Incorrect dead-time values commonly create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle fuel-trim instability
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+          <div class="list-item">
+            Rich or lean cruise behavior
+          </div>
+
+          <div class="list-item">
+            Electrical-load fueling shifts
+          </div>
+
+          <div class="list-item">
+            Transient fueling instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Short Pulse Behavior Is Highly Nonlinear
+        </h2>
+
+        <p class="section-intro">
+          Injectors become less predictable at extremely small pulse widths.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During idle and light-load operation,
+          injectors may operate in highly nonlinear regions.
+        </p>
+
+        <p>
+          Poor short-pulse modeling may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Idle AFR oscillation
+          </div>
+
+          <div class="list-item">
+            Cruise instability
+          </div>
+
+          <div class="list-item">
+            Fuel-trim fluctuation
+          </div>
+
+          <div class="list-item">
+            Startup irregularity
+          </div>
+
+          <div class="list-item">
+            Inconsistent combustion behavior
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Differential Pressure Changes Injector Flow
+        </h2>
+
+        <p class="section-intro">
+          Fuel pressure directly affects injector output.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Injector flow changes with pressure differential
+          between the fuel rail and intake manifold.
+        </p>
+
+        <p>
+          Incorrect pressure compensation may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Lean boost behavior
+          </div>
+
+          <div class="list-item">
+            Fuel-trim instability
+          </div>
+
+          <div class="list-item">
+            Startup inconsistency
+          </div>
+
+          <div class="list-item">
+            High-load AFR drift
+          </div>
+
+          <div class="list-item">
+            Torque inconsistency
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. Injector Data Affects Transient Fueling
+        </h2>
+
+        <p class="section-intro">
+          Fuel prediction quality depends on injector modeling accuracy.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          During rapid throttle movement,
+          the ECU predicts required fuel delivery
+          before closed loop correction can react.
+        </p>
+
+        <p>
+          Weak injector characterization may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Hesitation during tip-in
+          </div>
+
+          <div class="list-item">
+            Rich transient recovery
+          </div>
+
+          <div class="list-item">
+            Poor spool response
+          </div>
+
+          <div class="list-item">
+            Combustion instability
+          </div>
+
+          <div class="list-item">
+            Torque oscillation
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Large Injectors Require Better Calibration
+        </h2>
+
+        <p class="section-intro">
+          High-flow injectors often become more difficult to model accurately.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Large injectors frequently operate
+          in nonlinear low-pulse-width regions during idle and cruise.
+        </p>
+
+        <p>
+          Poor calibration may create:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Rough idle
+          </div>
+
+          <div class="list-item">
+            Poor cold-start behavior
+          </div>
+
+          <div class="list-item">
+            Unstable fuel trims
+          </div>
+
+          <div class="list-item">
+            Inconsistent lambda behavior
+          </div>
+
+          <div class="list-item">
+            Weak drivability refinement
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          Good Injector Data Makes the Entire Calibration More Predictable.
+        </h2>
+
+        <p>
+          Accurate injector characterization improves:
+          startup stability,
+          fuel trims,
+          transient fueling,
+          drivability,
+          and combustion consistency.
+        </p>
+
+        <p>
+          The best fuel calibrations begin with strong injector modeling
+          before airflow refinement and closed-loop correction are added.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Refining Fuel Modeling?
+        </h2>
+
+        <p>
+          Apollo Calibration Solutions provides remote troubleshooting,
+          injector characterization refinement,
+          transient fueling optimization,
+          and advanced ECU calibration consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:sales@acalibrations.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="knowledge-base.html">
+            Knowledge Base
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Apollo Calibration Solutions. All rights reserved.
+    </div>
+
+    <div>
+      Technical Knowledge Base • Fuel Modeling • Calibration Support
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
