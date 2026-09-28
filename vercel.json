@@ -1,0 +1,51 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support.html",
+      "destination": "/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/dyno-tuning/index.html",
+      "destination": "/dyno-tuning/",
+      "permanent": true
+    },
+    {
+      "source": "/ecu-calibration-support/index.html",
+      "destination": "/ecu-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support/index.html",
+      "destination": "/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/standalone-ecu-support/index.html",
+      "destination": "/standalone-ecu-support/",
+      "permanent": true
+    },
+    {
+      "source": "/trackside-support/index.html",
+      "destination": "/trackside-support/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "acalibrations.com"
+        }
+      ],
+      "destination": "https://www.acalibrations.com/:path*",
+      "permanent": true
+    }
+  ]
+}
