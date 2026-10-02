@@ -1,0 +1,266 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support.html",
+      "destination": "/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/dyno-tuning/index.html",
+      "destination": "/dyno-tuning/",
+      "permanent": true
+    },
+    {
+      "source": "/ecu-calibration-support/index.html",
+      "destination": "/ecu-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support/index.html",
+      "destination": "/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/standalone-ecu-support/index.html",
+      "destination": "/standalone-ecu-support/",
+      "permanent": true
+    },
+    {
+      "source": "/trackside-support/index.html",
+      "destination": "/trackside-support/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tunedbykeith.com"
+        }
+      ],
+      "destination": "https://www.tunedbykeith.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/boost-control-oscillation-explained.html",
+      "destination": "https://www.acalibrations.com/boost-control-oscillation-explained.html",
+      "permanent": true
+    },
+    {
+      "source": "/common-emtron-trigger-setup-mistakes.html",
+      "destination": "https://www.acalibrations.com/common-emtron-trigger-setup-mistakes.html",
+      "permanent": true
+    },
+    {
+      "source": "/common-link-g4x-startup-problems.html",
+      "destination": "https://www.acalibrations.com/common-link-g4x-startup-problems.html",
+      "permanent": true
+    },
+    {
+      "source": "/ecu-calibration-support/",
+      "destination": "https://www.acalibrations.com/ecu-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/ecutek-calibration-support.html",
+      "destination": "https://www.acalibrations.com/ecutek-calibration-support.html",
+      "permanent": true
+    },
+    {
+      "source": "/emtron-calibration-support.html",
+      "destination": "https://www.acalibrations.com/emtron-calibration-support.html",
+      "permanent": true
+    },
+    {
+      "source": "/flex-fuel-calibration-strategy.html",
+      "destination": "https://www.acalibrations.com/flex-fuel-calibration-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/haltech-calibration-support.html",
+      "destination": "https://www.acalibrations.com/haltech-calibration-support.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-build-a-stable-idle-calibration.html",
+      "destination": "https://www.acalibrations.com/how-to-build-a-stable-idle-calibration.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-diagnose-sync-loss.html",
+      "destination": "https://www.acalibrations.com/how-to-diagnose-sync-loss.html",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-read-a-datalog-properly.html",
+      "destination": "https://www.acalibrations.com/how-to-read-a-datalog-properly.html",
+      "permanent": true
+    },
+    {
+      "source": "/knowledge-base.html",
+      "destination": "https://www.acalibrations.com/knowledge-base.html",
+      "permanent": true
+    },
+    {
+      "source": "/link-ecu-support.html",
+      "destination": "https://www.acalibrations.com/link-ecu-support.html",
+      "permanent": true
+    },
+    {
+      "source": "/motec-calibration-support.html",
+      "destination": "https://www.acalibrations.com/motec-calibration-support.html",
+      "permanent": true
+    },
+    {
+      "source": "/motec-ref-sync-troubleshooting.html",
+      "destination": "https://www.acalibrations.com/motec-ref-sync-troubleshooting.html",
+      "permanent": true
+    },
+    {
+      "source": "/motorsport-can-bus-wiring-best-practices.html",
+      "destination": "https://www.acalibrations.com/motorsport-can-bus-wiring-best-practices.html",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support/",
+      "destination": "https://www.acalibrations.com/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/speed-density-vs-maf.html",
+      "destination": "https://www.acalibrations.com/speed-density-vs-maf.html",
+      "permanent": true
+    },
+    {
+      "source": "/standalone-ecu-support/",
+      "destination": "https://www.acalibrations.com/standalone-ecu-support/",
+      "permanent": true
+    },
+    {
+      "source": "/subaru-flex-fuel-startup-strategy.html",
+      "destination": "https://www.acalibrations.com/subaru-flex-fuel-startup-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/torque-management-calibration-strategy.html",
+      "destination": "https://www.acalibrations.com/torque-management-calibration-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/trackside-support/",
+      "destination": "https://www.acalibrations.com/trackside-support/",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-air-temp-sensor-placement.html",
+      "destination": "https://www.acalibrations.com/understanding-air-temp-sensor-placement.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-boost-creep.html",
+      "destination": "https://www.acalibrations.com/understanding-boost-creep.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-can-bus-termination.html",
+      "destination": "https://www.acalibrations.com/understanding-can-bus-termination.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-canbus-communication.html",
+      "destination": "https://www.acalibrations.com/understanding-canbus-communication.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-closed-loop-fuel-control.html",
+      "destination": "https://www.acalibrations.com/understanding-closed-loop-fuel-control.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-crankcase-pressure.html",
+      "destination": "https://www.acalibrations.com/understanding-crankcase-pressure.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-dbwire-throttle-control.html",
+      "destination": "https://www.acalibrations.com/understanding-dbwire-throttle-control.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-ethanol-content-sensor-behavior.html",
+      "destination": "https://www.acalibrations.com/understanding-ethanol-content-sensor-behavior.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-fuel-pressure-control.html",
+      "destination": "https://www.acalibrations.com/understanding-fuel-pressure-control.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-iat-compensation-strategy.html",
+      "destination": "https://www.acalibrations.com/understanding-iat-compensation-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-injector-characterization.html",
+      "destination": "https://www.acalibrations.com/understanding-injector-characterization.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-injector-timing.html",
+      "destination": "https://www.acalibrations.com/understanding-injector-timing.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-knock-control-strategy.html",
+      "destination": "https://www.acalibrations.com/understanding-knock-control-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-knock-sensor-noise.html",
+      "destination": "https://www.acalibrations.com/understanding-knock-sensor-noise.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-launch-control-strategy.html",
+      "destination": "https://www.acalibrations.com/understanding-launch-control-strategy.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-map-sensor-scaling.html",
+      "destination": "https://www.acalibrations.com/understanding-map-sensor-scaling.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-torque-intervention.html",
+      "destination": "https://www.acalibrations.com/understanding-torque-intervention.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-transient-fueling.html",
+      "destination": "https://www.acalibrations.com/understanding-transient-fueling.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-volumetric-efficiency-modeling.html",
+      "destination": "https://www.acalibrations.com/understanding-volumetric-efficiency-modeling.html",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-wastegate-control.html",
+      "destination": "https://www.acalibrations.com/understanding-wastegate-control.html",
+      "permanent": true
+    },
+    {
+      "source": "/why-dbw-throttle-closure-happens.html",
+      "destination": "https://www.acalibrations.com/why-dbw-throttle-closure-happens.html",
+      "permanent": true
+    }
+  ]
+}
