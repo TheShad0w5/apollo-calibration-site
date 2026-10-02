@@ -46,6 +46,61 @@
       ],
       "destination": "https://www.acalibrations.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/about-keith-fields.html",
+      "destination": "https://www.tunedbykeith.com/about-keith-fields.html",
+      "permanent": true
+    },
+    {
+      "source": "/cobb-custom-tuning.html",
+      "destination": "https://www.tunedbykeith.com/cobb-custom-tuning.html",
+      "permanent": true
+    },
+    {
+      "source": "/dyno-tuning/",
+      "destination": "https://www.tunedbykeith.com/dyno-tuning/",
+      "permanent": true
+    },
+    {
+      "source": "/build-examples.html",
+      "destination": "https://www.tunedbykeith.com/build-examples.html",
+      "permanent": true
+    },
+    {
+      "source": "/2024-wrx-cinderelli-e70.html",
+      "destination": "https://www.tunedbykeith.com/2024-wrx-cinderelli-e70.html",
+      "permanent": true
+    },
+    {
+      "source": "/2019-sti-bcp-turbo-93-octane.html",
+      "destination": "https://www.tunedbykeith.com/2019-sti-bcp-turbo-93-octane.html",
+      "permanent": true
+    },
+    {
+      "source": "/prepare-for-tuning-consultation.html",
+      "destination": "https://www.tunedbykeith.com/prepare-for-tuning-consultation.html",
+      "permanent": true
+    },
+    {
+      "source": "/tuning-glossary.html",
+      "destination": "https://www.tunedbykeith.com/tuning-glossary.html",
+      "permanent": true
+    },
+    {
+      "source": "/shop.html",
+      "destination": "https://www.tunedbykeith.com/shop.html",
+      "permanent": true
+    },
+    {
+      "source": "/cobb-green-speed.html",
+      "destination": "https://www.tunedbykeith.com/cobb-green-speed.html",
+      "permanent": true
+    },
+    {
+      "source": "/retail/:path*",
+      "destination": "https://www.tunedbykeith.com/:path*",
+      "permanent": true
     }
   ]
 }

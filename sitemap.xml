@@ -1,57 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.acalibrations.com/</loc></url>
-  <url><loc>https://www.acalibrations.com/about-keith-fields.html</loc></url>
-  <url><loc>https://www.acalibrations.com/boost-control-oscillation-explained.html</loc></url>
-  <url><loc>https://www.acalibrations.com/cobb-custom-tuning.html</loc></url>
-  <url><loc>https://www.acalibrations.com/common-emtron-trigger-setup-mistakes.html</loc></url>
-  <url><loc>https://www.acalibrations.com/common-link-g4x-startup-problems.html</loc></url>
-  <url><loc>https://www.acalibrations.com/dyno-tuning/</loc></url>
-  <url><loc>https://www.acalibrations.com/ecu-calibration-support/</loc></url>
-  <url><loc>https://www.acalibrations.com/ecutek-calibration-support.html</loc></url>
-  <url><loc>https://www.acalibrations.com/emtron-calibration-support.html</loc></url>
-  <url><loc>https://www.acalibrations.com/flex-fuel-calibration-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/haltech-calibration-support.html</loc></url>
-  <url><loc>https://www.acalibrations.com/how-to-build-a-stable-idle-calibration.html</loc></url>
-  <url><loc>https://www.acalibrations.com/how-to-diagnose-sync-loss.html</loc></url>
-  <url><loc>https://www.acalibrations.com/how-to-read-a-datalog-properly.html</loc></url>
-  <url><loc>https://www.acalibrations.com/knowledge-base.html</loc></url>
-  <url><loc>https://www.acalibrations.com/link-ecu-support.html</loc></url>
-  <url><loc>https://www.acalibrations.com/motec-calibration-support.html</loc></url>
-  <url><loc>https://www.acalibrations.com/motec-ref-sync-troubleshooting.html</loc></url>
-  <url><loc>https://www.acalibrations.com/motorsport-can-bus-wiring-best-practices.html</loc></url>
-  <url><loc>https://www.acalibrations.com/remote-calibration-support/</loc></url>
-  <url><loc>https://www.acalibrations.com/speed-density-vs-maf.html</loc></url>
-  <url><loc>https://www.acalibrations.com/standalone-ecu-support/</loc></url>
-  <url><loc>https://www.acalibrations.com/subaru-flex-fuel-startup-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/torque-management-calibration-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/trackside-support/</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-air-temp-sensor-placement.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-boost-creep.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-can-bus-termination.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-canbus-communication.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-closed-loop-fuel-control.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-crankcase-pressure.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-dbwire-throttle-control.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-ethanol-content-sensor-behavior.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-fuel-pressure-control.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-iat-compensation-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-injector-characterization.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-injector-timing.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-knock-control-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-knock-sensor-noise.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-launch-control-strategy.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-map-sensor-scaling.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-torque-intervention.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-transient-fueling.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-volumetric-efficiency-modeling.html</loc></url>
-  <url><loc>https://www.acalibrations.com/understanding-wastegate-control.html</loc></url>
-  <url><loc>https://www.acalibrations.com/why-dbw-throttle-closure-happens.html</loc></url>
-  <url><loc>https://www.acalibrations.com/build-examples.html</loc></url>
-  <url><loc>https://www.acalibrations.com/2024-wrx-cinderelli-e70.html</loc></url>
-  <url><loc>https://www.acalibrations.com/2019-sti-bcp-turbo-93-octane.html</loc></url>
-  <url><loc>https://www.acalibrations.com/prepare-for-tuning-consultation.html</loc></url>
-  <url><loc>https://www.acalibrations.com/tuning-glossary.html</loc></url>
-<url><loc>https://www.acalibrations.com/shop.html</loc></url>
-<url><loc>https://www.acalibrations.com/cobb-green-speed.html</loc></url>
+<url><loc>https://www.acalibrations.com/</loc></url>
+<url><loc>https://www.acalibrations.com/boost-control-oscillation-explained.html</loc></url>
+<url><loc>https://www.acalibrations.com/common-emtron-trigger-setup-mistakes.html</loc></url>
+<url><loc>https://www.acalibrations.com/common-link-g4x-startup-problems.html</loc></url>
+<url><loc>https://www.acalibrations.com/ecu-calibration-support/</loc></url>
+<url><loc>https://www.acalibrations.com/ecutek-calibration-support.html</loc></url>
+<url><loc>https://www.acalibrations.com/emtron-calibration-support.html</loc></url>
+<url><loc>https://www.acalibrations.com/flex-fuel-calibration-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/haltech-calibration-support.html</loc></url>
+<url><loc>https://www.acalibrations.com/how-to-build-a-stable-idle-calibration.html</loc></url>
+<url><loc>https://www.acalibrations.com/how-to-diagnose-sync-loss.html</loc></url>
+<url><loc>https://www.acalibrations.com/how-to-read-a-datalog-properly.html</loc></url>
+<url><loc>https://www.acalibrations.com/knowledge-base.html</loc></url>
+<url><loc>https://www.acalibrations.com/link-ecu-support.html</loc></url>
+<url><loc>https://www.acalibrations.com/motec-calibration-support.html</loc></url>
+<url><loc>https://www.acalibrations.com/motec-ref-sync-troubleshooting.html</loc></url>
+<url><loc>https://www.acalibrations.com/motorsport-can-bus-wiring-best-practices.html</loc></url>
+<url><loc>https://www.acalibrations.com/remote-calibration-support/</loc></url>
+<url><loc>https://www.acalibrations.com/speed-density-vs-maf.html</loc></url>
+<url><loc>https://www.acalibrations.com/standalone-ecu-support/</loc></url>
+<url><loc>https://www.acalibrations.com/subaru-flex-fuel-startup-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/torque-management-calibration-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/trackside-support/</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-air-temp-sensor-placement.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-boost-creep.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-can-bus-termination.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-canbus-communication.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-closed-loop-fuel-control.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-crankcase-pressure.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-dbwire-throttle-control.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-ethanol-content-sensor-behavior.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-fuel-pressure-control.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-iat-compensation-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-injector-characterization.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-injector-timing.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-knock-control-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-knock-sensor-noise.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-launch-control-strategy.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-map-sensor-scaling.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-torque-intervention.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-transient-fueling.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-volumetric-efficiency-modeling.html</loc></url>
+<url><loc>https://www.acalibrations.com/understanding-wastegate-control.html</loc></url>
+<url><loc>https://www.acalibrations.com/why-dbw-throttle-closure-happens.html</loc></url>
 </urlset>
