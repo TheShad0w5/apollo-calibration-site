@@ -15,4 +15,16 @@
     form.elements.tuning_interest.value = 'Custom e-tune — $400 for most setups';
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
   }));
+  const otsInterests = {
+    va: '2015–2021 WRX OTS map — $150',
+    vb: '2022+ WRX OTS map — $150'
+  };
+  document.querySelectorAll('[data-ots]').forEach(link => link.addEventListener('click', () => {
+    const interest = otsInterests[link.dataset.ots];
+    if (!interest) return;
+    form.elements.tuning_interest.value = interest;
+    if (form.elements.hardware_package.value === 'Other / custom e-tune / unsure') {
+      form.elements.hardware_package.value = '';
+    }
+  }));
 })();
