@@ -4,3 +4,21 @@
 
 
 .article-body .container:not(.hero){max-width:1000px;margin:auto;padding:0 6%}.article-body>section{padding:2.4rem 0;border-bottom:1px solid var(--line)}.article-body h1{font-size:clamp(2.7rem,6vw,5.2rem);max-width:1050px}.article-body h2{font-size:clamp(2rem,3.8vw,3rem)}.article-body .hero p{max-width:850px}.article-body .gold{color:var(--accent)}.article-body .article-byline{font-size:.95rem;color:#d5dae2}.article-body .list{padding-left:1.4rem;margin:1rem 0}.article-body .list-item{display:list-item;margin:.4rem 0}.article-body .actions{display:flex;flex-wrap:wrap;gap:1rem}.article-body .btn{display:inline-block;padding:.8rem 1.2rem;background:var(--accent);color:var(--ink);font-weight:700;text-decoration:none}.article-body p,.article-body li{overflow-wrap:anywhere}header nav{flex-wrap:wrap}@media(max-width:700px){header{flex-wrap:wrap}header nav{width:100%;gap:.9rem}header nav>a:not(.button){display:inline}.breadcrumbs a{display:inline!important}}
+
+/* Shared readability and shop navigation polish. */
+main :is(p,li,a,summary){overflow-wrap:break-word}
+main img{max-width:100%;height:auto}
+.section>p:not(.eyebrow),.section>ul,.section>ol{max-width:78ch}
+.section>ul>li,.section>ol>li{margin-block:.65rem}
+.button{max-width:100%;text-align:center}
+summary{padding-block:.35rem}
+summary:focus-visible{outline-offset:3px}
+.shop-quick-links{margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid #394653;max-width:600px}
+.shop-quick-links .quick-links-label{margin:0 0 .8rem;color:#bac4cf;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.quick-links-grid{display:grid;grid-template-columns:1fr;gap:.65rem}
+.quick-links-grid>a{position:relative;display:grid;gap:.2rem;padding:.9rem 3rem .9rem 1rem;border:1px solid #43505e;background:#17212c;color:#f4f7fa;text-decoration:none;line-height:1.4;transition:background .15s,border-color .15s}
+.quick-links-grid>a:hover{background:#202d3a;border-color:#ff9475}
+.quick-links-grid>a>span:first-child{font-size:.95rem;font-weight:600}
+.quick-links-grid small{font-size:.8rem;color:#bac4cf}
+.quick-link-arrow{position:absolute;right:1rem;top:1rem;color:#ff9475}
+@media(prefers-reduced-motion:reduce){.quick-links-grid>a{transition:none}}
