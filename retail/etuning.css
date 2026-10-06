@@ -37,3 +37,14 @@ summary:focus-visible{outline-offset:3px}
 .tuning-shop .shop-process{margin:2rem 0 0;padding:1.2rem;border-left:3px solid var(--accent);background:#fff}
 .tuning-shop #tuning-platform-coverage{border-top:1px solid var(--line)}
 @media(max-width:700px){.tuning-shop .service-paths article{padding:1.3rem}.tuning-shop .service-paths article .button{width:100%}}
+
+/* Shared ECU guide presentation, matched to shop service cards. */
+.ecu-guide .service-paths{gap:1.4rem}
+.ecu-guide .service-paths article{min-width:0;padding:1.8rem;border:1px solid var(--line);border-top:3px solid var(--accent);background:#fff;color:var(--ink)}
+.ecu-guide .service-paths h3{font-size:1.55rem}
+.ecu-guide .service-paths p{color:var(--muted)}
+.ecu-guide .service-paths a:not(.button){font-weight:600;text-underline-offset:.2em}
+.ecu-guide .section+.section{border-top:1px solid var(--line)}
+.ecu-guide .section>h2{max-width:24ch}
+.tuning-shop .shop-detail .draft-notice{background:#e5eaf0;color:var(--ink)}
+@media(max-width:700px){.ecu-guide .service-paths article{padding:1.3rem}}
