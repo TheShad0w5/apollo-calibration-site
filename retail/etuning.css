@@ -22,3 +22,18 @@ summary:focus-visible{outline-offset:3px}
 .quick-links-grid small{font-size:.8rem;color:#bac4cf}
 .quick-link-arrow{position:absolute;right:1rem;top:1rem;color:#ff9475}
 @media(prefers-reduced-motion:reduce){.quick-links-grid>a{transition:none}}
+
+/* Scoped storefront cards and service navigation. */
+.tuning-shop .shop-quick-links{display:block}
+.tuning-shop .shop-quick-links a{display:grid!important}
+.tuning-shop .service-paths{gap:1.4rem}
+.tuning-shop .service-paths article{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:1.8rem;border:1px solid var(--line);border-top:3px solid var(--accent);background:#fff}
+.tuning-shop .service-paths article h3{font-size:1.55rem}
+.tuning-shop .service-paths article .button{margin-top:auto;gap:.8rem}
+.tuning-shop .service-paths .service-tag{font-size:.72rem;letter-spacing:.1em;font-weight:700;color:#914029;margin-bottom:1rem}
+.tuning-shop .service-paths .service-price{font-size:1.8rem;line-height:1.3;font-weight:600;color:var(--ink);margin-bottom:1rem}
+.tuning-shop .service-price small{display:block;font-size:.85rem;font-weight:400;color:var(--muted)}
+.tuning-shop #service-menu,.tuning-shop #standalone-guides{background:#edf0f3}
+.tuning-shop .shop-process{margin:2rem 0 0;padding:1.2rem;border-left:3px solid var(--accent);background:#fff}
+.tuning-shop #tuning-platform-coverage{border-top:1px solid var(--line)}
+@media(max-width:700px){.tuning-shop .service-paths article{padding:1.3rem}.tuning-shop .service-paths article .button{width:100%}}
