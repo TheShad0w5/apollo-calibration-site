@@ -50,3 +50,16 @@
     document.head.append(script);
   }
 })();
+
+// Give existing customers a direct route to leave honest feedback.
+(() => {
+  const footer = document.querySelector('footer nav');
+  if (!footer || footer.querySelector('[data-google-review]')) return;
+  const link = document.createElement('a');
+  link.href = 'https://g.page/r/CfxLTGqJjOFTEBM/review';
+  link.textContent = 'Review Tuned by Keith on Google';
+  link.dataset.googleReview = 'true';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  footer.append(link);
+})();
