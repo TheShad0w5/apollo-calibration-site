@@ -63,3 +63,13 @@
   link.rel = 'noopener noreferrer';
   footer.append(link);
 })();
+
+// Keep customer policies accessible from every shared footer.
+(() => {
+ const footer = document.querySelector('footer nav');
+ if (!footer) return;
+ for (const [href, label] of [['/terms.html', 'Terms & refunds'], ['/privacy.html', 'Privacy']]) {
+  if ([...footer.querySelectorAll('a')].some(a => new URL(a.href).pathname === href)) continue;
+  const a = document.createElement('a'); a.href = href; a.textContent = label; footer.append(a);
+ }
+})();
