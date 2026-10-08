@@ -11,3 +11,42 @@
   box.addEventListener('keydown',event => {if(event.key==='Escape'){event.preventDefault();close();}});
   document.body.append(box);
 })();
+
+// Traffic measurement and inquiry attribution. Never send form contents to analytics.
+(() => {
+  const clean = value => String(value || '').replace(/[^a-zA-Z0-9_ .-]/g, '').slice(0, 100);
+  const query = new URLSearchParams(location.search);
+  let attribution = {};
+  try { attribution = JSON.parse(sessionStorage.getItem('tbk-attribution') || '{}'); } catch {}
+  if (query.has('utm_source')) {
+    attribution = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(key => {
+      if (query.has(key)) attribution[key] = clean(query.get(key));
+    });
+    try { sessionStorage.setItem('tbk-attribution', JSON.stringify(attribution)); } catch {}
+  }
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
+    const values = { ...attribution, inquiry_page: location.pathname };
+    for (const [name, value] of Object.entries(values)) {
+      const field = document.createElement('input');
+      field.type = 'hidden'; field.name = name; field.value = value;
+      form.append(field);
+    }
+  });
+  if (location.hostname !== 'www.tunedbykeith.com' && location.hostname !== 'tunedbykeith.com') return;
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  window.va('beforeSend', event => {
+    const url = new URL(event.url);
+    const tags = new URLSearchParams();
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(key => {
+      if (url.searchParams.has(key)) tags.set(key, clean(url.searchParams.get(key)));
+    });
+    url.search = tags.toString(); url.hash = '';
+    return { ...event, url: url.toString() };
+  });
+  if (!document.querySelector('script[src="/_vercel/insights/script.js"]')) {
+    const script = document.createElement('script');
+    script.src = '/_vercel/insights/script.js'; script.defer = true;
+    document.head.append(script);
+  }
+})();
