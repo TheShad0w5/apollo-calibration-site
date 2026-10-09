@@ -86,3 +86,10 @@
   const a = document.createElement('a'); a.href = href; a.textContent = label; footer.append(a);
  }
 })();
+
+// Load optional measurement and the inquiry return flow.
+(() => {
+ const script = document.createElement('script');
+ script.src = '/site-measurement.js'; script.defer = true;
+ document.head.append(script);
+})();
