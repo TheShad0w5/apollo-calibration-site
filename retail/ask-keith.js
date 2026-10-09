@@ -25,8 +25,21 @@
     });
     try { sessionStorage.setItem('tbk-attribution', JSON.stringify(attribution)); } catch {}
   }
+  // Keep the first landing page and most recent service guide with the inquiry.
+  // Store only known public paths, never query strings, fragments or form values.
+  const knownPages = new Set(["/","/about-keith-fields.html","/cobb-custom-tuning.html","/dyno-tuning/","/build-examples.html","/2024-wrx-cinderelli-e70.html","/2019-sti-bcp-turbo-93-octane.html","/prepare-for-tuning-consultation.html","/tuning-glossary.html","/shop.html","/cobb-green-speed.html","/lucas-bamford-2018-sti-emtron.html","/keith-fields-white-2015-sti.html","/2022-plus-wrx-etuning.html","/2015-2021-wrx-etuning.html","/ej-wrx-sti-etuning.html","/emtron-tuning.html","/haltech-tuning.html","/motec-tuning.html","/link-ecu-tuning.html","/ecutek-brz-tuning.html","/ecutek-tuning.html","/porsche-tuning.html","/subaru-wrx-sti-tuning.html","/standalone-ecu-tuning.html","/media.html","/terms.html","/privacy.html","/vr30-ecutek-tuning.html"]);
+  const servicePages = new Set(["/cobb-custom-tuning.html","/dyno-tuning/","/2022-plus-wrx-etuning.html","/2015-2021-wrx-etuning.html","/ej-wrx-sti-etuning.html","/emtron-tuning.html","/haltech-tuning.html","/motec-tuning.html","/link-ecu-tuning.html","/ecutek-brz-tuning.html","/ecutek-tuning.html","/porsche-tuning.html","/subaru-wrx-sti-tuning.html","/standalone-ecu-tuning.html","/vr30-ecutek-tuning.html"]);
+  let journey = {};
+  try {
+    const saved = JSON.parse(sessionStorage.getItem('tbk-journey') || '{}');
+    if (saved && knownPages.has(saved.landing_page)) journey.landing_page = saved.landing_page;
+    if (saved && servicePages.has(saved.service_page)) journey.service_page = saved.service_page;
+  } catch {}
+  if (!journey.landing_page && knownPages.has(location.pathname)) journey.landing_page = location.pathname;
+  if (servicePages.has(location.pathname)) journey.service_page = location.pathname;
+  try { sessionStorage.setItem('tbk-journey', JSON.stringify(journey)); } catch {}
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
-    const values = { ...attribution, inquiry_page: location.pathname };
+    const values = { ...attribution, ...journey, inquiry_page: location.pathname };
     for (const [name, value] of Object.entries(values)) {
       const field = document.createElement('input');
       field.type = 'hidden'; field.name = name; field.value = value;
