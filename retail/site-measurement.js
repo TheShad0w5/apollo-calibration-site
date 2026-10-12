@@ -4,6 +4,15 @@
   const id = 'G-NTVQD1HRNV';
   const key = 'tbk-analytics-choice';
   const pendingKey = 'tbk-inquiry-pending';
+  // Explicit QA sessions use separate event names and mark form submissions.
+  const testKey = 'tbk-measurement-test';
+  const testOption = new URLSearchParams(location.search).get('tbk_test');
+  let isTest = testOption === '1';
+  try {
+    if (testOption === '1') sessionStorage.setItem(testKey, '1');
+    if (testOption === '0') sessionStorage.removeItem(testKey);
+    isTest = sessionStorage.getItem(testKey) === '1';
+  } catch {}
   let choice = '';
   try { choice = localStorage.getItem(key) || ''; } catch {}
   const privacySignal = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
@@ -15,7 +24,7 @@
   try { referrer = new URL(document.referrer).origin + '/'; } catch {}
   const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title});
   function event(name, params = {}) {
-    if (choice === 'yes' && started) tag('event', name, {...page(), ...params});
+    if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...params});
   }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
@@ -92,6 +101,11 @@
       next.value = 'https://www.tunedbykeith.com/inquiry-received.html';
       form.append(next);
     }
+    if (isTest) {
+      const marker = document.createElement('input');
+      marker.type = 'hidden'; marker.name = 'website_test'; marker.value = 'YES - exclude from customer leads';
+      form.append(marker);
+    }
     form.addEventListener('submit', () => {
       try { sessionStorage.setItem(pendingKey, String(Date.now())); } catch {}
       event('inquiry_start', {form_name:'website_inquiry'});
@@ -103,6 +117,8 @@
     let url; try { url = new URL(link.href); } catch { return; }
     const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
     if (channel) event('contact_click', {contact_method:channel});
+    const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
+    if (url.origin === location.origin && guides.has(url.pathname)) event('guide_download', {guide_path:url.pathname});
   });
   start();
 })();
