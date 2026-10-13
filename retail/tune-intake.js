@@ -14,7 +14,7 @@
     form.elements.tuning_interest.value = supportedServices[service];
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
     const vehicle = query.get('vehicle');
-    if (vehicle) form.elements.vehicle.value = vehicle.slice(0, 200);
+    if (vehicle) form.elements.vehicle.placeholder = 'Exact year and model — ' + vehicle.slice(0, 200);
     const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : query.get('platform');
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
     if (service === 'ecutek') {
