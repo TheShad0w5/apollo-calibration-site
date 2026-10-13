@@ -2,12 +2,17 @@
   const form = document.getElementById('tune-intake');
   if (!form) return;
   const query = new URLSearchParams(location.search);
-  if (query.get('service') === 'etune') {
-    form.elements.tuning_interest.value = 'Custom e-tune — $400 for most setups';
+  const service = query.get('service');
+  const supportedServices = {
+    etune: 'Custom e-tune — $400 for most setups',
+    ecutek: 'EcuTek tuning / package — individual quote'
+  };
+  if (Object.hasOwn(supportedServices, service)) {
+    form.elements.tuning_interest.value = supportedServices[service];
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
     const vehicle = query.get('vehicle');
     if (vehicle) form.elements.vehicle.value = vehicle.slice(0, 200);
-    const platform = query.get('platform');
+    const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : query.get('platform');
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
   }
   if (globalThis.crypto?.randomUUID) {
