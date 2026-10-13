@@ -59,10 +59,28 @@
   document.querySelectorAll('[data-base-map]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = 'Base map service — $50';
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+    const context = document.getElementById('inquiry-service-context');
+    if (context) { context.textContent = 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'; context.hidden = false; }
+  }));
+  document.querySelectorAll('[data-ecu-package]').forEach(link => link.addEventListener('click', () => {
+    form.elements.tuning_interest.value = supportedServices.package;
+    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+    form.elements.platform.value = 'Help choosing';
+    const context = document.getElementById('inquiry-service-context');
+    if (context) { context.textContent = 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'; context.hidden = false; }
+  }));
+  document.querySelectorAll('[data-open-source]').forEach(link => link.addEventListener('click', () => {
+    form.elements.tuning_interest.value = supportedServices.etune;
+    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+    form.elements.platform.value = 'Open source / unsure which tools';
+    const context = document.getElementById('inquiry-service-context');
+    if (context) { context.textContent = 'Open-source setup review: include your ECU/ROM and interface if known. EcuFlash, RomRaider and Atlas compatibility is checked for your vehicle before a quote.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-etune]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = 'Custom e-tune — $400 for most setups';
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+    const context = document.getElementById('inquiry-service-context');
+    if (context) { context.textContent = 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'; context.hidden = false; }
   }));
   const otsInterests = {
     va: '2015–2021 WRX OTS map — $150',
