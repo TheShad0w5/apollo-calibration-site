@@ -8,7 +8,7 @@
     },
     {
       "source": "/remote-calibration-support.html",
-      "destination": "/remote-calibration-support/",
+      "destination": "https://www.acalibrations.com/remote-calibration-support/",
       "permanent": true
     },
     {
@@ -18,22 +18,22 @@
     },
     {
       "source": "/ecu-calibration-support/index.html",
-      "destination": "/ecu-calibration-support/",
+      "destination": "https://www.acalibrations.com/ecu-calibration-support/",
       "permanent": true
     },
     {
       "source": "/remote-calibration-support/index.html",
-      "destination": "/remote-calibration-support/",
+      "destination": "https://www.acalibrations.com/remote-calibration-support/",
       "permanent": true
     },
     {
       "source": "/standalone-ecu-support/index.html",
-      "destination": "/standalone-ecu-support/",
+      "destination": "https://www.acalibrations.com/standalone-ecu-support/",
       "permanent": true
     },
     {
       "source": "/trackside-support/index.html",
-      "destination": "/trackside-support/",
+      "destination": "https://www.acalibrations.com/trackside-support/",
       "permanent": true
     },
     {
