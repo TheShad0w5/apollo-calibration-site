@@ -24,6 +24,13 @@
   try { referrer = new URL(document.referrer).origin + '/'; } catch {}
   // FormSubmit is a workflow return, not a new acquisition source.
   const formReturn = referrer === 'https://formsubmit.co/' || referrer === 'https://www.formsubmit.co/';
+  // Keep deliberate campaign labels while excluding arbitrary query strings.
+  const campaign = {};
+  const query = new URLSearchParams(location.search);
+  for (const [param, field] of Object.entries({utm_source:'campaign_source', utm_medium:'campaign_medium', utm_campaign:'campaign_name', utm_content:'campaign_content'})) {
+    const value = query.get(param) || '';
+    if (/^[a-zA-Z0-9_.-]{1,100}$/.test(value)) campaign[field] = value;
+  }
   const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
   function event(name, params = {}) {
     if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...params});
@@ -44,7 +51,7 @@
     window['ga-disable-' + id] = false;
     tag('consent', 'default', {analytics_storage:'granted', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
     tag('js', new Date());
-    tag('config', id, {...page(), send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false});
+    tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false});
     const script = document.createElement('script');
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
@@ -97,6 +104,12 @@
     footer.append(settings);
   }
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
+    let engaged = false;
+    form.addEventListener('input', () => {
+      if (engaged || choice !== 'yes' || !started) return;
+      engaged = true;
+      event('inquiry_form_engaged', {form_name:'website_inquiry'});
+    });
     if (!form.querySelector('input[name="_next"]')) {
       const next = document.createElement('input');
       next.type = 'hidden'; next.name = '_next';
@@ -121,7 +134,11 @@
     if (channel) event('contact_click', {contact_method:channel});
     const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
     if (url.origin === location.origin && guides.has(url.pathname)) event('guide_download', {guide_path:url.pathname});
+    if (url.origin === location.origin && ['/shop.html', '/', '/index.html'].includes(url.pathname) && ['#request', '#inquiry-form', '#contact'].includes(url.hash)) {
+      event('inquiry_cta_click', {destination_path:url.pathname, destination_section:url.hash.slice(1)});
+    }
   });
   start();
 })();
+
 

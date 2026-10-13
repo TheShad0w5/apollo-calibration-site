@@ -1,3 +1,34 @@
+// Progressive enhancement: all links remain visible when JavaScript is unavailable.
+(() => {
+  const header = document.querySelector('body > header');
+  const nav = header && header.querySelector('nav');
+  const services = document.querySelector('body > .service-nav');
+  if (!header || !nav || document.getElementById('tbk-menu-toggle')) return;
+  nav.id = nav.id || 'tbk-main-navigation';
+  if (services) services.id = services.id || 'tbk-service-navigation';
+  const button = document.createElement('button');
+  button.id = 'tbk-menu-toggle'; button.type = 'button'; button.textContent = 'Menu';
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-controls', [nav.id, services && services.id].filter(Boolean).join(' '));
+  const setOpen = open => {
+    document.body.classList.toggle('tbk-menu-open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? 'Close menu' : 'Menu';
+  };
+  button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  header.insertBefore(button, nav);
+  const closeOnLink = e => { if (e.target.closest('a[href]')) setOpen(false); };
+  nav.addEventListener('click', closeOnLink);
+  if (services) services.addEventListener('click', closeOnLink);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') { setOpen(false); button.focus(); }
+  });
+  const style = document.createElement('style');
+  style.textContent = '#tbk-menu-toggle{display:none}@media(max-width:700px){body.tbk-mobile-nav>header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-block:1rem}body.tbk-mobile-nav>header>.brand{max-width:calc(100% - 115px);font-size:1.2rem}#tbk-menu-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:70px;padding:.65rem .8rem;border:1px solid #59616b;border-radius:4px;background:#fff;color:#111720;font:600 .9rem/1.2 sans-serif}body.tbk-mobile-nav:not(.tbk-menu-open)>header>nav,body.tbk-mobile-nav:not(.tbk-menu-open)>.service-nav{display:none}body.tbk-mobile-nav.tbk-menu-open>header>nav{display:flex;flex-direction:column;align-items:stretch;width:100%;gap:0}body.tbk-mobile-nav.tbk-menu-open>header>nav>a{display:block;min-height:44px;padding:.65rem 0}body.tbk-mobile-nav.tbk-menu-open>header>nav>a.button{padding:.8rem;max-width:none}body.tbk-mobile-nav.tbk-menu-open>.service-nav{display:grid;grid-template-columns:1fr 1fr;gap:.25rem 1rem}body.tbk-mobile-nav>.service-nav>a{min-height:44px;display:flex!important;align-items:center}}';
+  document.head.append(style);
+  document.body.classList.add('tbk-mobile-nav');
+})();
+
 (() => {
   if (document.getElementById('ask-keith')) return;
   const style = document.createElement('style');
@@ -93,3 +124,4 @@
  script.src = '/site-measurement.js'; script.defer = true;
  document.head.append(script);
 })();
+
