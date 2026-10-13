@@ -6,7 +6,9 @@
   const supportedServices = {
     etune: 'Custom e-tune — $400 for most setups',
     ecutek: 'EcuTek tuning / package — individual quote',
-    porsche: 'Porsche tuning / project — quote after setup review'
+    porsche: 'Porsche tuning / project — quote after setup review',
+    standalone: 'Standalone ECU tuning — individual quote',
+    package: 'ECU sales / complete package — individual quote'
   };
   if (Object.hasOwn(supportedServices, service)) {
     form.elements.tuning_interest.value = supportedServices[service];
@@ -20,6 +22,13 @@
       const context = document.getElementById('inquiry-service-context');
       if (context) {
         context.textContent = 'Porsche setup review: include your exact model year, model and transmission. Scope and pricing are confirmed after review.';
+        context.hidden = false;
+      }
+    }
+    if (service === 'standalone' || service === 'package') {
+      const context = document.getElementById('inquiry-service-context');
+      if (context) {
+        context.textContent = 'Standalone project review: include your exact ECU model, engine specification, current running condition and location. Equipment, calibration and travel are scoped before a quote.';
         context.hidden = false;
       }
     }
