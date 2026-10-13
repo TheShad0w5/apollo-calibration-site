@@ -5,7 +5,8 @@
   const service = query.get('service');
   const supportedServices = {
     etune: 'Custom e-tune — $400 for most setups',
-    ecutek: 'EcuTek tuning / package — individual quote'
+    ecutek: 'EcuTek tuning / package — individual quote',
+    porsche: 'Porsche tuning / project — quote after setup review'
   };
   if (Object.hasOwn(supportedServices, service)) {
     form.elements.tuning_interest.value = supportedServices[service];
@@ -14,6 +15,14 @@
     if (vehicle) form.elements.vehicle.value = vehicle.slice(0, 200);
     const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : query.get('platform');
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
+    if (service === 'porsche') {
+      form.elements.vehicle.placeholder = 'Year and model, e.g. 2018 Porsche 911 Turbo S';
+      const context = document.getElementById('inquiry-service-context');
+      if (context) {
+        context.textContent = 'Porsche setup review: include your exact model year, model and transmission. Scope and pricing are confirmed after review.';
+        context.hidden = false;
+      }
+    }
   }
   if (globalThis.crypto?.randomUUID) {
     const reference = 'TBK-' + new Date().toISOString().slice(0,10).replaceAll('-','') + '-' + crypto.randomUUID().toUpperCase();
