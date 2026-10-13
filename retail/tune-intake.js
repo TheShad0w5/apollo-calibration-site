@@ -4,6 +4,7 @@
   const query = new URLSearchParams(location.search);
   const service = query.get('service');
   const supportedServices = {
+    cobb: 'COBB custom tuning — quote after setup review',
     etune: 'Custom e-tune — $400 for most setups',
     ecutek: 'EcuTek tuning / package — individual quote',
     porsche: 'Porsche tuning / project — quote after setup review',
@@ -15,7 +16,7 @@
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
     const vehicle = query.get('vehicle');
     if (vehicle) form.elements.vehicle.placeholder = 'Exact year and model — ' + vehicle.slice(0, 200);
-    const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : query.get('platform');
+    const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : service === 'cobb' ? 'COBB Accessport' : query.get('platform');
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
     if (service === 'ecutek') {
       const applications = {
@@ -28,6 +29,10 @@
         form.elements.vehicle.placeholder = applications[application].placeholder;
         if (context) { context.textContent = applications[application].text; context.hidden = false; }
       }
+    }
+    if (service === 'cobb') {
+      const context = document.getElementById('inquiry-service-context');
+      if (context) { context.textContent = 'COBB setup review: include your exact year, model, engine, transmission, market and Accessport details if known. Compatibility, scope and price are confirmed before payment.'; context.hidden = false; }
     }
     if (service === 'porsche') {
       form.elements.vehicle.placeholder = 'Year and model, e.g. 2018 Porsche 911 Turbo S';
