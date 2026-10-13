@@ -17,6 +17,18 @@
     if (vehicle) form.elements.vehicle.value = vehicle.slice(0, 200);
     const platform = service === 'ecutek' ? 'EcuTek — BRZ / Nissan / Infiniti / Toyota GR' : query.get('platform');
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
+    if (service === 'ecutek') {
+      const applications = {
+        vr30: {placeholder:'Year, model and trim, e.g. 2018 Infiniti Q50 Red Sport',text:'VR30 EcuTek review: include your year, model, trim, transmission, fuel and modifications. Interface, licensing, compatibility and revision scope are confirmed before a quote.'},
+        brz: {placeholder:'Year and model, e.g. 2024 Toyota GR86',text:'BRZ / GR86 EcuTek review: include your model year, transmission, fuel and modifications. Tell me whether you need tuning only or a hardware package.'}
+      };
+      const application = query.get('application');
+      const context = document.getElementById('inquiry-service-context');
+      if (Object.hasOwn(applications, application)) {
+        form.elements.vehicle.placeholder = applications[application].placeholder;
+        if (context) { context.textContent = applications[application].text; context.hidden = false; }
+      }
+    }
     if (service === 'porsche') {
       form.elements.vehicle.placeholder = 'Year and model, e.g. 2018 Porsche 911 Turbo S';
       const context = document.getElementById('inquiry-service-context');
