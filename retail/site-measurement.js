@@ -22,7 +22,9 @@
   function tag() { window.dataLayer.push(arguments); }
   let referrer = '';
   try { referrer = new URL(document.referrer).origin + '/'; } catch {}
-  const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title});
+  // FormSubmit is a workflow return, not a new acquisition source.
+  const formReturn = referrer === 'https://formsubmit.co/' || referrer === 'https://www.formsubmit.co/';
+  const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
   function event(name, params = {}) {
     if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...params});
   }
