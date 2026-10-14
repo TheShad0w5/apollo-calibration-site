@@ -14,7 +14,7 @@
   };
   if (Object.hasOwn(supportedServices, service)) {
     form.elements.tuning_interest.value = supportedServices[service];
-    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+
     if (service === 'road') {
       const context = document.getElementById('inquiry-service-context');
       if (context) { context.textContent = 'Orange County road / dyno tuning: include your city, preferred dates, vehicle, fuel and modifications. For road tuning, plan to leave the car for the day and arrange transportation. If you have a dyno location arranged, include its name, location and dyno type. Scope, price and session arrangements are confirmed before booking.'; context.hidden = false; }
@@ -63,34 +63,30 @@
   }
   document.querySelectorAll('[data-base-map]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = 'Base map service — $50';
-    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-ecu-package]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = supportedServices.package;
-    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+
     form.elements.platform.value = 'Help choosing';
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-open-source]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = supportedServices.etune;
-    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+
     form.elements.platform.value = 'Open source / unsure which tools';
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'Open-source setup review: include your ECU/ROM and interface if known. EcuFlash, RomRaider and Atlas compatibility is checked for your vehicle before a quote.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-etune]').forEach(link => link.addEventListener('click', () => {
     form.elements.tuning_interest.value = 'Custom e-tune — $400 for most setups';
-    form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
+
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'; context.hidden = false; }
   }));
-  const otsInterests = {
-    va: '2015–2021 WRX OTS map — $150',
-    vb: '2022+ WRX OTS map — $150'
-  };
   // Manual selections must not retain guidance from a previous landing page.
   const serviceGuidance = new Map([
     [supportedServices.road, 'Orange County road / dyno tuning: include your city, preferred dates, vehicle, fuel and modifications. For road tuning, plan to leave the car for the day and arrange transportation. If you have a dyno location arranged, include its name, location and dyno type. Scope, price and session arrangements are confirmed before booking.'],
@@ -101,8 +97,8 @@
     [supportedServices.standalone, 'Standalone project review: include your exact ECU model, engine specification, current running condition and location. Equipment, calibration and travel are scoped before a quote.'],
     [supportedServices.package, 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'],
     ['Base map service — $50', 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'],
-    [otsInterests.va, '2015–2021 WRX OTS inquiry: maps are planned. Send your exact model year, fuel and hardware combination for availability and compatibility review before payment.'],
-    [otsInterests.vb, '2022+ WRX OTS inquiry: maps are planned. Send your exact model year, fuel and hardware combination for availability and compatibility review before payment.']
+
+
   ]);
   function updateServiceGuidance() {
     const context = document.getElementById('inquiry-service-context');
@@ -113,13 +109,5 @@
     form.elements.vehicle.placeholder = 'Exact year, make and model';
   }
   form.elements.tuning_interest.addEventListener('change', updateServiceGuidance);
-  document.querySelectorAll('[data-ots]').forEach(link => link.addEventListener('click', () => {
-    const interest = otsInterests[link.dataset.ots];
-    if (!interest) return;
-    form.elements.tuning_interest.value = interest;
-    updateServiceGuidance();
-    if (form.elements.hardware_package.value === 'Other / custom e-tune / unsure') {
-      form.elements.hardware_package.value = '';
-    }
-  }));
+
 })();
