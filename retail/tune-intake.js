@@ -4,7 +4,7 @@
   const query = new URLSearchParams(location.search);
   const service = query.get('service');
   const supportedServices = {
-    road: 'Orange County road tuning — individual quote',
+    road: 'Orange County road / dyno tuning — individual quote',
     cobb: 'COBB custom tuning — quote after setup review',
     etune: 'Custom e-tune — $400 for most setups',
     ecutek: 'EcuTek tuning / package — individual quote',
@@ -17,7 +17,7 @@
     form.elements.hardware_package.value = 'Other / custom e-tune / unsure';
     if (service === 'road') {
       const context = document.getElementById('inquiry-service-context');
-      if (context) { context.textContent = 'Orange County road tuning: include your city, preferred dates, vehicle, fuel and modifications. Advance coordination is required; plan to leave the car for the day and arrange transportation. Scope, price and handover details are confirmed before booking.'; context.hidden = false; }
+      if (context) { context.textContent = 'Orange County road / dyno tuning: include your city, preferred dates, vehicle, fuel and modifications. For road tuning, plan to leave the car for the day and arrange transportation. If you have a dyno location arranged, include its name, location and dyno type. Scope, price and session arrangements are confirmed before booking.'; context.hidden = false; }
     }
     const vehicle = query.get('vehicle');
     if (vehicle) form.elements.vehicle.placeholder = 'Exact year and model — ' + vehicle.slice(0, 200);
@@ -93,7 +93,7 @@
   };
   // Manual selections must not retain guidance from a previous landing page.
   const serviceGuidance = new Map([
-    [supportedServices.road, 'Orange County road tuning: include your city, preferred dates, vehicle, fuel and modifications. Advance coordination is required; plan to leave the car for the day and arrange transportation. Scope, price and handover details are confirmed before booking.'],
+    [supportedServices.road, 'Orange County road / dyno tuning: include your city, preferred dates, vehicle, fuel and modifications. For road tuning, plan to leave the car for the day and arrange transportation. If you have a dyno location arranged, include its name, location and dyno type. Scope, price and session arrangements are confirmed before booking.'],
     [supportedServices.cobb, 'COBB setup review: include your exact year, model, engine, transmission, market and Accessport details if known. Compatibility, scope and price are confirmed before payment.'],
     [supportedServices.etune, 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'],
     [supportedServices.ecutek, 'EcuTek setup review: include your exact vehicle, transmission, fuel, modifications and any interface or license you already own. Compatibility, equipment and revision scope are confirmed before a quote.'],
