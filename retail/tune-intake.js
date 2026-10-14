@@ -86,10 +86,32 @@
     va: '2015–2021 WRX OTS map — $150',
     vb: '2022+ WRX OTS map — $150'
   };
+  // Manual selections must not retain guidance from a previous landing page.
+  const serviceGuidance = new Map([
+    [supportedServices.cobb, 'COBB setup review: include your exact year, model, engine, transmission, market and Accessport details if known. Compatibility, scope and price are confirmed before payment.'],
+    [supportedServices.etune, 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'],
+    [supportedServices.ecutek, 'EcuTek setup review: include your exact vehicle, transmission, fuel, modifications and any interface or license you already own. Compatibility, equipment and revision scope are confirmed before a quote.'],
+    [supportedServices.porsche, 'Porsche setup review: include your exact model year, model and transmission. Scope and pricing are confirmed after review.'],
+    [supportedServices.standalone, 'Standalone project review: include your exact ECU model, engine specification, current running condition and location. Equipment, calibration and travel are scoped before a quote.'],
+    [supportedServices.package, 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'],
+    ['Base map service — $50', 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'],
+    [otsInterests.va, '2015–2021 WRX OTS inquiry: maps are planned. Send your exact model year, fuel and hardware combination for availability and compatibility review before payment.'],
+    [otsInterests.vb, '2022+ WRX OTS inquiry: maps are planned. Send your exact model year, fuel and hardware combination for availability and compatibility review before payment.']
+  ]);
+  function updateServiceGuidance() {
+    const context = document.getElementById('inquiry-service-context');
+    if (context) {
+      context.textContent = serviceGuidance.get(form.elements.tuning_interest.value) || '';
+      context.hidden = !context.textContent;
+    }
+    form.elements.vehicle.placeholder = 'Exact year, make and model';
+  }
+  form.elements.tuning_interest.addEventListener('change', updateServiceGuidance);
   document.querySelectorAll('[data-ots]').forEach(link => link.addEventListener('click', () => {
     const interest = otsInterests[link.dataset.ots];
     if (!interest) return;
     form.elements.tuning_interest.value = interest;
+    updateServiceGuidance();
     if (form.elements.hardware_package.value === 'Other / custom e-tune / unsure') {
       form.elements.hardware_package.value = '';
     }
