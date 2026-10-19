@@ -125,3 +125,16 @@
  document.head.append(script);
 })();
 
+
+
+// Carry a known build reference into the inquiry email without copying user input.
+(() => {
+ const form = document.getElementById('inquiry-form');
+ if (!form || !['/porsche-tuning.html','/subaru-wrx-sti-tuning.html'].includes(location.pathname)) return;
+ const labels = {'911-cobb':'911 Turbo S / COBB results','macan-cobb':'Macan GTS / COBB','964-kinsler':'964 / Kinsler engine projects','james-wrx':'James’s WRX development','lucas-sti':'Lucas’s Emtron STI','cinderelli-wrx':'Cinderelli FA24 WRX','keith-sti':'Keith’s 2015 STI','2019-sti':'2019 STI / BCP turbo'};
+ const key = new URLSearchParams(location.search).get('build');
+ if (!Object.hasOwn(labels,key)) return;
+ const note = document.createElement('p'); note.className = 'form-note'; note.textContent = 'Build that brought you here: ' + labels[key] + '. Tell me about your own car below.';
+ form.prepend(note);
+ const field = document.createElement('input'); field.type = 'hidden'; field.name = 'build_source'; field.value = labels[key]; form.append(field);
+})();

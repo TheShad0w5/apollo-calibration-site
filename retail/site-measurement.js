@@ -32,17 +32,22 @@
     if (/^[a-zA-Z0-9_.-]{1,100}$/.test(value)) campaign[field] = value;
   }
   const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
+  const inquiryPages = new Set(['/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
+  const builds = new Set(['911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti']);
+  const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
+  const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
   function event(name, params = {}) {
     if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...params});
   }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
     let pending;
-    try { pending = Number(sessionStorage.getItem(pendingKey)); } catch { return; }
-    if (!pending || Date.now() - pending > 60 * 60 * 1000 || pending > Date.now()) return;
+    try { pending = JSON.parse(sessionStorage.getItem(pendingKey) || 'null'); } catch { return; }
+    const time = typeof pending === 'number' ? pending : pending?.time;
+    if (!time || Date.now() - time > 60 * 60 * 1000 || time > Date.now()) return;
     try { sessionStorage.removeItem(pendingKey); } catch { return; }
     // A return from the form workflow, not proof of email delivery or a paid order.
-    event('inquiry_confirmation', {form_name: 'website_inquiry'});
+    event('inquiry_confirmation', {form_name: 'website_inquiry', ...(inquiryPages.has(pending.inquiry_page) ? {inquiry_page:pending.inquiry_page} : {}), ...(builds.has(pending.build_source) ? {build_source:pending.build_source} : {})});
   }
   function start() {
     if (choice !== 'yes' || privacySignal) return;
@@ -108,7 +113,7 @@
     form.addEventListener('input', () => {
       if (engaged || choice !== 'yes' || !started) return;
       engaged = true;
-      event('inquiry_form_engaged', {form_name:'website_inquiry'});
+      event('inquiry_form_engaged', {form_name:'website_inquiry', ...context});
     });
     if (!form.querySelector('input[name="_next"]')) {
       const next = document.createElement('input');
@@ -122,8 +127,8 @@
       form.append(marker);
     }
     form.addEventListener('submit', () => {
-      try { sessionStorage.setItem(pendingKey, String(Date.now())); } catch {}
-      event('inquiry_start', {form_name:'website_inquiry'});
+      try { sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), ...context})); } catch {}
+      event('inquiry_start', {form_name:'website_inquiry', ...context});
     });
   });
   document.addEventListener('click', e => {
@@ -134,9 +139,10 @@
     if (channel) event('contact_click', {contact_method:channel});
     const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
     if (url.origin === location.origin && guides.has(url.pathname)) event('guide_download', {guide_path:url.pathname});
-    if (url.origin === location.origin && ['/shop.html', '/', '/index.html'].includes(url.pathname) && ['#request', '#inquiry-form', '#contact'].includes(url.hash)) {
-      event('inquiry_cta_click', {destination_path:url.pathname, destination_section:url.hash.slice(1)});
+    if (url.origin === location.origin && inquiryPages.has(url.pathname) && ['#request', '#inquiry-form', '#contact', '#ask-about-setup'].includes(url.hash)) {
+      event('inquiry_cta_click', {destination_path:url.pathname, destination_section:url.hash.slice(1), ...(builds.has(url.searchParams.get('build')) ? {build_source:url.searchParams.get('build')} : {})});
     }
+    if (url.origin === location.origin && link.closest?.('.vehicle-choices')) event('vehicle_option_click', {destination_path:url.pathname, destination_section:url.hash.slice(1)});
   });
   start();
 })();
