@@ -25,7 +25,6 @@
     if ([...form.elements.platform.options].some(option => option.value === platform)) form.elements.platform.value = platform;
     if (service === 'ecutek') {
       const applications = {
-        vr30: {placeholder:'Year, model and trim, e.g. 2018 Infiniti Q50 Red Sport',text:'VR30 EcuTek review: include your year, model, trim, transmission, fuel and modifications. Interface, licensing, compatibility and revision scope are confirmed before a quote.'},
         brz: {placeholder:'Year and model, e.g. 2024 Toyota GR86',text:'BRZ / GR86 EcuTek review: include your model year, transmission, fuel and modifications. Tell me whether you need tuning only or a hardware package.'}
       };
       const application = query.get('application');
