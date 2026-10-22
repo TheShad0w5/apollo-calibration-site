@@ -4,12 +4,21 @@
   const query = new URLSearchParams(location.search);
   const service = query.get('service');
   const supportedServices = {
+"ap-single": "Single-fuel AP tune — $400",
+"ap-flex": "Flex-fuel AP tune — $600",
+"standalone-single": "Standalone single-fuel tune — $500",
+"standalone-flex": "Standalone flex-fuel tune — $750",
+"ap-single-retune": "Single-fuel AP retune — $200",
+"ap-flex-retune": "Flex-fuel AP retune — $300",
+"standalone-single-retune": "Standalone single-fuel retune — $250",
+"standalone-flex-retune": "Standalone flex-fuel retune — $500",
+"base-map": "Base map — $50",
     road: 'Orange County road / dyno tuning — individual quote',
     cobb: 'COBB custom tuning — quote after setup review',
-    etune: 'Custom e-tune — $400 for most setups',
+    etune: 'Single-fuel AP tune — $400',
     ecutek: 'EcuTek tuning / package — individual quote',
     porsche: 'Porsche tuning / project — quote after setup review',
-    standalone: 'Standalone ECU tuning — individual quote',
+    standalone: 'Standalone project / additional work — individual quote',
     package: 'ECU sales / complete package — individual quote'
   };
   if (Object.hasOwn(supportedServices, service)) {
@@ -61,7 +70,7 @@
     form.elements._subject.value = 'Tuned by Keith setup review — ' + reference;
   }
   document.querySelectorAll('[data-base-map]').forEach(link => link.addEventListener('click', () => {
-    form.elements.tuning_interest.value = 'Base map service — $50';
+    form.elements.tuning_interest.value = 'Base map — $50';
 
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'; context.hidden = false; }
@@ -74,28 +83,28 @@
     if (context) { context.textContent = 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-open-source]').forEach(link => link.addEventListener('click', () => {
-    form.elements.tuning_interest.value = supportedServices.etune;
+    form.elements.tuning_interest.value = 'Help choosing';
 
     form.elements.platform.value = 'Open source / unsure which tools';
     const context = document.getElementById('inquiry-service-context');
     if (context) { context.textContent = 'Open-source setup review: include your ECU/ROM and interface if known. EcuFlash, RomRaider and Atlas compatibility is checked for your vehicle before a quote.'; context.hidden = false; }
   }));
   document.querySelectorAll('[data-etune]').forEach(link => link.addEventListener('click', () => {
-    form.elements.tuning_interest.value = 'Custom e-tune — $400 for most setups';
+    form.elements.tuning_interest.value = 'Single-fuel AP tune — $400';
 
     const context = document.getElementById('inquiry-service-context');
-    if (context) { context.textContent = 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'; context.hidden = false; }
+    if (context) { context.textContent = 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Ask any compatibility or revision-scope questions before choosing checkout.'; context.hidden = false; }
   }));
   // Manual selections must not retain guidance from a previous landing page.
   const serviceGuidance = new Map([
     [supportedServices.road, 'Orange County road / dyno tuning: include your city, preferred dates, vehicle, fuel and modifications. For road tuning, plan to leave the car for the day and arrange transportation. If you have a dyno location arranged, include its name, location and dyno type. Scope, price and session arrangements are confirmed before booking.'],
     [supportedServices.cobb, 'COBB setup review: include your exact year, model, engine, transmission, market and Accessport details if known. Compatibility, scope and price are confirmed before payment.'],
-    [supportedServices.etune, 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Compatibility and the included revision scope are confirmed before payment.'],
+    [supportedServices.etune, 'Custom e-tune review: send your exact vehicle, modifications, fuel and goals. Ask any compatibility or revision-scope questions before choosing checkout.'],
     [supportedServices.ecutek, 'EcuTek setup review: include your exact vehicle, transmission, fuel, modifications and any interface or license you already own. Compatibility, equipment and revision scope are confirmed before a quote.'],
     [supportedServices.porsche, 'Porsche setup review: include your exact model year, model and transmission. Scope and pricing are confirmed after review.'],
     [supportedServices.standalone, 'Standalone project review: include your exact ECU model, engine specification, current running condition and location. Equipment, calibration and travel are scoped before a quote.'],
     [supportedServices.package, 'ECU package review: tell me about the engine, intended use and equipment you already own. Hardware, installation responsibilities and calibration are quoted for your project.'],
-    ['Base map service — $50', 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'],
+    ['Base map — $50', 'Base map review: a starting calibration for an approved setup and agreed use. Follow-up tuning is scoped separately.'],
 
 
   ]);
