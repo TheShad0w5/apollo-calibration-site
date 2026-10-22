@@ -1,0 +1,49 @@
+/* Shared Tuned by Keith identity. Service content and purchase rules stay independent. */
+:root{--ink:#f4f7fb;--muted:#b6c3d0;--paper:#060e18;--line:#30465b;--accent:#ff6a00;--dark:#0b1b2b;--navy:#0b2a4a}
+body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+.tbk-brand h1,.tbk-brand h2{font-family:inherit;font-weight:800;letter-spacing:-.045em;line-height:1.08}
+.tbk-brand h1{font-size:clamp(2.7rem,5.8vw,5.7rem);max-width:22ch}
+.tbk-brand h2{font-size:clamp(2rem,3.5vw,3.3rem)}
+.tbk-brand h3{font-family:inherit;letter-spacing:-.02em}
+.tbk-brand .hero{background:#060e18;border-bottom:1px solid var(--line)}
+.tbk-brand .hero h1 em{color:var(--accent);font-style:italic}
+.tbk-brand .eyebrow,.tbk-brand .hero .eyebrow,.tbk-brand .service-tag,.tbk-brand .number{color:#ff9952}
+.tbk-brand .hero p,.tbk-brand .hero-bottom p{color:#c1cdda}
+.tbk-brand>header{background:#060e18;border-bottom:1px solid var(--line);padding:1.2rem 6%;gap:1.5rem;flex-wrap:wrap}
+.tbk-brand .brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:13px!important;letter-spacing:2px!important;line-height:1.2;white-space:nowrap;flex-shrink:0}
+.tbk-brand .brand img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none}
+.tbk-brand .brand .brand-wordmark{font-size:12px;letter-spacing:2px;margin:0;display:block;color:white}
+.tbk-brand .brand b{display:block;font-size:26px;letter-spacing:1px}
+.tbk-brand .brand small{display:block;font-size:8px;letter-spacing:1.5px;margin-top:5px}
+.tbk-brand>header>nav{display:flex;flex-wrap:wrap;gap:1rem;justify-content:flex-end}
+.tbk-brand>header>nav>a{display:inline-flex!important;font-size:.85rem;align-items:center;min-height:44px}
+.tbk-brand .service-nav,.tbk-brand .shop-jump-nav{background:#0b1b2b;border-color:var(--line)}
+.tbk-brand .service-nav>a,.tbk-brand .shop-jump-nav a{color:#dbe5f0}
+.tbk-brand .breadcrumbs{color:#b6c3d0;background:#060e18}
+.tbk-brand .button,.tbk-brand button[type=submit]{background:var(--accent);color:#07111e;border-radius:4px;font-weight:800;gap:.7rem;min-height:48px}
+.tbk-brand .button:hover,.tbk-brand button[type=submit]:hover{background:#ff9b53}
+.tbk-brand .section,.tbk-brand .about,.tbk-brand .process,.tbk-brand .platform-section,.tbk-brand .path-finder,.tbk-brand .selected-builds,.tbk-brand #service-menu,.tbk-brand #standalone-guides,.tbk-brand #technical-guides{background:#060e18;color:var(--ink)}
+.tbk-brand .section+.section{border-top:1px solid var(--line)}
+.tbk-brand .service-paths article,.tbk-brand .booking-card,.tbk-brand .vehicle-choices article,.tbk-brand .result-card,.tbk-brand .path-grid article,.tbk-brand .build-proof-grid article,.tbk-brand .quick-inquiry form{background:#102338;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:1.6rem;min-width:0}
+.tbk-brand .booking-card.featured{border-top:3px solid var(--accent);background:#0b2a4a}
+.tbk-brand .booking-card h3{font-family:inherit;font-size:1.6rem}
+.tbk-brand .service-paths p,.tbk-brand .booking-card>p:not(.service-price),.tbk-brand .path-grid p,.tbk-brand .result-card p,.tbk-brand .build-proof-note{color:var(--muted)}
+.tbk-brand .result-card .result-value{color:#ff9952}
+.tbk-brand .result-card a:not(.button),.tbk-brand .path-grid a:not(.button){color:#ffb47f}
+.tbk-brand .result-card h3{min-height:0}
+.tbk-brand .story-metrics,.tbk-brand .shop-process,.tbk-brand .draft-notice,.tbk-brand .shop-detail .draft-notice{background:#0b2a4a;color:var(--ink);border-color:var(--accent);border-radius:4px}
+.tbk-brand input,.tbk-brand select,.tbk-brand textarea,.tbk-brand .quick-inquiry input,.tbk-brand .quick-inquiry textarea{background:#0b1b2b;color:#fff;border:1px solid #6c8299;border-radius:4px}
+.tbk-brand input::placeholder,.tbk-brand textarea::placeholder,.tbk-brand .quick-inquiry input::placeholder,.tbk-brand .quick-inquiry textarea::placeholder{color:#aebdcd;opacity:1}
+.tbk-brand .quick-inquiry .form-note,.tbk-brand .quick-inquiry .form-note a,.tbk-brand .form-note{color:#bac9d8}
+.tbk-brand :focus-visible{outline:3px solid #ffaf73;outline-offset:4px}
+.tbk-brand .skip{color:#07111e;background:white}
+.tbk-brand footer{background:#060e18;border-top:1px solid var(--line);align-items:flex-start}
+.tbk-brand footer nav>a{display:inline-block!important;color:#bac9d8}
+.tbk-brand .worldwide-band,.tbk-brand .contact,.tbk-brand .closing{background:#0b1b2b}
+.tbk-brand table{border-color:var(--line)}
+.tbk-brand .journey-links{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;padding:1.25rem 6%;background:#0b2a4a;border-bottom:1px solid var(--line);font-size:.9rem}
+.tbk-brand .journey-links a{text-underline-offset:4px}.tbk-brand .journey-links strong{color:#ffb47f}
+@media(max-width:800px){.tbk-brand>header{padding:1rem 5%}.tbk-brand>header>nav{width:100%;justify-content:flex-start;gap:.2rem 1rem;border-top:1px solid var(--line);padding-top:.6rem}.tbk-brand>header>nav>a{font-size:.8rem}.tbk-brand .brand img{width:48px;height:48px}.tbk-brand h1{font-size:clamp(2.5rem,9vw,4rem)!important}.tbk-brand h2{font-size:clamp(1.8rem,7vw,2.7rem)}.tbk-brand .service-nav{gap:.3rem 1rem}.tbk-brand .service-nav>a{font-size:.8rem}.tbk-brand .service-paths article,.tbk-brand .booking-card,.tbk-brand .vehicle-choices article,.tbk-brand .result-card,.tbk-brand .path-grid article,.tbk-brand .build-proof-grid article{padding:1.3rem}.tbk-brand .journey-links{font-size:.85rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.tbk-brand #tbk-menu-toggle{background:#102338;color:#fff;border:1px solid #6c8299;border-radius:4px}
