@@ -47,3 +47,18 @@ body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-a
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 .tbk-brand #tbk-menu-toggle{background:#102338;color:#fff;border:1px solid #6c8299;border-radius:4px}
+
+/* Shared contact and social presentation, using the same brand tokens as CTAs. */
+.tbk-brand #ask-keith{font-family:inherit;color:var(--ink)}
+.tbk-brand #ask-keith summary{background:var(--accent);color:#07111e;border:1px solid var(--accent);border-radius:4px}
+.tbk-brand #ask-keith summary:hover,.tbk-brand #ask-keith .ask-link:hover{background:#ff9b53}
+.tbk-brand #ask-keith .ask-panel{background:var(--dark);color:var(--ink);border:1px solid var(--line);border-radius:8px}
+.tbk-brand #ask-keith h2{font:800 24px/1.2 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:-.02em}
+.tbk-brand #ask-keith .ask-link{background:var(--accent);color:#07111e;border-radius:4px;font-weight:800}
+.tbk-brand #ask-keith .ask-book{background:var(--navy);color:var(--ink);border:1px solid var(--line)}
+.tbk-brand #ask-keith .ask-close{background:var(--navy);color:var(--ink);border-radius:4px}
+.tbk-brand #ask-keith .ask-hours{color:var(--muted)}
+.tbk-brand #ask-keith :focus-visible{outline:3px solid #ffaf73;outline-offset:4px}
+.tbk-social-links{display:flex!important;flex-wrap:wrap;gap:12px;align-items:center;flex-basis:100%;margin-top:20px}
+.tbk-brand footer .tbk-social-links a{display:inline-flex!important;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid var(--line);border-radius:4px;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:0}
+.tbk-brand footer .tbk-social-links a:hover{border-color:var(--accent);color:#ffb47f;background:var(--navy)}
