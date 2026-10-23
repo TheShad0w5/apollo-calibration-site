@@ -81,3 +81,8 @@ body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-a
  .tbk-brand .split-hero .hero-lead{font-size:1rem;line-height:1.65}
  .tbk-brand .split-hero .hero-actions{gap:12px}
 }
+
+/* Historical build and guide panels share the dark surface palette. */
+.tbk-brand .project-facts,.tbk-brand .history-stats,.tbk-brand .lucas-stats div,.tbk-brand .quick-answer,.tbk-brand .guide-note,.tbk-brand th{background:#182638;color:var(--ink);border-color:var(--line)}
+.tbk-brand .project-facts,.tbk-brand .quick-answer,.tbk-brand .guide-note{border-left-color:var(--accent)}
+.tbk-brand .lucas-stats div{border-top-color:var(--accent)}
