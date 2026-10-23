@@ -3,6 +3,9 @@
   if (!['www.tunedbykeith.com', 'tunedbykeith.com'].includes(location.hostname)) return;
   const id = 'G-NTVQD1HRNV';
   const key = 'tbk-analytics-choice';
+  const adsKey = 'tbk-ad-measurement-choice';
+  let adsChoice = '';
+  try { adsChoice = localStorage.getItem(adsKey) || ''; } catch {}
   const pendingKey = 'tbk-inquiry-pending';
   // Explicit QA sessions use separate event names and mark form submissions.
   const testKey = 'tbk-measurement-test';
@@ -16,7 +19,7 @@
   let choice = '';
   try { choice = localStorage.getItem(key) || ''; } catch {}
   const privacySignal = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
-  if (privacySignal) choice = 'no';
+  if (privacySignal) { choice = 'no'; adsChoice = 'no'; }
   let started = false;
   window.dataLayer = window.dataLayer || [];
   function tag() { window.dataLayer.push(arguments); }
@@ -31,7 +34,25 @@
     const value = query.get(param) || '';
     if (/^[a-zA-Z0-9_.-]{1,100}$/.test(value)) campaign[field] = value;
   }
-  const page = () => ({page_location: location.origin + location.pathname, page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
+  // Only an explicit ad-measurement opt-in permits click identifiers. Never forward arbitrary queries.
+  function measuredLocation() {
+    const url = new URL(location.origin + location.pathname);
+    if (choice === 'yes' && adsChoice === 'yes' && !privacySignal && !isTest) {
+      for (const name of ['gclid', 'gbraid', 'wbraid']) {
+        const value = query.get(name) || '';
+        if (/^[A-Za-z0-9_-]{1,256}$/.test(value)) url.searchParams.set(name, value);
+      }
+    }
+    return url.href;
+  }
+  function consentState() {
+    const analytics = choice === 'yes' && !privacySignal;
+    const ads = analytics && adsChoice === 'yes' && !isTest;
+    return {analytics_storage:analytics?'granted':'denied', ad_storage:ads?'granted':'denied',
+      ad_user_data:ads?'granted':'denied', ad_personalization:'denied'};
+  }
+  tag('consent', 'default', {analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
+  const page = () => ({page_location: measuredLocation(), page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
   const inquiryPages = new Set(['/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
   const builds = new Set(['911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti']);
   const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
@@ -65,10 +86,10 @@
   }
   function start() {
     if (choice !== 'yes' || privacySignal) return;
-    if (started) { window['ga-disable-' + id] = false; return; }
+    tag('consent', 'update', consentState());
+    if (started) { window['ga-disable-' + id] = false; tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}); return; }
     started = true;
     window['ga-disable-' + id] = false;
-    tag('consent', 'default', {analytics_storage:'granted', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
     tag('js', new Date());
     tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false});
     const script = document.createElement('script');
@@ -78,10 +99,10 @@
     event('page_view');
     confirmation();
   }
-  function removeCookies() {
+  function removeCookies(adsOnly = false) {
     for (const cookie of document.cookie.split(';')) {
       const name = cookie.split('=')[0].trim();
-      if (!/^_ga(?:_|$)/.test(name)) continue;
+      if (!(adsOnly ? /^_gcl_/.test(name) : /^(_ga(?:_|$)|_gcl_)/.test(name))) continue;
       for (const domain of ['', '; domain=' + location.hostname, '; domain=.tunedbykeith.com']) {
         document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
       }
@@ -92,15 +113,18 @@
   document.head.append(style);
   const panel = document.createElement('section');
   panel.id = 'tbk-analytics-choice';
-  panel.setAttribute('aria-label','Optional analytics');
+  panel.setAttribute('aria-label','Optional website measurement');
   panel.hidden = Boolean(choice);
-  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Allow optional Google Analytics cookies to measure visits and contact actions. Your message contents are not sent. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Allow analytics</button><button type="button" data-choice="no">No thanks</button>';
+  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits and contact actions. Optional ad measurement also uses Google click identifiers and cookies to connect ad visits with inquiries. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
   document.body.append(panel);
   panel.addEventListener('click', e => {
     const button = e.target.closest('button[data-choice]');
     if (!button) return;
-    choice = privacySignal ? 'no' : button.dataset.choice;
-    try { localStorage.setItem(key, choice); } catch {}
+    choice = privacySignal || button.dataset.choice === 'no' ? 'no' : 'yes';
+    adsChoice = !privacySignal && button.dataset.choice === 'ads' ? 'yes' : 'no';
+    try { localStorage.setItem(key, choice); localStorage.setItem(adsKey, adsChoice); } catch {}
+    if (started) tag('consent', 'update', consentState());
+    if (adsChoice !== 'yes') removeCookies(true);
     panel.hidden = true;
     if (choice === 'yes') start();
     else {
@@ -118,6 +142,7 @@
       panel.hidden = false;
       const allow = panel.querySelector('[data-choice="yes"]');
       allow.disabled = privacySignal;
+      panel.querySelector('[data-choice="ads"]').disabled = privacySignal;
       if (privacySignal) allow.textContent = 'Browser privacy signal respected';
       panel.querySelector('[data-choice="no"]').focus();
     });
