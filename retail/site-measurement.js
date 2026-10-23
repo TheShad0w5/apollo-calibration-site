@@ -36,8 +36,22 @@
   const builds = new Set(['911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti']);
   const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
   const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
+
+  const attributionKey='tbk-campaign-attribution';
+  const pageBuilds={'/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-bamford-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-fields-white-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
+  function attribution(){
+    if(choice!=='yes')return {};
+    let saved={};try{saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}')}catch{}
+    const vehicle=/porsche/.test(location.pathname)?'porsche':/wrx|sti|subaru/.test(location.pathname)?'subaru':saved.vehicle;
+    const a={...saved,...(vehicle?{vehicle}:{}),...(sourceBuild||pageBuilds[location.pathname]?{build:sourceBuild||pageBuilds[location.pathname]}:{})};
+    for(const [k,v]of Object.entries(campaign))a[{campaign_source:'source',campaign_medium:'medium',campaign_name:'campaign',campaign_content:'content'}[k]]=v;
+    try{sessionStorage.setItem(attributionKey,JSON.stringify(a))}catch{}
+    return a;
+  }
+  function funnelContext(){const a=attribution();return {...(a.vehicle?{vehicle_group:a.vehicle}:{}),...(a.build?{build_source:a.build}:{}),...(a.campaign?{promotion_campaign:a.campaign}:{})};}
+
   function event(name, params = {}) {
-    if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...params});
+    if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
   }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
@@ -92,6 +106,7 @@
     else {
       window['ga-disable-' + id] = true;
       removeCookies();
+      try{sessionStorage.removeItem(attributionKey)}catch{}
     }
   });
   const footer = document.querySelector('footer nav');
@@ -127,6 +142,7 @@
       form.append(marker);
     }
     form.addEventListener('submit', () => {
+      const a=attribution();for(const [key,value]of Object.entries(a)){let field=form.querySelector('input[name="attribution_'+key+'"]');if(!field){field=document.createElement('input');field.type='hidden';field.name='attribution_'+key;form.append(field)}field.value=value;}
       try { sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), ...context})); } catch {}
       event('inquiry_start', {form_name:'website_inquiry', ...context});
     });
@@ -136,6 +152,13 @@
     if (!link) return;
     let url; try { url = new URL(link.href); } catch { return; }
     const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
+    const checkout = (url.origin===location.origin && url.pathname==='/tune') || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
+    if(checkout&&choice==='yes'){
+      const a=attribution();url.searchParams.set('tbk_consent','1');
+      for(const [k,p]of Object.entries({vehicle:'vehicle',build:'build',source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content'}))if(a[k])url.searchParams.set(p,a[k]);
+      link.href=url.href;
+      event('begin_checkout',{service_id:url.searchParams.get('service')||'unspecified',destination_path:'/shop'});
+    }
     if (channel) event('contact_click', {contact_method:channel});
     const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
     if (url.origin === location.origin && guides.has(url.pathname)) event('guide_download', {guide_path:url.pathname});
