@@ -72,3 +72,12 @@ body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-a
 .tbk-brand .preparation-grid .preparation-readiness{grid-column:1/-1}
 .tbk-brand .preparation-grid a{color:#ffb47f;text-underline-offset:4px}
 @media(max-width:700px){.tbk-brand .preparation-grid{grid-template-columns:1fr}.tbk-brand .preparation-grid .preparation-readiness{grid-column:auto}}
+
+/* Phone inquiry controls and a compact opening screen. */
+@media(max-width:600px){
+ .tbk-brand input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),.tbk-brand select,.tbk-brand textarea{font-size:16px;min-height:48px}
+ .tbk-brand .split-hero{padding-top:28px}
+ .tbk-brand .split-hero h1{margin-bottom:24px}
+ .tbk-brand .split-hero .hero-lead{font-size:1rem;line-height:1.65}
+ .tbk-brand .split-hero .hero-actions{gap:12px}
+}
