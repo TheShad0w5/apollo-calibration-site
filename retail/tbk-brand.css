@@ -62,3 +62,13 @@ body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-a
 .tbk-social-links{display:flex!important;flex-wrap:wrap;gap:12px;align-items:center;flex-basis:100%;margin-top:20px}
 .tbk-brand footer .tbk-social-links a{display:inline-flex!important;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid var(--line);border-radius:4px;color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:0}
 .tbk-brand footer .tbk-social-links a:hover{border-color:var(--accent);color:#ffb47f;background:var(--navy)}
+
+/* Preparation topics share one card system across Subaru generations. */
+.tbk-brand .preparation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.tbk-brand .preparation-grid article{margin:0;padding:clamp(24px,3vw,36px)}
+.tbk-brand .preparation-grid h3{font-size:clamp(1.35rem,2.2vw,1.8rem);line-height:1.2;margin:0 0 20px}
+.tbk-brand .preparation-grid p{max-width:none;line-height:1.7;margin:0 0 16px;color:var(--muted)}
+.tbk-brand .preparation-grid p:last-child{margin-bottom:0}
+.tbk-brand .preparation-grid .preparation-readiness{grid-column:1/-1}
+.tbk-brand .preparation-grid a{color:#ffb47f;text-underline-offset:4px}
+@media(max-width:700px){.tbk-brand .preparation-grid{grid-template-columns:1fr}.tbk-brand .preparation-grid .preparation-readiness{grid-column:auto}}
