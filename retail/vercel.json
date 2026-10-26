@@ -2,13 +2,18 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/tune",
+      "source": "/checkout",
       "destination": "https://tbk-store-production.keith-787.workers.dev/shop#setup",
       "permanent": false
     },
     {
+      "source": "/tune",
+      "destination": "https://tbk-store-production.keith-787.workers.dev/shop?referral=awdtuning-qr#setup",
+      "permanent": false
+    },
+    {
       "source": "/tune/",
-      "destination": "https://tbk-store-production.keith-787.workers.dev/shop#setup",
+      "destination": "https://tbk-store-production.keith-787.workers.dev/shop?referral=awdtuning-qr#setup",
       "permanent": false
     },
     {

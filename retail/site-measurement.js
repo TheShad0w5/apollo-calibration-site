@@ -177,7 +177,7 @@
     if (!link) return;
     let url; try { url = new URL(link.href); } catch { return; }
     const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
-    const checkout = (url.origin===location.origin && url.pathname==='/tune') || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
+    const checkout = (url.origin===location.origin && ['/tune','/checkout'].includes(url.pathname)) || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
     if(checkout&&choice==='yes'){
       const a=attribution();url.searchParams.set('tbk_consent','1');
       for(const [k,p]of Object.entries({vehicle:'vehicle',build:'build',source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content'}))if(a[k])url.searchParams.set(p,a[k]);
