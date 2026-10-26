@@ -1,0 +1,49 @@
+# Tuned by Keith
+
+> Custom ECU tuning by Keith Fields, operating as Calibrations LLC. Subaru WRX/STI e-tuning, Porsche calibration, standalone ECU projects, and coordinated road, dyno and travel tuning.
+
+Official website: https://www.tunedbykeith.com/
+Contact: keith@tunedbykeith.com | +1-714-367-4201.
+Keith has calibration experience dating to 2005. Remote service availability depends on the vehicle, ECU, fuel, hardware and logging equipment. Orange County, California in-person sessions require prior coordination; road tuning may require the car for the day. A customer-arranged dyno can also be discussed.
+
+The linked public pages provide current service details, prices, compatibility considerations and policies. Build results describe individual vehicles and test conditions, not guaranteed output for another car. Historical configurations and later upgrades are separate stages. Inquiry forms are available without payment. This guide covers public information, not private order pages or customer files.
+
+## Services and getting started
+
+- [Service menu and inquiries](https://www.tunedbykeith.com/shop.html): Current services, prices and a no-payment inquiry path.
+- [Subaru WRX and STI tuning](https://www.tunedbykeith.com/subaru-wrx-sti-tuning.html): Vehicle selection, process, results and Subaru inquiries.
+- [EJ WRX and STI e-tuning](https://www.tunedbykeith.com/ej-wrx-sti-etuning.html): 2002–2014 WRX and 2004–2021 STI setup and logging considerations.
+- [2015–2021 WRX e-tuning](https://www.tunedbykeith.com/2015-2021-wrx-etuning.html): FA20 WRX service details.
+- [2022+ WRX e-tuning](https://www.tunedbykeith.com/2022-plus-wrx-etuning.html): FA24 WRX service details; exact ECU support is confirmed individually.
+- [Porsche tuning](https://www.tunedbykeith.com/porsche-tuning.html): Supported modern COBB applications and vintage engine projects.
+- [Standalone ECU tuning](https://www.tunedbykeith.com/standalone-ecu-tuning.html): ECU selection, project scope and calibration support.
+- [COBB custom tuning](https://www.tunedbykeith.com/cobb-custom-tuning.html): Vehicle-specific compatibility and service options.
+- [EcuTek BRZ and GR86 tuning](https://www.tunedbykeith.com/ecutek-brz-tuning.html): First- and second-generation platform considerations.
+- [Orange County tuning](https://www.tunedbykeith.com/orange-county-porsche-subaru-tuning.html): Coordinated Subaru and Porsche road or dyno sessions.
+- [Dyno and travel tuning](https://www.tunedbykeith.com/dyno-tuning/): Session planning and facility coordination.
+
+## Experience and build evidence
+
+- [About Keith Fields](https://www.tunedbykeith.com/about-keith-fields.html): Background, AWD Tuning history and source references.
+- [Porsche 911 Turbo S COBB results](https://www.tunedbykeith.com/porsche-911-turbo-s-cobb-results.html): Documented Porsche tuning examples.
+- [Porsche 964 Kinsler engine projects](https://www.tunedbykeith.com/porsche-964-kinsler-engine-tuning.html): Vintage engine calibration and distinct project configurations.
+- [Keith's white 2015 STI](https://www.tunedbykeith.com/keith-fields-white-2015-sti.html): Personal build, Precision 6466 stage and historical development.
+- [Lucas's 2018 STI Emtron build](https://www.tunedbykeith.com/lucas-bamford-2018-sti-emtron.html): Build story, dated results and original media.
+- [Cinderelli 2024 WRX](https://www.tunedbykeith.com/2024-wrx-cinderelli-e70.html): Configuration-specific WRX results.
+- [2019 STI BCP turbo on 93 octane](https://www.tunedbykeith.com/2019-sti-bcp-turbo-93-octane.html): A documented STI tuning example.
+- [Builds, dyno sheets and videos](https://www.tunedbykeith.com/media.html): Public media with build context.
+
+## Preparation and policies
+
+- [Prepare for tuning](https://www.tunedbykeith.com/prepare-for-tuning-consultation.html): Mechanical readiness, logging and downloadable customer guides.
+- [Subaru datalogging guide](https://www.tunedbykeith.com/downloads/subaru-datalogging-guide.pdf): PDF reference; requested channels depend on the specific setup.
+- [Subaru tuning process](https://www.tunedbykeith.com/downloads/subaru-etuning-process.pdf): PDF explanation of the revision process.
+- [COBB Green Speed guide](https://www.tunedbykeith.com/cobb-green-speed.html): Compatibility considerations.
+- [Terms and refunds](https://www.tunedbykeith.com/terms.html): Service and refund terms.
+- [Privacy](https://www.tunedbykeith.com/privacy.html): Handling of submitted information.
+
+## Optional
+
+- [Shop connections](https://www.tunedbykeith.com/affiliates.html): Published shop relationships.
+- [Tuning glossary](https://www.tunedbykeith.com/tuning-glossary.html): Terminology.
+- [Sitemap](https://www.tunedbykeith.com/sitemap.xml): Public canonical page inventory.

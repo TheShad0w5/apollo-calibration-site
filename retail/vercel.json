@@ -282,5 +282,16 @@
       "destination": "https://www.acalibrations.com/why-dbw-throttle-closure-happens.html",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/:path*",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"describedby\""
+        }
+      ]
+    }
   ]
 }
