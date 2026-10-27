@@ -167,7 +167,7 @@
     }
   }
   const style = document.createElement('style');
-  style.textContent = '#tbk-analytics-choice{position:fixed;bottom:88px;left:16px;z-index:999;background:#fff;color:#111720;border:1px solid #66717c;border-radius:10px;padding:16px;box-shadow:0 4px 18px #0002;width:360px;max-width:calc(100vw - 32px);box-sizing:border-box;font:14px/1.5 sans-serif}#tbk-analytics-choice[hidden]{display:none}#tbk-analytics-choice p{margin:0 0 12px;color:#111720}#tbk-analytics-choice a{color:#873216}#tbk-analytics-choice button{font:inherit;padding:9px 14px;margin-right:8px;border:1px solid #111720;border-radius:5px;background:#fff;color:#111720;cursor:pointer}#tbk-analytics-choice button:focus-visible{outline:3px solid #236ac2;outline-offset:3px}.tbk-analytics-settings{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer}';
+  style.textContent = '#tbk-analytics-choice{position:fixed;bottom:88px;left:16px;z-index:999;background:#fff;color:#111720;border:1px solid #66717c;border-radius:10px;padding:16px;box-shadow:0 4px 18px #0002;width:360px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 120px);overflow:auto;box-sizing:border-box;font:14px/1.5 sans-serif}#tbk-analytics-choice[hidden]{display:none}#tbk-analytics-choice p{margin:0 0 12px;color:#111720}#tbk-analytics-choice a{color:#873216}#tbk-analytics-choice button{font:inherit;padding:9px 14px;margin-right:8px;border:1px solid #111720;border-radius:5px;background:#fff;color:#111720;cursor:pointer}#tbk-analytics-choice button:focus-visible{outline:3px solid #236ac2;outline-offset:3px}.tbk-analytics-settings{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer}';
   document.head.append(style);
   const panel = document.createElement('section');
   panel.id = 'tbk-analytics-choice';
@@ -175,9 +175,10 @@
   panel.hidden = Boolean(choice);
   panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits and contact actions. Optional ad measurement also uses Google click identifiers and cookies to connect ad visits with inquiries. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
   const replayLabel = document.createElement('label');
-  replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5';
+  replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5;font-weight:400';
   const replayInput = document.createElement('input');
   replayInput.type = 'checkbox';
+  replayInput.style.cssText = 'display:inline-block;width:auto;min-height:0;margin:0 6px 0 0;padding:0;vertical-align:middle';
   replayInput.checked = replayChoice === 'yes';
   replayInput.disabled = privacySignal;
   replayLabel.append(replayInput, ' Also allow Microsoft Clarity heatmaps and masked session replay to help improve these pages. Optional; private checkout and admin pages are excluded.');
