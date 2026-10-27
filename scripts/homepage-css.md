@@ -1,10 +1,10 @@
-# Homepage CSS
-The homepage embeds the three shared stylesheets in their original cascade positions to avoid render-blocking stylesheet requests. Other pages keep using the cached external stylesheets.
+# Homepage first paint
+The homepage embeds etuning.css, tbk-brand.css and see-work.css in their original cascade positions. Its existing mobile navigation initializer runs before main content is parsed so earlier styling does not cause the header to collapse after first paint. Without JavaScript the original navigation links remain visible.
 
-After editing `retail/etuning.css`, `retail/tbk-brand.css`, or `retail/see-work.css`, run from the repository root:
+After editing those stylesheets or the navigation initializer in retail/ask-keith.js, run from the repository root:
 
 ```sh
 node scripts/refresh-home-css.mjs
 ```
 
-Commit the refreshed `retail/index.html` with the stylesheet edits. The script updates existing `data-home-css` blocks without changing surrounding page content or the order of styles.
+Commit the refreshed retail/index.html with the shared source edits. Other pages continue to use the external stylesheets and shared script.
