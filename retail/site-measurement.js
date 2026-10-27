@@ -10,6 +10,8 @@
   let adsChoice = '';
   try { adsChoice = localStorage.getItem(adsKey) || ''; } catch {}
   const pendingKey = 'tbk-inquiry-pending';
+  const purchaseConsentKey='tbk-purchase-measurement-v1',purchaseTokensKey='tbk-purchase-context-tokens';
+  const purchaseEndpoint='https://tbk-store-production.keith-787.workers.dev/api/analytics-context';
   // Explicit QA sessions use separate event names and mark form submissions.
   const testKey = 'tbk-measurement-test';
   const testOption = new URLSearchParams(location.search).get('tbk_test');
@@ -142,6 +144,27 @@
   function event(name, params = {}) {
     if (choice === 'yes' && started && !internalVisit) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
   }
+  function purchaseGranted() {
+    try{return choice==='yes'&&started&&!internalVisit&&!privacySignal&&navigator.globalPrivacyControl!==true&&navigator.doNotTrack!=='1'&&localStorage.getItem(key)==='yes'&&localStorage.getItem(purchaseConsentKey)==='yes'&&localStorage.getItem(ownerKey)!=='1'&&sessionStorage.getItem(testKey)!=='1';}catch{return false;}
+  }
+  function savedPurchaseTokens(){try{const a=JSON.parse(sessionStorage.getItem(purchaseTokensKey)||'[]');return Array.isArray(a)?a.filter(t=>/^[a-f0-9]{64}$/.test(t)).slice(-16):[];}catch{return [];}}
+  async function revokePurchaseContexts(){
+    const tokens=savedPurchaseTokens();const remaining=[];
+    await Promise.all(tokens.map(async token=>{try{const r=await fetch(purchaseEndpoint,{method:'POST',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'revoke',token}),signal:AbortSignal.timeout(1500)});if(!r.ok)remaining.push(token);}catch{remaining.push(token);}}));
+    try{sessionStorage.setItem(purchaseTokensKey,JSON.stringify(remaining));}catch{}
+  }
+  async function purchaseContext(){
+    if(!purchaseGranted())return null;
+    const get=name=>new Promise(resolve=>{let done=false;const finish=value=>{if(!done){done=true;resolve(value);}};setTimeout(()=>finish(null),700);tag('get',id,name,finish);});
+    const [client_id,session_id]=await Promise.all([get('client_id'),get('session_id')]);
+    if(!purchaseGranted()||!/^\d{1,20}\.\d{1,20}$/.test(String(client_id||''))||!/^\d{1,16}$/.test(String(session_id||'')))return null;
+    try{
+      const r=await fetch(purchaseEndpoint,{method:'POST',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},body:JSON.stringify({analytics:true,version:'purchase-v1',client_id:String(client_id),session_id:String(session_id),is_test:false,is_owner:false,privacy_signal:false}),signal:AbortSignal.timeout(900)});
+      if(!r.ok)return null;const data=await r.json();if(!/^[a-f0-9]{64}$/.test(data.token||''))return null;
+      try{sessionStorage.setItem(purchaseTokensKey,JSON.stringify([...savedPurchaseTokens(),data.token].slice(-16)));}catch{}
+      if(!purchaseGranted()){void revokePurchaseContexts();return null;}return data.token;
+    }catch{return null;}
+  }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
     let pending;
@@ -184,7 +207,7 @@
   panel.id = 'tbk-analytics-choice';
   panel.setAttribute('aria-label','Optional website measurement');
   panel.hidden = Boolean(choice);
-  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits and contact actions. Optional ad measurement also uses Google click identifiers and cookies to connect ad visits with inquiries. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
+  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits, contact actions and confirmed purchases. Purchase reporting uses the service, amount and an anonymous transaction reference; private order pages stay untagged. Optional ad measurement also uses Google click identifiers and cookies to connect ad visits with inquiries. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
   const replayLabel = document.createElement('label');
   replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5;font-weight:400';
   const replayInput = document.createElement('input');
@@ -203,6 +226,8 @@
     replayChoice = choice === 'yes' && replayInput.checked && !privacySignal ? 'yes' : 'no';
     if (replayChoice !== 'yes') stopReplay();
     try { localStorage.setItem(replayKey, replayChoice); localStorage.setItem(key, choice); localStorage.setItem(adsKey, adsChoice); } catch {}
+    try{localStorage.setItem(purchaseConsentKey,choice==='yes'?'yes':'no');}catch{}
+    if(choice!=='yes')void revokePurchaseContexts();
     if (started) tag('consent', 'update', consentState());
     if (adsChoice !== 'yes') removeCookies(true);
     panel.hidden = true;
@@ -253,17 +278,21 @@
       event('inquiry_start', {form_name:'website_inquiry', ...context});
     });
   });
-  document.addEventListener('click', e => {
+  document.addEventListener('click', async e => {
     const link = e.target.closest('a[href]');
     if (!link) return;
     let url; try { url = new URL(link.href); } catch { return; }
     const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
     const checkout = (url.origin===location.origin && ['/tune','/checkout'].includes(url.pathname)) || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
+    if(checkout){url.searchParams.delete('tbk_measure');if(internalVisit)url.searchParams.set('tbk_internal','1');link.href=url.href;}
     if(checkout&&choice==='yes'&&!internalVisit){
       const a=attribution();url.searchParams.set('tbk_consent','1');
       for(const [k,p]of Object.entries({vehicle:'vehicle',build:'build',source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content'}))if(a[k])url.searchParams.set(p,a[k]);
       link.href=url.href;
       event('begin_checkout',{service_id:url.searchParams.get('service')||'unspecified',destination_path:'/shop'});
+    }
+    if(checkout&&purchaseGranted()&&!e.defaultPrevented&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!link.target&&!link.hasAttribute('download')){
+      e.preventDefault();const token=await purchaseContext();if(token)url.searchParams.set('tbk_measure',token);link.href=url.href;location.assign(url.href);return;
     }
     if (channel) event('contact_click', {contact_method:channel});
     const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
@@ -287,7 +316,11 @@
     notice.append(resume);
     document.body.append(notice);
   }
+  window.addEventListener('storage',e=>{if([key,purchaseConsentKey,ownerKey].includes(e.key)&&!purchaseGranted())void revokePurchaseContexts();});
   start();
+  if(!purchaseGranted()&&savedPurchaseTokens().length)void revokePurchaseContexts();
 })();
+
+
 
 
