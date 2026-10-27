@@ -86,3 +86,11 @@ body.tbk-brand{background:var(--paper);color:var(--ink);font-family:system-ui,-a
 .tbk-brand .project-facts,.tbk-brand .history-stats,.tbk-brand .lucas-stats div,.tbk-brand .quick-answer,.tbk-brand .guide-note,.tbk-brand th{background:#182638;color:var(--ink);border-color:var(--line)}
 .tbk-brand .project-facts,.tbk-brand .quick-answer,.tbk-brand .guide-note{border-left-color:var(--accent)}
 .tbk-brand .lucas-stats div{border-top-color:var(--accent)}
+
+/* Keep the floating contact control separate from FAQ details styling. */
+.tbk-brand #ask-keith{padding:0;border:0;margin:0;background:transparent}
+@media(max-width:600px){
+  .tbk-brand #ask-keith summary{width:56px;height:56px;min-height:56px;padding:10px}
+  .tbk-brand #ask-keith:not([open]){width:56px}
+  .tbk-brand:has(form:focus-within) #ask-keith:not([open]){visibility:hidden;pointer-events:none}
+}
