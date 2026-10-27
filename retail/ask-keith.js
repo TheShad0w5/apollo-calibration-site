@@ -158,3 +158,6 @@
 (() => { const nav=document.querySelector("footer nav"); if(!nav || nav.querySelector('a[href="tel:+17143674201"]')) return; const a=document.createElement("a"); a.href="tel:+17143674201"; a.textContent="Call Keith: (714) 367-4201"; nav.prepend(a); })();
 
 
+
+// Preserve an accessible name for the standalone footer logo.
+(()=>{const brand=document.querySelector('body.tbk-brand>footer>.brand');if(brand){brand.setAttribute('aria-label','Tuned by Keith — home');const image=brand.querySelector('img');if(image)image.alt='Tuned by Keith';}})();
