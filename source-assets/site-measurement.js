@@ -19,6 +19,17 @@
     if (testOption === '0') sessionStorage.removeItem(testKey);
     isTest = sessionStorage.getItem(testKey) === '1';
   } catch {}
+  // Explicit per-browser owner exclusion survives new tabs and sessions.
+  const ownerKey = 'tbk-owner-exclude-v1';
+  const ownerOption = new URLSearchParams(location.search).get('tbk_owner');
+  let isOwner = ownerOption === '1';
+  try {
+    if (ownerOption === '1') localStorage.setItem(ownerKey, '1');
+    if (ownerOption === '0') localStorage.removeItem(ownerKey);
+    isOwner = localStorage.getItem(ownerKey) === '1';
+  } catch {}
+  const internalVisit = isTest || isOwner;
+  if (internalVisit) window['ga-disable-' + id] = true;
   let choice = '';
   try { choice = localStorage.getItem(key) || ''; } catch {}
   const privacySignal = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
@@ -32,7 +43,7 @@
     '/keith-fields-white-2015-sti.html', '/2019-sti-bcp-turbo-93-octane.html',
     '/build-examples.html', '/about-keith-fields.html', '/media.html', '/dyno-tuning/']);
   function replaySafe() {
-    if (isTest || privacySignal || !replayPages.has(location.pathname)) return false;
+    if (internalVisit || privacySignal || !replayPages.has(location.pathname)) return false;
     const url = new URL(location.href);
     if (url.hash && !['#main','#see-the-work','#inquiry-form','#dyno-results','#request'].includes(url.hash)) return false;
     for (const [name, value] of url.searchParams) {
@@ -118,7 +129,7 @@
   const attributionKey='tbk-campaign-attribution';
   const pageBuilds={'/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-bamford-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-fields-white-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
   function attribution(){
-    if(choice!=='yes')return {};
+    if(choice!=='yes'||internalVisit)return {};
     let saved={};try{saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}')}catch{}
     const vehicle=/porsche/.test(location.pathname)?'porsche':/wrx|sti|subaru/.test(location.pathname)?'subaru':saved.vehicle;
     const a={...saved,...(vehicle?{vehicle}:{}),...(sourceBuild||pageBuilds[location.pathname]?{build:sourceBuild||pageBuilds[location.pathname]}:{})};
@@ -129,7 +140,7 @@
   function funnelContext(){const a=attribution();return {...(a.vehicle?{vehicle_group:a.vehicle}:{}),...(a.build?{build_source:a.build}:{}),...(a.campaign?{promotion_campaign:a.campaign}:{})};}
 
   function event(name, params = {}) {
-    if (choice === 'yes' && started) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
+    if (choice === 'yes' && started && !internalVisit) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
   }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
@@ -142,7 +153,7 @@
     event('inquiry_confirmation', {form_name: 'website_inquiry', ...(inquiryPages.has(pending.inquiry_page) ? {inquiry_page:pending.inquiry_page} : {}), ...(builds.has(pending.build_source) ? {build_source:pending.build_source} : {})});
   }
   function start() {
-    if (choice !== 'yes' || privacySignal) return;
+    if (choice !== 'yes' || privacySignal || internalVisit) return;
     startReplay();
     tag('consent', 'update', consentState());
     if (started) { window['ga-disable-' + id] = false; tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}); return; }
@@ -231,7 +242,7 @@
       next.value = 'https://www.tunedbykeith.com/inquiry-received.html';
       form.append(next);
     }
-    if (isTest) {
+    if (internalVisit) {
       const marker = document.createElement('input');
       marker.type = 'hidden'; marker.name = 'website_test'; marker.value = 'YES - exclude from customer leads';
       form.append(marker);
@@ -248,7 +259,7 @@
     let url; try { url = new URL(link.href); } catch { return; }
     const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
     const checkout = (url.origin===location.origin && ['/tune','/checkout'].includes(url.pathname)) || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
-    if(checkout&&choice==='yes'){
+    if(checkout&&choice==='yes'&&!internalVisit){
       const a=attribution();url.searchParams.set('tbk_consent','1');
       for(const [k,p]of Object.entries({vehicle:'vehicle',build:'build',source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content'}))if(a[k])url.searchParams.set(p,a[k]);
       link.href=url.href;
@@ -262,6 +273,20 @@
     }
     if (url.origin === location.origin && link.closest?.('.vehicle-choices')) event('vehicle_option_click', {destination_path:url.pathname, destination_section:url.hash.slice(1)});
   });
+  if (isOwner) {
+    const notice = document.createElement('aside');
+    notice.setAttribute('aria-label', 'Owner analytics exclusion');
+    notice.style.cssText = 'position:fixed;top:8px;right:8px;z-index:1001;max-width:calc(100vw - 32px);padding:10px;background:#fff;color:#111720;border:2px solid #236ac2;font:14px/1.5 sans-serif';
+    notice.textContent = 'Owner visits excluded from analytics on this browser. ';
+    const resume = document.createElement('a');
+    const resumeUrl = new URL(location.origin + location.pathname);
+    resumeUrl.searchParams.set('tbk_owner', '0');
+    resume.href = resumeUrl.href;
+    resume.textContent = 'Turn off owner exclusion';
+    resume.style.color = '#873216';
+    notice.append(resume);
+    document.body.append(notice);
+  }
   start();
 })();
 
