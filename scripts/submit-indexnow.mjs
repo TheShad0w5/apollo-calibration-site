@@ -1,3 +1,4 @@
+async function main() {
 // Node 18+. Dry-run default. Supply public canonical URLs; --submit sends one batch.
 // Example: node scripts/submit-indexnow.mjs https://www.tunedbykeith.com/ --submit
 const host = 'www.tunedbykeith.com';
@@ -25,7 +26,10 @@ const verification = await fetch('https://' + host + '/' + key + '.txt');
 if (!verification.ok || (await verification.text()).trim() !== key) throw new Error('Live key verification failed');
 if (!submit) console.log(JSON.stringify({mode:'dry-run',validated:urls.length,urls},null,2));
 else {
- const r=await fetch('https://api.indexnow.org/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host,key,urlList:urls})});
+ const r=await fetch('https://www.bing.com/indexnow',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host,key,urlList:urls})});
  console.log(JSON.stringify({at:new Date().toISOString(),status:r.status,submitted:urls.length,urls,note:r.status===200?'Received; indexing is not guaranteed':r.status===202?'Received; key validation pending':'Submission failed'},null,2));
  if (![200,202].includes(r.status)) process.exitCode=1;
 }
+
+}
+main().catch(error => { console.error(JSON.stringify({status:'failed',message:error.message,note:'No successful receipt confirmed. Inspect the error before retrying.'})); process.exitCode=1; });
