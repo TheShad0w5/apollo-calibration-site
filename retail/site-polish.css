@@ -35,3 +35,16 @@ body.tbk-brand .ecu-guide-hero h1{max-width:22ch}
 body.tbk-brand .see-work .work-card h3{margin-top:20px}body.tbk-brand .see-work .work-card>.eyebrow{margin-top:24px}body.tbk-brand .see-work .work-links{padding-bottom:18px}body.tbk-brand .see-work .work-links a{font-size:.9rem;line-height:1.5}body.tbk-brand .see-work .work-card>p{margin-bottom:12px}body.tbk-brand .see-work .work-credit{line-height:1.5}body.tbk-brand .see-work .work-grid{align-items:start}
 
 body.ecu-knowledge :is(.breadcrumbs,.ecu-guide-hero,.ecu-article){max-width:1000px;margin-left:auto;margin-right:auto}body.ecu-knowledge .ecu-article{padding-top:8px}body.ecu-knowledge .ecu-guide-hero{padding-top:40px}body.ecu-knowledge .ecu-article section:last-child{border-bottom:0}
+/* Hardware reference figures and service-page reading rhythm. */
+body.ecu-knowledge .ecu-hardware{margin:28px 0 0;max-width:680px}
+body.ecu-knowledge .ecu-hardware-media{background:#f5f6f7;border:1px solid #435164;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+body.ecu-knowledge .ecu-hardware-media img{display:block;width:100%;height:290px;object-fit:contain;margin:0;border:0;border-radius:0;filter:none}
+body.ecu-knowledge .ecu-hardware figcaption{font-size:.9rem;line-height:1.6;color:#c4d0dd;padding:14px 0 0;text-align:left}
+body.ecu-knowledge .ecu-hardware figcaption strong,body.ecu-knowledge .ecu-hardware figcaption span{display:block;margin-bottom:5px}
+body.ecu-knowledge .ecu-hardware figcaption a{display:inline-block;padding:6px 0}
+body.tbk-brand .tuning-process{max-width:76ch;padding-left:1.4em}
+body.tbk-brand .tuning-process li{padding-left:6px;margin-bottom:18px;line-height:1.7}
+body.tbk-brand .service-readiness .service-paths{align-items:start}
+@media(max-width:700px){body.ecu-knowledge .ecu-hardware-media img{height:220px}body.ecu-knowledge .ecu-hardware{margin-top:24px}}
+
+body.ecu-knowledge .ecu-hardware-media img[src$="/ecutek-connect.jpg"]{object-fit:cover;object-position:left center}
