@@ -2,3 +2,34 @@ body.tbk-brand{--accent:#e87524;--paper:#090f17;--dark:#111e2e;--navy:#182a42;--
  body.tbk-brand>footer{display:grid;grid-template-columns:140px minmax(0,1fr);align-items:start;gap:24px 48px;padding:48px 6% 28px;background:#090f17;border-top:1px solid #344358}body.tbk-brand>footer>.brand{display:inline-flex;width:104px;min-height:104px}body.tbk-brand>footer>.brand img{width:104px;height:104px;max-width:none;object-fit:contain}body.tbk-brand>footer .brand-wordmark{display:none}body.tbk-brand>footer>div{min-width:0;width:100%}body.tbk-brand>footer>div>p{font-size:1.05rem;line-height:1.6;color:#bbc7d5;margin:0 0 20px}body.tbk-brand>footer nav:not(.tbk-social-links){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 28px;margin:0;justify-content:start}body.tbk-brand>footer nav:not(.tbk-social-links)>a{display:flex!important;align-items:center;min-height:44px;padding:8px 0;font-size:.85rem;line-height:1.5;letter-spacing:0;text-decoration:none;color:#bbc7d5;overflow-wrap:anywhere}body.tbk-brand>footer nav:not(.tbk-social-links)>a:hover{color:#f6a66d;text-decoration:underline}body.tbk-brand>footer>.tbk-social-links{grid-column:1/-1;display:flex!important;border-top:1px solid #344358;padding-top:24px;margin:0;gap:12px}body.tbk-brand>footer>.tbk-social-links a{border-radius:6px;padding:10px 18px}@media(max-width:900px){body.tbk-brand>footer{grid-template-columns:104px minmax(0,1fr);gap:24px}body.tbk-brand>footer nav:not(.tbk-social-links){grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 20px}}@media(max-width:540px){body.tbk-brand>footer{grid-template-columns:minmax(0,1fr);padding-top:36px}body.tbk-brand>footer>.brand,body.tbk-brand>footer>.brand img{width:88px;height:88px;min-height:88px}body.tbk-brand>footer nav:not(.tbk-social-links){grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 18px}body.tbk-brand>footer>div>p{font-size:1rem}}
 body.tbk-brand>footer .brand-wordmark{display:none!important}body.tbk-brand>footer nav button{justify-self:start;text-align:left;margin:0;padding:8px 0;min-height:44px;background:none;border:0;color:#bbc7d5;font:inherit;font-size:.85rem;line-height:1.5;cursor:pointer}
 body.tbk-brand .affiliate-card{padding:28px;border:1px solid #344358;border-radius:10px;background:#142132;min-width:0}body.tbk-brand .affiliate-card h2{font-size:1.75rem}body.tbk-brand .affiliate-card p{color:#bbc7d5}body.tbk-brand .affiliate-card .button{margin:8px 0}body.tbk-brand .affiliate-card>a:not(.button){display:block;min-height:44px;padding:10px 0;color:#f6a66d}@media(max-width:600px){body.tbk-brand .affiliate-card{padding:22px}}
+
+/* Editorial rhythm and platform reference links. */
+body.tbk-brand main :is(h1,h2,h3,p,li){text-align:left;word-break:normal;hyphens:none}
+body.tbk-brand main p{max-width:72ch;text-wrap:pretty}
+body.tbk-brand :is(.service-paths article,.vehicle-choices article,.result-card,.path-grid article,.build-proof-grid article,.work-card){overflow-wrap:break-word}
+body.tbk-brand main .section .section{padding:32px 0}
+body.tbk-brand .hero-platforms{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px 16px;margin:22px 0 0}
+body.tbk-brand .hero-platforms a{font-size:.85rem;line-height:1.4;letter-spacing:0;text-transform:none;min-height:32px;display:inline-flex;align-items:center;color:#c4d0dd;text-decoration:underline;text-underline-offset:4px}
+body.tbk-brand .hero-platforms a:hover{color:#ffaf73}
+body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+body.tbk-brand .build-proof-grid article{display:flex;flex-direction:column;padding:24px}
+body.tbk-brand .build-proof-grid article>p:not(.eyebrow){font-size:.96rem;line-height:1.65;color:#c4d0dd}
+body.tbk-brand .build-proof-grid article>.text-link{margin-top:auto;padding-top:14px;line-height:1.5}
+body.tbk-brand .build-proof-grid .eyebrow{font-size:.68rem;letter-spacing:.07em;margin-bottom:12px}
+body.tbk-brand .build-proof-grid h3{font-size:1.35rem;margin-bottom:12px}
+body.tbk-brand .hero-next-step{margin-top:18px;font-size:.95rem;color:#bbc7d5}
+body.tbk-brand .ecu-reference-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:24px 0}
+body.tbk-brand .ecu-reference-grid a{display:block;padding:20px;border:1px solid var(--line);border-radius:8px;background:#142132;text-decoration:none}
+body.tbk-brand .ecu-reference-grid strong{display:block;font-size:1.1rem;color:#f4f7fb;margin-bottom:8px}
+body.tbk-brand .ecu-reference-grid span{display:block;font-size:.9rem;line-height:1.5;color:#bbc7d5}
+body.tbk-brand .ecu-article{max-width:880px;margin:0 auto;padding:40px 6% 56px}
+body.tbk-brand .ecu-article section{padding:28px 0;border-bottom:1px solid var(--line)}
+body.tbk-brand .ecu-article h2{font-size:clamp(1.5rem,2.5vw,2rem);margin-bottom:18px}
+body.tbk-brand .ecu-article li{margin-bottom:12px;line-height:1.65}
+body.tbk-brand .ecu-article p{margin-bottom:18px}
+body.tbk-brand .ecu-guide-hero{padding-bottom:32px}
+body.tbk-brand .ecu-guide-hero h1{max-width:22ch}
+@media(max-width:1000px){body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}body.tbk-brand .ecu-reference-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){body.tbk-brand :is(.section,.platform-section,.path-finder,.selected-builds,.see-work,.contact,.about,.process){padding-top:40px;padding-bottom:40px}body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:minmax(0,1fr)}body.tbk-brand .ecu-reference-grid{grid-template-columns:minmax(0,1fr)}body.tbk-brand main .section .section{padding:24px 0}body.tbk-brand .ecu-article{padding-top:16px}body.tbk-brand .hero-platforms{gap:6px 16px}body.tbk-brand .hero-platforms a{min-height:36px}}
+
+body.tbk-brand .see-work .work-card h3{margin-top:20px}body.tbk-brand .see-work .work-card>.eyebrow{margin-top:24px}body.tbk-brand .see-work .work-links{padding-bottom:18px}body.tbk-brand .see-work .work-links a{font-size:.9rem;line-height:1.5}body.tbk-brand .see-work .work-card>p{margin-bottom:12px}body.tbk-brand .see-work .work-credit{line-height:1.5}body.tbk-brand .see-work .work-grid{align-items:start}
