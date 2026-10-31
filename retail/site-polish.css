@@ -48,3 +48,5 @@ body.tbk-brand .service-readiness .service-paths{align-items:start}
 @media(max-width:700px){body.ecu-knowledge .ecu-hardware-media img{height:220px}body.ecu-knowledge .ecu-hardware{margin-top:24px}}
 
 body.ecu-knowledge .ecu-hardware-media img[src$="/ecutek-connect.jpg"]{object-fit:cover;object-position:left center}
+
+@media(min-width:1100px){body.tbk-brand .service-readiness .service-paths,body.ford-service .service-paths{grid-template-columns:repeat(3,minmax(0,1fr))}}
