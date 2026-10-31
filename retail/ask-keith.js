@@ -70,8 +70,8 @@
   }
   // Keep the first landing page and most recent service guide with the inquiry.
   // Store only known public paths, never query strings, fragments or form values.
-  const knownPages = new Set(["/porsche-911-turbo-s-cobb-results.html","/porsche-964-kinsler-engine-tuning.html","/","/about-keith-fields.html","/cobb-custom-tuning.html","/dyno-tuning/","/build-examples.html","/2024-wrx-cinderelli-e70.html","/2019-sti-bcp-turbo-93-octane.html","/prepare-for-tuning-consultation.html","/tuning-glossary.html","/shop.html","/cobb-green-speed.html","/lucas-bamford-2018-sti-emtron.html","/keith-fields-white-2015-sti.html","/2022-plus-wrx-etuning.html","/2015-2021-wrx-etuning.html","/ej-wrx-sti-etuning.html","/emtron-tuning.html","/haltech-tuning.html","/motec-tuning.html","/link-ecu-tuning.html","/ecutek-brz-tuning.html","/ecutek-tuning.html","/porsche-tuning.html","/subaru-wrx-sti-tuning.html","/standalone-ecu-tuning.html","/media.html","/terms.html","/privacy.html","/orange-county-porsche-subaru-tuning.html"]);
-  const servicePages = new Set(["/cobb-custom-tuning.html","/dyno-tuning/","/2022-plus-wrx-etuning.html","/2015-2021-wrx-etuning.html","/ej-wrx-sti-etuning.html","/emtron-tuning.html","/haltech-tuning.html","/motec-tuning.html","/link-ecu-tuning.html","/ecutek-brz-tuning.html","/ecutek-tuning.html","/porsche-tuning.html","/subaru-wrx-sti-tuning.html","/standalone-ecu-tuning.html","/orange-county-porsche-subaru-tuning.html"]);
+  const knownPages = new Set(["/", "/about-keith-fields.html", "/cobb-custom-tuning.html", "/dyno-tuning/", "/build-examples.html", "/2024-wrx-cinderelli-e70.html", "/2019-sti-bcp-turbo-93-octane.html", "/prepare-for-tuning-consultation.html", "/tuning-glossary.html", "/shop.html", "/cobb-green-speed.html", "/lucas-bamford-2018-sti-emtron.html", "/keith-fields-white-2015-sti.html", "/2022-plus-wrx-etuning.html", "/2015-2021-wrx-etuning.html", "/ej-wrx-sti-etuning.html", "/emtron-tuning.html", "/haltech-tuning.html", "/motec-tuning.html", "/link-ecu-tuning.html", "/ecutek-brz-tuning.html", "/ecutek-tuning.html", "/porsche-tuning.html", "/subaru-wrx-sti-tuning.html", "/standalone-ecu-tuning.html", "/media.html", "/terms.html", "/privacy.html", "/orange-county-porsche-subaru-tuning.html", "/porsche-911-turbo-s-cobb-results.html", "/porsche-964-kinsler-engine-tuning.html", "/affiliates.html", "/chris-page-2020-sti-flex-fuel.html", "/chris-t-2016-wrx-fa20-build.html", "/tuning-knowledge.html", "/accessport-flashing-datalogging-guide.html", "/knowledge/cobb-accessport.html", "/knowledge/ecutek.html", "/knowledge/open-source.html", "/knowledge/emtron.html", "/knowledge/haltech.html", "/knowledge/link-ecu.html", "/knowledge/motec.html", "/knowledge/maxxecu.html", "/ford-tuning.html", "/jaycee-2017-focus-rs-build.html"]);
+  const servicePages = new Set(["/ford-tuning.html","/cobb-custom-tuning.html","/dyno-tuning/","/2022-plus-wrx-etuning.html","/2015-2021-wrx-etuning.html","/ej-wrx-sti-etuning.html","/emtron-tuning.html","/haltech-tuning.html","/motec-tuning.html","/link-ecu-tuning.html","/ecutek-brz-tuning.html","/ecutek-tuning.html","/porsche-tuning.html","/subaru-wrx-sti-tuning.html","/standalone-ecu-tuning.html","/orange-county-porsche-subaru-tuning.html"]);
   let journey = {};
   try {
     const saved = JSON.parse(sessionStorage.getItem('tbk-journey') || '{}');
@@ -90,6 +90,16 @@
     }
   });
   if (location.hostname !== 'www.tunedbykeith.com' && location.hostname !== 'tunedbykeith.com') return;
+  // Apply the same explicit QA/owner exclusion to Vercel's separate counter.
+  // Query overrides take effect immediately; site-measurement.js persists them.
+  let internalVisit = query.get('tbk_test') === '1' || query.get('tbk_owner') === '1';
+  try {
+    const testOption = query.get('tbk_test'), ownerOption = query.get('tbk_owner');
+    const testVisit = testOption === '0' ? false : testOption === '1' || sessionStorage.getItem('tbk-measurement-test') === '1';
+    const ownerVisit = ownerOption === '0' ? false : ownerOption === '1' || localStorage.getItem('tbk-owner-exclude-v1') === '1';
+    internalVisit = testVisit || ownerVisit;
+  } catch { return; } // Do not measure when exclusion preferences cannot be read.
+  if (internalVisit) return;
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   window.va('beforeSend', event => {
     const url = new URL(event.url);

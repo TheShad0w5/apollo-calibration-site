@@ -124,16 +124,16 @@
   tag('consent', 'default', {analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
   const page = () => ({page_location: measuredLocation(), page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
   const inquiryPages = new Set(['/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
-  const builds = new Set(['911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
+  const builds = new Set(['jaycee-focus-rs','chris-page-sti','chris-t-wrx','911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
   const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
   const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
 
   const attributionKey='tbk-campaign-attribution';
-  const pageBuilds={'/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-bamford-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-fields-white-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
+  const pageBuilds={'/jaycee-2017-focus-rs-build.html':'jaycee-focus-rs','/chris-page-2020-sti-flex-fuel.html':'chris-page-sti','/chris-t-2016-wrx-fa20-build.html':'chris-t-wrx','/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-bamford-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-fields-white-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
   function attribution(){
     if(choice!=='yes'||internalVisit)return {};
     let saved={};try{saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}')}catch{}
-    const vehicle=/porsche/.test(location.pathname)?'porsche':/wrx|sti|subaru/.test(location.pathname)?'subaru':saved.vehicle;
+    const vehicle=/porsche/.test(location.pathname)?'porsche':/ford|focus|fiesta|raptor/.test(location.pathname)?'ford':/wrx|sti|subaru/.test(location.pathname)?'subaru':saved.vehicle;
     const a={...saved,...(vehicle?{vehicle}:{}),...(sourceBuild||pageBuilds[location.pathname]?{build:sourceBuild||pageBuilds[location.pathname]}:{})};
     for(const [k,v]of Object.entries(campaign))a[{campaign_source:'source',campaign_medium:'medium',campaign_name:'campaign',campaign_content:'content'}[k]]=v;
     try{sessionStorage.setItem(attributionKey,JSON.stringify(a))}catch{}
