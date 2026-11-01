@@ -58,3 +58,29 @@ body.tbk-brand .jaycee-feature img,body.tbk-brand .jaycee-build-photo img{displa
 body.tbk-brand .jaycee-feature figcaption{font-size:.85rem;line-height:1.6;color:#bbc7d5;margin-top:12px}
 body.tbk-brand .jaycee-feature h3{font-size:1.55rem}
 @media(max-width:800px){body.tbk-brand .jaycee-feature{grid-template-columns:minmax(0,1fr);gap:24px}}
+
+
+/* Build gallery: consistent real-photo and documented-record previews. */
+body.tbk-brand .build-card-visual{position:relative;display:flex;flex-direction:column;margin:0 0 20px;min-width:0;overflow:hidden;border:1px solid #344358;border-radius:7px;background:#09121e}
+body.tbk-brand .build-card-visual>img,body.tbk-brand .build-card-visual>svg{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;margin:0;border:0;border-radius:0;min-width:0}
+body.tbk-brand .build-card-graphic>img,body.tbk-brand .build-card-graphic>svg{object-fit:contain;background:#050b13}
+body.tbk-brand .build-card-visual figcaption{box-sizing:border-box;min-height:58px;padding:10px 12px;color:#c4d0dd;font-size:.74rem;line-height:1.5;letter-spacing:0;text-align:left;background:#0c1928}
+body.tbk-brand .build-card-visual svg text{fill:#f4f7fb}
+body.tbk-brand .media-grid{align-items:stretch;gap:24px}
+body.tbk-brand .media-grid>article{display:flex;flex-direction:column;min-width:0;padding:24px;background:#142132;color:#f4f7fb;border:1px solid #344358;border-radius:9px}
+body.tbk-brand .media-grid>article>p{color:#c4d0dd;line-height:1.7}
+body.tbk-brand .media-grid>article>h3{color:#f4f7fb;font-size:1.4rem;line-height:1.3;margin:0 0 14px}
+body.tbk-brand .media-grid>article>a:last-child{margin-top:auto;padding-top:16px;color:#ffaf73;line-height:1.5}
+body.tbk-brand .media-grid svg text{fill:#f4f7fb}
+body.tbk-brand .media-grid>article>.media-chart{margin-bottom:20px}
+body.tbk-brand #builds>.media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+body.tbk-brand .build-proof-grid article{min-width:0;padding:20px}
+body.tbk-brand .result-card .build-card-visual{margin-bottom:20px}
+body.tbk-brand .build-example .build-photo{max-width:760px}
+body.tbk-brand .build-example .build-card-visual>img{aspect-ratio:16/10}
+body.tbk-brand .build-example .build-card-graphic>img{aspect-ratio:auto;max-height:560px}
+body.tbk-brand #lucas-emtron>.build-card-visual{max-width:760px;margin-top:24px}
+@media(min-width:1200px){body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(min-width:701px){body.tbk-brand .build-proof-grid article>.eyebrow{min-height:3em;line-height:1.5}body.tbk-brand .build-proof-grid h3{min-height:2.6em;line-height:1.3}}
+@media(max-width:700px){body.tbk-brand #builds>.media-grid,body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:minmax(0,1fr)}body.tbk-brand .media-grid>article{padding:20px}body.tbk-brand .build-card-visual figcaption{font-size:.76rem}}
