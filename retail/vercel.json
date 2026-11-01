@@ -281,6 +281,96 @@
       "source": "/why-dbw-throttle-closure-happens.html",
       "destination": "https://www.acalibrations.com/why-dbw-throttle-closure-happens.html",
       "permanent": true
+    },
+    {
+      "source": "/lucas-bamford-2018-sti-emtron.html",
+      "destination": "/lucas-2018-sti-emtron.html",
+      "permanent": true
+    },
+    {
+      "source": "/chris-page-2020-sti-flex-fuel.html",
+      "destination": "/chris-2020-sti-flex-fuel.html",
+      "permanent": true
+    },
+    {
+      "source": "/chris-t-2016-wrx-fa20-build.html",
+      "destination": "/chris-2016-wrx-fa20-build.html",
+      "permanent": true
+    },
+    {
+      "source": "/thomas-rodriguez-2004-sti-haltech-build.html",
+      "destination": "/thomas-2004-sti-haltech-build.html",
+      "permanent": true
+    },
+    {
+      "source": "/david-james-2004-sti-link-build.html",
+      "destination": "/david-2004-sti-link-build.html",
+      "permanent": true
+    },
+    {
+      "source": "/keith-fields-white-2015-sti.html",
+      "destination": "/keith-2015-sti.html",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-page-2020-sti-awd.webp",
+      "destination": "/assets/builds/chris-2020-sti-awd.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-page-2020-sti-flex-chart.png",
+      "destination": "/assets/builds/chris-2020-sti-flex-chart.png",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-t-2016-wrx-2026-chart.png",
+      "destination": "/assets/builds/chris-2016-wrx-2026-chart.png",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-t-2016-wrx-engine-bay.webp",
+      "destination": "/assets/builds/chris-2016-wrx-engine-bay.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-t-2016-wrx-workshop.webp",
+      "destination": "/assets/builds/chris-2016-wrx-workshop.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-93.pdf",
+      "destination": "/assets/builds/david-sti-2024-93.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-93.png",
+      "destination": "/assets/builds/david-sti-2024-93.png",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-e75.pdf",
+      "destination": "/assets/builds/david-sti-2024-e75.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-e75.png",
+      "destination": "/assets/builds/david-sti-2024-e75.png",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-overlay.pdf",
+      "destination": "/assets/builds/david-sti-2024-overlay.pdf",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-2024-overlay.png",
+      "destination": "/assets/builds/david-sti-2024-overlay.png",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/david-james-sti-video.webp",
+      "destination": "/assets/builds/david-sti-video.webp",
+      "permanent": true
     }
   ],
   "headers": [
@@ -290,6 +380,22 @@
         {
           "key": "Link",
           "value": "</llms.txt>; rel=\"describedby\""
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self'; object-src 'none'; base-uri 'self'"
         }
       ]
     }

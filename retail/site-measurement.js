@@ -41,8 +41,8 @@
   const replayPages = new Set(['/', '/index.html', '/porsche-tuning.html', '/subaru-wrx-sti-tuning.html',
     '/2022-plus-wrx-etuning.html', '/2015-2021-wrx-etuning.html', '/ej-wrx-sti-etuning.html',
     '/porsche-911-turbo-s-cobb-results.html', '/porsche-964-kinsler-engine-tuning.html',
-    '/lucas-bamford-2018-sti-emtron.html', '/2024-wrx-cinderelli-e70.html',
-    '/keith-fields-white-2015-sti.html', '/2019-sti-bcp-turbo-93-octane.html',
+    '/lucas-2018-sti-emtron.html', '/2024-wrx-cinderelli-e70.html',
+    '/keith-2015-sti.html', '/2019-sti-bcp-turbo-93-octane.html',
     '/build-examples.html', '/about-keith-fields.html', '/media.html', '/dyno-tuning/']);
   function replaySafe() {
     if (internalVisit || privacySignal || !replayPages.has(location.pathname)) return false;
@@ -124,16 +124,16 @@
   tag('consent', 'default', {analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
   const page = () => ({page_location: measuredLocation(), page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
   const inquiryPages = new Set(['/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
-  const builds = new Set(['jaycee-focus-rs','chris-page-sti','chris-t-wrx','911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
+  const builds = new Set(['thomas-sti','thomas-gr86','mary-q60','david-link-sti','jaycee-focus-rs','chris-2020-sti','chris-2016-wrx','911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
   const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
   const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
 
   const attributionKey='tbk-campaign-attribution';
-  const pageBuilds={'/jaycee-2017-focus-rs-build.html':'jaycee-focus-rs','/chris-page-2020-sti-flex-fuel.html':'chris-page-sti','/chris-t-2016-wrx-fa20-build.html':'chris-t-wrx','/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-bamford-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-fields-white-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
+  const pageBuilds={'/thomas-2004-sti-haltech-build.html':'thomas-sti','/thomas-2024-gr86-hks-turbo.html':'thomas-gr86','/mary-2018-infiniti-q60-red-sport.html':'mary-q60','/david-2004-sti-link-build.html':'david-link-sti','/jaycee-2017-focus-rs-build.html':'jaycee-focus-rs','/chris-2020-sti-flex-fuel.html':'chris-2020-sti','/chris-2016-wrx-fa20-build.html':'chris-2016-wrx','/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
   function attribution(){
     if(choice!=='yes'||internalVisit)return {};
     let saved={};try{saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}')}catch{}
-    const vehicle=/porsche/.test(location.pathname)?'porsche':/ford|focus|fiesta|raptor/.test(location.pathname)?'ford':/wrx|sti|subaru/.test(location.pathname)?'subaru':saved.vehicle;
+    const vehicle=/porsche/.test(location.pathname)?'porsche':/ford|focus|fiesta|raptor/.test(location.pathname)?'ford':/infiniti|q50|q60/.test(location.pathname)?'infiniti':/gr86|supra/.test(location.pathname)?'toyota':/wrx|sti|subaru|brz/.test(location.pathname)?'subaru':saved.vehicle;
     const a={...saved,...(vehicle?{vehicle}:{}),...(sourceBuild||pageBuilds[location.pathname]?{build:sourceBuild||pageBuilds[location.pathname]}:{})};
     for(const [k,v]of Object.entries(campaign))a[{campaign_source:'source',campaign_medium:'medium',campaign_name:'campaign',campaign_content:'content'}[k]]=v;
     try{sessionStorage.setItem(attributionKey,JSON.stringify(a))}catch{}
