@@ -1,0 +1,10 @@
+/* Shared build story presentation; original media and measurements stay separate. */
+body.tbk-brand .build-story-nav{display:flex;flex-wrap:wrap;gap:10px 24px;margin:24px 0 0;line-height:1.6}
+body.tbk-brand .build-story-nav a{display:inline-flex;align-items:center;min-height:44px;color:#f4f7fb;text-underline-offset:4px}
+body.tbk-brand .project-photo-grid{align-items:start}
+body.tbk-brand .project-photo-grid figure{min-width:0;margin:0}
+body.tbk-brand .project-photo-grid img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+body.tbk-brand .project-photo-grid figcaption{color:#c1cdda;line-height:1.65;margin-top:12px;font-size:.88rem}
+body.tbk-brand .project-photo-grid a:focus-visible{outline:3px solid #ffad6c;outline-offset:4px}
+body.tbk-brand .build-story-nav a:focus-visible{outline:3px solid #ffad6c;outline-offset:4px}
+@media(max-width:700px){body.tbk-brand .build-story-nav{gap:4px 18px}body.tbk-brand .project-photo-grid{gap:24px}}

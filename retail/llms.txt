@@ -70,3 +70,5 @@ The linked public pages provide current service details, prices, compatibility c
 - [Shop connections](https://www.tunedbykeith.com/affiliates.html): Published shop relationships.
 - [Tuning glossary](https://www.tunedbykeith.com/tuning-glossary.html): Terminology.
 - [Sitemap](https://www.tunedbykeith.com/sitemap.xml): Public canonical page inventory.
+
+- [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
