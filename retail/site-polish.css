@@ -84,3 +84,9 @@ body.tbk-brand #lucas-emtron>.build-card-visual{max-width:760px;margin-top:24px}
 @media(min-width:1200px){body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(min-width:701px){body.tbk-brand .build-proof-grid article>.eyebrow{min-height:3em;line-height:1.5}body.tbk-brand .build-proof-grid h3{min-height:2.6em;line-height:1.3}}
 @media(max-width:700px){body.tbk-brand #builds>.media-grid,body.tbk-brand .selected-builds .build-proof-grid{grid-template-columns:minmax(0,1fr)}body.tbk-brand .media-grid>article{padding:20px}body.tbk-brand .build-card-visual figcaption{font-size:.76rem}}
+
+/* Match the existing dark dyno display while keeping the original PNG untouched. */
+body.tbk-brand .build-dyno-display{position:relative;isolation:isolate;aspect-ratio:16/10;background:#050b13;overflow:hidden}
+body.tbk-brand .build-dyno-display>img{display:block;width:100%;height:100%;object-fit:contain;margin:0;filter:invert(1) hue-rotate(180deg) brightness(1.65)}
+body.tbk-brand .build-dyno-display::after{content:"";position:absolute;inset:5% 8% 12%;background:url("/assets/brand/keith-logo.svg") center/56% auto no-repeat;opacity:.14;pointer-events:none}
+@media print{body.tbk-brand .build-dyno-display>img{filter:none}body.tbk-brand .build-dyno-display::after{display:none}}
