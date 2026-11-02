@@ -123,3 +123,7 @@ body.tbk-brand .project-facts{margin-block:28px}
 body.tbk-brand .project-facts+h2{margin-top:36px}
 @media(max-width:800px){body.tbk-brand #supported-vehicles .steps{grid-template-columns:repeat(2,minmax(0,1fr))}body.tbk-brand #supported-vehicles .steps>article{grid-column:span 1!important}body.tbk-brand #supported-vehicles .steps>article:last-child:nth-child(odd){grid-column:1/-1!important}}
 @media(max-width:600px){body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7){grid-template-columns:minmax(0,1fr)}body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>div{grid-column:1;grid-row:auto}body.tbk-brand #supported-vehicles .steps{grid-template-columns:minmax(0,1fr)}body.tbk-brand #supported-vehicles .steps>article{padding:20px}}
+
+/* Balance three-photo project galleries without changing image files or crops. */
+@media(min-width:1000px){body.tbk-brand .project-photo-grid:has(>figure:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}}
+body.tbk-brand .project-photo-grid:has(>figure:only-child){grid-template-columns:minmax(0,720px);justify-content:center}
