@@ -8,3 +8,6 @@ body.tbk-brand .project-photo-grid figcaption{color:#c1cdda;line-height:1.65;mar
 body.tbk-brand .project-photo-grid a:focus-visible{outline:3px solid #ffad6c;outline-offset:4px}
 body.tbk-brand .build-story-nav a:focus-visible{outline:3px solid #ffad6c;outline-offset:4px}
 @media(max-width:700px){body.tbk-brand .build-story-nav{gap:4px 18px}body.tbk-brand .project-photo-grid{gap:24px}}
+
+/* Keep optional sound captions legible in small embedded players. */
+.ifo-video::cue,.q60-dyno-video::cue{font-size:clamp(16px,1.5vw,22px)}
