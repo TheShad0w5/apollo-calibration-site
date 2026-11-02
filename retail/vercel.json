@@ -2,6 +2,86 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/assets/builds/mary-q60-dyno-poster.webp",
+      "destination": "/assets/builds/mary-q60-dyno-poster-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/keith-sti-ifo-staging-poster.webp",
+      "destination": "/assets/builds/keith-sti-ifo-staging-poster-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/keith-2015-sti-sunset-rear.webp",
+      "destination": "/assets/builds/keith-2015-sti-sunset-rear-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/keith-2015-sti-sunset-rear-720.webp",
+      "destination": "/assets/builds/keith-2015-sti-sunset-rear-private-720.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/keith-2015-sti-sunset-rear-400.webp",
+      "destination": "/assets/builds/keith-2015-sti-sunset-rear-private-400.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/chris-2020-sti-awd.webp",
+      "destination": "/assets/builds/chris-2020-sti-awd-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/keith-2015-sti-2018.jpg",
+      "destination": "/assets/builds/keith-2015-sti-2018-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/mary-q60-rear.webp",
+      "destination": "/assets/builds/mary-q60-rear-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/mary-q60-rear-720.webp",
+      "destination": "/assets/builds/mary-q60-rear-private-720.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/mary-q60-rear-400.webp",
+      "destination": "/assets/builds/mary-q60-rear-private-400.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-gr86-hks-rear-720.webp",
+      "destination": "/assets/builds/thomas-gr86-hks-rear-private-720.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-gr86-hks-rear-400.webp",
+      "destination": "/assets/builds/thomas-gr86-hks-rear-private-400.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-gr86-hks-rear.webp",
+      "destination": "/assets/builds/thomas-gr86-hks-rear-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-2004-sti-workshop-2026.webp",
+      "destination": "/assets/builds/thomas-2004-sti-workshop-2026-private.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-2004-sti-workshop-2026-720.webp",
+      "destination": "/assets/builds/thomas-2004-sti-workshop-2026-private-720.webp",
+      "permanent": true
+    },
+    {
+      "source": "/assets/builds/thomas-2004-sti-workshop-2026-400.webp",
+      "destination": "/assets/builds/thomas-2004-sti-workshop-2026-private-400.webp",
+      "permanent": true
+    },
+    {
       "source": "/checkout",
       "destination": "https://tbk-store-production.keith-787.workers.dev/shop#setup",
       "permanent": false
