@@ -79,7 +79,9 @@
     if (saved && servicePages.has(saved.service_page)) journey.service_page = saved.service_page;
   } catch {}
   if (!journey.landing_page && knownPages.has(location.pathname)) journey.landing_page = location.pathname;
-  if (servicePages.has(location.pathname)) journey.service_page = location.pathname;
+  // Keep a generation-specific Subaru guide when the visitor opens the shared inquiry hub.
+  const subaruGuides = new Set(['/2022-plus-wrx-etuning.html','/2015-2021-wrx-etuning.html','/ej-wrx-sti-etuning.html']);
+  if (servicePages.has(location.pathname) && !(location.pathname === '/subaru-wrx-sti-tuning.html' && subaruGuides.has(journey.service_page))) journey.service_page = location.pathname;
   try { sessionStorage.setItem('tbk-journey', JSON.stringify(journey)); } catch {}
   document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
     const values = { ...attribution, ...journey, inquiry_page: location.pathname };
@@ -153,7 +155,7 @@
 (() => {
  const form = document.getElementById('inquiry-form');
  if (!form || !['/porsche-tuning.html','/subaru-wrx-sti-tuning.html'].includes(location.pathname)) return;
- const labels = {'911-cobb':'911 Turbo S / COBB results','macan-cobb':'Macan GTS / COBB','964-kinsler':'964 / Kinsler engine projects','james-wrx':'James’s WRX development','lucas-sti':'Lucas’s Emtron STI','link-wrx':'2004 WRX / Link ECU','cinderelli-wrx':'Cinderelli FA24 WRX','keith-sti':'Keith’s 2015 STI','2019-sti':'2019 STI / BCP turbo'};
+ const labels = {'chris-2020-sti':'Chris’s 2020 STI / stock-turbo flex fuel','chris-2016-wrx':'Chris’s 2016 WRX / FA20','thomas-sti':'Thomas’s 2004 STI / Haltech','david-link-sti':'David’s 2004 STI / Link ECU','jaycee-focus-rs':'Jaycee’s 2017 Focus RS','thomas-gr86':'Thomas’s 2024 GR86 / HKS turbo','mary-q60':'Mary’s 2018 Q60 Red Sport','911-cobb':'911 Turbo S / COBB results','macan-cobb':'Macan GTS / COBB','964-kinsler':'964 / Kinsler engine projects','james-wrx':'James’s WRX development','lucas-sti':'Lucas’s Emtron STI','link-wrx':'2004 WRX / Link ECU','cinderelli-wrx':'Cinderelli FA24 WRX','keith-sti':'Keith’s 2015 STI','2019-sti':'2019 STI / BCP turbo'};
  const key = new URLSearchParams(location.search).get('build');
  if (!Object.hasOwn(labels,key)) return;
  const note = document.createElement('p'); note.className = 'form-note'; note.textContent = 'Build that brought you here: ' + labels[key] + '. Tell me about your own car below.';
