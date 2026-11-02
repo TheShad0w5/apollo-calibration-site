@@ -40,6 +40,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [David’s 2004 STI](https://www.tunedbykeith.com/david-2004-sti-link-build.html): Link flex-fuel build, original videos and separately dated 93-octane/E75 records.
 - [Thomas’s 2004 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Haltech build with original workshop media and dated dyno records.
 - [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): EcuTek/HKS project, photos and original February 2025 report.
+- [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
 - [Build examples](https://www.tunedbykeith.com/build-examples.html): Historical projects with source context and calibration lessons.
 - [Builds, dyno sheets and videos](https://www.tunedbykeith.com/media.html): Public media with build context.
 
@@ -70,5 +71,3 @@ The linked public pages provide current service details, prices, compatibility c
 - [Shop connections](https://www.tunedbykeith.com/affiliates.html): Published shop relationships.
 - [Tuning glossary](https://www.tunedbykeith.com/tuning-glossary.html): Terminology.
 - [Sitemap](https://www.tunedbykeith.com/sitemap.xml): Public canonical page inventory.
-
-- [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
