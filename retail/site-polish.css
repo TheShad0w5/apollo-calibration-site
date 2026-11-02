@@ -105,3 +105,21 @@ body.tbk-brand .sti-hero>figure>img{aspect-ratio:4/3;object-fit:cover;max-height
 body.tbk-brand .q60-dyno-video{display:block;width:100%;height:auto;aspect-ratio:16/9;max-height:620px;background:#050b13;border:1px solid #30465b;border-radius:12px;margin:24px 0}body.tbk-brand #infiniti-builds .flagship-feature{padding:0}body.tbk-brand #project-mary-q60-photos{scroll-margin-top:24px}
 
 body.tbk-brand #results .featured-story-grid+p{margin-top:22px}
+
+/* Full-page visual review: balanced routes, platform cards and follow-on spacing. */
+body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7){grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px 32px;align-items:start}
+body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>h3{margin:0}
+body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>p{grid-column:1;margin:0;max-width:65ch}
+body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>div{grid-column:2;grid-row:1/3;display:flex;flex-wrap:wrap;align-content:start;gap:12px 24px;margin:0}
+body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>div>a{margin:0;min-height:44px;display:inline-flex;align-items:center}
+body.tbk-brand #supported-vehicles .steps{grid-template-columns:repeat(6,minmax(0,1fr));gap:24px}
+body.tbk-brand #supported-vehicles .steps>article{grid-column:span 2;min-width:0;padding:24px;background:#101b29;border:1px solid #30465b;border-radius:10px;display:flex;flex-direction:column;align-items:flex-start}
+body.tbk-brand #supported-vehicles .steps>article:nth-last-child(2):nth-child(3n+1),body.tbk-brand #supported-vehicles .steps>article:last-child:nth-child(3n+2){grid-column:span 3}
+body.tbk-brand #supported-vehicles .steps>article>h3{margin:0 0 16px;line-height:1.3}
+body.tbk-brand #supported-vehicles .steps>article>p{color:#c1cdda;line-height:1.75}
+body.tbk-brand #supported-vehicles .steps>article>a:last-child{margin-top:auto;padding-top:12px}
+body.tbk-brand #supported-vehicles .steps+p,body.tbk-brand .service-paths+p{margin-top:24px}
+body.tbk-brand .project-facts{margin-block:28px}
+body.tbk-brand .project-facts+h2{margin-top:36px}
+@media(max-width:800px){body.tbk-brand #supported-vehicles .steps{grid-template-columns:repeat(2,minmax(0,1fr))}body.tbk-brand #supported-vehicles .steps>article{grid-column:span 1!important}body.tbk-brand #supported-vehicles .steps>article:last-child:nth-child(odd){grid-column:1/-1!important}}
+@media(max-width:600px){body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7){grid-template-columns:minmax(0,1fr)}body.tbk-brand #choose-service .path-grid>article:last-child:nth-child(7)>div{grid-column:1;grid-row:auto}body.tbk-brand #supported-vehicles .steps{grid-template-columns:minmax(0,1fr)}body.tbk-brand #supported-vehicles .steps>article{padding:20px}}
