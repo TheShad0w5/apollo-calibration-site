@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/assets/builds/keith-sti-ifo-burnout.mp4",
+      "destination": "/assets/builds/keith-sti-ifo-burnout-private.mp4",
+      "permanent": true
+    },
+    {
       "source": "/assets/builds/keith-sti-ifo-staging.mp4",
       "destination": "/assets/builds/keith-sti-ifo-staging-private.mp4",
       "permanent": true
