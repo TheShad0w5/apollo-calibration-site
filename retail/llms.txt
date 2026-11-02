@@ -17,10 +17,8 @@ The linked public pages provide current service details, prices, compatibility c
 - [2022+ WRX e-tuning](https://www.tunedbykeith.com/2022-plus-wrx-etuning.html): FA24 WRX service details; exact ECU support is confirmed individually.
 - [Porsche tuning](https://www.tunedbykeith.com/porsche-tuning.html): Supported modern COBB applications and vintage engine projects.
 - [Ford Focus, Fiesta and Raptor tuning](https://www.tunedbykeith.com/ford-tuning.html): Exact-model compatibility, equipment, fuel, logging and inquiry guidance.
-- [Infiniti Q50 and Q60 tuning](https://www.tunedbykeith.com/infiniti-q50-q60-tuning.html): VR30 3.0t and Red Sport setup review, EcuTek equipment, fuel and preparation.
 - [Standalone ECU tuning](https://www.tunedbykeith.com/standalone-ecu-tuning.html): ECU selection, project scope and calibration support.
 - [COBB custom tuning](https://www.tunedbykeith.com/cobb-custom-tuning.html): Vehicle-specific compatibility and service options.
-- [EcuTek BRZ and GR86 tuning](https://www.tunedbykeith.com/ecutek-brz-tuning.html): First- and second-generation platform considerations.
 - [Orange County tuning](https://www.tunedbykeith.com/orange-county-porsche-subaru-tuning.html): Coordinated Subaru and Porsche road or dyno sessions.
 - [Dyno and travel tuning](https://www.tunedbykeith.com/dyno-tuning/): Session planning and facility coordination.
 
@@ -39,7 +37,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [Mary’s 2018 Infiniti Q60 Red Sport](https://www.tunedbykeith.com/mary-2018-infiniti-q60-red-sport.html): Original photos, dyno footage and the January 2021 individual report.
 - [David’s 2004 STI](https://www.tunedbykeith.com/david-2004-sti-link-build.html): Link flex-fuel build, original videos and separately dated 93-octane/E75 records.
 - [Thomas’s 2004 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Haltech build with original workshop media and dated dyno records.
-- [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): EcuTek/HKS project, photos and original February 2025 report.
+- [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): HKS turbo project, photos and original February 2025 report.
 - [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
 - [Build examples](https://www.tunedbykeith.com/build-examples.html): Historical projects with source context and calibration lessons.
 - [Builds, dyno sheets and videos](https://www.tunedbykeith.com/media.html): Public media with build context.
@@ -49,7 +47,6 @@ The linked public pages provide current service details, prices, compatibility c
 - [Tuning knowledge](https://www.tunedbykeith.com/tuning-knowledge.html): Equipment, preparation and ECU guide directory.
 - [Accessport flashing and datalogging](https://www.tunedbykeith.com/accessport-flashing-datalogging-guide.html): Customer instructions and Subaru platform-specific logging lists; EJ remote tuning requires an external wideband and an approved recorded AFR/lambda data path.
 - [COBB Accessport](https://www.tunedbykeith.com/knowledge/cobb-accessport.html): Handheld hardware, compatibility, file transfer and logging.
-- [EcuTek](https://www.tunedbykeith.com/knowledge/ecutek.html): Programming routes, licences and ECU Connect hardware.
 - [Open-source Subaru tools](https://www.tunedbykeith.com/knowledge/open-source.html): EcuFlash, RomRaider, ROM definitions and interface considerations.
 - [Emtron](https://www.tunedbykeith.com/knowledge/emtron.html): Standalone hardware, software and project preparation.
 - [Haltech](https://www.tunedbykeith.com/knowledge/haltech.html): ECU generation, NSP/ESP software and setup information.

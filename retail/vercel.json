@@ -2,6 +2,61 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/ecutek-tuning.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecutek-brz-tuning.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/knowledge/ecutek.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/infiniti-q50-q60-tuning.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/vr30-ecutek-tuning.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecutek-calibration-support.html",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecutek-tuning",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/ecutek-brz-tuning",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/knowledge/ecutek",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/infiniti-q50-q60-tuning",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
+      "source": "/vr30-ecutek-tuning",
+      "destination": "/service-unavailable.html",
+      "permanent": false
+    },
+    {
       "source": "/assets/builds/keith-sti-ifo-burnout.mp4",
       "destination": "/assets/builds/keith-sti-ifo-burnout-private.mp4",
       "permanent": true
@@ -117,11 +172,6 @@
       "permanent": false
     },
     {
-      "source": "/vr30-ecutek-tuning.html",
-      "destination": "/ecutek-tuning.html",
-      "permanent": false
-    },
-    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
@@ -185,11 +235,6 @@
     {
       "source": "/ecu-calibration-support/",
       "destination": "https://www.acalibrations.com/ecu-calibration-support/",
-      "permanent": true
-    },
-    {
-      "source": "/ecutek-calibration-support.html",
-      "destination": "https://www.acalibrations.com/ecutek-calibration-support.html",
       "permanent": true
     },
     {
