@@ -25,8 +25,8 @@
   const testOption = new URLSearchParams(location.search).get('tbk_test');
   let isTest = testOption === '1';
   try {
-    if (testOption === '1') sessionStorage.setItem(testKey, '1');
-    if (testOption === '0') sessionStorage.removeItem(testKey);
+    if (testOption === '1' || qaCampaign) sessionStorage.setItem(testKey, '1');
+    if (testOption === '0' && !qaCampaign) sessionStorage.removeItem(testKey);
     isTest = sessionStorage.getItem(testKey) === '1';
   } catch {}
   // Explicit per-browser owner exclusion survives new tabs and sessions.
