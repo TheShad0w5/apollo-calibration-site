@@ -127,3 +127,10 @@ body.tbk-brand .project-facts+h2{margin-top:36px}
 /* Balance three-photo project galleries without changing image files or crops. */
 @media(min-width:1000px){body.tbk-brand .project-photo-grid:has(>figure:nth-child(3):last-child),body.tbk-brand #project-photos .project-photo-grid:has(>figure:nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}}
 body.tbk-brand .project-photo-grid:has(>figure:only-child),body.tbk-brand #project-photos .project-photo-grid:has(>figure:only-child){grid-template-columns:minmax(0,720px);justify-content:center}
+
+/* Service checkout cards: content may wrap, but actions share a baseline. */
+body.tbk-brand #order-options .service-paths{align-items:stretch}
+body.tbk-brand #order-options .service-paths>article{display:flex;flex-direction:column;align-items:flex-start}
+body.tbk-brand #order-options .service-paths>article>h3{margin:0 0 20px;line-height:1.3}
+body.tbk-brand #order-options .service-paths>article>p{margin:0 0 28px}
+body.tbk-brand #order-options .service-paths>article>.button:last-child{margin-top:auto;max-width:100%;box-sizing:border-box;white-space:normal}
