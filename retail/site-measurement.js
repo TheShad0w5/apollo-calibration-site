@@ -2,6 +2,14 @@
 (() => {
   if (!['www.tunedbykeith.com', 'tunedbykeith.com'].includes(location.hostname)) return;
   const id = 'G-NTVQD1HRNV';
+  const adsId = 'AW-18533496599';
+  const inquiryConversion = adsId + '/mp7TCMiNoKcdEJfuuoVF';
+  let adsStarted = false;
+  function startAds() {
+    if (adsStarted || choice !== 'yes' || adsChoice !== 'yes' || privacySignal || internalVisit) return;
+    tag('config', adsId, {...page(), send_page_view:false, allow_ad_personalization_signals:false});
+    adsStarted = true;
+  }
   const key = 'tbk-analytics-choice';
   const replayKey = 'tbk-replay-choice-v1';
   let replayChoice = '';
@@ -172,6 +180,9 @@
     const time = typeof pending === 'number' ? pending : pending?.time;
     if (!time || Date.now() - time > 60 * 60 * 1000 || time > Date.now()) return;
     try { sessionStorage.removeItem(pendingKey); } catch { return; }
+    if (adsStarted && adsChoice === 'yes' && !privacySignal && !internalVisit) {
+      tag('event', 'conversion', {...page(), send_to:inquiryConversion, value:1.0, currency:'USD'});
+    }
     // A return from the form workflow, not proof of email delivery or a paid order.
     event('inquiry_confirmation', {form_name: 'website_inquiry', ...(inquiryPages.has(pending.inquiry_page) ? {inquiry_page:pending.inquiry_page} : {}), ...(builds.has(pending.build_source) ? {build_source:pending.build_source} : {})});
   }
@@ -179,7 +190,7 @@
     if (choice !== 'yes' || privacySignal || internalVisit) return;
     startReplay();
     tag('consent', 'update', consentState());
-    if (started) { window['ga-disable-' + id] = false; tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}); return; }
+    if (started) { startAds(); window['ga-disable-' + id] = false; tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}); return; }
     started = true;
     window['ga-disable-' + id] = false;
     tag('js', new Date());
@@ -188,6 +199,7 @@
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
     document.head.append(script);
+    startAds();
     event('page_view');
     confirmation();
   }
