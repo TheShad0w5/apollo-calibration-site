@@ -94,12 +94,13 @@
   if (location.hostname !== 'www.tunedbykeith.com' && location.hostname !== 'tunedbykeith.com') return;
   // Apply the same explicit QA/owner exclusion to Vercel's separate counter.
   // Query overrides take effect immediately; site-measurement.js persists them.
-  let internalVisit = query.get('tbk_test') === '1' || query.get('tbk_owner') === '1';
+  const qaCampaign = query.get('utm_source') === 'qa' && query.get('utm_medium') === 'test';
+  let internalVisit = qaCampaign || query.get('tbk_test') === '1' || query.get('tbk_owner') === '1';
   try {
     const testOption = query.get('tbk_test'), ownerOption = query.get('tbk_owner');
     const testVisit = testOption === '0' ? false : testOption === '1' || sessionStorage.getItem('tbk-measurement-test') === '1';
     const ownerVisit = ownerOption === '0' ? false : ownerOption === '1' || localStorage.getItem('tbk-owner-exclude-v1') === '1';
-    internalVisit = testVisit || ownerVisit;
+    internalVisit = qaCampaign || testVisit || ownerVisit;
   } catch { return; } // Do not measure when exclusion preferences cannot be read.
   if (internalVisit) return;
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
