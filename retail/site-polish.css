@@ -170,3 +170,12 @@ body.tbk-brand .more-build-stories>.build-proof-grid{margin:24px 0}
 .tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
 .tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}
 .tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) article>.button{margin-top:auto}
+
+/* One verified build with its own photograph and source context. */
+.tbk-brand .vehicle-build-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:center;padding:clamp(22px,3vw,36px);border:1px solid var(--line);border-radius:10px;background:#142132}
+.tbk-brand .vehicle-build-feature figure{margin:0;min-width:0}
+.tbk-brand .vehicle-build-feature img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 54%;border-radius:6px}
+.tbk-brand .vehicle-build-feature figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}
+.tbk-brand .vehicle-build-feature>div{min-width:0}
+.tbk-brand .related-build-title{margin-top:32px}
+@media(max-width:700px){.tbk-brand .vehicle-build-feature{grid-template-columns:minmax(0,1fr)}.tbk-brand .vehicle-build-feature .button{width:100%}}
