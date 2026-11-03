@@ -184,3 +184,30 @@ body.tbk-brand .more-build-stories>.build-proof-grid{margin:24px 0}
 .tbk-brand .ecu-guide-cards>article{display:flex;flex-direction:column;align-items:flex-start}
 .tbk-brand .ecu-guide-cards>article>.button{margin-top:auto;max-width:100%;white-space:normal}
 @media(max-width:700px){.tbk-brand .ecu-guide-cards>article>.button{width:100%}}
+
+/* Static logo-first navigation: stable first paint, native menus without JavaScript. */
+body.tbk-brand>header.tbk-static-header{position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:24px;padding:12px 6%;min-height:121px}
+body.tbk-brand>header.tbk-static-header>.brand img{display:block;width:96px!important;height:96px!important;max-width:none;object-fit:contain}
+body.tbk-brand>header.tbk-static-header :is(a,summary):focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+body.tbk-brand>header.tbk-static-header>.tbk-desktop-navigation{display:flex;width:auto;align-items:center;gap:1.6rem;border:0;padding:0}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu{display:none}
+body.tbk-brand>header.tbk-static-header details{border:0;padding:0;margin:0;background:transparent}
+body.tbk-brand>header.tbk-static-header summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:.6rem;min-height:48px;font-size:.9rem;font-weight:600}
+body.tbk-brand>header.tbk-static-header summary::-webkit-details-marker{display:none}
+body.tbk-brand>header.tbk-static-header .tbk-services-menu{position:relative}
+body.tbk-brand>header.tbk-static-header .tbk-services-panel{position:absolute;top:100%;left:0;z-index:50;min-width:260px;padding:12px;background:#132031;border:1px solid #435164;border-radius:8px;box-shadow:0 12px 40px #0008}
+body.tbk-brand>header.tbk-static-header .tbk-services-panel a{display:block;padding:10px 12px;min-height:44px;text-decoration:none;font-size:.9rem;color:#f5f7fa}
+body.tbk-brand>header.tbk-static-header .tbk-services-panel a:hover{background:#25354b;border-radius:4px}
+@media(max-width:1000px){
+body.tbk-brand>header.tbk-static-header{padding:10px 6%;min-height:97px;gap:16px}
+body.tbk-brand>header.tbk-static-header>.brand img{width:76px!important;height:76px!important}
+body.tbk-brand>header.tbk-static-header>.tbk-desktop-navigation{display:none}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu{display:block}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>summary{min-width:70px;justify-content:center;padding:.65rem .8rem;border:1px solid #66758a;border-radius:6px;color:#f5f7fa}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu[open]>summary{background:#25354b}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>nav{position:absolute;top:100%;left:6%;right:6%;width:auto;z-index:60;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:16px;background:#132031;border:1px solid #435164;border-radius:8px;box-shadow:0 12px 40px #0008;max-height:calc(100dvh - 120px);overflow:auto}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>nav>a{display:flex;align-items:center;min-height:48px;padding:10px 0;text-decoration:none}
+body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>nav>a.button{justify-content:center;padding:14px 22px;margin-top:8px;width:100%;max-width:none}
+body.tbk-brand>header.tbk-static-header .tbk-services-panel{position:static;min-width:0;box-shadow:none;margin:0 0 8px}
+}
+
