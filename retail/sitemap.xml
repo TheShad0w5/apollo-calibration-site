@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url><loc>https://www.tunedbykeith.com/</loc><lastmod>2026-11-02</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/about-keith-fields.html</loc><lastmod>2026-11-01</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/cobb-custom-tuning.html</loc><lastmod>2026-10-31</lastmod></url>
@@ -33,7 +33,8 @@
 <url><loc>https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html</loc><lastmod>2026-11-01</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/mary-2018-infiniti-q60-red-sport.html</loc><lastmod>2026-11-01</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/david-2004-sti-link-build.html</loc><lastmod>2026-11-01</lastmod></url>
-<url><loc>https://www.tunedbykeith.com/james-2024-wrx-build.html</loc><lastmod>2026-11-01</lastmod></url><url><loc>https://www.tunedbykeith.com/atlas-wrx-tuning.html</loc><lastmod>2026-11-02</lastmod></url></urlset>
+<url><loc>https://www.tunedbykeith.com/james-2024-wrx-build.html</loc><lastmod>2026-11-01</lastmod></url><url><loc>https://www.tunedbykeith.com/atlas-wrx-tuning.html</loc><lastmod>2026-11-02</lastmod></url><url><loc>https://www.tunedbykeith.com/david-sti-dyno-video.html</loc><lastmod>2026-11-03</lastmod><video:video><video:thumbnail_loc>https://www.tunedbykeith.com/assets/builds/david-sti-dyno-private.webp</video:thumbnail_loc><video:title>David’s 2004 STI on the dyno</video:title><video:description>Watch David’s blue 2004 Subaru STI on AWD Tuning’s dyno. Original November 2024 footage, with links to the Link ECU build story and separate dated results.</video:description><video:content_loc>https://www.tunedbykeith.com/assets/builds/david-sti-dyno-private.mp4</video:content_loc></video:video></url>
+</urlset>
 
 
 
