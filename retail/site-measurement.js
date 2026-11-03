@@ -22,7 +22,9 @@
   const purchaseEndpoint='https://tbk-store-production.keith-787.workers.dev/api/analytics-context';
   // Explicit QA sessions use separate event names and mark form submissions.
   const testKey = 'tbk-measurement-test';
-  const testOption = new URLSearchParams(location.search).get('tbk_test');
+  const testQuery = new URLSearchParams(location.search);
+  const testOption = testQuery.get('tbk_test');
+  const qaCampaign = testQuery.get('utm_source') === 'qa' && testQuery.get('utm_medium') === 'test';
   let isTest = testOption === '1';
   try {
     if (testOption === '1' || qaCampaign) sessionStorage.setItem(testKey, '1');
