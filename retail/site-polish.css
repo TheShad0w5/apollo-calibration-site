@@ -165,8 +165,8 @@ body.tbk-brand .more-build-stories>summary:focus-visible{outline:2px solid var(-
 body.tbk-brand .more-build-stories>.build-proof-grid{margin:24px 0}
 
 /* Vehicle-specific build evidence on the FA24 service page. */
-.tbk-brand .fa24-build-cards article{display:flex;flex-direction:column}
-.tbk-brand .fa24-build-cards figure{margin:0 0 24px}
-.tbk-brand .fa24-build-cards img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
-.tbk-brand .fa24-build-cards figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}
-.tbk-brand .fa24-build-cards article>.button{margin-top:auto}
+.tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) article{display:flex;flex-direction:column}
+.tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) figure{margin:0 0 24px}
+.tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:6px}
+.tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}
+.tbk-brand :is(.fa24-build-cards,.vehicle-build-cards) article>.button{margin-top:auto}
