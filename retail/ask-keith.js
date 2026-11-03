@@ -1,6 +1,14 @@
+// Static headers use native disclosure menus; JavaScript adds dismissal only.
+(() => {
+ const header=document.querySelector('header.tbk-static-header');if(!header)return;
+ const mobile=header.querySelector('.tbk-native-mobile-menu');
+ header.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const open=event.target.closest('details[open]');if(open){event.preventDefault();open.open=false;open.querySelector('summary').focus();}});
+ header.addEventListener('click',event=>{if(event.target.closest('a[href]')&&mobile)mobile.open=false;});
+ document.addEventListener('click',event=>{if(!header.contains(event.target))header.querySelectorAll('details[open]').forEach(menu=>menu.open=false);});
+})();
 // Shared logo-first header; native details supports keyboard and touch.
 (() => {
- const header=document.querySelector('body.tbk-brand > header');if(!header)return;
+ const header=document.querySelector('body.tbk-brand > header');if(!header||header.classList.contains('tbk-static-header'))return;
  const brand=header.querySelector('.brand');if(brand){brand.setAttribute('aria-label','Tuned by Keith — home');const wordmark=brand.querySelector('.brand-wordmark');if(wordmark)wordmark.remove();const logo=brand.querySelector('img');if(logo){logo.alt='Tuned by Keith';logo.width=96;logo.height=96;}}
  const nav=header.querySelector('nav');if(!nav)return;
  nav.setAttribute('aria-label','Main navigation');
@@ -15,7 +23,7 @@
   const header = document.querySelector('body > header');
   const nav = header && header.querySelector('nav');
   const services = document.querySelector('body > .service-nav');
-  if (!header || !nav || document.getElementById('tbk-menu-toggle')) return;
+  if (!header || header.classList.contains('tbk-static-header') || !nav || document.getElementById('tbk-menu-toggle')) return;
   nav.id = nav.id || 'tbk-main-navigation';
   if (services) services.id = services.id || 'tbk-service-navigation';
   const button = document.createElement('button');
@@ -174,3 +182,4 @@
 
 // Preserve an accessible name for the standalone footer logo.
 (()=>{const brand=document.querySelector('body.tbk-brand>footer>.brand');if(brand){brand.setAttribute('aria-label','Tuned by Keith — home');const image=brand.querySelector('img');if(image)image.alt='Tuned by Keith';}})();
+
