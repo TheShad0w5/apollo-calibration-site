@@ -319,16 +319,20 @@
   if (isOwner) {
     const notice = document.createElement('aside');
     notice.setAttribute('aria-label', 'Owner analytics exclusion');
-    notice.style.cssText = 'position:fixed;top:8px;right:8px;z-index:1001;max-width:calc(100vw - 32px);padding:10px;background:#fff;color:#111720;border:2px solid #236ac2;font:14px/1.5 sans-serif';
+    notice.style.cssText = 'display:block;margin:24px 6%;padding:16px 20px;border:1px solid #435164;border-left:3px solid #ff6a00;border-radius:8px;background:#132031;color:#f4f7fb;font:14px/1.5 sans-serif';
     notice.textContent = 'Owner visits excluded from analytics on this browser. ';
     const resume = document.createElement('a');
     const resumeUrl = new URL(location.origin + location.pathname);
     resumeUrl.searchParams.set('tbk_owner', '0');
     resume.href = resumeUrl.href;
     resume.textContent = 'Turn off owner exclusion';
-    resume.style.color = '#873216';
+    resume.style.color = '#ffb47f';
+    resume.style.display = 'inline-block';
+    resume.style.padding = '8px 0';
     notice.append(resume);
-    document.body.append(notice);
+    const footer = document.querySelector('body > footer');
+    if (footer) footer.before(notice);
+    else document.body.append(notice);
   }
   window.addEventListener('storage',e=>{if([key,purchaseConsentKey,ownerKey].includes(e.key)&&!purchaseGranted())void revokePurchaseContexts();});
   start();
