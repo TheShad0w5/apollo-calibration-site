@@ -15,9 +15,14 @@ The linked public pages provide current service details, prices, compatibility c
 - [EJ WRX and STI e-tuning](https://www.tunedbykeith.com/ej-wrx-sti-etuning.html): 2002–2014 WRX and 2004–2021 STI setup and logging considerations.
 - [2015–2021 WRX e-tuning](https://www.tunedbykeith.com/2015-2021-wrx-etuning.html): FA20 WRX service details.
 - [2022+ WRX e-tuning](https://www.tunedbykeith.com/2022-plus-wrx-etuning.html): FA24 WRX service details; exact ECU support is confirmed individually.
+- [Atlas WRX tuning](https://www.tunedbykeith.com/atlas-wrx-tuning.html): Supported FA20 and FA24 WRX applications, equipment review and individually quoted calibration; separate from Accessport services.
 - [Porsche tuning](https://www.tunedbykeith.com/porsche-tuning.html): Supported modern COBB applications and vintage engine projects.
 - [Ford Focus, Fiesta and Raptor tuning](https://www.tunedbykeith.com/ford-tuning.html): Exact-model compatibility, equipment, fuel, logging and inquiry guidance.
 - [Standalone ECU tuning](https://www.tunedbykeith.com/standalone-ecu-tuning.html): ECU selection, project scope and calibration support.
+- [Emtron tuning](https://www.tunedbykeith.com/emtron-tuning.html): Calibration services, project planning and documented build examples.
+- [Haltech tuning](https://www.tunedbykeith.com/haltech-tuning.html): ECU-specific setup review, calibration and supporting project evidence.
+- [Link ECU tuning](https://www.tunedbykeith.com/link-ecu-tuning.html): Vehicle-specific standalone calibration and build examples.
+- [MoTeC tuning](https://www.tunedbykeith.com/motec-tuning.html): ECU and package review, calibration scope and project inquiries.
 - [COBB custom tuning](https://www.tunedbykeith.com/cobb-custom-tuning.html): Vehicle-specific compatibility and service options.
 - [Orange County tuning](https://www.tunedbykeith.com/orange-county-porsche-subaru-tuning.html): Coordinated Subaru and Porsche road or dyno sessions.
 - [Dyno and travel tuning](https://www.tunedbykeith.com/dyno-tuning/): Session planning and facility coordination.
@@ -36,6 +41,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [Chris’s 2016 WRX](https://www.tunedbykeith.com/chris-2016-wrx-fa20-build.html): IAG shortblock, Kelford cams and dated FA20 development records.
 - [Mary’s 2018 Infiniti Q60 Red Sport](https://www.tunedbykeith.com/mary-2018-infiniti-q60-red-sport.html): Original photos, dyno footage and the January 2021 individual report.
 - [David’s 2004 STI](https://www.tunedbykeith.com/david-2004-sti-link-build.html): Link flex-fuel build, original videos and separately dated 93-octane/E75 records.
+- [David’s STI dyno video](https://www.tunedbykeith.com/david-sti-dyno-video.html): November 2024 footage and a route to the full Link ECU build story; dated results are documented separately.
 - [Thomas’s 2004 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Haltech build with original workshop media and dated dyno records.
 - [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): HKS turbo project, photos and original February 2025 report.
 - [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
