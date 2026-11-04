@@ -241,3 +241,5 @@ body.tbk-brand .see-work .work-card>video{display:block;width:100%!important;max
 body.tbk-brand .see-work .work-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0;padding:12px 0 0;border-top:1px solid var(--line)}
 body.tbk-brand .see-work .work-links a{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:6px 0}
 @media(max-width:700px){body.tbk-brand .see-work .work-card{padding:20px;grid-template-rows:auto;gap:12px}body.tbk-brand .see-work .work-card>video{aspect-ratio:1/1!important}}
+
+@supports(grid-template-rows:subgrid){@media(min-width:701px){body.tbk-brand .see-work .work-card{grid-row:span 6;grid-template-rows:subgrid;row-gap:14px}}}
