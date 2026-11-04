@@ -230,3 +230,14 @@ body.tbk-brand .section:is(.faq,.editorial,.shop-ordering-faq,.story-copy){paddi
 
 /* Conditional inquiry fields must stay hidden despite label display rules. */
 body.tbk-brand #tune-intake [hidden]{display:none!important}
+
+/* Shared video-card geometry: portrait and landscape footage use one stage. */
+body.tbk-brand .see-work .work-grid{align-items:stretch}
+body.tbk-brand .see-work .work-card{display:grid;grid-template-rows:auto auto 1fr auto auto auto;gap:14px;padding:24px}
+body.tbk-brand .see-work .work-card>:not(.work-player):not(img){margin:0}
+body.tbk-brand .see-work .work-card>h3{margin:0}
+body.tbk-brand .see-work .work-card>p{margin:0}
+body.tbk-brand .see-work .work-card>video{display:block;width:100%!important;max-width:100%!important;height:auto!important;aspect-ratio:4/3!important;object-fit:contain;margin:0!important;background:#050b13;border-radius:8px}
+body.tbk-brand .see-work .work-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0;padding:12px 0 0;border-top:1px solid var(--line)}
+body.tbk-brand .see-work .work-links a{display:inline-flex;align-items:center;min-height:44px;margin:0;padding:6px 0}
+@media(max-width:700px){body.tbk-brand .see-work .work-card{padding:20px;grid-template-rows:auto;gap:12px}body.tbk-brand .see-work .work-card>video{aspect-ratio:1/1!important}}
