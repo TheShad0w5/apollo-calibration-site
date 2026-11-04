@@ -217,3 +217,10 @@ body.tbk-brand>header.tbk-static-header .tbk-services-panel{position:static;min-
 
 /* Give standalone and service guide links comfortable mobile tap areas. */
 @media(max-width:900px){body.tbk-brand .service-paths>article>a:not(.button){display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding-block:10px;box-sizing:border-box}}
+
+/* Knowledge guides use their own bounded container, not viewport-based gutters. */
+body.tbk-brand.ecu-knowledge :is(.breadcrumbs,.ecu-guide-hero){width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(24px,5vw,64px);box-sizing:border-box}
+body.tbk-brand.ecu-knowledge .ecu-article{width:100%;max-width:1100px;margin-inline:auto;padding-inline:clamp(24px,5vw,64px);box-sizing:border-box}
+body.tbk-brand.ecu-knowledge .ecu-guide-hero h1{font-size:clamp(2.25rem,4vw,3.5rem);line-height:1.12;max-width:none;margin:0;overflow-wrap:normal}
+body.tbk-brand.ecu-knowledge .ecu-guide-hero .ecu-hardware-media img{width:100%;height:auto;max-height:360px;object-fit:contain}
+@media(max-width:1000px){body.tbk-brand.ecu-knowledge.platform-guide .ecu-guide-hero{display:block}body.tbk-brand.ecu-knowledge.platform-guide .ecu-guide-hero>.ecu-hardware{max-width:620px;margin:28px 0 0}body.tbk-brand.ecu-knowledge .platform-cards{grid-template-columns:minmax(0,1fr)}}
