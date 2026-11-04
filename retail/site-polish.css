@@ -243,3 +243,7 @@ body.tbk-brand .see-work .work-links a{display:inline-flex;align-items:center;mi
 @media(max-width:700px){body.tbk-brand .see-work .work-card{padding:20px;grid-template-rows:auto;gap:12px}body.tbk-brand .see-work .work-card>video{aspect-ratio:1/1!important}}
 
 @supports(grid-template-rows:subgrid){@media(min-width:701px){body.tbk-brand .see-work .work-card{grid-row:span 6;grid-template-rows:subgrid;row-gap:14px}}}
+
+/* ECU guide hero actions share the same brand treatment. */
+body.tbk-brand .ecu-guide-hero .hero-actions>a:not(.button){background:var(--accent);border-color:var(--accent);color:#08111c;font-weight:800}
+body.tbk-brand .ecu-guide-hero .hero-actions>a:not(.button):hover{background:#f3934e;border-color:#f3934e;color:#08111c}
