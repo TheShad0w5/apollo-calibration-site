@@ -183,3 +183,29 @@
 // Preserve an accessible name for the standalone footer logo.
 (()=>{const brand=document.querySelector('body.tbk-brand>footer>.brand');if(brand){brand.setAttribute('aria-label','Tuned by Keith — home');const image=brand.querySelector('img');if(image)image.alt='Tuned by Keith';}})();
 
+
+
+// Carry a known Subaru service context into the inquiry without filling required customer details.
+(() => {
+ if (location.pathname !== '/subaru-wrx-sti-tuning.html') return;
+ const form = document.querySelector('form#inquiry-form');
+ if (!form) return;
+ const contexts = {
+  ej: { label: '2002–2014 WRX / 2004–2021 STI (EJ)', example: 'e.g. 2006 WRX or 2018 STI — your exact year and model' },
+  fa20: { label: '2015–2021 WRX (FA20)', example: 'e.g. 2016 WRX — your exact year and model' },
+  fa24: { label: '2022+ WRX (FA24)', example: 'e.g. 2024 WRX — your exact year and model' }
+ };
+ const key = new URLSearchParams(location.search).get('generation');
+ if (!Object.hasOwn(contexts, key)) return;
+ const context = contexts[key];
+ const note = document.createElement('p');
+ note.className = 'form-note';
+ note.id = 'subaru-service-context';
+ note.textContent = 'You came from: ' + context.label + ' tuning. Enter your own vehicle below; Keith will confirm compatibility.';
+ form.prepend(note);
+ const field = document.createElement('input');
+ field.type = 'hidden'; field.name = 'service_context'; field.value = context.label;
+ form.append(field);
+ const vehicle = form.querySelector('input[name="vehicle"]');
+ if (vehicle) { vehicle.placeholder = context.example; vehicle.setAttribute('aria-describedby', [vehicle.getAttribute('aria-describedby'), note.id].filter(Boolean).join(' ')); }
+})();
