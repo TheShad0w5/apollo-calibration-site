@@ -214,3 +214,6 @@ body.tbk-brand>header.tbk-static-header .tbk-services-panel{position:static;min-
 
 /* Keep expanded mobile navigation in one scrollable column on short screens. */
 @media(max-width:900px){body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>nav>*{flex-shrink:0}}
+
+/* Give standalone and service guide links comfortable mobile tap areas. */
+@media(max-width:900px){body.tbk-brand .service-paths>article>a:not(.button){display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding-block:10px;box-sizing:border-box}}
