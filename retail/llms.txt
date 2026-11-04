@@ -34,6 +34,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [Porsche 964 Kinsler engine projects](https://www.tunedbykeith.com/porsche-964-kinsler-engine-tuning.html): Vintage engine calibration and distinct project configurations.
 - [Keith's white 2015 STI](https://www.tunedbykeith.com/keith-2015-sti.html): Personal build, Precision 6466 stage and historical development.
 - [Lucas's 2018 STI Emtron build](https://www.tunedbykeith.com/lucas-2018-sti-emtron.html): Build story, dated results and original media.
+- [Lucas’s STI dyno video](https://www.tunedbykeith.com/lucas-sti-dyno-video.html): Original dyno footage with Emtron build context; separate dated reports document the results.
 - [Cinderelli 2024 WRX](https://www.tunedbykeith.com/2024-wrx-cinderelli-e70.html): Configuration-specific WRX results.
 - [2019 STI BCP turbo on 93 octane](https://www.tunedbykeith.com/2019-sti-bcp-turbo-93-octane.html): A documented STI tuning example.
 - [Jaycee’s 2017 Focus RS](https://www.tunedbykeith.com/jaycee-2017-focus-rs-build.html): Confirmed AWD build photo and dated 2022–2024 dyno records; corrected and uncorrected figures distinguished.
