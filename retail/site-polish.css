@@ -227,3 +227,6 @@ body.tbk-brand.ecu-knowledge .ecu-guide-hero .ecu-hardware-media img{width:100%;
 
 /* Bounded reading sections must not inherit full-viewport desktop gutters. */
 body.tbk-brand .section:is(.faq,.editorial,.shop-ordering-faq,.story-copy){padding-inline:clamp(24px,5vw,64px);box-sizing:border-box;width:100%}
+
+/* Conditional inquiry fields must stay hidden despite label display rules. */
+body.tbk-brand #tune-intake [hidden]{display:none!important}
