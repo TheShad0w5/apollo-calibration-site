@@ -209,3 +209,33 @@
  const vehicle = form.querySelector('input[name="vehicle"]');
  if (vehicle) { vehicle.placeholder = context.example; vehicle.setAttribute('aria-describedby', [vehicle.getAttribute('aria-describedby'), note.id].filter(Boolean).join(' ')); }
 })();
+
+
+// Preserve the current build when a reader uses the shared Ask Keith link.
+(() => {
+ const builds = {
+  '/corey-2005-sti-haltech-build.html':'corey-sti',
+  '/juan-2013-sti-haltech-build.html':'juan-sti',
+  '/thomas-2004-sti-haltech-build.html':'thomas-sti',
+  '/lucas-2018-sti-emtron.html':'lucas-sti',
+  '/keith-2015-sti.html':'keith-sti',
+  '/chris-2016-wrx-fa20-build.html':'chris-2016-wrx',
+  '/chris-2020-sti-flex-fuel.html':'chris-2020-sti',
+  '/jaycee-2017-focus-rs-build.html':'jaycee-focus-rs',
+  '/david-2004-sti-link-build.html':'david-link-sti',
+  '/2024-wrx-cinderelli-e70.html':'cinderelli-wrx',
+  '/james-2024-wrx-build.html':'james-wrx',
+  '/thomas-2024-gr86-hks-turbo.html':'thomas-gr86',
+  '/mary-2018-infiniti-q60-red-sport.html':'mary-q60',
+  '/porsche-911-turbo-s-cobb-results.html':'911-cobb',
+  '/porsche-964-kinsler-engine-tuning.html':'964-kinsler'
+ };
+ const build = builds[location.pathname];
+ if (!build) return;
+ document.querySelectorAll('a[href]').forEach(link => {
+  const url = new URL(link.getAttribute('href'), location.href);
+  if (url.origin !== location.origin || url.pathname !== '/shop.html' || url.hash !== '#request' || url.searchParams.has('build')) return;
+  url.searchParams.set('build', build);
+  link.href = url.pathname + url.search + url.hash;
+ });
+})();
