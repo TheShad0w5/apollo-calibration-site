@@ -226,4 +226,4 @@ body.tbk-brand.ecu-knowledge .ecu-guide-hero .ecu-hardware-media img{width:100%;
 @media(max-width:1000px){body.tbk-brand.ecu-knowledge.platform-guide .ecu-guide-hero{display:block}body.tbk-brand.ecu-knowledge.platform-guide .ecu-guide-hero>.ecu-hardware{max-width:620px;margin:28px 0 0}body.tbk-brand.ecu-knowledge .platform-cards{grid-template-columns:minmax(0,1fr)}}
 
 /* Bounded reading sections must not inherit full-viewport desktop gutters. */
-body.tbk-brand .section:is(.faq,.editorial,.shop-ordering-faq){padding-inline:clamp(24px,5vw,64px);box-sizing:border-box;width:100%}
+body.tbk-brand .section:is(.faq,.editorial,.shop-ordering-faq,.story-copy){padding-inline:clamp(24px,5vw,64px);box-sizing:border-box;width:100%}
