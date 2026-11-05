@@ -247,3 +247,11 @@ body.tbk-brand .see-work .work-links a{display:inline-flex;align-items:center;mi
 /* ECU guide paired actions share the same brand treatment. */
 body.tbk-brand.ecu-knowledge .hero-actions>a:not(.button){background:var(--accent);border-color:var(--accent);color:#08111c;font-weight:800;padding:14px 22px}
 body.tbk-brand.ecu-knowledge .hero-actions>a:not(.button):hover{background:#f3934e;border-color:#f3934e;color:#08111c}
+
+/* Branded dyno sheets: presentation only; linked originals stay unchanged. */
+body.tbk-brand .dyno-sheet-display{display:block;position:relative;isolation:isolate;overflow:hidden;background:#050b13;border:1px solid #30465b;border-radius:10px}
+body.tbk-brand .dyno-sheet-display>img{display:block;width:100%;height:auto;margin:0;border:0;border-radius:0;object-fit:contain;filter:invert(1) hue-rotate(180deg) brightness(1.65)}
+body.tbk-brand .dyno-sheet-display::after{content:"";position:absolute;inset:8% 8% 18%;background:url("/assets/brand/keith-logo.svg") center/56% auto no-repeat;opacity:.14;pointer-events:none}
+body.tbk-brand .portfolio-photo.dyno-sheet-display>img{aspect-ratio:16/10;object-fit:contain;background:#fff!important}
+body.tbk-brand .dyno-sheet-display:focus-visible{outline:3px solid #ffb575;outline-offset:4px}
+@media print{body.tbk-brand .dyno-sheet-display>img{filter:none}body.tbk-brand .dyno-sheet-display::after{display:none}}
