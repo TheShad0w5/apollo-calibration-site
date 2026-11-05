@@ -8,6 +8,12 @@ function fixture(){
  return {invoice,expected};
 }
 test('hardware, shipping, tax and destination match before payment link release',()=>{const {invoice,expected}=fixture();assert.equal(reviewHardwareInvoice(invoice,expected).ready,true);});
+test('Affirm availability comes from returned invoice, never inferred from credit-card flag',()=>{
+ const {invoice,expected}=fixture();invoice.AllowOnlineCreditCardPayment=true;
+ assert.equal(reviewHardwareInvoice(invoice,expected).paymentOptions.affirm,null);
+ invoice.AllowOnlineAffirmPayment=true;assert.equal(reviewHardwareInvoice(invoice,expected).paymentOptions.affirm,true);
+ invoice.AllowOnlineAffirmPayment=false;assert.equal(reviewHardwareInvoice(invoice,expected).paymentOptions.affirm,false);
+});
 test('wrong destination and changed customer block release',()=>{for(const edit of [i=>i.ShipAddr.PostalCode='99999',i=>i.CustomerRef.value='other']){const {invoice,expected}=fixture();edit(invoice);assert.equal(reviewHardwareInvoice(invoice,expected).ready,false);}});
 test('missing or recalculated tax blocks release even if item subtotal matches',()=>{for(const tax of [undefined,0,11]){const {invoice,expected}=fixture();invoice.TxnTaxDetail.TotalTax=tax;assert.equal(reviewHardwareInvoice(invoice,expected).ready,false);}});
 test('wrong hardware item, shipping charge, total or currency blocks release',()=>{for(const edit of [i=>i.Line[0].SalesItemLineDetail.ItemRef.value='tuning-service',i=>i.Line[1].Amount=20,i=>i.TotalAmt=126,i=>i.CurrencyRef.value='CAD']){const {invoice,expected}=fixture();edit(invoice);assert.equal(reviewHardwareInvoice(invoice,expected).ready,false);}});
