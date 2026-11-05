@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url><loc>https://www.tunedbykeith.com/</loc><lastmod>2026-11-02</lastmod></url>
-<url><loc>https://www.tunedbykeith.com/about-keith-fields.html</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://www.tunedbykeith.com/about-keith-fields.html</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/cobb-custom-tuning.html</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/dyno-tuning/</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/build-examples.html</loc><lastmod>2026-11-04</lastmod></url>
@@ -23,7 +23,7 @@
 <url><loc>https://www.tunedbykeith.com/porsche-tuning.html</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/subaru-wrx-sti-tuning.html</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/standalone-ecu-tuning.html</loc><lastmod>2026-11-05</lastmod></url>
-<url><loc>https://www.tunedbykeith.com/media.html</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://www.tunedbykeith.com/media.html</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/terms.html</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/privacy.html</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/orange-county-porsche-subaru-tuning.html</loc><lastmod>2026-11-03</lastmod></url>
@@ -48,7 +48,7 @@
 <url><loc>https://www.tunedbykeith.com/how-to-build-a-stable-idle-calibration.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/how-to-diagnose-sync-loss.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html</loc></url>
-<url><loc>https://www.tunedbykeith.com/knowledge-base.html</loc></url>
+<url><loc>https://www.tunedbykeith.com/knowledge-base.html</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://www.tunedbykeith.com/link-ecu-support.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/motec-calibration-support.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/motec-ref-sync-troubleshooting.html</loc></url>
@@ -80,8 +80,8 @@
 <url><loc>https://www.tunedbykeith.com/understanding-volumetric-efficiency-modeling.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/understanding-wastegate-control.html</loc></url>
 <url><loc>https://www.tunedbykeith.com/why-dbw-throttle-closure-happens.html</loc></url>
-<url><loc>https://www.tunedbykeith.com/business-support.html</loc></url>
-<url><loc>https://www.tunedbykeith.com/armando-2015-wrx-motec-build.html</loc></url>
+<url><loc>https://www.tunedbykeith.com/business-support.html</loc><lastmod>2026-11-05</lastmod></url>
+<url><loc>https://www.tunedbykeith.com/armando-2015-wrx-motec-build.html</loc><lastmod>2026-11-05</lastmod></url>
 </urlset>
 
 
