@@ -47,6 +47,8 @@ function tbkS3SaleActive(now=new Date()){
    note.append(document.createTextNode(' Sale scheduled through December 8, 2026 (AEDT), subject to manufacturer changes. '),terms,document.createTextNode('. Availability and delivery timing are confirmed before payment.'));
   }
   button.disabled=!ready;
+  const progress=root.querySelector('.ecu-package-summary .form-note');
+  if(progress)progress.textContent=ready?'Ready to review. Continue to add your contact details and questions; no payment is taken.':'Select every field to continue. Your selection carries into the inquiry below; no payment is taken.';
  }
  model.addEventListener('change',()=>{years();update();});for(const el of [year,market,trans,configuration,selection])el.addEventListener('change',update);
  button.addEventListener('click',()=>{
@@ -56,6 +58,8 @@ function tbkS3SaleActive(now=new Date()){
   const details=(scope.value==='ecu-only'?'ECU-only selection: ':'Hardware package: ')+p.name+' | '+year.value+' Subaru '+model.value+' | '+market.value+' | '+trans.value+' | '+configuration.value+' engine/harness configuration';
   let context=field('hardware_package_selection');if(!context){context=document.createElement('input');context.type='hidden';context.name='hardware_package_selection';form.append(context);}context.value=details;
   let display=document.getElementById('hardware-package-context');if(!display){display=document.createElement('p');display.id='hardware-package-context';display.className='form-note';form.prepend(display);}display.textContent=details;
+  const edit=document.createElement('a');edit.href='#subaru-ecu-packages';edit.textContent='Edit hardware selection';edit.style.cssText='display:inline-flex;align-items:center;min-height:44px;margin-top:8px';
+  display.append(document.createElement('br'),edit);
   if(field('platform'))field('platform').value=p.platform;
   if(field('tuning_interest'))field('tuning_interest').value='ECU sales / complete package — individual quote';
   if(field('hardware_option'))field('hardware_option').value=scope.value;
