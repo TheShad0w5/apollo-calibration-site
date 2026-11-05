@@ -42,7 +42,7 @@ function tbkS3SaleActive(now=new Date()){
   }else if(p)price.textContent='Application pricing on request';
   for(const option of selection.options){const item=catalog[option.value];if(item?.price)option.textContent=item.name+' — '+money(saleAmount(item))+(saleAmount(item)!==item.price?' sale (regular '+money(item.price)+')':'');}
   note.textContent=p?(p.note+(ready&&!standard?' Imported vehicles, automatic transmissions and changed engine/harness configurations require a separate fitment and price review.':'')):'';
-  if(p?.platform==='Haltech'&&tbkS3SaleActive()){
+  if(p?.price&&p.platform==='Haltech'&&tbkS3SaleActive()){
    const terms=document.createElement('a');terms.href='https://www.haltech.com/haltech-40th-birthday-sale-terms-and-conditions/';terms.textContent='Haltech sale terms';
    note.append(document.createTextNode(' Sale scheduled through December 8, 2026 (AEDT), subject to manufacturer changes. '),terms,document.createTextNode('. Availability and delivery timing are confirmed before payment.'));
   }
