@@ -164,7 +164,7 @@
 (() => {
  const form = document.getElementById('inquiry-form') || document.getElementById('tune-intake');
  if (!form || !['/porsche-tuning.html','/subaru-wrx-sti-tuning.html','/shop.html'].includes(location.pathname)) return;
- const labels = {'thomas-2021-sti':'Thomas’s 2021 STI / COBB GTX3576R','corey-sti':'Corey’s 2005 STI / Haltech Elite 2500','chris-2020-sti':'Chris’s 2020 STI / stock-turbo flex fuel','chris-2016-wrx':'Chris’s 2016 WRX / FA20','thomas-sti':'Thomas’s 2005 STI / Haltech','juan-sti':'Juan’s 2013 STI / Haltech G30-900','brett-sti':'Brett’s 2020 STI / Haltech Nexus S3','david-link-sti':'David’s 2004 STI / Link ECU','jaycee-focus-rs':'Jaycee’s 2017 Focus RS','thomas-gr86':'Thomas’s 2024 GR86 / HKS turbo','mary-q60':'Mary’s 2018 Q60 Red Sport','911-cobb':'911 Turbo S / COBB results','macan-cobb':'Macan GTS / COBB','964-kinsler':'964 / Kinsler engine projects','james-wrx':'James’s WRX development','lucas-sti':'Lucas’s Emtron STI','link-wrx':'2004 WRX / Link ECU','cinderelli-wrx':'Cinderelli FA24 WRX','keith-sti':'Keith’s 2015 STI','2019-sti':'2019 STI / BCP turbo'};
+ const labels = {'armando-wrx':'Armando’s 2015 WRX / MoTeC','thomas-2021-sti':'Thomas’s 2021 STI / COBB GTX3576R','corey-sti':'Corey’s 2005 STI / Haltech Elite 2500','chris-2020-sti':'Chris’s 2020 STI / stock-turbo flex fuel','chris-2016-wrx':'Chris’s 2016 WRX / FA20','thomas-sti':'Thomas’s 2005 STI / Haltech','juan-sti':'Juan’s 2013 STI / Haltech G30-900','brett-sti':'Brett’s 2020 STI / Haltech Nexus S3','david-link-sti':'David’s 2004 STI / Link ECU','jaycee-focus-rs':'Jaycee’s 2017 Focus RS','thomas-gr86':'Thomas’s 2024 GR86 / HKS turbo','mary-q60':'Mary’s 2018 Q60 Red Sport','911-cobb':'911 Turbo S / COBB results','macan-cobb':'Macan GTS / COBB','964-kinsler':'964 / Kinsler engine projects','james-wrx':'James’s WRX development','lucas-sti':'Lucas’s Emtron STI','link-wrx':'2004 WRX / Link ECU','cinderelli-wrx':'Cinderelli FA24 WRX','keith-sti':'Keith’s 2015 STI','2019-sti':'2019 STI / BCP turbo'};
  const key = new URLSearchParams(location.search).get('build');
  if (!Object.hasOwn(labels,key)) return;
  const note = document.createElement('p'); note.className = 'form-note'; note.textContent = 'Build that brought you here: ' + labels[key] + '. Tell me about your own car below.';
@@ -214,6 +214,7 @@
 // Preserve the current build when a reader uses the shared Ask Keith link.
 (() => {
  const builds = {
+  '/armando-2015-wrx-motec-build.html':'armando-wrx',
   '/thomas-2021-sti-cobb-build.html':'thomas-2021-sti',
   '/brett-2020-sti-haltech-nexus-s3.html':'brett-sti',
   '/corey-2005-sti-haltech-build.html':'corey-sti',
