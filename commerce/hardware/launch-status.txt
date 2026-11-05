@@ -1,0 +1,46 @@
+Tuned by Keith hardware commerce groundwork — November 4, 2026
+
+PUBLIC WEBSITE
+Vehicle/package selector and S3 package sale display are deployed separately.
+The selector currently hands off to an inquiry; it is not a hardware checkout.
+
+SERVER FOUNDATION
+checkout-intake.mjs: validates vehicle-specific server catalog selection, current
+price/revision acknowledgement, customer/shipping details and hardware terms.
+invoice-draft.mjs: requires destination-bound shipping/tax quotes and verified
+accounting items before preparing an idempotently identified Intuit request.
+invoice-review.mjs: validates the returned invoice before payment-link release.
+payment-reconciliation.mjs: requires fresh matching invoice and linked payment
+records. Partial payment remains unpaid; discrepancies hold fulfillment.
+repository.mjs: stores hardware orders, payment evidence and fulfillment updates
+separately from tuning orders with version checks and duplicate protection.
+Admin queue and customer order projections include manual supplier ordering,
+partial shipments and tracking; payment never creates a shipment or tuning job.
+
+VERIFICATION
+72 local tests pass, including persistence against in-memory SQLite. Provider
+records are fixtures. No real invoices, charges, shipments or tax filings were
+created. Real Intuit tax behavior and the end-to-end payment flow are unverified.
+
+NEXT INTEGRATION STEPS
+1. Resolve each vehicle selection to a verified server-side BOM and SKU set.
+   The current catalog entries remain drafts, not activated checkout products.
+2. Read the actual QBO company settings; map physical-goods and shipping items
+   and tax treatment. Do not reuse the tuning Service item without verification.
+3. Connect shipping rates for the delivery destination and available supplier
+   fulfillment plan. No carrier rates, free-shipping promise or tax rate invented.
+4. Add authenticated customer checkout/session routes, request rate limits and
+   idempotent provider invoice creation; use the same request ID on uncertain
+   retries. Return only a reviewed invoice's trusted Intuit payment destination.
+5. Mount payment reconciliation after a fresh server-side QBO retrieval. Webhook
+   notifications and browser success pages alone are not payment evidence.
+6. Publish hardware shipping, cancellation, returns and warranty terms and retain
+   the accepted versions on the purchase snapshot.
+7. Connect shipment notifications and tracking, plus hardware refunds/returns.
+8. Refresh the production Worker source, merge rather than overwrite newer work,
+   test the sandbox flow, apply the hardware schema, then enable the feature.
+
+FEATURE STATE
+Hardware commerce remains disabled by default. No production database migration
+or Worker deployment is included in this groundwork change. No new paid platform
+or payment-processing subscription was purchased.
