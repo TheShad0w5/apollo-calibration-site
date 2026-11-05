@@ -32,19 +32,20 @@ The linked public pages provide current service details, prices, compatibility c
 - [About Keith Fields](https://www.tunedbykeith.com/about-keith-fields.html): Background, AWD Tuning history and source references.
 - [Porsche 911 Turbo S COBB results](https://www.tunedbykeith.com/porsche-911-turbo-s-cobb-results.html): Documented Porsche tuning examples.
 - [Porsche 964 Kinsler engine projects](https://www.tunedbykeith.com/porsche-964-kinsler-engine-tuning.html): Vintage engine calibration and distinct project configurations.
-- [Keith's white 2015 STI](https://www.tunedbykeith.com/keith-2015-sti.html): Personal build, Precision 6466 stage and historical development.
+- [Keith's white 2015 STI](https://www.tunedbykeith.com/keith-2015-sti.html): Personal 750-whp build with a Precision Gen 2 6466, custom closed-deck EJ257, PPG drag-spec dog box, HKS Hipermax coilovers and SPL control arms.
 - [Lucas's 2018 STI Emtron build](https://www.tunedbykeith.com/lucas-2018-sti-emtron.html): Build story, dated results and original media.
 - [Lucas’s STI dyno video](https://www.tunedbykeith.com/lucas-sti-dyno-video.html): Original dyno footage with Emtron build context; separate dated reports document the results.
 - [Cinderelli 2024 WRX](https://www.tunedbykeith.com/2024-wrx-cinderelli-e70.html): Configuration-specific WRX results.
 - [2019 STI BCP turbo on 93 octane](https://www.tunedbykeith.com/2019-sti-bcp-turbo-93-octane.html): A documented STI tuning example.
-- [Jaycee’s 2017 Focus RS](https://www.tunedbykeith.com/jaycee-2017-focus-rs-build.html): Confirmed AWD build photo and dated 2022–2024 dyno records; corrected and uncorrected figures distinguished.
+- [Jaycee’s 2017 Focus RS](https://www.tunedbykeith.com/jaycee-2017-focus-rs-build.html): Dated 2022–2024 dyno records and build history; corrected and uncorrected figures distinguished.
 - [Chris’s 2020 STI](https://www.tunedbykeith.com/chris-2020-sti-flex-fuel.html): Stock-turbo, bolt-on flex-fuel build with customer video and pump-gas/E75 records.
 - [Chris’s 2016 WRX](https://www.tunedbykeith.com/chris-2016-wrx-fa20-build.html): IAG shortblock, Kelford cams and dated FA20 development records.
 - [Mary’s 2018 Infiniti Q60 Red Sport](https://www.tunedbykeith.com/mary-2018-infiniti-q60-red-sport.html): Original photos, dyno footage and the January 2021 individual report.
 - [David’s 2004 STI](https://www.tunedbykeith.com/david-2004-sti-link-build.html): Link flex-fuel build, original videos and separately dated 93-octane/E75 records.
 - [David’s STI dyno video](https://www.tunedbykeith.com/david-sti-dyno-video.html): November 2024 footage and a route to the full Link ECU build story; dated results are documented separately.
 - [Thomas’s 2005 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Full Race kit, EFR 9280 and Haltech calibration, with original footage and separately dated dyno records.
-- [Corey Jones’s 2005 STI](https://www.tunedbykeith.com/corey-2005-sti-haltech-build.html): White STI with an IAG 950 long block, Precision 6466, Haltech Elite 2500 and an original E80 report of 739 hp and 557 lb-ft.
+- [Thomas’s 2021 STI](https://www.tunedbykeith.com/thomas-2021-sti-cobb-build.html): Built EJ, Garrett GTX3576R and COBB calibration; the early May 2022 result and later development are distinguished.
+- [Corey’s 2005 STI](https://www.tunedbykeith.com/corey-2005-sti-haltech-build.html): White STI with an IAG 950 long block, Precision 6466, Haltech Elite 2500 and an original E80 report of 739 hp and 557 lb-ft.
 - [Brett’s 2020 STI](https://www.tunedbykeith.com/brett-2020-sti-haltech-nexus-s3.html): Accessport-to-Haltech Nexus S3 project and separate pump-gas and ethanol records.
 - [2004 WRX Link G4 autocross project](https://www.tunedbykeith.com/2004-wrx-link-autocross.html): Blue WRX with flex fuel, Keith’s calibration and original AWD dyno footage.
 - [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): HKS turbo project, photos and original February 2025 report.
