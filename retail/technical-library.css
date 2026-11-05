@@ -1,1 +1,7 @@
 .technical-library main{overflow-wrap:anywhere}.technical-library .article-body>.container,.technical-library .article-body>section>.container{width:min(100% - 40px,900px);margin-inline:auto}.technical-library .article-body>.hero{padding-block:48px}.technical-library .article-body>section{padding-block:24px}.technical-library .article-body h1{font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.1}.technical-library .article-body p,.technical-library .list-item{line-height:1.8}.technical-library .list{padding-left:22px}.technical-library .list-item{display:list-item;margin-block:6px}.technical-library .article-body .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}.technical-library .article-body .btn{display:inline-block;padding:14px 20px;background:#ce7b32;color:#080e16;border-radius:6px;font-weight:700}.technical-library img{max-width:100%;height:auto}@media(max-width:700px){.technical-library .grid,.technical-library .grid-2,.technical-library .grid-3{grid-template-columns:1fr}.technical-library .article-body>.hero{padding-block:32px}}
+
+.technical-library .article-contents{display:flex;flex-wrap:wrap;gap:8px 20px;padding-block:24px;border-block:1px solid #30465b}
+.technical-library .article-contents>strong{flex-basis:100%}
+.technical-library .article-contents ul{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;padding:0;margin:0;width:100%}
+.technical-library .article-contents a{display:inline-flex;align-items:center;min-height:44px}
+.technical-library .article-body h2[id]{scroll-margin-top:7rem}
