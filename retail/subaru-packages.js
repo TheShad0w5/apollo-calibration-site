@@ -9,6 +9,8 @@
  };
  const model=root.querySelector('[name=package_model]'),year=root.querySelector('[name=package_year]'),market=root.querySelector('[name=package_market]'),trans=root.querySelector('[name=package_transmission]'),configuration=root.querySelector('[name=package_configuration]');
  const selection=root.querySelector('[name=ecu_package]'),summary=root.querySelector('[data-package-summary]'),price=root.querySelector('[data-package-price]'),list=root.querySelector('[data-package-items]'),note=root.querySelector('[data-package-note]'),button=root.querySelector('[data-package-inquiry]');
+ let autoVehicle=null;
+ for(const el of [model,year,market,trans,configuration,selection])el.setAttribute('aria-label',el.parentElement.firstChild.textContent.trim());
  function years(){const previous=year.value;year.replaceChildren(new Option('Choose year',''));const min=model.value==='STI'?2004:2002,max=model.value==='STI'?2021:2014;if(model.value)for(let y=max;y>=min;y--)year.add(new Option(String(y),String(y)));year.value=[...year.options].some(o=>o.value===previous)?previous:'';year.disabled=!model.value;}
  function update(){
   const p=catalog[selection.value];const validYear=model.value&&Number(year.value)>=(model.value==='STI'?2004:2002)&&Number(year.value)<=(model.value==='STI'?2021:2014);
@@ -23,7 +25,7 @@
  button.addEventListener('click',()=>{
   if(button.disabled)return;const p=catalog[selection.value],form=document.getElementById('tune-intake');if(!form)return;
   const field=(name)=>form.querySelector('[name="'+name+'"]');
-  if(field('vehicle')&&!field('vehicle').value)field('vehicle').value=year.value+' Subaru '+model.value;
+  if(field('vehicle')&&(!field('vehicle').value||field('vehicle').value===autoVehicle)){autoVehicle=year.value+' Subaru '+model.value;field('vehicle').value=autoVehicle;}
   const details='Hardware package: '+p.name+' | '+year.value+' Subaru '+model.value+' | '+market.value+' | '+trans.value+' | '+configuration.value+' engine/harness configuration';
   let context=field('hardware_package_selection');if(!context){context=document.createElement('input');context.type='hidden';context.name='hardware_package_selection';form.append(context);}context.value=details;
   let display=document.getElementById('hardware-package-context');if(!display){display=document.createElement('p');display.id='hardware-package-context';display.className='form-note';form.prepend(display);}display.textContent=details;
