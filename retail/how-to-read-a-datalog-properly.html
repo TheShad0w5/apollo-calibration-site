@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How To Read a Datalog Properly | Tuned by Keith</title><meta name="description" content="How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."><link rel="canonical" href="https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="article"><meta property="og:title" content="How To Read a Datalog Properly | Tuned by Keith"><meta property="og:description" content="How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."><meta property="og:url" content="https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"><meta property="og:site_name" content="Tuned by Keith"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/etuning.css"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.tunedbykeith.com/#business","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","email":"keith@tunedbykeith.com","founder":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"alternateName":"Tuned by Keith","brand":{"@type":"Brand","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/"}},{"@type":"Person","@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith","name":"Keith Fields","url":"https://www.tunedbykeith.com/about-keith-fields.html","jobTitle":"ECU calibration specialist","worksFor":{"@id":"https://www.tunedbykeith.com/#business"},"description":"More than 20 years of calibration experience and over 14,000 vehicles tuned since 2005."},{"@type":"WebSite","@id":"https://www.tunedbykeith.com/#website","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","publisher":{"@id":"https://www.tunedbykeith.com/#business"}},{"@type":"Article","@id":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html#page","url":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html","name":"How To Read a Datalog Properly | Tuned by Keith","description":"How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics.","isPartOf":{"@id":"https://www.tunedbykeith.com/#website"},"headline":"How To Read a Datalog Properly","author":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"publisher":{"@id":"https://www.tunedbykeith.com/#business"},"mainEntityOfPage":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tunedbykeith.com/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://www.tunedbykeith.com/knowledge-base.html"},{"@type":"ListItem","position":3,"name":"How To Read a Datalog Properly","item":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"}]}]}</script><link rel="stylesheet" href="/tbk-brand.css?v=20261022"><link rel="stylesheet" href="/site-polish.css?v=20261105-dyno"><link rel="stylesheet" href="/technical-library.css"></head><body class="tbk-brand technical-library"><a class="skip" href="#main">Skip to content</a><header class="tbk-static-header"><a class="brand" href="/" aria-label="Tuned by Keith — home"><img src="/assets/brand/keith-logo.svg" alt="Tuned by Keith" width="96" height="96"></a><nav class="tbk-desktop-navigation" aria-label="Main navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav><details class="tbk-native-mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav></details></header><main id="main" class="article-body"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/knowledge-base.html">Knowledge base</a><span>/</span><span aria-current="page">How To Read a Datalog Properly</span></nav>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How To Read a Datalog Properly | Tuned by Keith</title><meta name="description" content="How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."><link rel="canonical" href="https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="article"><meta property="og:title" content="How To Read a Datalog Properly | Tuned by Keith"><meta property="og:description" content="How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics."><meta property="og:url" content="https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"><meta property="og:site_name" content="Tuned by Keith"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/etuning.css"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.tunedbykeith.com/#business","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","email":"keith@tunedbykeith.com","founder":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"alternateName":"Tuned by Keith","brand":{"@type":"Brand","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/"}},{"@type":"Person","@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith","name":"Keith Fields","url":"https://www.tunedbykeith.com/about-keith-fields.html","jobTitle":"ECU calibration specialist","worksFor":{"@id":"https://www.tunedbykeith.com/#business"},"description":"More than 20 years of calibration experience and over 14,000 vehicles tuned since 2005."},{"@type":"WebSite","@id":"https://www.tunedbykeith.com/#website","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","publisher":{"@id":"https://www.tunedbykeith.com/#business"}},{"@type":"Article","@id":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html#page","url":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html","name":"How To Read a Datalog Properly | Tuned by Keith","description":"How to properly read ECU datalogs including airflow analysis, boost behavior, ignition timing, fuel trims, knock activity, DBW behavior, and calibration diagnostics.","isPartOf":{"@id":"https://www.tunedbykeith.com/#website"},"headline":"How To Read a Datalog Properly","author":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"publisher":{"@id":"https://www.tunedbykeith.com/#business"},"mainEntityOfPage":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tunedbykeith.com/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://www.tunedbykeith.com/knowledge-base.html"},{"@type":"ListItem","position":3,"name":"How To Read a Datalog Properly","item":"https://www.tunedbykeith.com/how-to-read-a-datalog-properly.html"}]}]}</script><link rel="stylesheet" href="/tbk-brand.css?v=20261022"><link rel="stylesheet" href="/site-polish.css?v=20261105-dyno"><link rel="stylesheet" href="/technical-library.css"><style>.article-contents{padding-block:1.5rem;border-block:1px solid #30465b}.article-contents ul{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;list-style:none;padding:0;margin:.5rem 0}.article-contents a{display:inline-flex;align-items:center;min-height:44px}h2[id]{scroll-margin-top:7rem}</style></head><body class="tbk-brand technical-library"><a class="skip" href="#main">Skip to content</a><header class="tbk-static-header"><a class="brand" href="/" aria-label="Tuned by Keith — home"><img src="/assets/brand/keith-logo.svg" alt="Tuned by Keith" width="96" height="96"></a><nav class="tbk-desktop-navigation" aria-label="Main navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav><details class="tbk-native-mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav></details></header><main id="main" class="article-body"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/knowledge-base.html">Knowledge base</a><span>/</span><span aria-current="page">How To Read a Datalog Properly</span></nav>
 
   <div class="container hero">
 
@@ -32,6 +32,7 @@
 
   </div>
 
+<nav class="container article-contents" aria-label="In this datalog guide"><p><strong>In this guide</strong></p><ul><li><a href="#rpm-load">RPM & load</a></li><li><a href="#boost-behavior">Boost behavior</a></li><li><a href="#ignition-timing">Ignition timing</a></li><li><a href="#fuel-trims">Fuel trims</a></li><li><a href="#knock-activity">Knock activity</a></li><li><a href="#torque-intervention">Torque intervention</a></li></ul></nav>
   <section>
     <div class="container">
 
@@ -68,9 +69,7 @@
 
       <div class="section-head">
 
-        <h2>
-          1. Start With RPM and Load
-        </h2>
+        <h2 id="rpm-load">1. Start With RPM and Load</h2>
 
         <p class="section-intro">
           RPM and load establish operating context for the entire log.
@@ -124,9 +123,7 @@
 
       <div class="section-head">
 
-        <h2>
-          2. Analyze Boost Behavior as a Curve
-        </h2>
+        <h2 id="boost-behavior">2. Analyze Boost Behavior as a Curve</h2>
 
         <p class="section-intro">
           Boost response matters more than peak boost alone.
@@ -180,9 +177,7 @@
 
       <div class="section-head">
 
-        <h2>
-          3. Review Ignition Timing in Context
-        </h2>
+        <h2 id="ignition-timing">3. Review Ignition Timing in Context</h2>
 
         <p class="section-intro">
           Ignition timing alone does not indicate calibration quality.
@@ -235,9 +230,7 @@
 
       <div class="section-head">
 
-        <h2>
-          4. Understand Fuel Trim Behavior
-        </h2>
+        <h2 id="fuel-trims">4. Understand Fuel Trim Behavior</h2>
 
         <p class="section-intro">
           Fuel trims help reveal airflow-model accuracy and fueling consistency.
@@ -313,9 +306,7 @@
 
       <div class="section-head">
 
-        <h2>
-          5. Knock Activity Requires Careful Interpretation
-        </h2>
+        <h2 id="knock-activity">5. Knock Activity Requires Careful Interpretation</h2>
 
         <p class="section-intro">
           Not all knock activity represents dangerous combustion.
@@ -368,9 +359,7 @@
 
       <div class="section-head">
 
-        <h2>
-          6. Watch for Torque Intervention
-        </h2>
+        <h2 id="torque-intervention">6. Watch for Torque Intervention</h2>
 
         <p class="section-intro">
           Modern ECUs often reduce torque intentionally.
@@ -453,7 +442,7 @@
     </div>
   </section>
 
-  <section>
+  <section><div class="container"><h2>Explore the systems behind the log</h2><ul><li><a href="/understanding-wastegate-control.html">Wastegate and boost control</a></li><li><a href="/understanding-closed-loop-fuel-control.html">Closed-loop fuel control</a></li><li><a href="/understanding-knock-sensor-noise.html">Knock sensor noise</a></li><li><a href="/accessport-flashing-datalogging-guide.html">Accessport logging instructions and Subaru channels</a></li></ul></div></section><section>
     <div class="container">
 
       <div class="cta">
