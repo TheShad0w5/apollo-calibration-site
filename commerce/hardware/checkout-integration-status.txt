@@ -1,0 +1,23 @@
+2026-11-04 staged checkout update
+
+84 local tests pass. New invoice-handoff service reserves immutable invoice
+requests in a separate company/order-keyed table and reuses a stable Intuit
+request ID after uncertain creation. It reloads invoices with include=invoiceLink,
+checks customer/address/items/tax/total/ownership/balance and HTTPS Intuit host
+before releasing a payment URL. No provider calls were made during these tests.
+
+Server S3 package pricing includes the current promotion and boundary tests.
+Basic: 3304 regular / 3079 sale. Protection: 3865 regular / 3640 sale, USD.
+Promotion storefront expiry is end of December 8 AEDT per manufacturer dates;
+no exact manufacturer cutoff time was published. Link/Emtron have no offer until
+public package totals are confirmed. Price offers do not activate catalog drafts.
+
+Merchant clarified that Wyoming sales-tax registration is not complete; Wyoming
+is the LLC formation state. Physical operations are in Huntington Beach CA.
+California seller permit is not confirmed. No tax agencies have been activated.
+
+New service is not mounted in the production Worker. It needs authenticated
+customer ownership, real connected company binding, validated quote and tax
+providers, durable schema deployment, and sandbox end-to-end verification.
+Shipping rates/item, final fitment/BOM approval and hardware policies remain
+pending. No payments, invoices, tax filings or new subscriptions were created.
