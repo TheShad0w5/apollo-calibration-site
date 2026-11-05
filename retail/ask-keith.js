@@ -216,6 +216,7 @@
  const builds = {
   '/brett-2020-sti-haltech-nexus-s3.html':'brett-sti',
   '/corey-2005-sti-haltech-build.html':'corey-sti',
+  '/2004-wrx-link-autocross.html':'link-wrx',
   '/juan-2013-sti-haltech-build.html':'juan-sti',
   '/thomas-2004-sti-haltech-build.html':'thomas-sti',
   '/lucas-2018-sti-emtron.html':'lucas-sti',
