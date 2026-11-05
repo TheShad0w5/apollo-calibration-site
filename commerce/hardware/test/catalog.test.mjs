@@ -8,7 +8,7 @@ test('each release requirement independently blocks checkout',()=>{for(const cha
 test('expired price and inventory evidence blocks checkout',()=>{for(const key of ['pricingApproval','availability']){const p=fixture();p[key].validUntil='2026-11-03';assert.ok(publicationIssues(p,now).length);}});
 test('client price is ignored and hardware remains unfulfilled',()=>{const p=fixture();const line=snapshotHardwareLine([p],{productId:p.id,quantity:2,priceCents:1,subtotalCents:1,partner:'awd',paid:true},now);assert.equal(line.subtotalCents,20000);assert.equal(line.fulfillmentStatus,'unfulfilled');assert.equal(line.revisionAllowance,null);assert.equal(line.kind,'hardware');});
 test('invalid quantities and unknown IDs are rejected',()=>{const p=fixture();for(const quantity of [0,-1,1.5,3,'1',NaN])assert.throws(()=>snapshotHardwareLine([p],{productId:p.id,quantity},now));assert.throws(()=>snapshotHardwareLine([p],{productId:'missing',quantity:1},now));});
-test('public data omits dealer costs and private approvals',()=>{const json=JSON.stringify(publicProduct(fixture(),now));assert.ok(!json.includes('dealerCost'));assert.ok(!json.includes('pricingApproval'));assert.ok(!json.includes('qboItemId'));});
+test('public data omits dealer costs and private approvals',()=>{const json=JSON.stringify(publicProduct(fixture(),now));assert.ok(!json.includes('dealerCost'));assert.ok(!json.includes('pricingApproval'));assert.ok(!json.includes('qboItemId'));assert.ok(!json.includes('sku'));assert.ok(!json.includes('TEST-ONLY'));assert.equal(snapshotHardwareLine([fixture()],{productId:fixture().id,quantity:1},now).components[0].sku,'TEST-ONLY');});
 
 test('private fitment evidence stays out of product and purchase projections',()=>{
  const p=fixture();
