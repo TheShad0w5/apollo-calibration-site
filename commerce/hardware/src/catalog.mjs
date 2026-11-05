@@ -35,7 +35,7 @@ export function publicProduct(product, now) {
   if(publicationIssues(product,now).length) return null;
   return {id:product.id,name:product.name,family:product.family,option:product.option,revision:product.revision,currency:product.currency,
     priceCents:product.priceCents,fitment:Object.fromEntries(['year','market','model','engine','transmission','verified'].map(key=>[key,product.fitment[key]])),
-    components:product.components.map(({sku,name,quantity})=>({sku,name,quantity})),
+    components:product.components.map(({name,quantity})=>({name,quantity})),
     fulfillmentPolicyVersion:product.fulfillmentPolicyVersion,returnsPolicyVersion:product.returnsPolicyVersion};
 }
 
@@ -51,6 +51,7 @@ export function snapshotHardwareLine(catalog, request, now) {
   const subtotalCents=product.priceCents*quantity;
   if(!Number.isSafeInteger(subtotalCents)) throw new Error('Amount exceeds supported range');
   return {...publicProduct(product,now),kind:'hardware',quantity,subtotalCents,
+    components:product.components.map(({sku,name,quantity})=>({sku,name,quantity})),
     qboItemId:product.qboItemId,fulfillmentStatus:'unfulfilled',revisionAllowance:null};
 }
 
