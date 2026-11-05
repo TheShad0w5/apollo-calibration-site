@@ -1,0 +1,34 @@
+Affirm / Intuit checkout integration — November 4, 2026
+
+Affirm is embedded in QuickBooks Payments. Do not add a separate Affirm SDK,
+collect financing applications on the TBK website or promise buyer approval.
+Intuit manages merchant onboarding and the customer sees eligible payment
+methods on the hosted invoice checkout.
+
+CURRENT PRODUCTION SOURCE CHECK
+The recovered Worker invoice builder sets AllowOnlineCreditCardPayment=true
+and omits AllowOnlineAffirmPayment. Intuit documents that omission as using
+the active account default; this does not prove this company is enabled.
+The public website already describes Affirm conditionally when offered.
+
+ACCOUNT CHECK STILL REQUIRED
+QuickBooks opened at sign-in; no authenticated company setting was inspected.
+Use the Calibrations LLC company, not another business's books.
+Settings > Account and settings > Sales > Invoice payments > Buy now, pay later.
+Inspect one existing invoice's Manage > Payment options as well. Do not create
+a real customer invoice or apply for financing merely to test availability.
+Any new financing enrollment/merchant agreement must be completed by Keith.
+
+STAGED HARDWARE SUPPORT
+Default invoice drafting leaves Affirm inherited from QuickBooks.
+An explicitly enabled native invoice flag requires a fresh server-side record
+of payments-enabled status and ACTIVE Affirm subscription status.
+Returned invoices expose Affirm availability as true, false or unknown.
+Card-enabled does not imply Affirm-enabled. Financing availability remains
+subject to merchant/customer eligibility and Intuit's hosted checkout.
+76 local tests pass. No production invoice or account setting was changed.
+
+OFFICIAL SOURCES
+https://developer.intuit.com/docs/api/accounting/invoice
+https://quickbooks.intuit.com/learn-support/en-us/help-article/payment-methods/affirm-payments/L1ZN1k9W7_US_en_US
+https://businesshub.affirm.com/hc/en-us/articles/46432751953428-Affirm-Intuit-QuickBooks-Support-Guidance
