@@ -1,4 +1,9 @@
 // Public merchandising only. No dealer costs, part numbers or payment requests.
+// Haltech publishes calendar dates in AEDT, not an exact cutoff time.
+// Storefront expiry is end of its final published AEDT day; recheck if terms change.
+function tbkS3SaleActive(now=new Date()){
+ return now.getTime()>=Date.parse('2026-10-30T00:00:00+11:00')&&now.getTime()<Date.parse('2026-12-09T00:00:00+11:00');
+}
 (()=>{
  const root=document.getElementById('subaru-ecu-packages');if(!root)return;
  const catalog={
@@ -10,6 +15,8 @@
  const model=root.querySelector('[name=package_model]'),year=root.querySelector('[name=package_year]'),market=root.querySelector('[name=package_market]'),trans=root.querySelector('[name=package_transmission]'),configuration=root.querySelector('[name=package_configuration]');
  const selection=root.querySelector('[name=ecu_package]'),summary=root.querySelector('[data-package-summary]'),price=root.querySelector('[data-package-price]'),list=root.querySelector('[data-package-items]'),note=root.querySelector('[data-package-note]'),button=root.querySelector('[data-package-inquiry]');
  let autoVehicle=null;
+ const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+ function saleAmount(p){return p.price&&p.platform==='Haltech'&&tbkS3SaleActive()?p.price-225:p.price;}
  for(const el of [model,year,market,trans,configuration,selection])el.setAttribute('aria-label',el.parentElement.firstChild.textContent.trim());
  function years(){const previous=year.value;year.replaceChildren(new Option('Choose year',''));const min=model.value==='STI'?2004:2002,max=model.value==='STI'?2021:2014;if(model.value)for(let y=max;y>=min;y--)year.add(new Option(String(y),String(y)));year.value=[...year.options].some(o=>o.value===previous)?previous:'';year.disabled=!model.value;}
  function update(){
@@ -17,8 +24,20 @@
   const standard=market.value==='USDM'&&trans.value==='Manual'&&configuration.value==='Factory';const ready=Boolean(p&&validYear&&market.value&&trans.value&&configuration.value);
   summary.textContent=p?p.name:'Choose your vehicle and package';list.replaceChildren();
   if(p)for(const item of p.items){const li=document.createElement('li');li.textContent=item;list.append(li);}
-  price.textContent=!p?'':p.price&&standard?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(p.price):p.price?'Standard USDM manual package: '+new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(p.price):'Application pricing on request';
+  price.replaceChildren();
+  if(p?.price){
+   if(!standard){const scope=document.createElement('small');scope.style.cssText='display:block;font-size:14px;line-height:1.5';scope.textContent='Standard USDM manual package';price.append(scope);}
+   const amount=saleAmount(p);
+   if(amount!==p.price){const normal=document.createElement('s');normal.textContent=money(p.price);normal.setAttribute('aria-label','Regular package price '+money(p.price));normal.style.cssText='font-size:20px;opacity:.75;margin-right:12px';price.append(normal);}
+   const current=document.createElement('strong');current.textContent=money(amount);price.append(current);
+   if(amount!==p.price){const saving=document.createElement('small');saving.textContent='Sale · Save $225';saving.style.cssText='display:block;font-size:16px;color:#ffb777;margin-top:8px';price.append(saving);}
+  }else if(p)price.textContent='Application pricing on request';
+  for(const option of selection.options){const item=catalog[option.value];if(item?.price)option.textContent=item.name+' — '+money(saleAmount(item))+(saleAmount(item)!==item.price?' sale (regular '+money(item.price)+')':'');}
   note.textContent=p?(p.note+(ready&&!standard?' Imported vehicles, automatic transmissions and changed engine/harness configurations require a separate fitment and price review.':'')):'';
+  if(p?.platform==='Haltech'&&tbkS3SaleActive()){
+   const terms=document.createElement('a');terms.href='https://www.haltech.com/haltech-40th-birthday-sale-terms-and-conditions/';terms.textContent='Haltech sale terms';
+   note.append(document.createTextNode(' Sale scheduled through December 8, 2026 (AEDT), subject to manufacturer changes. '),terms,document.createTextNode('. Availability and delivery timing are confirmed before payment.'));
+  }
   button.disabled=!ready;
  }
  model.addEventListener('change',()=>{years();update();});for(const el of [year,market,trans,configuration,selection])el.addEventListener('change',update);
@@ -35,4 +54,7 @@
   location.hash='request';form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});field('name')?.focus({preventScroll:true});
  });
  years();update();
+ // Refresh an open page when the scheduled offer ends, as well as on selection.
+ setInterval(update,60000);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)update();});
 })();
