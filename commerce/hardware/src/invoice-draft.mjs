@@ -1,4 +1,5 @@
 import {HardwareError} from './errors.mjs';
+import {invoicePaymentOptions} from './payment-options.mjs';
 const cents=value=>Number.isSafeInteger(value)&&value>=0;
 const text=value=>typeof value==='string'&&value.trim().length>0;
 const addressKeys=['Line1','Line2','City','CountrySubDivisionCode','PostalCode','Country'];
@@ -15,7 +16,7 @@ export function taxQuoteBasis(order,shipping,itemTaxCodes){
 // Does not create an invoice, calculate taxes, or expose a payment URL.
 // Intuit must calculate/return tax; reviewHardwareInvoice must verify it against
 // expected before the customer can pay. US tax/account settings require validation.
-export function draftHardwareInvoice(order,{shipping,tax,itemTaxCodes},at=new Date()){
+export function draftHardwareInvoice(order,{shipping,tax,itemTaxCodes,affirm},at=new Date()){
  if(!text(order.id)||!text(order.customerId)||!text(order.customer?.email)||order.currency!=='USD')throw new HardwareError('Customer, order and USD currency required');
  const shipTo=Object.fromEntries(addressKeys.filter(k=>text(order.shipTo?.[k])).map(k=>[k,order.shipTo[k].trim()]));
  if(['Line1','City','PostalCode','Country'].some(k=>!shipTo[k]))throw new HardwareError('Complete shipping address required');
@@ -34,5 +35,6 @@ export function draftHardwareInvoice(order,{shipping,tax,itemTaxCodes},at=new Da
  if(!Number.isSafeInteger(totalCents)||totalCents<=0)throw new HardwareError('Invalid invoice total');
  const expected={customerId:order.customerId,billEmail:order.customer.email.trim(),currency:'USD',shipTo,lines:lines.map(({itemId,quantity,unitPriceCents,amountCents})=>({itemId,quantity,unitPriceCents,amountCents})),taxCents:tax.amountCents};
  const payload={CustomerRef:{value:order.customerId},BillEmail:{Address:order.customer.email.trim()},CurrencyRef:{value:'USD'},ShipAddr:{...shipTo},PrivateNote:'TBK hardware order '+order.id,AllowOnlineCreditCardPayment:true,Line:lines.map(l=>({Description:l.description,Amount:l.amountCents/100,DetailType:'SalesItemLineDetail',SalesItemLineDetail:{ItemRef:{value:l.itemId},Qty:l.quantity,UnitPrice:l.unitPriceCents/100,TaxCodeRef:{value:l.taxCode}}}))};
+ Object.assign(payload,invoicePaymentOptions(affirm,order.customerId,at));
  return {requestId:'hardware-'+order.id,payload,expected,totalCents,quoteReferences:{shipping:shipping.reference,tax:tax.reference}};
 }
