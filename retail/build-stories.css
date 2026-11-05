@@ -11,3 +11,6 @@ body.tbk-brand .build-story-nav a:focus-visible{outline:3px solid #ffad6c;outlin
 
 /* Keep optional sound captions legible in small embedded players. */
 .ifo-video::cue,.q60-dyno-video::cue{font-size:clamp(16px,1.5vw,22px)}
+
+/* A single-column gallery should show the whole portrait, not a landscape crop. */
+@media(max-width:700px){body.tbk-brand .project-photo-grid img{aspect-ratio:auto;height:auto;object-fit:contain}}
