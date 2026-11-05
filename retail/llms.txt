@@ -43,7 +43,11 @@ The linked public pages provide current service details, prices, compatibility c
 - [Mary’s 2018 Infiniti Q60 Red Sport](https://www.tunedbykeith.com/mary-2018-infiniti-q60-red-sport.html): Original photos, dyno footage and the January 2021 individual report.
 - [David’s 2004 STI](https://www.tunedbykeith.com/david-2004-sti-link-build.html): Link flex-fuel build, original videos and separately dated 93-octane/E75 records.
 - [David’s STI dyno video](https://www.tunedbykeith.com/david-sti-dyno-video.html): November 2024 footage and a route to the full Link ECU build story; dated results are documented separately.
-- [Thomas’s 2004 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Haltech build with original workshop media and dated dyno records.
+- [Thomas’s 2005 STI](https://www.tunedbykeith.com/thomas-2004-sti-haltech-build.html): Full Race kit, EFR 9280 and Haltech calibration, with original footage and separately dated dyno records.
+- [Corey Jones’s 2005 STI](https://www.tunedbykeith.com/corey-2005-sti-haltech-build.html): White STI with an IAG 950 long block, Precision 6466, Haltech Elite 2500 and an original E80 report of 739 hp and 557 lb-ft.
+- [Juan’s 2013 STI](https://www.tunedbykeith.com/juan-2013-sti-haltech-build.html): Finished black sedan with Haltech and a Garrett G30-900; archived dyno figures are identified separately from the photographed configuration.
+- [Brett’s 2020 STI](https://www.tunedbykeith.com/brett-2020-sti-haltech-nexus-s3.html): Accessport-to-Haltech Nexus S3 project and separate pump-gas and ethanol records.
+- [2004 WRX Link G4 autocross project](https://www.tunedbykeith.com/2004-wrx-link-autocross.html): Blue WRX with flex fuel, Keith’s calibration and original AWD dyno footage.
 - [Thomas’s HKS turbo GR86](https://www.tunedbykeith.com/thomas-2024-gr86-hks-turbo.html): HKS turbo project, photos and original February 2025 report.
 - [James’s 2024 WRX](https://www.tunedbykeith.com/james-2024-wrx-build.html): staged FA24 development, workshop and circuit photos, owner videos, and dated dyno reports.
 - [Build examples](https://www.tunedbykeith.com/build-examples.html): Historical projects with source context and calibration lessons.
