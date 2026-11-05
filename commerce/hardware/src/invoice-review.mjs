@@ -28,5 +28,5 @@ export function reviewHardwareInvoice(invoice, expected) {
   if(!Number.isSafeInteger(sum)||sum<=0||cents(invoice.TotalAmt)!==sum) issues.push('Invoice total mismatch');
   // Unexpected discounts/additions must not disappear inside a matching headline total.
   if((invoice.Line||[]).some(l=>!['SalesItemLineDetail','SubTotalLineDetail','DescriptionOnly'].includes(l.DetailType))) issues.push('Unexpected invoice adjustment');
-  return {ready:issues.length===0,issues,totalCents:sum};
+  return {ready:issues.length===0,issues,totalCents:sum,paymentOptions:{affirm:typeof invoice.AllowOnlineAffirmPayment==='boolean'?invoice.AllowOnlineAffirmPayment:null}};
 }
