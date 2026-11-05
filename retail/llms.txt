@@ -80,3 +80,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [Shop connections](https://www.tunedbykeith.com/affiliates.html): Published shop relationships.
 - [Tuning glossary](https://www.tunedbykeith.com/tuning-glossary.html): Terminology.
 - [Sitemap](https://www.tunedbykeith.com/sitemap.xml): Public canonical page inventory.
+
+## Technical library and business support
+- [Technical library](https://www.tunedbykeith.com/knowledge-base.html): ECU calibration, datalog interpretation, fueling, boost control and diagnostics by Keith Fields.
+- [Shop and team support](https://www.tunedbykeith.com/business-support.html): ECU integration and calibration consulting for shops, engine builders and teams.

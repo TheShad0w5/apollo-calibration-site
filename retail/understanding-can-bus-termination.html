@@ -1,0 +1,393 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Understanding CAN Bus Termination | Tuned by Keith</title><meta name="description" content="Understanding CAN bus termination, 120 ohm resistors, network stability, signal reflection, ECU communication faults, dash integration, and motorsport CAN diagnostics."><link rel="canonical" href="https://www.tunedbykeith.com/understanding-can-bus-termination.html"><meta name="robots" content="index,follow,max-image-preview:large"><meta property="og:type" content="article"><meta property="og:title" content="Understanding CAN Bus Termination | Tuned by Keith"><meta property="og:description" content="Understanding CAN bus termination, 120 ohm resistors, network stability, signal reflection, ECU communication faults, dash integration, and motorsport CAN diagnostics."><meta property="og:url" content="https://www.tunedbykeith.com/understanding-can-bus-termination.html"><meta property="og:site_name" content="Tuned by Keith"><meta name="twitter:card" content="summary"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/etuning.css"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.tunedbykeith.com/#business","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","email":"keith@tunedbykeith.com","founder":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"alternateName":"Tuned by Keith","brand":{"@type":"Brand","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/"}},{"@type":"Person","@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith","name":"Keith Fields","url":"https://www.tunedbykeith.com/about-keith-fields.html","jobTitle":"ECU calibration specialist","worksFor":{"@id":"https://www.tunedbykeith.com/#business"},"description":"More than 20 years of calibration experience and over 14,000 vehicles tuned since 2005."},{"@type":"WebSite","@id":"https://www.tunedbykeith.com/#website","name":"Tuned by Keith","url":"https://www.tunedbykeith.com/","publisher":{"@id":"https://www.tunedbykeith.com/#business"}},{"@type":"Article","@id":"https://www.tunedbykeith.com/understanding-can-bus-termination.html#page","url":"https://www.tunedbykeith.com/understanding-can-bus-termination.html","name":"Understanding CAN Bus Termination | Tuned by Keith","description":"Understanding CAN bus termination, 120 ohm resistors, network stability, signal reflection, ECU communication faults, dash integration, and motorsport CAN diagnostics.","isPartOf":{"@id":"https://www.tunedbykeith.com/#website"},"headline":"Understanding CAN Bus Termination","author":{"@id":"https://www.tunedbykeith.com/about-keith-fields.html#keith"},"publisher":{"@id":"https://www.tunedbykeith.com/#business"},"mainEntityOfPage":"https://www.tunedbykeith.com/understanding-can-bus-termination.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.tunedbykeith.com/"},{"@type":"ListItem","position":2,"name":"Knowledge base","item":"https://www.tunedbykeith.com/knowledge-base.html"},{"@type":"ListItem","position":3,"name":"Understanding CAN Bus Termination","item":"https://www.tunedbykeith.com/understanding-can-bus-termination.html"}]}]}</script><link rel="stylesheet" href="/tbk-brand.css?v=20261022"><link rel="stylesheet" href="/site-polish.css?v=20261105-dyno"><link rel="stylesheet" href="/technical-library.css"></head><body class="tbk-brand technical-library"><a class="skip" href="#main">Skip to content</a><header class="tbk-static-header"><a class="brand" href="/" aria-label="Tuned by Keith — home"><img src="/assets/brand/keith-logo.svg" alt="Tuned by Keith" width="96" height="96"></a><nav class="tbk-desktop-navigation" aria-label="Main navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav><details class="tbk-native-mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><details class="tbk-services-menu"><summary>Services <span aria-hidden="true">⌄</span></summary><div class="tbk-services-panel"><a href="/shop.html">All services &amp; pricing</a><a href="/subaru-wrx-sti-tuning.html">Subaru WRX &amp; STI</a><a href="/porsche-tuning.html">Porsche tuning</a><a href="/ford-tuning.html">Ford Focus, Fiesta &amp; Raptor</a><a href="/cobb-custom-tuning.html">COBB tuning</a><a href="/standalone-ecu-tuning.html">Standalone ECUs</a><a href="/dyno-tuning/">Dyno &amp; travel tuning</a></div></details><a href="/media.html">Builds &amp; results</a><a href="/tuning-knowledge.html">Tuning knowledge</a><a href="/about-keith-fields.html">About Keith</a><a class="button small" href="/shop.html#request">Ask Keith</a></nav></details></header><main id="main" class="article-body"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/knowledge-base.html">Knowledge base</a><span>/</span><span aria-current="page">Understanding CAN Bus Termination</span></nav>
+
+  <div class="container hero">
+
+    <div class="eyebrow">
+      Technical Article • CAN Diagnostics
+    </div>
+
+    <h1>
+      Understanding
+      <span class="gold">
+        CAN Bus Termination
+      </span>
+    </h1><p class="article-byline">By <a href="https://www.tunedbykeith.com/about-keith-fields.html">Keith Fields</a> · Tuned by Keith</p>
+
+    <p class="hero-copy">
+      CAN bus communication problems are extremely common in motorsport
+      and standalone ECU installations, especially when multiple devices,
+      aftermarket dashes, PDMs, keypads, or expansion modules are involved.
+    </p>
+
+    <p class="cred">
+      Improper CAN termination can create intermittent communication faults,
+      unstable device behavior, corrupted data, or complete network failure.
+    </p>
+
+  </div>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Understanding CAN Networks
+        </div>
+
+        <h2 class="gold">
+          CAN Networks Depend on Controlled Signal Behavior.
+        </h2>
+
+        <p>
+          CAN communication uses differential signaling
+          across CAN High and CAN Low wires.
+        </p>
+
+        <p>
+          Because CAN operates at high communication speeds,
+          signal reflections and electrical distortion
+          must be controlled carefully for stable operation.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          1. Why CAN Termination Exists
+        </h2>
+
+        <p class="section-intro">
+          Termination resistors absorb signal energy
+          and reduce waveform reflection.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Without proper termination,
+          CAN signals reflect back through the network,
+          distorting communication.
+        </p>
+
+        <p>
+          This may cause:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Intermittent communication loss
+          </div>
+
+          <div class="list-item">
+            Dash dropouts
+          </div>
+
+          <div class="list-item">
+            Corrupted CAN data
+          </div>
+
+          <div class="list-item">
+            Device resets
+          </div>
+
+          <div class="list-item">
+            ECU communication instability
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          2. Standard CAN Termination Layout
+        </h2>
+
+        <p class="section-intro">
+          Most CAN networks use two 120-ohm termination resistors.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          One resistor should exist at each physical end
+          of the CAN network.
+        </p>
+
+        <p>
+          When measured across CAN High and CAN Low
+          with the system powered down,
+          the network typically measures:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            ~60 ohms = correct dual termination
+          </div>
+
+          <div class="list-item">
+            ~120 ohms = only one resistor present
+          </div>
+
+          <div class="list-item">
+            Very low resistance = excessive termination
+          </div>
+
+          <div class="list-item">
+            Open/infinite resistance = missing termination
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          3. Common Motorsport CAN Problems
+        </h2>
+
+        <p class="section-intro">
+          Motorsport installations often introduce complex CAN layouts.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          Common issues include:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Too many termination resistors
+          </div>
+
+          <div class="list-item">
+            Missing termination resistors
+          </div>
+
+          <div class="list-item">
+            Incorrect device ordering
+          </div>
+
+          <div class="list-item">
+            Excessive stub length
+          </div>
+
+          <div class="list-item">
+            Poor grounding strategy
+          </div>
+
+          <div class="list-item">
+            Incorrect baud-rate configuration
+          </div>
+
+        </div>
+
+        <p>
+          Problems become more common as additional devices are added,
+          especially aftermarket dashes, PDMs, and telemetry modules.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          4. CAN Wiring Best Practices
+        </h2>
+
+        <p class="section-intro">
+          Good CAN communication starts with clean physical layout.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <div class="list">
+
+          <div class="list-item">
+            Keep CAN wiring twisted consistently
+          </div>
+
+          <div class="list-item">
+            Minimize stub lengths
+          </div>
+
+          <div class="list-item">
+            Avoid unnecessary splices
+          </div>
+
+          <div class="list-item">
+            Maintain clean grounding strategy
+          </div>
+
+          <div class="list-item">
+            Verify baud rates across all devices
+          </div>
+
+          <div class="list-item">
+            Confirm proper termination placement
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-head">
+
+        <h2>
+          5. Diagnosing CAN Communication Faults
+        </h2>
+
+        <p class="section-intro">
+          Many CAN issues appear intermittently under vibration,
+          heat, or electrical load.
+        </p>
+
+      </div>
+
+      <div class="feature">
+
+        <p>
+          CAN diagnostics typically involve:
+        </p>
+
+        <div class="list">
+
+          <div class="list-item">
+            Resistance measurement
+          </div>
+
+          <div class="list-item">
+            Oscilloscope waveform analysis
+          </div>
+
+          <div class="list-item">
+            Device isolation testing
+          </div>
+
+          <div class="list-item">
+            Baud-rate verification
+          </div>
+
+          <div class="list-item">
+            Power and ground inspection
+          </div>
+
+          <div class="list-item">
+            Network topology review
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="feature">
+
+        <div class="eyebrow">
+          Final Thoughts
+        </div>
+
+        <h2 class="gold">
+          CAN Stability Depends on Correct Network Design.
+        </h2>
+
+        <p>
+          Many communication problems blamed on ECUs or dashes
+          are actually caused by improper network layout,
+          poor termination strategy, or wiring mistakes.
+        </p>
+
+        <p>
+          Clean CAN architecture becomes increasingly important
+          as motorsport systems become more complex.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="cta">
+
+        <h2>
+          Need Help Diagnosing CAN Bus Problems?
+        </h2>
+
+        <p>
+          Tuned by Keith provides remote CAN diagnostics,
+          standalone ECU troubleshooting, startup diagnostics,
+          and motorsport technical consulting.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+
+          <a class="btn btn-primary" href="mailto:keith@tunedbykeith.com">
+            Request Support
+          </a>
+
+          <a class="btn btn-secondary" href="/remote-calibration-support/">
+            Remote Support
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main><footer><a class="brand" href="/" aria-label="Tuned by Keith — home"><img src="/assets/brand/keith-logo.svg" alt="Tuned by Keith" width="60" height="60"><span class="brand-wordmark">TUNED BY <b>KEITH</b><small>CALIBRATIONS LLC</small></span></a><div><p>Individual vehicle tuning with Keith.</p><nav aria-label="Footer navigation"><a href="/affiliates.html">Affiliates &amp; shop connections</a><a href="https://www.tunedbykeith.com/shop.html">Custom tuning &amp; base maps</a><a href="https://www.tunedbykeith.com/about-keith-fields.html">Keith’s background</a><a href="/business-support.html">Shop &amp; team support</a><a href="/tuning-knowledge.html">Tuning knowledge &amp; preparation</a><a href="https://www.tunedbykeith.com/knowledge-base.html">Technical library</a><a href="https://www.tunedbykeith.com/cobb-green-speed.html">Green Speed guide</a><a href="https://www.tunedbykeith.com/tuning-glossary.html">Tuning glossary</a><a href="mailto:keith@tunedbykeith.com">Email Keith</a><a href="/media.html">Builds, videos &amp; dyno results</a><a href="/terms.html">Terms &amp; refunds</a><a href="/privacy.html">Privacy</a><a href="https://g.page/r/CfxLTGqJjOFTEBM/review" data-google-review="true" target="_blank" rel="noopener noreferrer">Review Tuned by Keith on Google</a></nav></div><nav class="tbk-social-links" aria-label="Tuned by Keith social profiles"><a href="https://www.instagram.com/tunedbykeith/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.facebook.com/profile.php?id=61595876515622" target="_blank" rel="noopener noreferrer">Facebook ↗</a></nav></footer><script src="/ask-keith.js" defer></script></body></html>
