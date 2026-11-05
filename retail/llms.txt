@@ -18,6 +18,7 @@ The linked public pages provide current service details, prices, compatibility c
 - [Atlas WRX tuning](https://www.tunedbykeith.com/atlas-wrx-tuning.html): Supported FA20 and FA24 WRX applications, equipment review and individually quoted calibration; separate from Accessport services.
 - [Porsche tuning](https://www.tunedbykeith.com/porsche-tuning.html): Supported modern COBB applications and vintage engine projects.
 - [Ford Focus, Fiesta and Raptor tuning](https://www.tunedbykeith.com/ford-tuning.html): Exact-model compatibility, equipment, fuel, logging and inquiry guidance.
+- [Subaru ECU and hardware selector](https://www.tunedbykeith.com/shop.html#subaru-ecu-packages): ECU-only or complete-package selection for 2004–2021 STI and 2002–2014 WRX. Vehicle and hardware selections carry into a free inquiry; fitment, availability and final scope are confirmed before purchase.
 - [Standalone ECU tuning](https://www.tunedbykeith.com/standalone-ecu-tuning.html): ECU selection, project scope and calibration support.
 - [Emtron tuning](https://www.tunedbykeith.com/emtron-tuning.html): Calibration services, project planning and documented build examples.
 - [Haltech tuning](https://www.tunedbykeith.com/haltech-tuning.html): ECU-specific setup review, calibration and supporting project evidence.
