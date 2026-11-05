@@ -1,0 +1,23 @@
+ACCOUNT READINESS — verified 2026-11-04
+
+Authenticated QuickBooks company settings show merchant Payments active and
+Affirm enabled for invoice payments. Standard displayed rate: 2.99%.
+Affirm financing is enabled for estimates too. Settings were not changed.
+This is company UI verification, not a fresh customer eligibility API check.
+Use the native QuickBooks hosted payment flow; no separate Affirm SDK added.
+
+Four non-inventory package items were created with Sales of Product Income:
+S3 Basic and S3 Protection retain normal rates; invoice checkout must resolve
+current manufacturer sale price on the server. Link and Emtron rates are blank
+pending confirmed public MAP totals. Blank rates must never become free orders.
+Company-specific item mapping is kept locally, not published in this document.
+No invoices, charges, supplier orders or tax filings were created.
+
+BLOCKER: Sales Tax overview displays Turn on sales tax. Hardware tax collection
+is not configured. Await the merchant's registered collection states before
+setting up tax. Do not infer no-tax treatment from an unconfigured account.
+
+Shipping rates/item, policy versions, exact fitment activation, customer route,
+provider invoice creation/review, payment reconciliation integration and sandbox
+verification remain required before hardware checkout can be enabled.
+76 local tests pass. No production hardware Worker/schema deployment performed.
