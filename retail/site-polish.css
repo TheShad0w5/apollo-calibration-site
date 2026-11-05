@@ -216,7 +216,7 @@ body.tbk-brand>header.tbk-static-header .tbk-services-panel{position:static;min-
 @media(max-width:900px){body.tbk-brand>header.tbk-static-header .tbk-native-mobile-menu>nav>*{flex-shrink:0}}
 
 /* Give standalone and service guide links comfortable mobile tap areas. */
-@media(max-width:900px){body.tbk-brand .service-paths>article>a:not(.button){display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding-block:10px;box-sizing:border-box}}
+@media(max-width:900px){body.tbk-brand :is(.service-paths,.vehicle-choices)>article>a:not(.button){display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding-block:10px;box-sizing:border-box}}
 
 /* Knowledge guides use their own bounded container, not viewport-based gutters. */
 body.tbk-brand.ecu-knowledge :is(.breadcrumbs,.ecu-guide-hero){width:100%;max-width:1320px;margin-inline:auto;padding-inline:clamp(24px,5vw,64px);box-sizing:border-box}
