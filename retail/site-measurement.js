@@ -133,7 +133,7 @@
   }
   tag('consent', 'default', {analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
   const page = () => ({page_location: measuredLocation(), page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
-  const inquiryPages = new Set(['/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
+  const inquiryPages = new Set(['/ej-wrx-sti-etuning.html', '/2015-2021-wrx-etuning.html', '/2022-plus-wrx-etuning.html', '/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
   const builds = new Set(['juan-sti','brett-sti','thomas-sti','thomas-gr86','mary-q60','david-link-sti','jaycee-focus-rs','chris-2020-sti','chris-2016-wrx','911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
   const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
   const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
