@@ -255,3 +255,8 @@ body.tbk-brand .dyno-sheet-display::after{content:"";position:absolute;inset:8% 
 body.tbk-brand .portfolio-photo.dyno-sheet-display>img{aspect-ratio:16/10;object-fit:contain;background:#fff!important}
 body.tbk-brand .dyno-sheet-display:focus-visible{outline:3px solid #ffb575;outline-offset:4px}
 @media print{body.tbk-brand .dyno-sheet-display>img{filter:none}body.tbk-brand .dyno-sheet-display::after{display:none}}
+
+/* Shared TBK dyno watermark. Keep source reports and their data untouched. */
+@media screen{
+body.tbk-brand :is(.dyno-sheet-display,.build-dyno-display,.record-image,.chris-chart>a:first-child)::after{content:"";background-image:url("/assets/brand/keith-logo.svg");background-repeat:no-repeat;background-position:center;background-size:56% auto;opacity:.14;pointer-events:none}
+}
