@@ -244,3 +244,17 @@
   link.href = url.pathname + url.search + url.hash;
  });
 })();
+
+/* Discreet owner shortcut; authentication remains on the admin portal. */
+(function addAdminShortcut(){
+ const footer=document.querySelector('footer');
+ if(!footer||footer.querySelector('[data-admin-shortcut]'))return;
+ const link=document.createElement('a');
+ link.href='https://tbk-store-production.keith-787.workers.dev/manage';
+ link.textContent='Admin';
+ link.setAttribute('data-admin-shortcut','true');
+ link.setAttribute('aria-label','Admin sign in — order management');
+ link.rel='nofollow';
+ link.style.cssText='display:inline-block;font-size:12px;font-weight:400;color:#a7b0bd;padding:10px 0;margin-top:12px;text-decoration:none';
+ footer.append(link);
+})();
