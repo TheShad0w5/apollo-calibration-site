@@ -17,6 +17,68 @@
   const adsKey = 'tbk-ad-measurement-choice';
   let adsChoice = '';
   try { adsChoice = localStorage.getItem(adsKey) || ''; } catch {}
+  const openAIConsentKey = 'tbk-openai-ad-measurement-v1';
+  const openAIReturnKey = 'tbk-openai-subaru-return';
+  const subaruPath = '/subaru-wrx-sti-tuning.html';
+  const inquiryReturnPath = '/inquiry-received.html';
+  const receiptParameter = 'subaru_inquiry_receipt';
+  const clickReferenceFormat = /^[A-Za-z0-9._~=-]{1,2048}$/;
+
+  function openAIMeasurementAllowed() {
+    try {
+      return !internalVisit && !privacySignal && !qaCampaign &&
+        testQuery.get('tbk_test') !== '1' && testQuery.get('tbk_owner') !== '1' &&
+        navigator.globalPrivacyControl !== true && navigator.doNotTrack !== '1' &&
+        sessionStorage.getItem(testKey) !== '1' && localStorage.getItem(ownerKey) !== '1' &&
+        localStorage.getItem(key) === 'yes' && localStorage.getItem(adsKey) === 'yes' &&
+        localStorage.getItem(openAIConsentKey) === 'yes';
+    } catch { return false; }
+  }
+
+  function prepareSubaruLead(form) {
+    if (location.pathname !== subaruPath || form.id !== 'inquiry-form') return;
+    const next = form.querySelector('input[name="_next"]');
+    if (!next) return;
+    next.value = 'https://www.tunedbykeith.com' + inquiryReturnPath;
+    try {
+      sessionStorage.removeItem(openAIReturnKey);
+      const click = testQuery.get('oppref') || '';
+      if (!openAIMeasurementAllowed() || !clickReferenceFormat.test(click)) return;
+      if (form.querySelector('input[name="_honey"]')?.value) return;
+      const eventId = crypto.randomUUID();
+      const destination = new URL(next.value);
+      destination.searchParams.set(receiptParameter, eventId);
+      sessionStorage.setItem(openAIReturnKey, JSON.stringify({eventId, click, time:Date.now()}));
+      next.value = destination.href;
+    } catch {}
+  }
+
+  function reportSubaruLead() {
+    if (location.pathname !== inquiryReturnPath) return;
+    const receipt = testQuery.get(receiptParameter);
+    if (!receipt) return;
+    try {
+      const pending = JSON.parse(sessionStorage.getItem(openAIReturnKey) || 'null');
+      if (!pending || pending.eventId !== receipt) return;
+      sessionStorage.removeItem(openAIReturnKey);
+      const age = Date.now() - pending.time;
+      if (!openAIMeasurementAllowed() || !Number.isFinite(age) || age < 0 || age > 3600000) return;
+      if (document.referrer && !formReturn) return;
+      if (!clickReferenceFormat.test(pending.click || '')) return;
+      const eventUrl = new URL('https://bzr.openai.com/v1/sdk/events');
+      eventUrl.search = new URLSearchParams({
+        pid:'6rrY2Phe9muYxo3uN8TTAH', event:'lead_created', event_id:pending.eventId,
+        oppref:pending.click, 'data[type]':'customer_action'
+      });
+      const pixel = new Image(1, 1);
+      pixel.alt = '';
+      pixel.hidden = true;
+      pixel.referrerPolicy = 'no-referrer';
+      pixel.src = eventUrl.href;
+      document.body.append(pixel);
+    } catch {}
+  }
+
   const pendingKey = 'tbk-inquiry-pending';
   const purchaseConsentKey='tbk-purchase-measurement-v1',purchaseTokensKey='tbk-purchase-context-tokens';
   const purchaseEndpoint='https://tbk-store-production.keith-787.workers.dev/api/analytics-context';
@@ -221,7 +283,7 @@
   panel.id = 'tbk-analytics-choice';
   panel.setAttribute('aria-label','Optional website measurement');
   panel.hidden = Boolean(choice);
-  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits, contact actions and confirmed purchases. Purchase reporting uses the service, amount and an anonymous transaction reference; private order pages stay untagged. Optional ad measurement also uses Google click identifiers and cookies to connect ad visits with inquiries. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
+  panel.innerHTML = '<p><strong>Help improve this website?</strong><br>Analytics measures visits, contact actions and confirmed purchases. Purchase reporting uses the service, amount and an anonymous transaction reference; private order pages stay untagged. Optional ad measurement uses Google click identifiers and cookies. For ChatGPT ad visits, it sends OpenAI the ad click reference and a completed Subaru inquiry event. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
   const replayLabel = document.createElement('label');
   replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5;font-weight:400';
   const replayInput = document.createElement('input');
@@ -241,6 +303,10 @@
     if (replayChoice !== 'yes') stopReplay();
     try { localStorage.setItem(replayKey, replayChoice); localStorage.setItem(key, choice); localStorage.setItem(adsKey, adsChoice); } catch {}
     try{localStorage.setItem(purchaseConsentKey,choice==='yes'?'yes':'no');}catch{}
+    try {
+      localStorage.setItem(openAIConsentKey, adsChoice);
+      if (adsChoice !== 'yes') sessionStorage.removeItem(openAIReturnKey);
+    } catch {}
     if(choice!=='yes')void revokePurchaseContexts();
     if (started) tag('consent', 'update', consentState());
     if (adsChoice !== 'yes') removeCookies(true);
@@ -287,6 +353,7 @@
       form.append(marker);
     }
     form.addEventListener('submit', () => {
+      prepareSubaruLead(form);
       const a=attribution();for(const [key,value]of Object.entries(a)){let field=form.querySelector('input[name="attribution_'+key+'"]');if(!field){field=document.createElement('input');field.type='hidden';field.name='attribution_'+key;form.append(field)}field.value=value;}
       try { sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), ...context})); } catch {}
       event('inquiry_start', {form_name:'website_inquiry', ...context});
@@ -336,6 +403,7 @@
   }
   window.addEventListener('storage',e=>{if([key,purchaseConsentKey,ownerKey].includes(e.key)&&!purchaseGranted())void revokePurchaseContexts();});
   start();
+  reportSubaruLead();
   if(!purchaseGranted()&&savedPurchaseTokens().length)void revokePurchaseContexts();
 })();
 
