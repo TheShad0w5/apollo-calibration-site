@@ -2,14 +2,103 @@
 const root=document.getElementById('hero-builds');if(!root)return;
 const picture=root.querySelector('picture'),caption=root.querySelector('figcaption a'),controls=root.querySelector('.build-carousel-controls'),count=root.querySelector('.build-carousel-count'),status=root.querySelector('.build-carousel-status'),prev=root.querySelector('[data-carousel="previous"]'),next=root.querySelector('[data-carousel="next"]'),play=root.querySelector('[data-carousel="play"]');
 const slides=[
-{title:'Cinderelli / 2024 WRX',href:'/2024-wrx-cinderelli-e70.html',alt:'Cinderelli, the orange 2024 Subaru WRX developed at AWD Tuning',src:'/assets/builds/2024-wrx-cinderelli-640.webp',set:'/assets/builds/2024-wrx-cinderelli-400.webp 400w, /assets/builds/2024-wrx-cinderelli-640.webp 640w, /assets/builds/2024-wrx-cinderelli-960.webp 960w, /assets/builds/2024-wrx-cinderelli-1440.webp 1440w',width:1440,height:1755},
-{title:'James / 2024 WRX',href:'/james-2024-wrx-build.html',alt:'James’s blue 2024 WRX at MotorSport Ranch at sunset',src:'/assets/builds/james-2024-wrx-fort-wrx.webp',set:'/assets/builds/james-2024-wrx-fort-wrx-400.webp 400w, /assets/builds/james-2024-wrx-fort-wrx-720.webp 720w, /assets/builds/james-2024-wrx-fort-wrx.webp 1200w',width:1200,height:1200},
-{title:'Lucas / Emtron STI',href:'/lucas-2018-sti-emtron.html',alt:'Lucas’s grey 2018 STI on AWD Tuning’s dyno',src:'/assets/builds/lucas-2018-sti-awd.webp',set:'/assets/builds/lucas-2018-sti-awd-400.webp 400w, /assets/builds/lucas-2018-sti-awd-720.webp 720w, /assets/builds/lucas-2018-sti-awd.webp 1200w',width:1200,height:900}];
+  {
+    "title": "Cinderelli / Subiefest",
+    "href": "/2024-wrx-cinderelli-e70.html",
+    "alt": "Cinderelli, the orange 2024 WRX, with the hood open at Subiefest 2025",
+    "src": "/assets/builds/cinderelli-subiefest-front.webp",
+    "set": "/assets/builds/cinderelli-subiefest-front-400.webp 400w, /assets/builds/cinderelli-subiefest-front-720.webp 720w, /assets/builds/cinderelli-subiefest-front.webp 1200w",
+    "width": 1200,
+    "height": 951
+  },
+  {
+    "title": "Lucas / Emtron STI",
+    "href": "/lucas-2018-sti-emtron.html",
+    "alt": "Lucas’s grey 2018 STI on AWD Tuning’s dyno",
+    "src": "/assets/builds/lucas-2018-sti-awd.webp",
+    "set": "/assets/builds/lucas-2018-sti-awd-400.webp 400w, /assets/builds/lucas-2018-sti-awd-720.webp 720w, /assets/builds/lucas-2018-sti-awd.webp 1200w",
+    "width": 1200,
+    "height": 900
+  },
+  {
+    "title": "James / 2024 WRX",
+    "href": "/james-2024-wrx-build.html",
+    "alt": "James’s blue 2024 WRX at MotorSport Ranch at sunset",
+    "src": "/assets/builds/james-2024-wrx-fort-wrx.webp",
+    "set": "/assets/builds/james-2024-wrx-fort-wrx-400.webp 400w, /assets/builds/james-2024-wrx-fort-wrx-720.webp 720w, /assets/builds/james-2024-wrx-fort-wrx.webp 1200w",
+    "width": 1200,
+    "height": 1200
+  },
+  {
+    "title": "Thomas / HKS turbo GR86",
+    "href": "/thomas-2024-gr86-hks-turbo.html",
+    "alt": "Thomas’s white GR86 with gold wheels",
+    "src": "/assets/builds/thomas-gr86-hks-front.webp",
+    "set": "/assets/builds/thomas-gr86-hks-front-400.webp 400w, /assets/builds/thomas-gr86-hks-front-720.webp 720w, /assets/builds/thomas-gr86-hks-front.webp 1200w",
+    "width": 1200,
+    "height": 802
+  },
+  {
+    "title": "Keith / STI at Import Face Off",
+    "href": "/keith-2015-sti.html",
+    "alt": "Front view of Keith’s white 2015 STI in the Import Face Off paddock",
+    "src": "/assets/builds/keith-sti-ifo-front.webp",
+    "set": "/assets/builds/keith-sti-ifo-front-400.webp 400w, /assets/builds/keith-sti-ifo-front-720.webp 720w, /assets/builds/keith-sti-ifo-front.webp 1095w",
+    "width": 1095,
+    "height": 1000
+  },
+  {
+    "title": "Krispy / Haltech Legacy GT",
+    "href": "/krispy-2005-legacy-gt-haltech.html",
+    "alt": "Krispy’s finished Legacy GT at Subiefest",
+    "src": "/assets/builds/krispy-lgt-finished.webp",
+    "set": "/assets/builds/krispy-lgt-finished.webp 1599w",
+    "width": 1599,
+    "height": 1600
+  },
+  {
+    "title": "Cinderelli / Under the hood",
+    "href": "/2024-wrx-cinderelli-e70.html",
+    "alt": "Engine bay of Cinderelli’s orange 2024 WRX at Subiefest 2025",
+    "src": "/assets/builds/cinderelli-subiefest-engine.webp",
+    "set": "/assets/builds/cinderelli-subiefest-engine-400.webp 400w, /assets/builds/cinderelli-subiefest-engine-720.webp 720w, /assets/builds/cinderelli-subiefest-engine.webp 1200w",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "title": "Keith / STI at sunset",
+    "href": "/keith-2015-sti.html",
+    "alt": "Side view of Keith’s white STI against a sunset sky",
+    "src": "/assets/builds/keith-2015-sti-sunset-side.webp",
+    "set": "/assets/builds/keith-2015-sti-sunset-side-400.webp 400w, /assets/builds/keith-2015-sti-sunset-side-720.webp 720w, /assets/builds/keith-2015-sti-sunset-side.webp 1200w",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "title": "Thomas / HKS turbo hardware",
+    "href": "/thomas-2024-gr86-hks-turbo.html",
+    "alt": "Engine bay of Thomas’s white GR86 showing HKS turbo hardware and red air filter",
+    "src": "/assets/builds/thomas-gr86-hks-engine.webp",
+    "set": "/assets/builds/thomas-gr86-hks-engine-400.webp 400w, /assets/builds/thomas-gr86-hks-engine.webp 668w",
+    "width": 668,
+    "height": 1000
+  },
+  {
+    "title": "Cinderelli / 2024 WRX",
+    "href": "/2024-wrx-cinderelli-e70.html",
+    "alt": "Cinderelli, the orange 2024 Subaru WRX developed at AWD Tuning",
+    "src": "/assets/builds/2024-wrx-cinderelli-640.webp",
+    "set": "/assets/builds/2024-wrx-cinderelli-400.webp 400w, /assets/builds/2024-wrx-cinderelli-640.webp 640w, /assets/builds/2024-wrx-cinderelli-960.webp 960w, /assets/builds/2024-wrx-cinderelli-1440.webp 1440w",
+    "width": 1440,
+    "height": 1755
+  }
+];
 let index=0,playing=false,busy=false,visible=true,hovered=false,timer;const motion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function schedule(){clearTimeout(timer);if(playing&&!busy&&visible&&!hovered&&!document.hidden&&!root.contains(document.activeElement))timer=setTimeout(()=>show(index+1,false),7000);}
 function setPlaying(value){playing=value;play.textContent=playing?'Pause slideshow':'Play slideshow';schedule();}
 async function show(value,manual){if(busy)return;if(manual)setPlaying(false);const target=(value+slides.length)%slides.length,s=slides[target];if(target===index)return;busy=true;prev.disabled=next.disabled=true;root.setAttribute('aria-busy','true');clearTimeout(timer);const img=new Image();img.alt=s.alt;img.width=s.width;img.height=s.height;img.decoding='async';img.sizes='(max-width: 800px) 88vw, calc(40.93vw - 1.4rem)';img.srcset=s.set;img.src=s.src;try{await img.decode();picture.replaceChildren(img);caption.href=s.href;caption.textContent=s.title+' / Explore the build →';index=target;count.textContent=(index+1)+' / '+slides.length;if(manual)status.textContent='Build '+(index+1)+' of '+slides.length+': '+s.title;}catch(e){setPlaying(false);status.textContent='That photo could not load. Please try again.';}finally{busy=false;prev.disabled=next.disabled=false;root.removeAttribute('aria-busy');schedule();}}
 prev.addEventListener('click',()=>show(index-1,true));next.addEventListener('click',()=>show(index+1,true));play.addEventListener('click',()=>{setPlaying(!playing);status.textContent=playing?'Slideshow will play when focus leaves the controls.':'Slideshow paused.';});root.addEventListener('focusin',()=>{clearTimeout(timer);});root.addEventListener('focusout',()=>setTimeout(schedule,0));root.addEventListener('mouseenter',()=>{hovered=true;clearTimeout(timer);});root.addEventListener('mouseleave',()=>{hovered=false;schedule();});document.addEventListener('visibilitychange',schedule);motion.addEventListener('change',()=>{if(motion.matches)setPlaying(false);});if('IntersectionObserver'in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;schedule();},{threshold:.4}).observe(root);
 // Manual-first: no rotating content or extra image request until the visitor chooses it.
+count.textContent="1 / "+slides.length;
 controls.hidden=false;
 })();
