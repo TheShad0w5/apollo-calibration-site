@@ -5,3 +5,6 @@
 .technical-library .article-contents ul{display:flex;flex-wrap:wrap;gap:8px 24px;list-style:none;padding:0;margin:0;width:100%}
 .technical-library .article-contents a{display:inline-flex;align-items:center;min-height:44px}
 .technical-library .article-body h2[id]{scroll-margin-top:7rem}
+
+/* Article navigation must wrap independently of the site navigation. */
+nav.article-jumps{display:flex;flex-wrap:wrap;gap:.65rem 1rem;align-items:center;justify-content:flex-start;margin:1.5rem 0;max-width:100%}nav.article-jumps a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;padding:.4rem .65rem;border:1px solid var(--line,#394657);border-radius:.35rem;text-underline-offset:.2em}nav.article-jumps a:focus-visible{outline:2px solid var(--accent,#d67b2b);outline-offset:3px}
