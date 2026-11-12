@@ -19,6 +19,9 @@
   try { adsChoice = localStorage.getItem(adsKey) || ''; } catch {}
   const openAIConsentKey = 'tbk-openai-ad-measurement-v1';
   const openAIReturnKey = 'tbk-openai-subaru-return';
+  const openAIClickKey = 'tbk-openai-click-v1';
+  // Tab-scoped and deliberately limited to the existing one-hour inquiry window.
+  const openAIClickLifetime = 60 * 60 * 1000;
   const subaruPath = '/subaru-wrx-sti-tuning.html';
   const inquiryReturnPath = '/inquiry-received.html';
   const receiptParameter = 'subaru_inquiry_receipt';
@@ -35,6 +38,42 @@
     } catch { return false; }
   }
 
+  function clearOpenAIMeasurement() {
+    try {
+      sessionStorage.removeItem(openAIClickKey);
+      sessionStorage.removeItem(openAIReturnKey);
+    } catch {}
+  }
+
+  function savedOpenAIClick() {
+    if (!openAIMeasurementAllowed()) { clearOpenAIMeasurement(); return ''; }
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(openAIClickKey) || 'null');
+      const age = Date.now() - saved?.time;
+      if (!saved || !clickReferenceFormat.test(saved.click || '') ||
+          !Number.isFinite(age) || age < 0 || age > openAIClickLifetime) {
+        sessionStorage.removeItem(openAIClickKey);
+        return '';
+      }
+      return saved.click;
+    } catch { return ''; }
+  }
+
+  function captureOpenAIClick() {
+    if (!openAIMeasurementAllowed()) { clearOpenAIMeasurement(); return; }
+    // Read the live URL so restored pages and consent changes use current state.
+    const query = new URLSearchParams(location.search);
+    if (!query.has('oppref')) { savedOpenAIClick(); return; }
+    const click = query.get('oppref') || '';
+    if (!clickReferenceFormat.test(click)) { clearOpenAIMeasurement(); return; }
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(openAIClickKey) || 'null');
+      // Revisiting the landing URL must not extend the original expiry.
+      if (saved?.click === click) { savedOpenAIClick(); return; }
+      sessionStorage.setItem(openAIClickKey, JSON.stringify({click, time:Date.now()}));
+    } catch {}
+  }
+
   function prepareSubaruLead(form) {
     if (location.pathname !== subaruPath || form.id !== 'inquiry-form') return;
     const next = form.querySelector('input[name="_next"]');
@@ -42,8 +81,8 @@
     next.value = 'https://www.tunedbykeith.com' + inquiryReturnPath;
     try {
       sessionStorage.removeItem(openAIReturnKey);
-      const click = testQuery.get('oppref') || '';
-      if (!openAIMeasurementAllowed() || !clickReferenceFormat.test(click)) return;
+      const click = savedOpenAIClick();
+      if (!click) return;
       if (form.querySelector('input[name="_honey"]')?.value) return;
       const eventId = crypto.randomUUID();
       const destination = new URL(next.value);
@@ -305,8 +344,9 @@
     try{localStorage.setItem(purchaseConsentKey,choice==='yes'?'yes':'no');}catch{}
     try {
       localStorage.setItem(openAIConsentKey, adsChoice);
-      if (adsChoice !== 'yes') sessionStorage.removeItem(openAIReturnKey);
+      if (adsChoice !== 'yes') clearOpenAIMeasurement();
     } catch {}
+    captureOpenAIClick();
     if(choice!=='yes')void revokePurchaseContexts();
     if (started) tag('consent', 'update', consentState());
     if (adsChoice !== 'yes') removeCookies(true);
@@ -402,6 +442,17 @@
     else document.body.append(notice);
   }
   window.addEventListener('storage',e=>{if([key,purchaseConsentKey,ownerKey].includes(e.key)&&!purchaseGranted())void revokePurchaseContexts();});
+  window.addEventListener('storage', e => {
+    if (e.key === null || [key, adsKey, openAIConsentKey, ownerKey].includes(e.key)) {
+      if (!openAIMeasurementAllowed()) clearOpenAIMeasurement();
+    }
+  });
+  window.addEventListener('pageshow', () => {
+    // A back/forward-cache restore must also honor revocation and expiry.
+    if (!openAIMeasurementAllowed()) clearOpenAIMeasurement();
+    else savedOpenAIClick();
+  });
+  captureOpenAIClick();
   start();
   reportSubaruLead();
   if(!purchaseGranted()&&savedPurchaseTokens().length)void revokePurchaseContexts();

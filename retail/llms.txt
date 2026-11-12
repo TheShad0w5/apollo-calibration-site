@@ -10,6 +10,8 @@ The linked public pages provide current service details, prices, compatibility c
 
 ## Services and getting started
 
+- [Find a service](https://www.tunedbykeith.com/#find-my-tune): A no-email guide to new tunes, existing-customer retunes, base maps and custom projects. Suggestions are not vehicle compatibility approval.
+
 - [Service menu and inquiries](https://www.tunedbykeith.com/shop.html): Current services, prices and a no-payment inquiry path.
 - [Subaru WRX and STI tuning](https://www.tunedbykeith.com/subaru-wrx-sti-tuning.html): Vehicle selection, process, results and Subaru inquiries.
 - [EJ WRX and STI e-tuning](https://www.tunedbykeith.com/ej-wrx-sti-etuning.html): 2002–2014 WRX and 2004–2021 STI setup and logging considerations.
