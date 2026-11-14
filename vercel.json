@@ -23,6 +23,46 @@
       "permanent": true
     },
     {
+      "source": "/remote-calibration-support/",
+      "destination": "https://www.tunedbykeith.com/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/remote-calibration-support",
+      "destination": "https://www.tunedbykeith.com/remote-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/standalone-ecu-support/",
+      "destination": "https://www.tunedbykeith.com/standalone-ecu-support/",
+      "permanent": true
+    },
+    {
+      "source": "/standalone-ecu-support",
+      "destination": "https://www.tunedbykeith.com/standalone-ecu-support/",
+      "permanent": true
+    },
+    {
+      "source": "/ecu-calibration-support/",
+      "destination": "https://www.tunedbykeith.com/ecu-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/ecu-calibration-support",
+      "destination": "https://www.tunedbykeith.com/ecu-calibration-support/",
+      "permanent": true
+    },
+    {
+      "source": "/trackside-support/",
+      "destination": "https://www.tunedbykeith.com/trackside-support/",
+      "permanent": true
+    },
+    {
+      "source": "/trackside-support",
+      "destination": "https://www.tunedbykeith.com/trackside-support/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "destination": "https://www.tunedbykeith.com/:path*",
       "permanent": true
