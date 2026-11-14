@@ -39,3 +39,27 @@
 @media(max-width:1000px){.shop-choice-grid,.shop-refined .nine-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shop-refined .shop-hero{gap:2rem}}
 @media(max-width:600px){.shop-refined .shop-hero figure{display:none}.shop-refined .shop-hero{display:block;padding-top:1.5rem;padding-bottom:1.5rem}.shop-refined .shop-hero h1{font-size:clamp(3rem,12vw,4.5rem)}.shop-choice-grid{gap:.65rem}.shop-choice-grid>a{padding:1rem}.shop-refined .nine-service-grid,.shop-resource-body .path-grid{grid-template-columns:1fr}.shop-refined .nine-service-grid h3{min-height:0}.shop-refined .nine-service-grid article{padding:1.4rem}.shop-resource>summary{font-size:1.1rem}.shop-refined .shop-price-summary{font-size:1rem}.shop-refined .shop-hero-actions{display:flex;flex-direction:column;align-items:stretch}.shop-refined .shop-hero-actions .button{text-align:center}}
 @media(prefers-reduced-motion:reduce){.shop-choice-grid>a{transition:none}}
+
+/* Keep service comparison rows aligned even when a title wraps.
+   Scope to the live body class; do not enable unrelated shop-refined styling. */
+.tuning-shop .nine-service-grid article > h3 {
+  line-height: 1.2;
+  min-block-size: 2.4em;
+}
+@supports (grid-template-rows: subgrid) {
+  .tuning-shop .nine-service-grid > article {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 5;
+    row-gap: 0;
+  }
+  .tuning-shop .nine-service-grid article > h3 { min-block-size: 0; }
+  .tuning-shop .nine-service-grid article > .button {
+    margin-top: 1.5rem;
+    align-self: end;
+  }
+}
+@media (max-width: 600px) {
+  .tuning-shop .nine-service-grid > article { display: flex; }
+  .tuning-shop .nine-service-grid article > h3 { min-block-size: 0; }
+}
