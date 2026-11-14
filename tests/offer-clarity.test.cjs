@@ -1,0 +1,12 @@
+'use strict';
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const prep=fs.readFileSync('retail/prepare-for-tuning-consultation.html','utf8');
+assert.ok(!prep.includes('Custom e-tunes include up to eight'));
+assert.ok(!prep.includes('understand eight revisions'));
+assert.match(prep,/Single-fuel custom tunes include up to eight revisions; flex-fuel custom tunes include up to sixteen/);
+assert.match(prep,/initial calibration is separate and does not count as a revision/);
+const landing=fs.readFileSync('retail/subaru-wrx-sti-tuning.html','utf8');
+assert.match(landing,/href="\/checkout\?service=ap-single#setup">Start my \$400 single-fuel tune/);
+assert.match(landing,/href="#generation">Check my Subaru requirements/);
+assert.match(landing,/href="#inquiry-form">Ask about a custom setup/);
+console.log('Offer scope and buyer/requirements/inquiry routes passed');

@@ -75,7 +75,11 @@
   }
 
   function prepareSubaruLead(form) {
-    if (location.pathname !== subaruPath || form.id !== 'inquiry-form') return;
+    // Only verified Subaru inquiry forms count toward the Subaru lead goal.
+    // Generic home/shop and other makes must not be relabeled as Subaru leads.
+    const subaruInquiryPaths = [subaruPath, '/2022-plus-wrx-etuning.html',
+      '/2015-2021-wrx-etuning.html', '/ej-wrx-sti-etuning.html'];
+    if (!subaruInquiryPaths.includes(location.pathname) || form.id !== 'inquiry-form') return;
     const next = form.querySelector('input[name="_next"]');
     if (!next) return;
     next.value = 'https://www.tunedbykeith.com' + inquiryReturnPath;

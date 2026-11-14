@@ -53,3 +53,13 @@ test('whole script initializes and storage/pageshow revocation clears data',()=>
  for(const fn of listeners.pageshow)fn({persisted:true});
  assert.equal(f.ctx.sessionStorage.getItem('tbk-openai-click-v1'),null);
 });
+
+ test('all verified Subaru generation forms prepare a consented lead receipt',()=>{
+ for(const pathname of ['/subaru-wrx-sti-tuning.html','/2022-plus-wrx-etuning.html','/2015-2021-wrx-etuning.html','/ej-wrx-sti-etuning.html']){
+ const f=fixture({context:{location:{pathname,search:'?oppref=real-click-abc'}}});f.call('captureOpenAIClick()');f.ctx.form=f.form;f.call('prepareSubaruLead(form)');assert.match(f.next.value,/subaru_inquiry_receipt=receipt-123/);
+ }});
+ test('generic, non-Subaru and unknown forms cannot become Subaru leads',()=>{
+ for(const pathname of ['/','/index.html','/shop.html','/porsche-tuning.html','/unknown.html']){
+ const f=fixture({context:{location:{pathname,search:'?oppref=real-click-abc'}}});f.call('captureOpenAIClick()');f.ctx.form=f.form;f.call('prepareSubaruLead(form)');assert.equal(f.ctx.sessionStorage.getItem('pending'),null);
+ }const f=fixture();f.call('captureOpenAIClick()');f.form.id='other-form';f.ctx.form=f.form;f.call('prepareSubaruLead(form)');assert.equal(f.ctx.sessionStorage.getItem('pending'),null);
+ });
