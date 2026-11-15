@@ -1,0 +1,468 @@
+<!doctype html><html><head><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self';script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline';connect-src 'none';img-src 'self'"><title>Consent bar isolated preview</title></head><body style="margin:0;font:16px Arial"><main style="padding:24px"><h1>Consent bar test</h1><p>Isolated preview. External tracking is blocked. These choices affect only this preview hostname.</p><a href="/consent-preview.html?reload=1">Navigate to another page</a><div style="height:500px">Sample content stays usable</div></main><footer><nav><a href="/privacy.html">Privacy</a> </nav></footer><script>// Optional Google Analytics. No Google tag loads until the visitor opts in.
+(() => {
+  if (![location.hostname].includes(location.hostname)) return;
+  const id = 'G-NTVQD1HRNV';
+  const adsId = 'AW-18533496599';
+  const inquiryConversion = adsId + '/mp7TCMiNoKcdEJfuuoVF';
+  let adsStarted = false;
+  function startAds() {
+    if (adsStarted || choice !== 'yes' || adsChoice !== 'yes' || privacySignal || internalVisit) return;
+    tag('config', adsId, {...page(), send_page_view:false, allow_ad_personalization_signals:false});
+    adsStarted = true;
+  }
+  const key = 'tbk-analytics-choice';
+  const replayKey = 'tbk-replay-choice-v1';
+  let replayChoice = '';
+  try { replayChoice = localStorage.getItem(replayKey) || ''; } catch {}
+  const adsKey = 'tbk-ad-measurement-choice';
+  let adsChoice = '';
+  try { adsChoice = localStorage.getItem(adsKey) || ''; } catch {}
+  const openAIConsentKey = 'tbk-openai-ad-measurement-v1';
+  const openAIReturnKey = 'tbk-openai-subaru-return';
+  const openAIClickKey = 'tbk-openai-click-v1';
+  // Tab-scoped and deliberately limited to the existing one-hour inquiry window.
+  const openAIClickLifetime = 60 * 60 * 1000;
+  const subaruPath = '/subaru-wrx-sti-tuning.html';
+  const inquiryReturnPath = '/inquiry-received.html';
+  const receiptParameter = 'subaru_inquiry_receipt';
+  const clickReferenceFormat = /^[A-Za-z0-9._~=-]{1,2048}$/;
+
+  function openAIMeasurementAllowed() {
+    try {
+      return !internalVisit && !privacySignal && !qaCampaign &&
+        testQuery.get('tbk_test') !== '1' && testQuery.get('tbk_owner') !== '1' &&
+        navigator.globalPrivacyControl !== true && navigator.doNotTrack !== '1' &&
+        sessionStorage.getItem(testKey) !== '1' && localStorage.getItem(ownerKey) !== '1' &&
+        localStorage.getItem(key) === 'yes' && localStorage.getItem(adsKey) === 'yes' &&
+        localStorage.getItem(openAIConsentKey) === 'yes';
+    } catch { return false; }
+  }
+
+  function clearOpenAIMeasurement() {
+    try {
+      sessionStorage.removeItem(openAIClickKey);
+      sessionStorage.removeItem(openAIReturnKey);
+    } catch {}
+  }
+
+  function savedOpenAIClick() {
+    if (!openAIMeasurementAllowed()) { clearOpenAIMeasurement(); return ''; }
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(openAIClickKey) || 'null');
+      const age = Date.now() - saved?.time;
+      if (!saved || !clickReferenceFormat.test(saved.click || '') ||
+          !Number.isFinite(age) || age < 0 || age > openAIClickLifetime) {
+        sessionStorage.removeItem(openAIClickKey);
+        return '';
+      }
+      return saved.click;
+    } catch { return ''; }
+  }
+
+  function captureOpenAIClick() {
+    if (!openAIMeasurementAllowed()) { clearOpenAIMeasurement(); return; }
+    // Read the live URL so restored pages and consent changes use current state.
+    const query = new URLSearchParams(location.search);
+    if (!query.has('oppref')) { savedOpenAIClick(); return; }
+    const click = query.get('oppref') || '';
+    if (!clickReferenceFormat.test(click)) { clearOpenAIMeasurement(); return; }
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(openAIClickKey) || 'null');
+      // Revisiting the landing URL must not extend the original expiry.
+      if (saved?.click === click) { savedOpenAIClick(); return; }
+      sessionStorage.setItem(openAIClickKey, JSON.stringify({click, time:Date.now()}));
+    } catch {}
+  }
+
+  function prepareSubaruLead(form) {
+    // Only verified Subaru inquiry forms count toward the Subaru lead goal.
+    // Generic home/shop and other makes must not be relabeled as Subaru leads.
+    const subaruInquiryPaths = [subaruPath, '/2022-plus-wrx-etuning.html',
+      '/2015-2021-wrx-etuning.html', '/ej-wrx-sti-etuning.html'];
+    if (!subaruInquiryPaths.includes(location.pathname) || form.id !== 'inquiry-form') return;
+    const next = form.querySelector('input[name="_next"]');
+    if (!next) return;
+    next.value = 'https://www.tunedbykeith.com' + inquiryReturnPath;
+    try {
+      sessionStorage.removeItem(openAIReturnKey);
+      const click = savedOpenAIClick();
+      if (!click) return;
+      if (form.querySelector('input[name="_honey"]')?.value) return;
+      const eventId = crypto.randomUUID();
+      const destination = new URL(next.value);
+      destination.searchParams.set(receiptParameter, eventId);
+      sessionStorage.setItem(openAIReturnKey, JSON.stringify({eventId, click, time:Date.now()}));
+      next.value = destination.href;
+    } catch {}
+  }
+
+  function reportSubaruLead() {
+    if (location.pathname !== inquiryReturnPath) return;
+    const receipt = testQuery.get(receiptParameter);
+    if (!receipt) return;
+    try {
+      const pending = JSON.parse(sessionStorage.getItem(openAIReturnKey) || 'null');
+      if (!pending || pending.eventId !== receipt) return;
+      sessionStorage.removeItem(openAIReturnKey);
+      const age = Date.now() - pending.time;
+      if (!openAIMeasurementAllowed() || !Number.isFinite(age) || age < 0 || age > 3600000) return;
+      if (document.referrer && !formReturn) return;
+      if (!clickReferenceFormat.test(pending.click || '')) return;
+      const eventUrl = new URL('https://bzr.openai.com/v1/sdk/events');
+      eventUrl.search = new URLSearchParams({
+        pid:'6rrY2Phe9muYxo3uN8TTAH', event:'lead_created', event_id:pending.eventId,
+        oppref:pending.click, 'data[type]':'customer_action'
+      });
+      const pixel = new Image(1, 1);
+      pixel.alt = '';
+      pixel.hidden = true;
+      pixel.referrerPolicy = 'no-referrer';
+      pixel.src = eventUrl.href;
+      document.body.append(pixel);
+    } catch {}
+  }
+
+  const pendingKey = 'tbk-inquiry-pending';
+  const purchaseConsentKey='tbk-purchase-measurement-v1',purchaseTokensKey='tbk-purchase-context-tokens';
+  const purchaseEndpoint='https://tbk-store-production.keith-787.workers.dev/api/analytics-context';
+  // Explicit QA sessions use separate event names and mark form submissions.
+  const testKey = 'tbk-measurement-test';
+  const testQuery = new URLSearchParams(location.search);
+  const testOption = testQuery.get('tbk_test');
+  const qaCampaign = testQuery.get('utm_source') === 'qa' && testQuery.get('utm_medium') === 'test';
+  let isTest = testOption === '1';
+  try {
+    if (testOption === '1' || qaCampaign) sessionStorage.setItem(testKey, '1');
+    if (testOption === '0' && !qaCampaign) sessionStorage.removeItem(testKey);
+    isTest = sessionStorage.getItem(testKey) === '1';
+  } catch {}
+  // Explicit per-browser owner exclusion survives new tabs and sessions.
+  const ownerKey = 'tbk-owner-exclude-v1';
+  const ownerOption = new URLSearchParams(location.search).get('tbk_owner');
+  let isOwner = ownerOption === '1';
+  try {
+    if (ownerOption === '1') localStorage.setItem(ownerKey, '1');
+    if (ownerOption === '0') localStorage.removeItem(ownerKey);
+    isOwner = localStorage.getItem(ownerKey) === '1';
+  } catch {}
+  const internalVisit = isTest || isOwner;
+  if (internalVisit) window['ga-disable-' + id] = true;
+  let choice = '';
+  try { choice = localStorage.getItem(key) || ''; } catch {}
+  const privacySignal = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
+  if (privacySignal) { choice = 'no'; adsChoice = 'no'; replayChoice = 'no'; }
+
+  // Replay is a separate opt-in. Never load it on checkout, admin, unknown or QA URLs.
+  const replayPages = new Set(['/', '/index.html', '/porsche-tuning.html', '/subaru-wrx-sti-tuning.html',
+    '/2022-plus-wrx-etuning.html', '/2015-2021-wrx-etuning.html', '/ej-wrx-sti-etuning.html',
+    '/porsche-911-turbo-s-cobb-results.html', '/porsche-964-kinsler-engine-tuning.html',
+    '/lucas-2018-sti-emtron.html', '/2024-wrx-cinderelli-e70.html',
+    '/keith-2015-sti.html', '/2019-sti-bcp-turbo-93-octane.html',
+    '/build-examples.html', '/about-keith-fields.html', '/media.html', '/dyno-tuning/']);
+  function replaySafe() {
+    if (internalVisit || privacySignal || !replayPages.has(location.pathname)) return false;
+    const url = new URL(location.href);
+    if (url.hash && !['#main','#see-the-work','#inquiry-form','#dyno-results','#request'].includes(url.hash)) return false;
+    for (const [name, value] of url.searchParams) {
+      if (!['utm_source','utm_medium','utm_campaign','utm_content','build'].includes(name) ||
+          !/^[a-zA-Z0-9_.-]{1,100}$/.test(value)) return false;
+    }
+    try {
+      const from = new URL(document.referrer);
+      if (from.search || from.hash) return false;
+      if (from.origin === location.origin && !replayPages.has(from.pathname)) return false;
+    } catch {}
+    return true;
+  }
+  let replayStarted = false, replayStopped = false;
+  function stopReplay() {
+    if (!replayStarted || replayStopped) return;
+    window.clarity('consentv2', {ad_Storage:'denied', analytics_Storage:'denied'});
+    window.clarity('stop');
+    replayStopped = true;
+    for (const cookie of document.cookie.split(';')) {
+      const name = cookie.split('=')[0].trim();
+      if (!['_clck','_clsk'].includes(name)) continue;
+      for (const domain of ['', '; domain=' + location.hostname, '; domain=.tunedbykeith.com']) {
+        document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
+      }
+    }
+  }
+  function startReplay() {
+    if (replayStarted || replayStopped || choice !== 'yes' || replayChoice !== 'yes' || !replaySafe()) return;
+    document.body.setAttribute('data-clarity-mask', 'true');
+    window.clarity = window.clarity || function(){ (window.clarity.q = window.clarity.q || []).push(arguments); };
+    window.clarity('consentv2', {ad_Storage:'denied', analytics_Storage:'granted'});
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.clarity.ms/tag/z407ezspwl';
+    replayStarted = true;
+    document.head.append(script);
+  }
+  window.addEventListener('hashchange', () => { if (!replaySafe()) stopReplay(); });
+  window.addEventListener('popstate', () => { if (!replaySafe()) stopReplay(); });
+  window.addEventListener('storage', e => {
+    if ([key, replayKey].includes(e.key) && e.newValue !== 'yes') stopReplay();
+  });
+
+  let started = false;
+  window.dataLayer = window.dataLayer || [];
+  function tag() { window.dataLayer.push(arguments); }
+  let referrer = '';
+  try { referrer = new URL(document.referrer).origin + '/'; } catch {}
+  // FormSubmit is a workflow return, not a new acquisition source.
+  const formReturn = referrer === 'https://formsubmit.co/' || referrer === 'https://www.formsubmit.co/';
+  // Keep deliberate campaign labels while excluding arbitrary query strings.
+  const campaign = {};
+  const query = new URLSearchParams(location.search);
+  for (const [param, field] of Object.entries({utm_source:'campaign_source', utm_medium:'campaign_medium', utm_campaign:'campaign_name', utm_content:'campaign_content'})) {
+    const value = query.get(param) || '';
+    if (/^[a-zA-Z0-9_.-]{1,100}$/.test(value)) campaign[field] = value;
+  }
+  // Only an explicit ad-measurement opt-in permits click identifiers. Never forward arbitrary queries.
+  function measuredLocation() {
+    const url = new URL(location.origin + location.pathname);
+    if (choice === 'yes' && adsChoice === 'yes' && !privacySignal && !isTest) {
+      for (const name of ['gclid', 'gbraid', 'wbraid']) {
+        const value = query.get(name) || '';
+        if (/^[A-Za-z0-9_-]{1,256}$/.test(value)) url.searchParams.set(name, value);
+      }
+    }
+    return url.href;
+  }
+  function consentState() {
+    const analytics = choice === 'yes' && !privacySignal;
+    const ads = analytics && adsChoice === 'yes' && !isTest;
+    return {analytics_storage:analytics?'granted':'denied', ad_storage:ads?'granted':'denied',
+      ad_user_data:ads?'granted':'denied', ad_personalization:'denied'};
+  }
+  tag('consent', 'default', {analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied', ad_personalization:'denied'});
+  const page = () => ({page_location: measuredLocation(), page_referrer: referrer, page_title: document.title, ...(formReturn ? {ignore_referrer:true} : {})});
+  const inquiryPages = new Set(['/ej-wrx-sti-etuning.html', '/2015-2021-wrx-etuning.html', '/2022-plus-wrx-etuning.html', '/porsche-tuning.html', '/subaru-wrx-sti-tuning.html', '/shop.html', '/', '/index.html', '/dyno-tuning/']);
+  const builds = new Set(['juan-sti','brett-sti','thomas-sti','thomas-gr86','mary-q60','david-link-sti','jaycee-focus-rs','chris-2020-sti','chris-2016-wrx','911-cobb','macan-cobb','964-kinsler','james-wrx','lucas-sti','cinderelli-wrx','keith-sti','2019-sti','link-wrx']);
+  const sourceBuild = builds.has(query.get('build')) ? query.get('build') : '';
+  const context = {inquiry_page:location.pathname, ...(sourceBuild ? {build_source:sourceBuild} : {})};
+
+  const attributionKey='tbk-campaign-attribution';
+  const pageBuilds={'/james-2024-wrx-build.html':'james-wrx','/thomas-2004-sti-haltech-build.html':'thomas-sti','/thomas-2024-gr86-hks-turbo.html':'thomas-gr86','/mary-2018-infiniti-q60-red-sport.html':'mary-q60','/david-2004-sti-link-build.html':'david-link-sti','/jaycee-2017-focus-rs-build.html':'jaycee-focus-rs','/chris-2020-sti-flex-fuel.html':'chris-2020-sti','/chris-2016-wrx-fa20-build.html':'chris-2016-wrx','/porsche-911-turbo-s-cobb-results.html':'911-cobb','/porsche-964-kinsler-engine-tuning.html':'964-kinsler','/lucas-2018-sti-emtron.html':'lucas-sti','/2024-wrx-cinderelli-e70.html':'cinderelli-wrx','/keith-2015-sti.html':'keith-sti','/2019-sti-bcp-turbo-93-octane.html':'2019-sti'};
+  function attribution(){
+    if(choice!=='yes'||internalVisit)return {};
+    let saved={};try{saved=JSON.parse(sessionStorage.getItem(attributionKey)||'{}')}catch{}
+    const vehicle=/porsche/.test(location.pathname)?'porsche':/ford|focus|fiesta|raptor/.test(location.pathname)?'ford':/infiniti|q50|q60/.test(location.pathname)?'infiniti':/gr86|supra/.test(location.pathname)?'toyota':/wrx|sti|subaru|brz/.test(location.pathname)?'subaru':saved.vehicle;
+    const a={...saved,...(vehicle?{vehicle}:{}),...(sourceBuild||pageBuilds[location.pathname]?{build:sourceBuild||pageBuilds[location.pathname]}:{})};
+    for(const [k,v]of Object.entries(campaign))a[{campaign_source:'source',campaign_medium:'medium',campaign_name:'campaign',campaign_content:'content'}[k]]=v;
+    try{sessionStorage.setItem(attributionKey,JSON.stringify(a))}catch{}
+    return a;
+  }
+  function funnelContext(){const a=attribution();return {...(a.vehicle?{vehicle_group:a.vehicle}:{}),...(a.build?{build_source:a.build}:{}),...(a.campaign?{promotion_campaign:a.campaign}:{})};}
+
+  function event(name, params = {}) {
+    if (choice === 'yes' && started && !internalVisit) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
+  }
+  function purchaseGranted() {
+    try{return choice==='yes'&&started&&!internalVisit&&!privacySignal&&navigator.globalPrivacyControl!==true&&navigator.doNotTrack!=='1'&&localStorage.getItem(key)==='yes'&&localStorage.getItem(purchaseConsentKey)==='yes'&&localStorage.getItem(ownerKey)!=='1'&&sessionStorage.getItem(testKey)!=='1';}catch{return false;}
+  }
+  function savedPurchaseTokens(){try{const a=JSON.parse(sessionStorage.getItem(purchaseTokensKey)||'[]');return Array.isArray(a)?a.filter(t=>/^[a-f0-9]{64}$/.test(t)).slice(-16):[];}catch{return [];}}
+  async function revokePurchaseContexts(){
+    const tokens=savedPurchaseTokens();const remaining=[];
+    await Promise.all(tokens.map(async token=>{try{const r=await fetch(purchaseEndpoint,{method:'POST',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'revoke',token}),signal:AbortSignal.timeout(1500)});if(!r.ok)remaining.push(token);}catch{remaining.push(token);}}));
+    try{sessionStorage.setItem(purchaseTokensKey,JSON.stringify(remaining));}catch{}
+  }
+  async function purchaseContext(){
+    if(!purchaseGranted())return null;
+    const get=name=>new Promise(resolve=>{let done=false;const finish=value=>{if(!done){done=true;resolve(value);}};setTimeout(()=>finish(null),700);tag('get',id,name,finish);});
+    const [client_id,session_id]=await Promise.all([get('client_id'),get('session_id')]);
+    if(!purchaseGranted()||!/^\d{1,20}\.\d{1,20}$/.test(String(client_id||''))||!/^\d{1,16}$/.test(String(session_id||'')))return null;
+    try{
+      const r=await fetch(purchaseEndpoint,{method:'POST',mode:'cors',credentials:'omit',referrerPolicy:'no-referrer',headers:{'Content-Type':'application/json'},body:JSON.stringify({analytics:true,version:'purchase-v1',client_id:String(client_id),session_id:String(session_id),is_test:false,is_owner:false,privacy_signal:false}),signal:AbortSignal.timeout(900)});
+      if(!r.ok)return null;const data=await r.json();if(!/^[a-f0-9]{64}$/.test(data.token||''))return null;
+      try{sessionStorage.setItem(purchaseTokensKey,JSON.stringify([...savedPurchaseTokens(),data.token].slice(-16)));}catch{}
+      if(!purchaseGranted()){void revokePurchaseContexts();return null;}return data.token;
+    }catch{return null;}
+  }
+  function confirmation() {
+    if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
+    let pending;
+    try { pending = JSON.parse(sessionStorage.getItem(pendingKey) || 'null'); } catch { return; }
+    const time = typeof pending === 'number' ? pending : pending?.time;
+    if (!time || Date.now() - time > 60 * 60 * 1000 || time > Date.now()) return;
+    try { sessionStorage.removeItem(pendingKey); } catch { return; }
+    if (adsStarted && adsChoice === 'yes' && !privacySignal && !internalVisit) {
+      tag('event', 'conversion', {...page(), send_to:inquiryConversion, value:1.0, currency:'USD'});
+    }
+    // A return from the form workflow, not proof of email delivery or a paid order.
+    event('inquiry_confirmation', {form_name: 'website_inquiry', ...(inquiryPages.has(pending.inquiry_page) ? {inquiry_page:pending.inquiry_page} : {}), ...(builds.has(pending.build_source) ? {build_source:pending.build_source} : {})});
+  }
+  function start() {
+    if (choice !== 'yes' || privacySignal || internalVisit) return;
+    startReplay();
+    tag('consent', 'update', consentState());
+    if (started) { startAds(); window['ga-disable-' + id] = false; tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}); return; }
+    started = true;
+    window['ga-disable-' + id] = false;
+    tag('js', new Date());
+    tag('config', id, {...page(), ...campaign, send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false});
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+    document.head.append(script);
+    startAds();
+    event('page_view');
+    confirmation();
+  }
+  function removeCookies(adsOnly = false) {
+    for (const cookie of document.cookie.split(';')) {
+      const name = cookie.split('=')[0].trim();
+      if (!(adsOnly ? /^_gcl_/.test(name) : /^(_ga(?:_|$)|_gcl_)/.test(name))) continue;
+      for (const domain of ['', '; domain=' + location.hostname, '; domain=.tunedbykeith.com']) {
+        document.cookie = name + '=; Max-Age=0; path=/' + domain + '; SameSite=Lax; Secure';
+      }
+    }
+  }
+  const style = document.createElement('style');
+  style.textContent = '#tbk-analytics-choice{position:fixed;bottom:0;left:0;right:0;z-index:999;background:#fff;color:#111720;border-top:1px solid #66717c;padding:10px max(16px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));box-shadow:0 -2px 12px #0001;max-height:45dvh;overflow:auto;box-sizing:border-box;font:13px/1.4 sans-serif;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}#tbk-analytics-choice[hidden]{display:none}#tbk-analytics-choice p{margin:0;color:#111720}#tbk-analytics-choice .tbk-consent-intro,#tbk-analytics-choice details{grid-column:1/-1}#tbk-analytics-choice details{font-size:12px}#tbk-analytics-choice summary{cursor:pointer;width:fit-content;text-decoration:underline;padding:4px 0}#tbk-analytics-choice details p{margin:8px 0}#tbk-analytics-choice a{color:#873216}#tbk-analytics-choice button{font:inherit;padding:8px 6px;min-height:44px;border:1px solid #66717c;border-radius:5px;background:#fff;color:#111720;cursor:pointer;line-height:1.25;white-space:normal}#tbk-analytics-choice button:focus-visible,#tbk-analytics-choice summary:focus-visible{outline:3px solid #236ac2;outline-offset:2px}.tbk-analytics-settings{font:inherit;background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer}body:has(#tbk-analytics-choice:not([hidden])){padding-bottom:190px}@media(min-width:760px){#tbk-analytics-choice{grid-template-columns:minmax(180px,1fr) repeat(3,minmax(145px,180px));align-items:center;padding-left:max(24px,calc((100vw - 1200px)/2));padding-right:max(24px,calc((100vw - 1200px)/2))}#tbk-analytics-choice .tbk-consent-intro{grid-column:1;grid-row:1}#tbk-analytics-choice details{grid-column:1/-1;grid-row:2}#tbk-analytics-choice button{grid-row:1}body:has(#tbk-analytics-choice:not([hidden])){padding-bottom:125px}}';
+  document.head.append(style);
+  const panel = document.createElement('section');
+  panel.id = 'tbk-analytics-choice';
+  panel.setAttribute('aria-label','Optional website measurement');
+  panel.hidden = Boolean(choice);
+  panel.innerHTML = '<p class="tbk-consent-intro"><strong>Optional measurement</strong><br>Choose whether to allow analytics and ad measurement.</p><details><summary>Details and optional session replay</summary><p>Analytics measures visits, contact actions and confirmed purchases. Purchase reporting uses the service, amount and an anonymous transaction reference; private order pages stay untagged. Optional ad measurement uses Google click identifiers and cookies. For ChatGPT ad visits, it sends OpenAI the ad click reference and a completed Subaru inquiry event. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p></details><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
+  const replayLabel = document.createElement('label');
+  replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5;font-weight:400';
+  const replayInput = document.createElement('input');
+  replayInput.type = 'checkbox';
+  replayInput.style.cssText = 'display:inline-block;width:auto;min-height:0;margin:0 6px 0 0;padding:0;vertical-align:middle';
+  replayInput.checked = replayChoice === 'yes';
+  replayInput.disabled = privacySignal;
+  replayLabel.append(replayInput, ' Also allow Microsoft Clarity heatmaps and masked session replay to help improve these pages. Optional; private checkout and admin pages are excluded.');
+  panel.querySelector('details').append(replayLabel);
+  document.body.append(panel);
+  panel.addEventListener('click', e => {
+    const button = e.target.closest('button[data-choice]');
+    if (!button) return;
+    choice = privacySignal || button.dataset.choice === 'no' ? 'no' : 'yes';
+    adsChoice = !privacySignal && button.dataset.choice === 'ads' ? 'yes' : 'no';
+    replayChoice = choice === 'yes' && replayInput.checked && !privacySignal ? 'yes' : 'no';
+    if (replayChoice !== 'yes') stopReplay();
+    try { localStorage.setItem(replayKey, replayChoice); localStorage.setItem(key, choice); localStorage.setItem(adsKey, adsChoice); } catch {}
+    try{localStorage.setItem(purchaseConsentKey,choice==='yes'?'yes':'no');}catch{}
+    try {
+      localStorage.setItem(openAIConsentKey, adsChoice);
+      if (adsChoice !== 'yes') clearOpenAIMeasurement();
+    } catch {}
+    captureOpenAIClick();
+    if(choice!=='yes')void revokePurchaseContexts();
+    if (started) tag('consent', 'update', consentState());
+    if (adsChoice !== 'yes') removeCookies(true);
+    panel.hidden = true;
+    if (choice === 'yes') start();
+    else {
+      window['ga-disable-' + id] = true;
+      removeCookies();
+      try{sessionStorage.removeItem(attributionKey)}catch{}
+    }
+  });
+  const footer = document.querySelector('footer nav');
+  if (footer) {
+    const settings = document.createElement('button');
+    settings.type = 'button'; settings.className = 'tbk-analytics-settings';
+    settings.textContent = 'Analytics preferences';
+    settings.addEventListener('click', () => {
+      replayInput.checked = replayChoice === 'yes';
+      panel.hidden = false;
+      const allow = panel.querySelector('[data-choice="yes"]');
+      allow.disabled = privacySignal;
+      panel.querySelector('[data-choice="ads"]').disabled = privacySignal;
+      if (privacySignal) allow.textContent = 'Browser privacy signal respected';
+      panel.querySelector('[data-choice="no"]').focus();
+    });
+    footer.append(settings);
+  }
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(form => {
+    let engaged = false;
+    form.addEventListener('input', () => {
+      if (engaged || choice !== 'yes' || !started) return;
+      engaged = true;
+      event('inquiry_form_engaged', {form_name:'website_inquiry', ...context});
+    });
+    if (!form.querySelector('input[name="_next"]')) {
+      const next = document.createElement('input');
+      next.type = 'hidden'; next.name = '_next';
+      next.value = 'https://www.tunedbykeith.com/inquiry-received.html';
+      form.append(next);
+    }
+    if (internalVisit) {
+      const marker = document.createElement('input');
+      marker.type = 'hidden'; marker.name = 'website_test'; marker.value = 'YES - exclude from customer leads';
+      form.append(marker);
+    }
+    form.addEventListener('submit', () => {
+      prepareSubaruLead(form);
+      const a=attribution();for(const [key,value]of Object.entries(a)){let field=form.querySelector('input[name="attribution_'+key+'"]');if(!field){field=document.createElement('input');field.type='hidden';field.name='attribution_'+key;form.append(field)}field.value=value;}
+      try { sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), ...context})); } catch {}
+      event('inquiry_start', {form_name:'website_inquiry', ...context});
+    });
+  });
+  document.addEventListener('click', async e => {
+    const link = e.target.closest('a[href]');
+    if (!link) return;
+    let url; try { url = new URL(link.href); } catch { return; }
+    const channel = url.protocol === 'mailto:' ? 'email' : url.protocol === 'tel:' ? 'phone' : url.protocol === 'sms:' ? 'sms' : url.hostname === 'wa.me' ? 'whatsapp' : url.hostname === 'calendar.google.com' ? 'booking' : '';
+    const checkout = (url.origin===location.origin && ['/tune','/checkout'].includes(url.pathname)) || (url.hostname==='tbk-store-production.keith-787.workers.dev'&&url.pathname==='/shop');
+    if(checkout){url.searchParams.delete('tbk_measure');if(internalVisit)url.searchParams.set('tbk_internal','1');link.href=url.href;}
+    if(checkout&&choice==='yes'&&!internalVisit){
+      const a=attribution();url.searchParams.set('tbk_consent','1');
+      for(const [k,p]of Object.entries({vehicle:'vehicle',build:'build',source:'utm_source',medium:'utm_medium',campaign:'utm_campaign',content:'utm_content'}))if(a[k])url.searchParams.set(p,a[k]);
+      link.href=url.href;
+      event('begin_checkout',{service_id:url.searchParams.get('service')||'unspecified',destination_path:'/shop'});
+    }
+    if(checkout&&purchaseGranted()&&!e.defaultPrevented&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&!link.target&&!link.hasAttribute('download')){
+      e.preventDefault();const token=await purchaseContext();if(token)url.searchParams.set('tbk_measure',token);link.href=url.href;location.assign(url.href);return;
+    }
+    if (channel) event('contact_click', {contact_method:channel});
+    const guides = new Set(['/downloads/subaru-etuning-process.pdf', '/downloads/subaru-datalogging-guide.pdf', '/downloads/vehicle-tuning-readiness-checklist.pdf']);
+    if (url.origin === location.origin && guides.has(url.pathname)) event('guide_download', {guide_path:url.pathname});
+    if (url.origin === location.origin && inquiryPages.has(url.pathname) && ['#request', '#inquiry-form', '#contact', '#ask-about-setup'].includes(url.hash)) {
+      event('inquiry_cta_click', {destination_path:url.pathname, destination_section:url.hash.slice(1), ...(builds.has(url.searchParams.get('build')) ? {build_source:url.searchParams.get('build')} : {})});
+    }
+    if (url.origin === location.origin && link.closest?.('.vehicle-choices')) event('vehicle_option_click', {destination_path:url.pathname, destination_section:url.hash.slice(1)});
+  });
+  if (isOwner) {
+    const notice = document.createElement('aside');
+    notice.setAttribute('aria-label', 'Owner analytics exclusion');
+    notice.style.cssText = 'display:block;margin:24px 6%;padding:16px 20px;border:1px solid #435164;border-left:3px solid #ff6a00;border-radius:8px;background:#132031;color:#f4f7fb;font:14px/1.5 sans-serif';
+    notice.textContent = 'Owner visits excluded from analytics on this browser. ';
+    const resume = document.createElement('a');
+    const resumeUrl = new URL(location.origin + location.pathname);
+    resumeUrl.searchParams.set('tbk_owner', '0');
+    resume.href = resumeUrl.href;
+    resume.textContent = 'Turn off owner exclusion';
+    resume.style.color = '#ffb47f';
+    resume.style.display = 'inline-block';
+    resume.style.padding = '8px 0';
+    notice.append(resume);
+    const footer = document.querySelector('body > footer');
+    if (footer) footer.before(notice);
+    else document.body.append(notice);
+  }
+  window.addEventListener('storage',e=>{if([key,purchaseConsentKey,ownerKey].includes(e.key)&&!purchaseGranted())void revokePurchaseContexts();});
+  window.addEventListener('storage', e => {
+    if (e.key === null || [key, adsKey, openAIConsentKey, ownerKey].includes(e.key)) {
+      if (!openAIMeasurementAllowed()) clearOpenAIMeasurement();
+    }
+  });
+  window.addEventListener('pageshow', () => {
+    // A back/forward-cache restore must also honor revocation and expiry.
+    if (!openAIMeasurementAllowed()) clearOpenAIMeasurement();
+    else savedOpenAIClick();
+  });
+  captureOpenAIClick();
+  start();
+  reportSubaruLead();
+  if(!purchaseGranted()&&savedPurchaseTokens().length)void revokePurchaseContexts();
+})();
+
+
+
+
+</script></body></html>
