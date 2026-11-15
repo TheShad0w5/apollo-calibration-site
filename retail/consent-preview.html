@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self';script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline';connect-src 'none';img-src 'self'"><title>Consent bar isolated preview</title></head><body style="margin:0;font:16px Arial"><main style="padding:24px"><h1>Consent bar test</h1><p>Isolated preview. External tracking is blocked. These choices affect only this preview hostname.</p><a href="/consent-preview.html?reload=1">Navigate to another page</a><div style="height:500px">Sample content stays usable</div></main><footer><nav><a href="/privacy.html">Privacy</a> </nav></footer><script>// Optional Google Analytics. No Google tag loads until the visitor opts in.
+<!doctype html><html><head><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'self';script-src 'self' 'unsafe-inline';style-src 'self' 'unsafe-inline';connect-src 'none';img-src 'self'"><title>Consent bar isolated preview</title></head><body style="margin:0;font:16px Arial"><main style="padding:24px"><h1>Consent bar test</h1><p>Isolated preview. External tracking is blocked. These choices affect only this preview hostname.</p><a href="/consent-preview.html?reload=1">Navigate to another page</a><div style="height:500px">Sample content stays usable</div></main><footer><nav><a href="/privacy.html">Privacy</a> </nav></footer><script>const qaWidth=new URLSearchParams(location.search).get('width');if(['320','375','768'].includes(qaWidth)){document.body.innerHTML='<h1 style="font:16px Arial">Responsive consent preview: '+qaWidth+'px</h1><iframe title="Mobile consent preview" style="width:'+qaWidth+'px;height:812px;border:1px solid #888" src="/consent-preview.html"></iframe>';}else{// Optional Google Analytics. No Google tag loads until the visitor opts in.
 (() => {
   if (![location.hostname].includes(location.hostname)) return;
   const id = 'G-NTVQD1HRNV';
@@ -465,4 +465,4 @@
 
 
 
-</script></body></html>
+}</script></body></html>
