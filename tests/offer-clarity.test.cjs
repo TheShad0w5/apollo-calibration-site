@@ -18,6 +18,9 @@ for(const key of ['standalone-single','standalone-flex']){
  assert.doesNotMatch(card,/up to (8|12) revisions/);
 }
 assert.match(shop,/From \$150/);
-assert.match(shop,/USD per feature/);
+assert.match(shop,/USD starting price/);
 assert.match(fs.readFileSync('retail/terms.html','utf8'),/four one-hour live tuning sessions/);
 console.log('Standalone live-session scope and feature pricing passed');
+
+assert.doesNotMatch(shop,/\$150 (each|per feature)/);
+assert.doesNotMatch(fs.readFileSync('retail/race-features.js','utf8'),/count\s*\*\s*150/);
