@@ -8,7 +8,7 @@ if(picker){
  function update(){
   const count=fields.filter(field=>field.checked).length;
   fields[0].setCustomValidity('');
-  estimate.textContent=count?count+' '+(count===1?'feature':'features')+' selected · starting at $'+(count*150).toLocaleString('en-US')+' USD. Final price follows ECU, hardware and scope review.':'Starting at $150 per feature. Select your options for a starting estimate.';
+  estimate.textContent=count?count+' '+(count===1?'feature':'features')+' selected · packages start at $150 USD. Final pricing depends on complexity and customization.':'Feature packages start at $150. Select the tools you want; final pricing depends on complexity and customization.';
  }
  picker.addEventListener('change',update);
  picker.addEventListener('submit',function(event){
@@ -26,7 +26,7 @@ field.value=selected.map(key=>labels[key]).join('\n');field.placeholder='List th
 label.append(field);
 const orderLabel=document.createElement('label');orderLabel.textContent='Existing Keith order reference (optional)';orderLabel.htmlFor='feature-order-reference';
 const order=document.createElement('input');order.id='feature-order-reference';order.name='feature_order_reference';order.maxLength=150;order.placeholder='For an add-on to an existing tuning job';orderLabel.append(order);
-const note=document.createElement('p');note.textContent='From $150 per feature. Edit the list and include your ECU model, firmware, gearbox and controls. Configuration, testing and validation scope are confirmed in your quote before payment.';
+const note=document.createElement('p');note.textContent='Feature packages start at $150; final pricing depends on complexity and customization. Edit the list and include your ECU model, firmware, gearbox and controls. Configuration, testing and validation scope are confirmed in your quote before payment.';
 section.append(label,orderLabel,note);
 const intro=form.querySelector('.inquiry-intro');if(intro)intro.after(section);else form.prepend(section);
 })();
