@@ -12,13 +12,13 @@ function projectUrl(v){
 function result(v){
  const guide=v.platform==='standalone'?['Standalone preparation','/standalone-ecu-tuning.html']:guides[v.vehicle];
  if(v.job==='project'||v.platform==='other'||v.fuel==='unsure')return {title:'Start with a project review.',body:'This needs a little more detail before choosing a paid service. Your selections carry into the inquiry for you to check. Add the exact year and model, ECU or tuning tool, parts list, fuel and what you want the car to do.',href:projectUrl(v),cta:'Send project details',guide};
- if(v.job==='base')return {title:'Base map · $50',body:'A starting calibration for an approved setup, not a finished tune or clearance for full-load driving. Confirm the hardware and intended use before ordering.',href:'/shop.html#base-map',cta:'Read the base-map scope',guide};
+ if(v.job==='base')return {title:'Base map · $50',body:'A starting calibration for an approved setup, not a finished tune or clearance for full-load driving. Confirm the hardware and intended use before ordering.',href:'/checkout?service=base-map#setup',cta:'Continue with $50 base map',guide};
  const key=v.platform+'-'+v.fuel+(v.job==='retune'?'-retune':'');
  const title=(v.platform==='ap'?'Accessport':'Standalone')+' '+(v.fuel==='flex'?'flex-fuel':'single-fuel')+(v.job==='retune'?' retune':' tune')+' · $'+prices[key];
  let body='This is the service to review for your setup. Hardware, licenses and mechanical readiness still need to be confirmed before tuning.';
  if(v.job==='retune')body+=' Retunes are for an existing Keith calibration; include your previous order and what changed.';
  if(v.fuel==='flex')body+=' Flex fuel requires compatible ECU support, ethanol measurement and a suitable fuel system. The service does not include that hardware.';
- return {title,body,href:'/shop.html#'+key,cta:'See this service and what’s included',guide};
+ return {title,body,href:'/checkout?service='+key+'#setup',cta:'Continue with $'+prices[key]+' '+(v.job==='retune'?'retune':'tune'),guide};
 }
 form.addEventListener('submit',function(e){
  e.preventDefault();if(!form.reportValidity())return;
@@ -32,6 +32,20 @@ form.addEventListener('submit',function(e){
   const a=document.createElement('a');a.textContent=label+' →';a.href=url;if(primary)a.className='button';links.append(a);
  }
  out.append(title,p,links);
+ if(r.href.startsWith('/checkout?')){
+  const scope=document.createElement('p');scope.className='finder-scope';
+  scope.textContent=data.job==='base'?'Starting calibration only. Follow-up tuning is separate.':data.job==='retune'?'For an existing Keith calibration. Eligibility and the changes to your setup are reviewed before work begins.':(data.fuel==='flex'?'Up to 12 revisions':'Up to 8 revisions')+' within the approved setup. Initial map and each revision: usually same business day, within one business day once the required information is received. Monday–Friday, 8 a.m.–6 p.m. Pacific.';
+  out.append(scope);
+  const portal=document.createElement('p');portal.className='finder-scope';portal.textContent='Enter your exact vehicle details next. Compatibility is reviewed before file delivery. Files, requested logs and messages stay on your private order page. Hardware, licensing and diagnostics are separate.';out.append(portal);
+  const compare=document.createElement('a');compare.href='/shop.html#'+(data.job==='base'?'base-map':data.platform+'-'+data.fuel+(data.job==='retune'?'-retune':''));compare.textContent='Compare this service before ordering →';out.append(compare);
+ }
+ if(data.job==='new'&&data.platform!=='other'&&data.fuel!=='unsure'){
+  const proof=document.createElement('p');proof.className='finder-proof';
+  const standalone=data.platform==='standalone';
+  proof.textContent=standalone?'From Keith’s AWD Tuning work: Lucas’s Emtron STI paired three SI-Drive power modes with a documented 564.5 hp E80 report. ':'From Keith’s AWD Tuning work: Cinderelli’s 2024 WRX E70 feature reported 388 whp / 417 wtq. ';
+  const link=document.createElement('a');link.href=standalone?'/lucas-2018-sti-emtron.html':'/2024-wrx-cinderelli-e70.html';link.textContent='See the build and source records →';proof.append(link);out.append(proof);
+  const note=document.createElement('p');note.className='finder-scope';note.textContent='Historical results for those builds; output depends on the individual car, hardware, fuel and test conditions.';out.append(note);
+ }
  if(data.platform==='other'&&(data.vehicle==='va'||data.vehicle==='vb')){
   const note=document.createElement('p');note.textContent='Considering Atlas? Exact year, transmission, market and ECU identification still need review. Accessport pricing does not apply. ';
   const a=document.createElement('a');a.href='/atlas-wrx-tuning.html';a.textContent='Read the Atlas WRX guide →';note.append(a);out.append(note);
