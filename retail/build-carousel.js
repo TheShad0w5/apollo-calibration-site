@@ -3,15 +3,6 @@ const root=document.getElementById('hero-builds');if(!root)return;
 const picture=root.querySelector('picture'),caption=root.querySelector('figcaption a'),controls=root.querySelector('.build-carousel-controls'),count=root.querySelector('.build-carousel-count'),status=root.querySelector('.build-carousel-status'),prev=root.querySelector('[data-carousel="previous"]'),next=root.querySelector('[data-carousel="next"]'),play=root.querySelector('[data-carousel="play"]');
 const slides=[
   {
-    "title": "Cinderelli / Subiefest",
-    "href": "/2024-wrx-cinderelli-e70.html",
-    "alt": "Cinderelli, the orange 2024 WRX, with the hood open at Subiefest 2025",
-    "src": "/assets/builds/cinderelli-subiefest-front.webp",
-    "set": "/assets/builds/cinderelli-subiefest-front-400.webp 400w, /assets/builds/cinderelli-subiefest-front-720.webp 720w, /assets/builds/cinderelli-subiefest-front.webp 1200w",
-    "width": 1200,
-    "height": 951
-  },
-  {
     "title": "Lucas / Emtron STI",
     "href": "/lucas-2018-sti-emtron.html",
     "alt": "Lucas’s grey 2018 STI on AWD Tuning’s dyno",
@@ -19,6 +10,15 @@ const slides=[
     "set": "/assets/builds/lucas-2018-sti-awd-400.webp 400w, /assets/builds/lucas-2018-sti-awd-720.webp 720w, /assets/builds/lucas-2018-sti-awd.webp 1200w",
     "width": 1200,
     "height": 900
+  },
+  {
+    "title": "Cinderelli / Subiefest",
+    "href": "/2024-wrx-cinderelli-e70.html",
+    "alt": "Cinderelli, the orange 2024 WRX, with the hood open at Subiefest 2025",
+    "src": "/assets/builds/cinderelli-subiefest-front.webp",
+    "set": "/assets/builds/cinderelli-subiefest-front-400.webp 400w, /assets/builds/cinderelli-subiefest-front-720.webp 720w, /assets/builds/cinderelli-subiefest-front.webp 1200w",
+    "width": 1200,
+    "height": 951
   },
   {
     "title": "James / 2024 WRX",
