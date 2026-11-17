@@ -14,7 +14,7 @@ console.log('Offer scope and buyer/requirements/inquiry routes passed');
 const shop=fs.readFileSync('retail/shop.html','utf8');
 for(const key of ['standalone-single','standalone-flex']){
  const card=shop.split('<article id="'+key+'">')[1].split('</article>')[0];
- assert.match(card,/four one-hour live tuning sessions/);
+ assert.match(card,/4 × 1-hour live sessions/);
  assert.doesNotMatch(card,/up to (8|12) revisions/);
 }
 assert.match(shop,/From \$150/);
