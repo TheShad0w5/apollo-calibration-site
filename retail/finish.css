@@ -90,3 +90,51 @@ body.tbk-brand{--finish-line:rgba(184,202,222,.18);--finish-muted:#b7c4d3;--fini
 .tbk-brand .nine-service-grid .service-secondary-link{font-size:.78rem;font-weight:500;line-height:1.6;margin:14px 0 0;text-align:center;color:#b7c4d3;text-underline-offset:.2em}.tbk-brand .nine-service-grid :is(.service-secondary-link,.feature-addon-link){min-block-size:2.5em}.tbk-brand .nine-service-grid:has(.service-inclusions) .service-description{min-block-size:6.6em}@media(max-width:760px){.tbk-brand .nine-service-grid:has(.service-inclusions) .service-description{min-block-size:0}.tbk-brand .nine-service-grid :is(.service-secondary-link,.feature-addon-link){min-block-size:0}}
 
 @media(max-width:760px){.tbk-brand .home-refined .hero .large{font-size:1rem}}
+/* Restore the photographic, editorial motorsport direction. */
+.tbk-brand .home-refined .hero h1{font-size:clamp(3.5rem,6.1vw,6rem)!important;line-height:.98;letter-spacing:-.045em;max-width:12ch}
+.tbk-brand .hero{padding-top:64px;padding-bottom:64px}
+.tbk-brand .home-refined .split-hero{grid-template-columns:1fr 1.1fr;gap:5%}
+.tbk-brand .home-refined .build-carousel img{aspect-ratio:4/5;object-fit:cover;border-radius:2px}
+.tbk-brand .home-refined .hero-offer{border:0;padding:0;margin-top:28px;max-width:56ch;font-size:.9rem}
+.tbk-brand .shop-hero h1{font-size:clamp(3.5rem,6.3vw,6rem);line-height:.95;letter-spacing:-.045em}
+.tbk-brand .shop-hero{grid-template-columns:1fr 1.1fr;gap:5%;padding-block:48px 72px}
+.tbk-brand .shop-hero figure{border:0;border-radius:2px}
+.tbk-brand .shop-hero figure img{aspect-ratio:1;object-fit:cover}
+.tbk-brand .shop-start{background:#0a1725;border-block:1px solid var(--finish-line)}
+.tbk-brand .shop-choice-grid>a{background:transparent;border:0;border-radius:0;border-top:1px solid #526074;padding:20px 0}
+.tbk-brand .shop-choice-grid{gap:28px}
+.tbk-brand .shop-start h2{font-size:clamp(1.8rem,3vw,2.5rem)}
+.tbk-brand #service-menu>h2{font-size:clamp(2.5rem,4.5vw,4.4rem);max-width:18ch;line-height:1.04}
+.tbk-brand .tune-families{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px;margin-top:24px}
+.tbk-brand .tune-family{min-width:0}
+.tbk-brand .tune-family>figure{margin:0;position:relative;aspect-ratio:16/11;overflow:hidden;background:#102338}
+.tbk-brand .tune-family>figure::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,10,17,.94),transparent 75%);pointer-events:none}
+.tbk-brand .tune-family>figure img{width:100%;height:100%;object-fit:cover;display:block}
+.tbk-brand .tune-family figcaption{position:absolute;bottom:0;left:0;right:0;padding:28px;z-index:1}
+.tbk-brand .tune-family figcaption>span{color:#ffb98d;font-size:.68rem;font-weight:700;letter-spacing:.13em}
+.tbk-brand .tune-family figcaption h3{font-size:clamp(2.5rem,4vw,4rem);line-height:1;margin:12px 0 0;letter-spacing:-.04em}
+.tbk-brand .family-intro{font-size:1rem;line-height:1.7;color:#c8d3df;margin:22px 0 28px;min-height:3.4em}
+.tbk-brand .family-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.tbk-brand .family-options article{display:flex;flex-direction:column;min-width:0;border-top:2px solid #ef7a36;padding:20px 0 0;background:transparent;border-radius:0}
+.tbk-brand .family-options article>h3{font-size:1.35rem;margin:0 0 12px;letter-spacing:-.02em}
+.tbk-brand .family-options .service-price{display:flex;gap:8px;align-items:baseline;font-size:2.5rem;font-weight:700;letter-spacing:-.045em;line-height:1.1;margin:0 0 18px}
+.tbk-brand .family-options .service-price small{font-size:.7rem;font-weight:400;color:#adbcd0;letter-spacing:.04em}
+.tbk-brand .family-options .service-description{font-size:.88rem;line-height:1.7;min-height:6.8em;color:#bdcad8;margin-bottom:16px}
+.tbk-brand .family-options .service-inclusions{font-size:.8rem;line-height:1.6;margin-bottom:20px;padding-top:16px}
+.tbk-brand .family-options .button{margin-top:auto;box-sizing:border-box;width:100%;font-size:.85rem;padding-inline:12px;white-space:normal}
+.tbk-brand .family-options :is(.service-secondary-link,.feature-addon-link){font-size:.74rem;line-height:1.7;margin:14px 0 0;min-height:2.5em;text-align:left;font-weight:500;color:#b9c8d9!important}
+.tbk-brand .nine-service-grid>article{background:transparent!important;border:0;border-top:1px solid #526074;border-radius:0;padding:22px 0!important}
+.tbk-brand .nine-service-grid article>h3{font-size:1.15rem}
+.tbk-brand .nine-service-grid article>.service-price{font-size:2.1rem}
+.tbk-brand .nine-service-grid article>.button{background:transparent;color:#f3f6f9;border:1px solid #64738a}
+.tbk-brand .race-features{background:linear-gradient(90deg,rgba(6,15,25,.96),rgba(6,15,25,.88)),url('/assets/builds/lucas-2018-sti-engine-bay-720.webp') center/cover;border-block:1px solid #69472f}
+.tbk-brand .feature-heading h2{font-size:clamp(2.6rem,5vw,4.5rem);line-height:1}
+.tbk-brand .feature-price{background:transparent;border:0;border-left:2px solid #ef7a36;border-radius:0;padding:12px 0 12px 28px}
+.tbk-brand .feature-option{background:rgba(11,27,43,.5);border-radius:2px}
+.tbk-brand .feature-option:has(input:checked){background:#183044}
+.tbk-brand .service-proof-grid article{background:transparent;border:0;border-radius:0}
+.tbk-brand .service-proof-grid article>div{padding:22px 0}
+.tbk-brand .service-proof-grid img{aspect-ratio:4/3;border-radius:2px}
+@media(max-width:1100px) and (min-width:761px){.tbk-brand .home-refined .hero h1,.tbk-brand .shop-hero h1{font-size:4rem!important}.tbk-brand .tune-families{gap:28px}.tbk-brand .family-options{gap:18px}}
+@media(max-width:760px){.tbk-brand .home-refined .split-hero,.tbk-brand .shop-hero{grid-template-columns:1fr}.tbk-brand .home-refined .hero h1{font-size:clamp(3.1rem,12vw,4.5rem)!important}.tbk-brand .hero{padding-top:32px;padding-bottom:40px}.tbk-brand .home-refined .build-carousel img{aspect-ratio:4/3}.tbk-brand .shop-hero h1{font-size:clamp(3.1rem,12vw,4.5rem)}.tbk-brand .shop-hero figure{display:block;margin:24px 0 0}.tbk-brand .shop-hero figure img{aspect-ratio:4/3}.tbk-brand .tune-families{grid-template-columns:1fr;gap:44px}.tbk-brand .tune-family>figure{aspect-ratio:4/3}.tbk-brand .tune-family figcaption{padding:22px}.tbk-brand .tune-family figcaption h3{font-size:3rem}.tbk-brand .family-intro{min-height:0}.tbk-brand .family-options{gap:18px}.tbk-brand .family-options .service-description{min-height:8.5em;font-size:.83rem}.tbk-brand .family-options .service-inclusions{font-size:.77rem}.tbk-brand .family-options .service-price{font-size:2.2rem}.tbk-brand .family-options article>h3{font-size:1.2rem}.tbk-brand .feature-price{padding-left:20px}.tbk-brand .feature-heading h2{font-size:2.8rem}}
+@media(max-width:350px){.tbk-brand .family-options{grid-template-columns:1fr}.tbk-brand .family-options .service-description{min-height:0}}
