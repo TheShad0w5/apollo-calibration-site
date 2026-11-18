@@ -1,47 +1,35 @@
-"""Refresh the November 3 v1.2 public guide without changing its layout or links.
+"""Correct the v1.3 public guide to current prospective revision policy.
 Usage: python refresh-process-guide.py INPUT.pdf OUTPUT.pdf
-Requires PyMuPDF. Explicit source matches prevent silent edits to another revision.
+Requires PyMuPDF. Existing customer commitments are explicitly preserved.
 """
 import sys
 import fitz
 source, destination = sys.argv[1:]
 doc = fitz.open(source)
 assert len(doc) == 3
-replacements = {
-0: [
-('Eight revisions should be ample', 'Single-fuel custom tunes include up to eight revisions; flex-fuel custom tunes include up to sixteen. These allowances apply to the agreed setup. The initial calibration is separate and does not count as a revision. Hardware or fuel changes may require a new scope.', 10.5, (0.94,0.94,0.96)),
-('An initial file, a log submission', 'Keep the revision identifier on each file and use your private order page for logs, feedback and calibration files. Sending a log or downloading the same file again does not itself use a revision. Ask about any additional work before proceeding.', 8.5, (1,1,1))],
-1: [
-('A typical progression, not eight mandatory', 'An illustrative sequence, not a fixed number of revisions or permission to advance on your own.', 10.5, (1,1,1)),
-('Revision 1 |', 'Step 1 | Establish a reliable baseline',13,(1,1,1)),
-('Revision 2 |', 'Step 2 | Refine everyday operation',13,(1,1,1)),
-('Revisions 3-4 |', 'Step 3 | Introduce controlled load',13,(1,1,1)),
-('Revisions 5-6 |', 'Step 4 | Refine delivery',13,(1,1,1)),
-('Revisions 7-8 |', 'Step 5 | Validate where needed',13,(1,1,1))],
-2: [('If outside influences or a changed setup', 'If outside influences or a changed setup require more work, I explain what needs resolving and discuss any additional revisions, diagnostics or revised quote before proceeding. The revision allowance is not an opportunity to tune around a mechanical fault. No additional-revision price is implied by this guide.',10.5,(1,1,1))]
-}
+replacement = ('New Accessport tunes include up to eight revisions for single fuel or twelve for flex fuel, including the initial calibration as revision 1. Existing orders retain their agreed revision allowance and scope. Hardware or fuel changes may require a new scope.')
 for i,page in enumerate(doc):
- blocks=page.get_text('blocks'); tasks=[]
- for prefix,text,size,fill in replacements[i]:
-  matches=[b for b in blocks if b[4].startswith(prefix)]
-  assert len(matches)==1,(i,prefix)
-  b=matches[0]; box=fitz.Rect(b[:4]); box.x1=570 if box.x0==42 else 558
-  box.y1+=4
-  page.add_redact_annot(box,fill=fill)
-  tasks.append((box,text,size,'hebo' if size==13 else 'helv'))
- footer=[b for b in blocks if 'November 3, 2026' in b[4]]
- assert len(footer)==1
- box=fitz.Rect(footer[0][:4]);box.x1=400;box.y1+=4
- page.add_redact_annot(box,fill=(1,1,1));tasks.append((box,'tunedbykeith.com  |  November 12, 2026  |  v1.3',8,'helv'))
- page.apply_redactions()
- for box,text,size,font in tasks:
-  spare=page.insert_textbox(box,text,fontname=font,fontsize=size,color=(.09,.13,.16))
-  assert spare>=0,(i,text,spare)
-doc.set_metadata({**doc.metadata,'modDate':'D:20261112000000Z','subject':'Subaru e-tuning process; single-fuel and flex-fuel revision allowances'})
+    blocks=page.get_text('blocks'); tasks=[]
+    if i==0:
+        matches=[b for b in blocks if b[4].startswith('Single-fuel custom tunes include')]
+        assert len(matches)==1
+        box=fitz.Rect(matches[0][:4]);box.x1=558;box.y1+=4
+        page.add_redact_annot(box,fill=(.94,.94,.96))
+        tasks.append((box,replacement,10.5))
+    footer=[b for b in blocks if 'November 12, 2026' in b[4]]
+    assert len(footer)==1
+    box=fitz.Rect(footer[0][:4]);box.x1=400;box.y1+=4
+    page.add_redact_annot(box,fill=(1,1,1))
+    tasks.append((box,'tunedbykeith.com  |  November 18, 2026  |  v1.4',8))
+    page.apply_redactions()
+    for box,text,size in tasks:
+        assert page.insert_textbox(box,text,fontname='helv',fontsize=size,color=(.09,.13,.16))>=0
+original_links=sum(len(p.get_links()) for p in doc)
+doc.set_metadata({**doc.metadata,'modDate':'D:20261118000000Z','subject':'Subaru e-tuning process; initial calibration counts within revision allowance'})
 doc.save(destination,garbage=4,deflate=True)
-check=fitz.open(destination)
-text='\n'.join(p.get_text() for p in check)
-assert 'up to sixteen' in text and 'does not count as a revision' in text
-assert 'Confirm how the initial file' not in text and 'Revisions 7-8' not in text
-assert sum(len(p.get_links()) for p in check)==sum(len(p.get_links()) for p in doc)
-print('Three pages verified; current allowances, stage labels, original links and safety guidance preserved.')
+check=fitz.open(destination);text=' '.join(' '.join(p.get_text().split()) for p in check)
+assert 'twelve' in text and 'including the initial calibration as revision 1' in text
+assert 'does not count' not in text and 'sixteen' not in text
+assert 'Existing orders retain their agreed' in text
+assert sum(len(p.get_links()) for p in check)==original_links
+print('Three pages verified; initial calibration counted, existing order commitments preserved.')
