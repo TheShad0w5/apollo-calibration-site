@@ -12,11 +12,6 @@
       "permanent": false
     },
     {
-      "source": "/knowledge/ecutek.html",
-      "destination": "/service-unavailable.html",
-      "permanent": false
-    },
-    {
       "source": "/infiniti-q50-q60-tuning.html",
       "destination": "/service-unavailable.html",
       "permanent": false
@@ -38,11 +33,6 @@
     },
     {
       "source": "/ecutek-brz-tuning",
-      "destination": "/service-unavailable.html",
-      "permanent": false
-    },
-    {
-      "source": "/knowledge/ecutek",
       "destination": "/service-unavailable.html",
       "permanent": false
     },
