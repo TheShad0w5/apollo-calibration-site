@@ -1,6 +1,7 @@
 // Static headers use native disclosure menus; JavaScript adds dismissal only.
 (() => {
  const header=document.querySelector('header.tbk-static-header');if(!header)return;
+ header.querySelectorAll('.tbk-services-panel').forEach(panel=>{if(panel.querySelector('a[href="/ecutek-brz-tuning.html"]'))return;const link=document.createElement('a');link.href='/ecutek-brz-tuning.html';link.textContent='EcuTek tuning · BRZ, FR-S, 86 & GR86';const overview=panel.querySelector('a[href="/shop.html"]');if(overview)overview.after(link);else panel.prepend(link);});
  const mobile=header.querySelector('.tbk-native-mobile-menu');
  header.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const open=event.target.closest('details[open]');if(open){event.preventDefault();open.open=false;open.querySelector('summary').focus();}});
  header.addEventListener('click',event=>{if(event.target.closest('a[href]')&&mobile)mobile.open=false;});

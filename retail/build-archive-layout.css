@@ -1,0 +1,28 @@
+/* Build archive layout */
+.build-archive .archive-jumps{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.3rem 0 0}
+.build-archive .archive-jumps a{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .85rem;border:1px solid currentColor;border-radius:.4rem;font-weight:650;text-decoration:none}
+.build-archive .archive-jumps a:hover,.build-archive .archive-jumps a:focus-visible{text-decoration:underline;text-underline-offset:.2em}
+.build-archive .builds-opening{padding-block:clamp(2.1rem,4vw,4rem)}
+.build-archive .builds-opening h1,.build-archive .portfolio-intro h1{font-size:clamp(2.4rem,5vw,5rem);line-height:1.02}
+.build-archive .flagship-opening img{aspect-ratio:16/9;object-fit:cover}
+.build-archive .platform-builds{margin:0 auto;padding:clamp(2.1rem,5vw,4rem) 0;width:min(100% - 2.25rem,1200px);scroll-margin-top:6rem}
+.build-archive .platform-builds h2{margin:.35rem 0 .65rem;font-size:clamp(1.8rem,3.5vw,3.3rem);line-height:1.12}
+.build-archive .platform-builds .platform-intro{max-width:68ch;margin:0 0 1.35rem}
+.build-archive .platform-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.9rem,2vw,1.45rem)}
+.build-archive .platform-card{display:flex;flex-direction:column;min-width:0;border:1px solid #596577;border-radius:.6rem;overflow:hidden;background:#152233;color:#f4f7fa}
+.build-archive .platform-card a{color:inherit}
+.build-archive .platform-card .platform-image{display:block}
+.build-archive .platform-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.build-archive .platform-card .platform-copy{display:flex;flex:1;flex-direction:column;align-items:flex-start;padding:1.05rem;gap:.55rem}
+.build-archive .platform-card .platform-copy p,.build-archive .platform-card h3{margin:0}
+.build-archive .platform-card h3{font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.2;color:#f4f7fa}
+.build-archive .platform-card .platform-meta{font-size:.78rem;font-weight:700;letter-spacing:.04em;color:#bfcce0}
+.build-archive .platform-card .platform-story{margin-top:auto;display:inline-flex;align-items:center;min-height:44px;text-underline-offset:.2em}
+.build-archive .platform-card .platform-copy>p:not(.platform-meta){color:#e0e7ef}
+.build-archive .platform-card.is-text .platform-copy{padding:clamp(1rem,2.4vw,1.7rem);justify-content:center}
+.build-archive .platform-card.is-text .platform-story{margin-top:.25rem}
+.build-archive .platform-links{display:flex;gap:.7rem 1.3rem;align-items:center;flex-wrap:wrap;margin-top:1.2rem}
+.build-archive .platform-links a{min-height:44px;display:inline-flex;align-items:center}
+.build-archive section[id]{scroll-margin-top:6rem}
+@media(max-width:900px){.build-archive .platform-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.build-archive .platform-card.is-text{grid-column:1/-1}}
+@media(max-width:600px){.build-archive .platform-grid{grid-template-columns:minmax(0,1fr)}.build-archive .archive-jumps a{padding-inline:.65rem}.build-archive .platform-card.is-text{grid-column:auto}}
