@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/rocket-bunny-brz.html",
+      "destination": "/hks-supercharged-brz.html",
+      "permanent": false
+    },
+    {
       "source": "/ecutek-tuning.html",
       "destination": "/ecutek-brz-tuning.html",
       "permanent": false
