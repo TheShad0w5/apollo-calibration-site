@@ -8,8 +8,8 @@ const params=new URLSearchParams(window.location.search);
 if(params.getAll('finder').length!==1||params.get('finder')!=='1')return;
 const labels={
  job:{new:'New custom tune',retune:'Update to an existing Keith tune',base:'Starting / base map',project:'Dyno session or custom project'},
- vehicle:{ej:'WRX / STI with an EJ engine',va:'2015–2021 WRX',vb:'2022+ WRX',porsche:'Porsche',other:'Another vehicle'},
- platform:{ap:'COBB Accessport',standalone:'Standalone ECU',other:'Other / not sure'},
+ vehicle:{ej:'WRX / STI with an EJ engine',va:'2015–2021 WRX',vb:'2022+ WRX','brz-fa20':'BRZ / FR-S / Toyota 86 (Gen 1 FA20)','brz-fa24':'BRZ / GR86 (Gen 2 FA24)',porsche:'Porsche',other:'Another vehicle'},
+ platform:{ap:'COBB Accessport',ecutek:'EcuTek',standalone:'Standalone ECU',other:'Other / not sure'},
  fuel:{single:'One agreed fuel',flex:'Flex fuel',unsure:'Not decided yet'}
 };
 const headings={job:'Job',vehicle:'Vehicle group',platform:'Platform',fuel:'Fuel plan'};

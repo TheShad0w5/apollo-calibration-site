@@ -1,8 +1,10 @@
 (function(){
 'use strict';
 const form=document.getElementById('service-finder'),out=document.getElementById('finder-result');if(!form||!out)return;
-const choices={job:['new','retune','base','project'],vehicle:['ej','va','vb','porsche','other'],platform:['ap','standalone','other'],fuel:['single','flex','unsure']};
+const choices={job:['new','retune','base','project'],vehicle:['ej','va','vb','brz-fa20','brz-fa24','porsche','other'],platform:['ap','ecutek','standalone','other'],fuel:['single','flex','unsure']};
 const guides={ej:['EJ WRX / STI preparation','/ej-wrx-sti-etuning.html'],va:['2015–2021 WRX preparation','/2015-2021-wrx-etuning.html'],vb:['2022+ WRX preparation','/2022-plus-wrx-etuning.html'],porsche:['Porsche tuning','/porsche-tuning.html'],other:['Platform coverage','/cobb-custom-tuning.html']};
+const ecutekGuide=['EcuTek equipment and licensing','/knowledge/ecutek.html#ecu-connect-kits'];
+const ecutekGenerations={'brz-fa20':'fa20','brz-fa24':'fa24'};
 const prices={'ap-single':400,'ap-flex':600,'standalone-single':500,'standalone-flex':750,'ap-single-retune':200,'ap-flex-retune':300,'standalone-single-retune':250,'standalone-flex-retune':500};
 function projectUrl(v){
  const params=new URLSearchParams({finder:'1'});
@@ -10,7 +12,22 @@ function projectUrl(v){
  return '/shop.html?'+params.toString()+'#request';
 }
 function result(v){
- const guide=v.platform==='standalone'?['Standalone preparation','/standalone-ecu-tuning.html']:guides[v.vehicle];
+ const generation=Object.hasOwn(ecutekGenerations,v.vehicle)?ecutekGenerations[v.vehicle]:null;
+ if(generation&&v.job==='new'&&['ecutek','other'].includes(v.platform)){
+  const params=new URLSearchParams({generation});
+  if(v.fuel==='flex')params.set('plan','boosted-flex');
+  return {
+   title:'EcuTek '+generation.toUpperCase()+' setup review',
+   body:'Naturally aspirated calibration is $400, boosted single-fuel starts at $500, and boosted flex-fuel starts at $750. Choose your package and send your setup to Keith for a quote.',
+   href:'https://tbk-store-production.keith-787.workers.dev/ecutek?'+params,
+   cta:'Choose an EcuTek package',
+   guide:ecutekGuide
+  };
+ }
+ const guide=v.platform==='standalone'?['Standalone preparation','/standalone-ecu-tuning.html']:generation||v.platform==='ecutek'?ecutekGuide:guides[v.vehicle];
+ if(v.platform==='ecutek'||(generation&&v.platform==='ap')){
+  return {title:'Request a setup review.',body:'Send the exact year, engine, tuning device and what you need so Keith can confirm compatibility and scope.',href:projectUrl(v),cta:'Send setup details',guide};
+ }
  if(v.job==='project'||v.platform==='other'||v.fuel==='unsure')return {title:'Start with a project review.',body:'This needs a little more detail before choosing a paid service. Your selections carry into the inquiry for you to check. Add the exact year and model, ECU or tuning tool, parts list, fuel and what you want the car to do.',href:projectUrl(v),cta:'Send project details',guide};
  if(v.job==='base')return {title:'Base map · $50',body:'A starting calibration for an approved setup, not a finished tune or clearance for full-load driving. Confirm the hardware and intended use before ordering.',href:'/checkout?service=base-map#setup',cta:'Continue with $50 base map',guide};
  const key=v.platform+'-'+v.fuel+(v.job==='retune'?'-retune':'');
@@ -39,7 +56,7 @@ form.addEventListener('submit',function(e){
   const portal=document.createElement('p');portal.className='finder-scope';portal.textContent='Enter your exact vehicle details next. Compatibility is reviewed before file delivery. Files, requested logs and messages stay on your private order page. Hardware, licensing and diagnostics are separate.';out.append(portal);
   const compare=document.createElement('a');compare.href='/shop.html#'+(data.job==='base'?'base-map':data.platform+'-'+data.fuel+(data.job==='retune'?'-retune':''));compare.textContent='Compare this service before ordering →';out.append(compare);
  }
- if(data.job==='new'&&data.platform!=='other'&&data.fuel!=='unsure'){
+ if(data.job==='new'&&r.href.startsWith('/checkout?')){
   const proof=document.createElement('p');proof.className='finder-proof';
   const standalone=data.platform==='standalone';
   proof.textContent=standalone?'From Keith’s AWD Tuning work: Lucas’s Emtron STI paired three SI-Drive power modes with a documented 564.5 hp E80 report. ':'From Keith’s AWD Tuning work: Cinderelli’s 2024 WRX E70 feature reported 388 whp / 417 wtq. ';
