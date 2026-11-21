@@ -3,12 +3,7 @@
   "redirects": [
     {
       "source": "/ecutek-tuning.html",
-      "destination": "/service-unavailable.html",
-      "permanent": false
-    },
-    {
-      "source": "/ecutek-brz-tuning.html",
-      "destination": "/service-unavailable.html",
+      "destination": "/ecutek-brz-tuning.html",
       "permanent": false
     },
     {
@@ -28,12 +23,12 @@
     },
     {
       "source": "/ecutek-tuning",
-      "destination": "/service-unavailable.html",
+      "destination": "/ecutek-brz-tuning.html",
       "permanent": false
     },
     {
       "source": "/ecutek-brz-tuning",
-      "destination": "/service-unavailable.html",
+      "destination": "/ecutek-brz-tuning.html",
       "permanent": false
     },
     {
