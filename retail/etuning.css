@@ -189,6 +189,8 @@ summary:focus-visible{outline-offset:3px}
 .subaru-offer-prices span { font-size:.85rem; }
 .subaru-offer-hero .hero-actions { display:flex; flex-wrap:wrap; gap:.65rem; }
 .subaru-offer-hero .hero-actions a { min-height:48px; text-align:center; }
+body.tbk-brand .subaru-offer-hero .hero-actions a.button.secondary { background:transparent; border:1px solid #708399; color:#f4f7fb; }
+body.tbk-brand .subaru-offer-hero .hero-actions a.button.secondary:hover { background:#1b2e43; border-color:#a4b7cc; color:#fff; }
 .subaru-hero-proof { display:grid; grid-template-columns:minmax(88px,140px) minmax(0,1fr); align-items:center; gap:.9rem; max-width:48rem; margin:1.15rem 0; padding:.65rem; border:1px solid var(--line); border-radius:.6rem; background:var(--surface,#142132); }
 .subaru-hero-proof img { display:block; width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; border-radius:.3rem; }
 .subaru-hero-proof p { margin:0; font-size:.9rem; line-height:1.45; }
