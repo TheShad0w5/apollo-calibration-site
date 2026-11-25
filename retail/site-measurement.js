@@ -280,11 +280,27 @@
       if(!purchaseGranted()){void revokePurchaseContexts();return null;}return data.token;
     }catch{return null;}
   }
+  function prepareInquiryReturn(form) {
+    // Match the browser return to this submission; a thank-you page visit alone is insufficient.
+    if (internalVisit) return;
+    try {
+      const next = form.querySelector('input[name="_next"]');
+      if (!next) return;
+      const destination = new URL(next.value, location.origin);
+      if (destination.origin !== location.origin || destination.pathname !== inquiryReturnPath) return;
+      const receipt = crypto.randomUUID();
+      destination.searchParams.set('inquiry_receipt', receipt);
+      sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), receipt, ...context}));
+      next.value = destination.href;
+    } catch {}
+  }
   function confirmation() {
     if (location.pathname !== '/inquiry-received.html' || choice !== 'yes') return;
     let pending;
     try { pending = JSON.parse(sessionStorage.getItem(pendingKey) || 'null'); } catch { return; }
-    const time = typeof pending === 'number' ? pending : pending?.time;
+    const receipt = new URLSearchParams(location.search).get('inquiry_receipt');
+    if (!receipt || pending?.receipt !== receipt || (document.referrer && !formReturn) || internalVisit || privacySignal) return;
+    const time = pending?.time;
     if (!time || Date.now() - time > 60 * 60 * 1000 || time > Date.now()) return;
     try { sessionStorage.removeItem(pendingKey); } catch { return; }
     if (adsStarted && adsChoice === 'yes' && !privacySignal && !internalVisit) {
@@ -399,7 +415,7 @@
     form.addEventListener('submit', () => {
       prepareSubaruLead(form);
       const a=attribution();for(const [key,value]of Object.entries(a)){let field=form.querySelector('input[name="attribution_'+key+'"]');if(!field){field=document.createElement('input');field.type='hidden';field.name='attribution_'+key;form.append(field)}field.value=value;}
-      try { sessionStorage.setItem(pendingKey, JSON.stringify({time:Date.now(), ...context})); } catch {}
+      prepareInquiryReturn(form);
       event('inquiry_start', {form_name:'website_inquiry', ...context});
     });
   });
