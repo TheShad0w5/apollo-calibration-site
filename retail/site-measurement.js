@@ -259,6 +259,12 @@
   function event(name, params = {}) {
     if (choice === 'yes' && started && !internalVisit) tag('event', isTest ? 'test_' + name : name, {...page(), ...funnelContext(), ...params});
   }
+  function needsMeasurementChoice() {
+    if (choice !== 'yes') return !choice;
+    if (internalVisit || privacySignal) return false;
+    // An older analytics choice does not grant the newer purchase measurement permission.
+    try { return localStorage.getItem(purchaseConsentKey) === null; } catch { return false; }
+  }
   function purchaseGranted() {
     try{return choice==='yes'&&started&&!internalVisit&&!privacySignal&&navigator.globalPrivacyControl!==true&&navigator.doNotTrack!=='1'&&localStorage.getItem(key)==='yes'&&localStorage.getItem(purchaseConsentKey)==='yes'&&localStorage.getItem(ownerKey)!=='1'&&sessionStorage.getItem(testKey)!=='1';}catch{return false;}
   }
@@ -341,8 +347,9 @@
   const panel = document.createElement('section');
   panel.id = 'tbk-analytics-choice';
   panel.setAttribute('aria-label','Optional website measurement');
-  panel.hidden = Boolean(choice);
+  panel.hidden = !needsMeasurementChoice();
   panel.innerHTML = '<p class="tbk-consent-intro"><strong>Optional measurement</strong><br>Choose whether to allow analytics and ad measurement.</p><details><summary>Details and optional session replay</summary><p>Analytics measures visits, contact actions and confirmed purchases. Purchase reporting uses the service, amount and an anonymous transaction reference; private order pages stay untagged. Optional ad measurement uses Google click identifiers and cookies. For ChatGPT ad visits, it sends OpenAI the ad click reference and a completed Subaru inquiry event. No message contents are sent; personalized ads stay off. <a href="/privacy.html">Privacy details</a></p></details><button type="button" data-choice="yes">Analytics only</button><button type="button" data-choice="ads">Analytics + ad measurement</button><button type="button" data-choice="no">No thanks</button>';
+  if (choice === 'yes' && !panel.hidden) panel.querySelector('.tbk-consent-intro').append(' Please review the updated options, including confirmed purchase measurement.');
   const replayLabel = document.createElement('label');
   replayLabel.style.cssText = 'display:block;margin:0 0 12px;line-height:1.5;font-weight:400';
   const replayInput = document.createElement('input');
